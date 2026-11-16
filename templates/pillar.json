@@ -1,0 +1,15 @@
+{
+  "name": "pillar",
+  "category": "architecture",
+  "pivot": "bottom_center",
+  "tri_budget": 500,
+  "expected_size": [0.56, 0.56, 2.0],
+  "collision": "box",
+  "materials": {"stone": "#55575e"},
+  "parts": [
+    {"comment": "основание, шахта и капитель", "type": "lathe", "material": "stone", "segments": 8,
+     "profile": [[0,0],[0.28,0],[0.28,0.12],[0.22,0.18],[0.18,0.25],[0.16,1.65],[0.2,1.75],[0.28,1.82],[0.28,1.95],[0,1.95]]},
+    {"comment": "квадратная плита капители", "type": "box", "material": "stone", "size": [0.56,0.56,0.05],
+     "location": [0,0,1.975], "bevel": {"width": 0.008, "segments": 1}, "jitter": 0.002}
+  ]
+}

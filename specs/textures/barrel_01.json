@@ -1,0 +1,12 @@
+{
+  "asset": "barrel_01",
+  "size": 128,
+  "seed": 3,
+  "pixel": true,
+  "quantize": true,
+  "materials": {
+    "wood": {"preset": "wood", "palette": "wood_dark", "scale": 8, "direction": "X", "distortion": 3, "ao": 0.6, "edge": 0.3},
+    "metal": {"preset": "metal", "palette": "rust_iron", "scale": 20, "ao": 0.4, "edge": 0.5, "metallic": 0.6, "roughness": 0.6},
+    "default": {"preset": "flat", "palette": "stone_grey"}
+  }
+}

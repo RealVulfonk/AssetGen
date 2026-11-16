@@ -1,0 +1,17 @@
+{
+  "name": "cell_bars",
+  "category": "architecture",
+  "pivot": "bottom_center",
+  "tri_budget": 400,
+  "expected_size": [0.97, 0.036, 2.0],
+  "collision": "box",
+  "materials": {"metal": "#2c2d33"},
+  "parts": [
+    {"comment": "вертикальные прутья", "type": "cylinder", "material": "metal", "radius": 0.018,
+     "height": 2.0, "segments": 6, "location": [-0.45,0,1.0],
+     "array": {"count": 7, "offset": [0.15,0,0]}},
+    {"comment": "горизонтальные связи", "type": "cylinder", "material": "metal", "radius": 0.018,
+     "height": 0.936, "segments": 6, "rotation": [0,90,0], "location": [0,0,0.3],
+     "array": {"count": 2, "offset": [0,0,1.4]}}
+  ]
+}

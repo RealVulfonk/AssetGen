@@ -1,0 +1,100 @@
+{
+  "name": "chest",
+  "category": "props",
+  "pivot": "bottom_center",
+  "tri_budget": 500,
+  "expected_size": [
+    0.84,
+    0.54,
+    0.55
+  ],
+  "collision": "box",
+  "materials": {
+    "wood": "#5a3f2a",
+    "metal": "#4a4c55",
+    "gold": "#b8862a"
+  },
+  "parts": [
+    {
+      "comment": "корпус",
+      "type": "box",
+      "material": "wood",
+      "size": [
+        0.8,
+        0.5,
+        0.35
+      ],
+      "location": [
+        0,
+        0,
+        0.175
+      ],
+      "bevel": {
+        "width": 0.015,
+        "segments": 1
+      },
+      "jitter": 0.003
+    },
+    {
+      "comment": "крышка",
+      "type": "box",
+      "material": "wood",
+      "size": [
+        0.82,
+        0.52,
+        0.15
+      ],
+      "location": [
+        0,
+        0,
+        0.425
+      ],
+      "bevel": {
+        "width": 0.025,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "обечайки",
+      "type": "box",
+      "material": "metal",
+      "size": [
+        0.055,
+        0.535,
+        0.48
+      ],
+      "location": [
+        -0.25,
+        0,
+        0.25
+      ],
+      "array": {
+        "count": 2,
+        "offset": [
+          0.5,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "comment": "замок",
+      "type": "box",
+      "material": "gold",
+      "size": [
+        0.1,
+        0.035,
+        0.12
+      ],
+      "location": [
+        0,
+        -0.267,
+        0.34
+      ],
+      "bevel": {
+        "width": 0.008,
+        "segments": 1
+      }
+    }
+  ]
+}

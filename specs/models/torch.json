@@ -1,0 +1,64 @@
+{
+  "name": "torch",
+  "category": "props",
+  "pivot": "bottom_center",
+  "tri_budget": 250,
+  "expected_size": [
+    0.08,
+    0.08,
+    0.56
+  ],
+  "materials": {
+    "wood": "#5a3f2a",
+    "cloth": "#4f1616",
+    "flame": "#e8c25a"
+  },
+  "parts": [
+    {
+      "comment": "рукоять",
+      "type": "cylinder",
+      "material": "wood",
+      "radius": 0.018,
+      "height": 0.45,
+      "segments": 6,
+      "location": [
+        0,
+        0,
+        0.225
+      ]
+    },
+    {
+      "comment": "обмотка",
+      "type": "cylinder",
+      "material": "cloth",
+      "radius": 0.035,
+      "radius_top": 0.028,
+      "height": 0.12,
+      "segments": 8,
+      "location": [
+        0,
+        0,
+        0.43
+      ],
+      "jitter": 0.002
+    },
+    {
+      "comment": "пламя",
+      "type": "sphere",
+      "material": "flame",
+      "radius": 0.04,
+      "segments": 6,
+      "rings": 4,
+      "scale": [
+        0.75,
+        0.75,
+        1.7
+      ],
+      "location": [
+        0,
+        0,
+        0.52
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "barrel",
+  "category": "props",
+  "pivot": "bottom_center",
+  "tri_budget": 400,
+  "expected_size": [0.66, 0.66, 0.9],
+  "collision": "box",
+  "materials": {"wood": "#6b4a32", "metal": "#4a4c55"},
+  "parts": [
+    {"comment": "корпус", "type": "lathe", "material": "wood", "segments": 10,
+     "profile": [[0,0],[0.26,0],[0.30,0.2],[0.32,0.45],[0.30,0.7],[0.26,0.9],[0,0.9]]},
+    {"comment": "обруч низ", "type": "cylinder", "material": "metal",
+     "radius": 0.315, "height": 0.05, "segments": 10, "location": [0,0,0.2]},
+    {"comment": "обруч верх", "type": "cylinder", "material": "metal",
+     "radius": 0.315, "height": 0.05, "segments": 10, "location": [0,0,0.7]}
+  ]
+}

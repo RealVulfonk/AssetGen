@@ -1,0 +1,57 @@
+{
+  "name": "bone",
+  "category": "remains",
+  "pivot": "bottom_center",
+  "tri_budget": 200,
+  "expected_size": [
+    0.48,
+    0.13,
+    0.08
+  ],
+  "materials": {
+    "bone": "#bdb39a"
+  },
+  "parts": [
+    {
+      "comment": "стержень",
+      "type": "cylinder",
+      "material": "bone",
+      "radius": 0.025,
+      "height": 0.4,
+      "segments": 6,
+      "rotation": [
+        0,
+        90,
+        0
+      ]
+    },
+    {
+      "comment": "головки +y",
+      "type": "sphere",
+      "material": "bone",
+      "radius": 0.04,
+      "segments": 6,
+      "rings": 4,
+      "location": [
+        0.2,
+        0.025,
+        0
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "головки -y",
+      "type": "sphere",
+      "material": "bone",
+      "radius": 0.04,
+      "segments": 6,
+      "rings": 4,
+      "location": [
+        0.2,
+        -0.025,
+        0
+      ],
+      "mirror_x": true
+    }
+  ]
+}

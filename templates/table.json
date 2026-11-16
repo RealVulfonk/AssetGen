@@ -1,0 +1,18 @@
+{
+  "name": "table",
+  "category": "furniture",
+  "pivot": "bottom_center",
+  "tri_budget": 500,
+  "expected_size": [1.6, 0.8, 0.79],
+  "collision": "box",
+  "materials": {"wood": "#5a3f2a"},
+  "parts": [
+    {"comment": "столешница", "type": "box", "material": "wood", "size": [1.6,0.8,0.08],
+     "location": [0,0,0.75], "bevel": {"width": 0.01, "segments": 1}, "jitter": 0.003},
+    {"comment": "четыре ножки", "type": "box", "material": "wood", "size": [0.08,0.08,0.72],
+     "location": [0.68,-0.28,0.36], "array": {"count": 2, "offset": [0,0.56,0]},
+     "mirror_x": true, "bevel": {"width": 0.006, "segments": 1}, "jitter": 0.002},
+    {"comment": "продольная связь", "type": "box", "material": "wood", "size": [1.4,0.06,0.08],
+     "location": [0,0,0.28]}
+  ]
+}

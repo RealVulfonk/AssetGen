@@ -1,0 +1,16 @@
+{
+  "name": "candle",
+  "category": "props",
+  "pivot": "bottom_center",
+  "tri_budget": 150,
+  "expected_size": [0.05, 0.05, 0.2],
+  "materials": {"wax": "#e0d8c0", "wick": "#1f150f", "flame": "#e8c25a"},
+  "parts": [
+    {"comment": "воск", "type": "cylinder", "material": "wax", "radius": 0.025,
+     "radius_top": 0.022, "height": 0.15, "segments": 8, "location": [0,0,0.075], "jitter": 0.001},
+    {"comment": "фитиль", "type": "cylinder", "material": "wick", "radius": 0.003,
+     "height": 0.025, "segments": 6, "location": [0,0,0.16]},
+    {"comment": "пламя", "type": "sphere", "material": "flame", "radius": 0.015,
+     "segments": 6, "rings": 4, "scale": [0.7,0.7,1.5], "location": [0,0,0.19]}
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "coffin",
+  "category": "crypt",
+  "pivot": "bottom_center",
+  "tri_budget": 300,
+  "expected_size": [0.67, 1.96, 0.48],
+  "collision": "box",
+  "materials": {"wood": "#3a281b", "metal": "#b8862a"},
+  "parts": [
+    {"comment": "корпус (вид сверху)", "type": "extrude", "material": "wood", "depth": 0.4,
+     "points": [[-0.2,-0.95],[0.2,-0.95],[0.32,0.45],[0.25,0.95],[-0.25,0.95],[-0.32,0.45]],
+     "bevel": {"width": 0.01, "segments": 1}},
+    {"comment": "крышка", "type": "extrude", "material": "wood", "depth": 0.06,
+     "points": [[-0.2,-0.95],[0.2,-0.95],[0.32,0.45],[0.25,0.95],[-0.25,0.95],[-0.32,0.45]],
+     "scale": [1.05,1.03,1], "location": [0,0,0.4]},
+    {"comment": "крест вертикаль", "type": "box", "material": "metal",
+     "size": [0.06,0.5,0.02], "location": [0,0.15,0.47]},
+    {"comment": "крест горизонталь", "type": "box", "material": "metal",
+     "size": [0.3,0.06,0.02], "location": [0,0.3,0.47]}
+  ]
+}

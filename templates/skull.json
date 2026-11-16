@@ -1,0 +1,18 @@
+{
+  "name": "skull",
+  "category": "remains",
+  "pivot": "bottom_center",
+  "tri_budget": 300,
+  "expected_size": [0.16, 0.2, 0.22],
+  "materials": {"bone": "#bdb39a", "dark": "#1f150f"},
+  "parts": [
+    {"comment": "черепная коробка", "type": "sphere", "material": "bone", "radius": 0.09,
+     "segments": 8, "rings": 6, "scale": [0.85,1.0,1.05], "location": [0,0,0.135]},
+    {"comment": "челюсть", "type": "box", "material": "bone", "size": [0.11,0.12,0.055],
+     "location": [0,-0.025,0.04], "bevel": {"width": 0.012, "segments": 1}},
+    {"comment": "глазницы", "type": "sphere", "material": "dark", "radius": 0.027,
+     "segments": 6, "rings": 4, "scale": [1,0.45,1.15], "location": [0.035,-0.078,0.145], "mirror_x": true},
+    {"comment": "носовая полость", "type": "box", "material": "dark", "size": [0.022,0.012,0.032],
+     "location": [0,-0.09,0.1], "rotation": [0,0,45]}
+  ]
+}
