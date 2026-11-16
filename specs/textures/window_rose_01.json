@@ -1,0 +1,13 @@
+{
+  "asset": "window_rose_01",
+  "size": 256,
+  "seed": 23,
+  "materials": {
+    "wood": {"preset": "wood", "palette": "wood_dark_soft", "scale": 7, "detail": 5, "distortion": 0.4, "contrast": 0.85, "direction": "X", "ao": 0.3, "edge": 0.12, "roughness": 0.95},
+    "lead": {"preset": "metal", "palette": "lead", "scale": 20, "contrast": 0.8, "ao": 0.25, "edge": 0.15, "roughness": 0.6},
+    "glass_blue": {"preset": "flat", "palette": "glass_blue", "value": 0.6, "ao": 0.15, "roughness": 0.35},
+    "glass_purple": {"preset": "flat", "palette": "glass_purple", "value": 0.55, "ao": 0.15, "roughness": 0.35},
+    "glass_amber": {"preset": "flat", "palette": "glass_amber", "value": 0.65, "ao": 0.15, "roughness": 0.35},
+    "default": {"preset": "flat", "palette": "lead"}
+  }
+}

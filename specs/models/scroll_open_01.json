@@ -1,0 +1,374 @@
+{
+  "name": "scroll_open_01",
+  "category": "props",
+  "seed": 17,
+  "pivot": "bottom_center",
+  "tri_budget": 500,
+  "expected_size": [
+    0.36,
+    0.062,
+    0.444
+  ],
+  "collision": "mesh",
+  "materials": {
+    "parchment": "#d3c5a3",
+    "ink": "#3a3020",
+    "ink_red": "#7a2222",
+    "rod": "#5a3f2a"
+  },
+  "parts": [
+    {
+      "comment": "полотно пергамента, грань -16°",
+      "type": "box",
+      "material": "parchment",
+      "size": [
+        0.32,
+        0.008,
+        0.088
+      ],
+      "rotation": [
+        16,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        0.02379,
+        0.06576
+      ],
+      "jitter": 0.0012
+    },
+    {
+      "comment": "полотно пергамента, грань -8°",
+      "type": "box",
+      "material": "parchment",
+      "size": [
+        0.32,
+        0.008,
+        0.088
+      ],
+      "rotation": [
+        8,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        0.00598,
+        0.14955
+      ],
+      "jitter": 0.0012
+    },
+    {
+      "comment": "полотно пергамента, грань +0°",
+      "type": "box",
+      "material": "parchment",
+      "size": [
+        0.32,
+        0.008,
+        0.088
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.235
+      ],
+      "jitter": 0.0012
+    },
+    {
+      "comment": "полотно пергамента, грань +8°",
+      "type": "box",
+      "material": "parchment",
+      "size": [
+        0.32,
+        0.008,
+        0.088
+      ],
+      "rotation": [
+        -8,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        0.00598,
+        0.32045
+      ],
+      "jitter": 0.0012
+    },
+    {
+      "comment": "полотно пергамента, грань +16°",
+      "type": "box",
+      "material": "parchment",
+      "size": [
+        0.32,
+        0.008,
+        0.088
+      ],
+      "rotation": [
+        -16,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        0.02379,
+        0.40424
+      ],
+      "jitter": 0.0012
+    },
+    {
+      "comment": "строка текста 1",
+      "type": "box",
+      "material": "ink",
+      "size": [
+        0.245,
+        0.0025,
+        0.011
+      ],
+      "rotation": [
+        16,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        0.02429,
+        0.04406
+      ]
+    },
+    {
+      "comment": "строка текста 2",
+      "type": "box",
+      "material": "ink_red",
+      "size": [
+        0.205,
+        0.0025,
+        0.011
+      ],
+      "rotation": [
+        16,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        0.01271,
+        0.08443
+      ]
+    },
+    {
+      "comment": "строка текста 3",
+      "type": "box",
+      "material": "ink",
+      "size": [
+        0.26,
+        0.0025,
+        0.011
+      ],
+      "rotation": [
+        8,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        0.00345,
+        0.12799
+      ]
+    },
+    {
+      "comment": "строка текста 4",
+      "type": "box",
+      "material": "ink",
+      "size": [
+        0.185,
+        0.0025,
+        0.011
+      ],
+      "rotation": [
+        8,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        -0.00239,
+        0.16958
+      ]
+    },
+    {
+      "comment": "строка текста 5",
+      "type": "box",
+      "material": "ink",
+      "size": [
+        0.23,
+        0.0025,
+        0.011
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        -0.0055,
+        0.214
+      ]
+    },
+    {
+      "comment": "строка текста 6",
+      "type": "box",
+      "material": "ink",
+      "size": [
+        0.255,
+        0.0025,
+        0.011
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        -0.0055,
+        0.256
+      ]
+    },
+    {
+      "comment": "строка текста 7",
+      "type": "box",
+      "material": "ink",
+      "size": [
+        0.195,
+        0.0025,
+        0.011
+      ],
+      "rotation": [
+        -8,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        -0.00239,
+        0.30042
+      ]
+    },
+    {
+      "comment": "строка текста 8",
+      "type": "box",
+      "material": "ink_red",
+      "size": [
+        0.25,
+        0.0025,
+        0.011
+      ],
+      "rotation": [
+        -8,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        0.00345,
+        0.34201
+      ]
+    },
+    {
+      "comment": "строка текста 9",
+      "type": "box",
+      "material": "ink",
+      "size": [
+        0.175,
+        0.0025,
+        0.011
+      ],
+      "rotation": [
+        -16,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        0.01271,
+        0.38557
+      ]
+    },
+    {
+      "comment": "строка текста 10",
+      "type": "box",
+      "material": "ink",
+      "size": [
+        0.225,
+        0.0025,
+        0.011
+      ],
+      "rotation": [
+        -16,
+        0,
+        0
+      ],
+      "location": [
+        0.0,
+        0.02429,
+        0.42594
+      ]
+    },
+    {
+      "comment": "верхний деревянный стержень",
+      "type": "cylinder",
+      "material": "rod",
+      "radius": 0.014,
+      "height": 0.36,
+      "segments": 8,
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "location": [
+        0,
+        0.04841,
+        0.44295
+      ],
+      "array": {
+        "count": 2,
+        "offset": [
+          0,
+          0,
+          -0.4159
+        ]
+      }
+    },
+    {
+      "comment": "наконечники стержней",
+      "type": "sphere",
+      "material": "rod",
+      "radius": 0.0105,
+      "segments": 6,
+      "rings": 4,
+      "location": [
+        -0.178,
+        0.04841,
+        0.44295
+      ],
+      "mirror_x": true,
+      "array": {
+        "count": 2,
+        "offset": [
+          0,
+          0,
+          -0.4159
+        ]
+      }
+    }
+  ]
+}

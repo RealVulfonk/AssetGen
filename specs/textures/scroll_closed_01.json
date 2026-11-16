@@ -1,0 +1,15 @@
+{
+  "asset": "scroll_closed_01",
+  "size": 128,
+  "seed": 13,
+  "samples": 64,
+  "margin": 4,
+  "materials": {
+    "parchment": {"preset": "noise", "palette": "bone", "scale": 5, "detail": 3, "contrast": 0.4, "brightness": 0.12, "ao": 0.3, "ao_distance": 0.05, "edge": 0.1, "roughness": 0.95},
+    "parchment_dark": {"preset": "noise", "palette": "bone", "scale": 5, "detail": 3, "contrast": 0.4, "brightness": 0.0, "ao": 0.3, "ao_distance": 0.05, "edge": 0.12, "roughness": 0.95},
+    "cord": {"preset": "noise", "palette": "wood_dark_soft", "scale": 14, "detail": 2, "contrast": 0.5, "brightness": 0.05, "ao": 0.3, "ao_distance": 0.03, "roughness": 0.95},
+    "rod": {"preset": "wood", "palette": "wood_dark_soft", "scale": 7, "direction": "X", "distortion": 1.5, "contrast": 0.7, "ao": 0.3, "ao_distance": 0.04, "edge": 0.1, "roughness": 0.9},
+    "wax": {"preset": "flat", "palette": "cloth_red", "value": 0.6, "contrast": 0.4, "brightness": 0.05, "ao": 0.25, "ao_distance": 0.02, "roughness": 0.7},
+    "default": {"preset": "flat", "palette": "bone"}
+  }
+}

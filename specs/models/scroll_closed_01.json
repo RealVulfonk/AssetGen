@@ -1,0 +1,38 @@
+{
+  "name": "scroll_closed_01",
+  "category": "props",
+  "seed": 41,
+  "pivot": "bottom_center",
+  "tri_budget": 300,
+  "expected_size": [0.358, 0.061, 0.061],
+  "collision": "mesh",
+  "materials": {
+    "parchment": "#d3c5a3",
+    "parchment_dark": "#b8a884",
+    "cord": "#6b4a2a",
+    "rod": "#5a3f2a",
+    "wax": "#7a2222"
+  },
+  "parts": [
+    {"comment": "стержень-основа, выступает за торцы рулона", "type": "cylinder", "material": "rod",
+     "radius": 0.007, "height": 0.34, "segments": 8, "rotation": [0, 90, 0], "location": [0, 0, 0.028]},
+
+    {"comment": "наконечники стержня с двух сторон", "type": "sphere", "material": "rod",
+     "radius": 0.011, "segments": 6, "rings": 4, "location": [-0.168, 0, 0.028],
+     "array": {"count": 2, "offset": [0.336, 0, 0]}},
+
+    {"comment": "свёрнутое в рулон полотно пергамента", "type": "cylinder", "material": "parchment",
+     "radius": 0.028, "height": 0.27, "segments": 10, "rotation": [0, 90, 0], "location": [0, 0, 0.028],
+     "jitter": 0.0012},
+
+    {"comment": "свободный наружный край листа поверх рулона", "type": "box", "material": "parchment_dark",
+     "size": [0.26, 0.016, 0.004], "rotation": [45, 0, 0], "location": [0, -0.0215, 0.0495]},
+
+    {"comment": "две обвязки шнуром", "type": "cylinder", "material": "cord",
+     "radius": 0.0305, "height": 0.014, "segments": 10, "rotation": [0, 90, 0], "location": [-0.07, 0, 0.028],
+     "array": {"count": 2, "offset": [0.14, 0, 0]}},
+
+    {"comment": "восковая печать на правой обвязке", "type": "sphere", "material": "wax",
+     "radius": 0.013, "segments": 8, "rings": 4, "scale": [1, 0.45, 1], "location": [0.07, -0.031, 0.028]}
+  ]
+}
