@@ -16,6 +16,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from assetgen_paths import asset_group, output_dir
+
 ROOT = Path(__file__).resolve().parent
 CFG = json.loads((ROOT / "assetgen.config.json").read_text(encoding="utf-8"))
 BLENDER = os.environ.get("BLENDER", CFG["blender"])
@@ -82,7 +84,7 @@ def copy_to_godot(name, category):
     destination = (ROOT / configured / category / name).resolve()
     destination.mkdir(parents=True, exist_ok=True)
     copied = []
-    for source in (OUT / name).iterdir():
+    for source in output_dir(OUT, name, category).iterdir():
         if source.suffix.lower() in (".glb", ".png") and not source.name.startswith("preview_"):
             shutil.copy2(source, destination / source.name)
             copied.append(source.name)
@@ -134,7 +136,7 @@ def main():
             if args.cmd == "validate":
                 print(f"OK: {model_spec}")
                 return
-            output = OUT / args.a
+            output = output_dir(OUT, args.a, data.get("category"))
             output.mkdir(parents=True, exist_ok=True)
             run_blender("build_model.py", [model_spec, output])
             report = read_report(output / "report.json")
@@ -142,7 +144,7 @@ def main():
             texture_spec = ROOT / "specs/textures" / f"{args.a}.json"
             load_texture_spec(args.a)
             data = validate(model_spec, "model.schema.json")
-            output = OUT / args.a
+            output = output_dir(OUT, args.a, data.get("category"))
             blend = output / f"{args.a}.blend"
             if not blend.is_file():
                 raise AssetGenError(f"Build the model first: python assetgen.py model {args.a}")

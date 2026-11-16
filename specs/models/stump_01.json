@@ -1,0 +1,179 @@
+{
+  "name": "stump_01",
+  "category": "flora/understory",
+  "seed": 61116,
+  "pivot": "bottom_center",
+  "tri_budget": 500,
+  "collision": "mesh",
+  "materials": {
+    "bark": "#463525",
+    "bark_dry": "#514537",
+    "moss": "#374f29"
+  },
+  "parts": [
+    {
+      "comment": "пень",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.2156,
+      "height": 0.3396,
+      "segments": 8,
+      "rotation": [
+        0.0,
+        7.459,
+        102.506
+      ],
+      "location": [
+        -0.0048,
+        0.0215,
+        0.1964
+      ],
+      "radius_top": 0.191,
+      "jitter": 0.006
+    },
+    {
+      "comment": "задир среза 1",
+      "type": "cylinder",
+      "material": "bark_dry",
+      "radius": 0.0474,
+      "height": 0.1005,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "location": [
+        -0.1615,
+        0.0374,
+        0.415
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "задир среза 2",
+      "type": "cylinder",
+      "material": "bark_dry",
+      "radius": 0.0474,
+      "height": 0.1079,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "location": [
+        -0.166,
+        -0.0359,
+        0.4187
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "задир среза 3",
+      "type": "cylinder",
+      "material": "bark_dry",
+      "radius": 0.0474,
+      "height": 0.1453,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "location": [
+        -0.09,
+        0.0766,
+        0.4374
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "корень пня 1",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0863,
+      "height": 0.1732,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        128.492,
+        -13.791
+      ],
+      "location": [
+        0.0658,
+        -0.0162,
+        0.0819
+      ],
+      "radius_top": 0.0259,
+      "jitter": 0.002
+    },
+    {
+      "comment": "корень пня 2",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0863,
+      "height": 0.1575,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        133.208,
+        87.875
+      ],
+      "location": [
+        0.0021,
+        0.0574,
+        0.0819
+      ],
+      "radius_top": 0.0259,
+      "jitter": 0.002
+    },
+    {
+      "comment": "корень пня 3",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0863,
+      "height": 0.1615,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        131.876,
+        178.306
+      ],
+      "location": [
+        -0.0601,
+        0.0018,
+        0.0819
+      ],
+      "radius_top": 0.0259,
+      "jitter": 0.002
+    },
+    {
+      "comment": "мох на пне 1",
+      "type": "sphere",
+      "material": "moss",
+      "radius": 0.0968,
+      "segments": 7,
+      "rings": 4,
+      "location": [
+        0.0137,
+        -0.0309,
+        0.3387
+      ],
+      "jitter": 0.008,
+      "scale": [
+        1.0,
+        1.0,
+        0.5
+      ]
+    }
+  ],
+  "expected_size": [
+    0.431,
+    0.446,
+    0.51
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "asset": "shrub_01",
+  "size": 128,
+  "seed": 1116,
+  "pixel": true,
+  "quantize": true,
+  "samples": 32,
+  "margin": 3,
+  "materials": {
+    "leaves": {
+      "preset": "noise",
+      "palette": "fern_green_soft",
+      "scale": 11,
+      "detail": 4,
+      "contrast": 1.1,
+      "brightness": 0.05,
+      "ao": 0.32,
+      "ao_distance": 0.05,
+      "edge": 0.15,
+      "roughness": 0.92
+    },
+    "twig": {
+      "preset": "wood",
+      "palette": "bark_brown_soft",
+      "scale": 9,
+      "direction": "Z",
+      "distortion": 1.6,
+      "contrast": 0.9,
+      "ao": 0.35,
+      "ao_distance": 0.03,
+      "edge": 0.14,
+      "roughness": 0.96
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "bark_brown_soft"
+    }
+  }
+}

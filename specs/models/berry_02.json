@@ -1,0 +1,274 @@
+{
+  "name": "berry_02",
+  "category": "flora/understory",
+  "seed": 62093,
+  "pivot": "bottom_center",
+  "tri_budget": 700,
+  "collision": "none",
+  "materials": {
+    "twig": "#3a2c1e",
+    "leaves": "#3f652e",
+    "berry": "#6f2521"
+  },
+  "parts": [
+    {
+      "comment": "побег 1",
+      "type": "cylinder",
+      "material": "twig",
+      "radius": 0.0135,
+      "height": 0.5523,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        105.377,
+        -24.416
+      ],
+      "location": [
+        0.2424,
+        -0.1101,
+        0.3354
+      ],
+      "radius_top": 0.0054,
+      "jitter": 0.003
+    },
+    {
+      "comment": "побег 2",
+      "type": "cylinder",
+      "material": "twig",
+      "radius": 0.0135,
+      "height": 0.5926,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        105.718,
+        74.355
+      ],
+      "location": [
+        0.0769,
+        0.2747,
+        0.3283
+      ],
+      "radius_top": 0.0054,
+      "jitter": 0.003
+    },
+    {
+      "comment": "побег 3",
+      "type": "cylinder",
+      "material": "twig",
+      "radius": 0.0135,
+      "height": 0.6604,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        104.57,
+        171.02
+      ],
+      "location": [
+        -0.3157,
+        0.0499,
+        0.3255
+      ],
+      "radius_top": 0.0054,
+      "jitter": 0.003
+    },
+    {
+      "comment": "побег 4",
+      "type": "cylinder",
+      "material": "twig",
+      "radius": 0.0135,
+      "height": 0.5869,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        119.061,
+        -83.223
+      ],
+      "location": [
+        0.0303,
+        -0.2547,
+        0.2661
+      ],
+      "radius_top": 0.0054,
+      "jitter": 0.003
+    },
+    {
+      "comment": "листва 1",
+      "type": "sphere",
+      "material": "leaves",
+      "radius": 0.147,
+      "segments": 7,
+      "rings": 4,
+      "location": [
+        0.4849,
+        -0.2201,
+        0.2622
+      ],
+      "jitter": 0.007,
+      "scale": [
+        1.1,
+        1.1,
+        0.7
+      ]
+    },
+    {
+      "comment": "листва 2",
+      "type": "sphere",
+      "material": "leaves",
+      "radius": 0.1329,
+      "segments": 7,
+      "rings": 4,
+      "location": [
+        0.1538,
+        0.5493,
+        0.2481
+      ],
+      "jitter": 0.007,
+      "scale": [
+        1.1,
+        1.1,
+        0.7
+      ]
+    },
+    {
+      "comment": "листва 3",
+      "type": "sphere",
+      "material": "leaves",
+      "radius": 0.1563,
+      "segments": 7,
+      "rings": 4,
+      "location": [
+        -0.6313,
+        0.0998,
+        0.2425
+      ],
+      "jitter": 0.007,
+      "scale": [
+        1.1,
+        1.1,
+        0.7
+      ]
+    },
+    {
+      "comment": "листва 4",
+      "type": "sphere",
+      "material": "leaves",
+      "radius": 0.1665,
+      "segments": 7,
+      "rings": 4,
+      "location": [
+        0.0605,
+        -0.5094,
+        0.1235
+      ],
+      "jitter": 0.007,
+      "scale": [
+        1.1,
+        1.1,
+        0.7
+      ]
+    },
+    {
+      "comment": "ягода 1",
+      "type": "sphere",
+      "material": "berry",
+      "radius": 0.0396,
+      "segments": 6,
+      "rings": 4,
+      "location": [
+        0.5273,
+        -0.2667,
+        0.2616
+      ],
+      "jitter": 0.003
+    },
+    {
+      "comment": "ягода 2",
+      "type": "sphere",
+      "material": "berry",
+      "radius": 0.032,
+      "segments": 6,
+      "rings": 4,
+      "location": [
+        0.3824,
+        -0.2157,
+        0.2789
+      ],
+      "jitter": 0.003
+    },
+    {
+      "comment": "ягода 3",
+      "type": "sphere",
+      "material": "berry",
+      "radius": 0.0335,
+      "segments": 6,
+      "rings": 4,
+      "location": [
+        0.5096,
+        -0.2384,
+        0.1626
+      ],
+      "jitter": 0.003
+    },
+    {
+      "comment": "ягода 4",
+      "type": "sphere",
+      "material": "berry",
+      "radius": 0.0276,
+      "segments": 6,
+      "rings": 4,
+      "location": [
+        0.0973,
+        -0.4504,
+        0.1083
+      ],
+      "jitter": 0.003
+    },
+    {
+      "comment": "ягода 5",
+      "type": "sphere",
+      "material": "berry",
+      "radius": 0.0298,
+      "segments": 6,
+      "rings": 4,
+      "location": [
+        -0.5925,
+        0.0634,
+        0.1509
+      ],
+      "jitter": 0.003
+    },
+    {
+      "comment": "ягода 6",
+      "type": "sphere",
+      "material": "berry",
+      "radius": 0.0252,
+      "segments": 6,
+      "rings": 4,
+      "location": [
+        -0.6041,
+        0.0286,
+        0.301
+      ],
+      "jitter": 0.003
+    },
+    {
+      "comment": "ягода 7",
+      "type": "sphere",
+      "material": "berry",
+      "radius": 0.0395,
+      "segments": 6,
+      "rings": 4,
+      "location": [
+        -0.0056,
+        -0.5438,
+        0.0485
+      ],
+      "jitter": 0.003
+    }
+  ],
+  "expected_size": [
+    1.464,
+    1.402,
+    0.422
+  ]
+}

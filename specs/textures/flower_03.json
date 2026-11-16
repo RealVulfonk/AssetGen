@@ -1,0 +1,48 @@
+{
+  "asset": "flower_03",
+  "size": 64,
+  "seed": 3070,
+  "pixel": true,
+  "quantize": true,
+  "samples": 32,
+  "margin": 3,
+  "materials": {
+    "leaves": {
+      "preset": "noise",
+      "palette": "leaf_green_soft",
+      "scale": 11,
+      "detail": 4,
+      "contrast": 1.1,
+      "brightness": 0.05,
+      "ao": 0.32,
+      "ao_distance": 0.05,
+      "edge": 0.15,
+      "roughness": 0.92
+    },
+    "stem": {
+      "preset": "flat",
+      "palette": "moss_green_soft",
+      "value": 0.62,
+      "contrast": 0.5,
+      "brightness": 0.05,
+      "ao": 0.3,
+      "ao_distance": 0.02,
+      "roughness": 0.9
+    },
+    "petal": {
+      "preset": "noise",
+      "palette": "berry_red_soft",
+      "scale": 24,
+      "detail": 2,
+      "contrast": 0.9,
+      "brightness": 0.08,
+      "ao": 0.28,
+      "ao_distance": 0.02,
+      "roughness": 0.85
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "wood_dark_soft"
+    }
+  }
+}

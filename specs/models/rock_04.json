@@ -1,0 +1,32 @@
+{
+  "name": "rock_04",
+  "category": "flora/understory",
+  "seed": 64047,
+  "pivot": "bottom_center",
+  "tri_budget": 400,
+  "collision": "convex",
+  "materials": {
+    "stone": "#505158"
+  },
+  "parts": [
+    {
+      "comment": "валун 1",
+      "type": "sphere",
+      "material": "stone",
+      "radius": 0.3829,
+      "segments": 6,
+      "rings": 3,
+      "location": [
+        -0.0,
+        0.0,
+        0.29
+      ],
+      "jitter": 0.045,
+      "scale": [
+        1.1844,
+        1.0057,
+        0.6401
+      ]
+    }
+  ]
+}

@@ -15,7 +15,30 @@ python assetgen.py validate-texture barrel_01
 python assetgen.py texture barrel_01
 ```
 
-Путь к Blender задаётся в `assetgen.config.json`; переменная окружения `BLENDER` имеет приоритет. Результаты появляются в `out/<asset>/`:
+Путь к Blender задаётся в `assetgen.config.json`; переменная окружения `BLENDER` имеет приоритет. Результаты появляются в `out/<group>/<asset>/`, где группа выводится из `category` спеки:
+
+| Группа | Категории | Что внутри |
+|---|---|---|
+| `out/interiors/` | `architecture`, `doors`, `furniture`, `props`, `remains` | утварь, архитектура, двери, кости, гроб |
+| `out/exteriors/` | `flora/trees`, `crypt`, `structure` | деревья и сухостой, могилы, мост |
+| `out/environment/` | `flora/understory` | подлесок: камни, пни, брёвна, трава, папоротники, грибы, цветы, ягоды, кусты, камыш |
+
+Соответствие задано в `assetgen_paths.py` (`asset_group`), поэтому и CLI, и тесты, и `tools/` находят файлы одинаково. Узнать путь конкретного ассета:
+
+```powershell
+python tools/outdir.py conifer_01     # -> out/exteriors/conifer_01
+```
+
+Уже собранные ассеты из плоского `out/<asset>` переносятся в группы командой:
+
+```powershell
+python tools/regroup_out.py --dry-run
+python tools/regroup_out.py
+```
+
+Категория неизвестного ассета попадает в `interiors`; папки без спеки (`out/verification`) команда не трогает.
+
+Внутри папки ассета:
 
 - `<asset>.blend` — модель с цветовыми материалами;
 - `<asset>.glb` — видимая модель без collision-меша;
@@ -23,6 +46,45 @@ python assetgen.py texture barrel_01
 - `<asset>_tex.blend` и `<asset>_albedo.png` — после запекания;
 - `preview_front.png`, `preview_side.png`, `preview_iso.png`, `preview_top.png`;
 - `report.json` и `report_texture.json`.
+
+## Скрипты
+
+Карта репозитория: что за файл и зачем он нужен.
+
+### Точки входа
+
+| Скрипт | Запуск | Отвечает за |
+|---|---|---|
+| `assetgen.py` | `python assetgen.py <cmd> <name>` | Единственный CLI. Команды: `new` (создать спеку из шаблона), `validate`, `validate-texture`, `model` (собрать геометрию), `texture` (запечь albedo). Проверяет спеку по схеме, запускает Blender, печатает отчёт, копирует результат в Godot. |
+| `tools/gen_flora.py` | `python tools/gen_flora.py --all --seed N` | Процедурный генератор **спеков** флоры: пишет пары `specs/models/<name>.json` + `specs/textures/<name>.json`. Меши не строит — это делает `assetgen.py model`. |
+
+### Общие модули
+
+| Файл | Отвечает за |
+|---|---|
+| `assetgen_paths.py` | Соответствие `category` спеки → папке вывода (`interiors` / `exteriors` / `environment`). Импортируется и из CLI, и из Blender-скриптов, и из тестов, поэтому раскладка `out/` задана в одном месте. |
+| `blender/common.py` | Хелперы для скриптов внутри Blender: `hex2rgb`/`hex2lin`, экспорт GLB, рендер четырёх превью. |
+| `blender/build_model.py` | Строит меш из JSON-спеки: примитивы, операции, join, pivot, flat shading, smart UV, collision-меш, экспорт `.glb` и превью. |
+| `blender/bake_texture.py` | Запекает процедурный albedo: собирает шейдерный граф из пресета или слоёв, считает контраст, AO и edge, опционально квантует по палитре, экспортирует текстурированный GLB. |
+
+### Утилиты `tools/`
+
+| Скрипт | Отвечает за |
+|---|---|
+| `tools/build_flora.ps1` | Пакетная сборка: прогоняет `model` + `texture` по всем ассетам, подходящим под `-Pattern` (regex-альтернатива префиксов, не glob), и печатает сводку с трисами и цветами. |
+| `tools/render_sheet.py` | Один ортографический рендер ассета в `out/sheet_<name>.png` — быстрый визуальный контроль без открытия Blender. |
+| `tools/outdir.py` | Печатает папку вывода для ассета (`python tools/outdir.py conifer_01`). Нужен shell-скриптам, чтобы не дублировать маппинг из `assetgen_paths.py`. |
+| `tools/regroup_out.py` | Переносит уже собранные ассеты из плоского `out/<asset>` в `out/<group>/<asset>`. Идемпотентен, есть `--dry-run`, папки без спеки не трогает. |
+
+### Тесты `tests/`
+
+| Скрипт | Отвечает за |
+|---|---|
+| `test_texture_schema.py` | Юнит-тесты: схема текстур, палитры, custom layers, defaults. Системный Python. |
+| `verify_outputs.py` | Разбирает GLB, отчёты, превью, коллизии, embedded textures и samplers. Системный Python. |
+| `verify_texture_pipeline.py` | Рецепты, математика слоёв, contrast, цветовое пространство, quantization, filtering. Внутри Blender. |
+| `verify_texture_colors.py` | Сверяет albedo с палитрами: quantized — по цветам палитры, soft — по валидности и промежуточным цветам. Внутри Blender. |
+| `verify_determinism.py` | Запекает ассет дважды из одного `.blend` и сравнивает пиксели и настройки. Внутри Blender. |
 
 ## Godot
 
@@ -142,23 +204,66 @@ factor = clamp((pattern - contrast_pivot) * contrast + contrast_pivot + brightne
 
 `report_texture.json` дополнительно записывает эффективные defaults, уникальные цвета и resolved settings/layers каждого материала.
 
+## Процедурная флора
+
+`tools/gen_flora.py` порождает спеки моделей и текстур для леса: деревья, сухостой,
+кусты и подлесок. Это генератор *спеков*, а не мешей — результат обычные JSON,
+которые дальше идут через тот же `assetgen.py model` / `texture`.
+
+```powershell
+python tools/gen_flora.py --list                       # семейства и счётчики
+python tools/gen_flora.py --family conifer --count 24 --seed 42
+python tools/gen_flora.py --all --seed 20261116        # весь набор
+python tools/gen_flora.py --all --seed 7 --force       # перезаписать существующие
+python tools/gen_flora.py --all --dry-run              # только имена и габариты
+```
+
+Семейства: `conifer`, `snag`, `broadleaf`, `shrub`, `stump`, `log`, `fern`,
+`grass`, `reed`, `mushroom`, `flower`, `berry`, `rock`.
+
+Деревья строятся по-разному: хвойные — ярусами «лап» вокруг ствола, сухостой —
+обломанный ствол с голыми сучьями, лиственные — купол из ветвей со спиралью
+Фибоначчи плюс листва из двух слоёв: гранёные комки дают массу, торчащие листья —
+рваный силуэт. Только комки читаются как «брокколи», только листья оставляют
+крону дырявой.
+
+Почему генератор, а не Godot-скрипт: ассетам нужны запечённый albedo, `-colonly`
+коллизии, детерминизм и ревью спеков в git. Рантайм-генерация в Godot всего этого
+лишает. Почему не руками: одно дерево — это 30–110 партов, а радиальный массив
+в DSL отсутствует (`array` умеет только сдвиг, `mirror_x` — отражение), поэтому
+скрипт сам считает тригонометрию и выписывает каждый лепесток явным `rotation`.
+
+Один и тот же `--seed` даёт те же спеки. `expected_size` считается по реальному
+bbox с учётом поворотов, поэтому расхождение с Blender только на уровне jitter.
+
+Сборка всего набора:
+
+```powershell
+powershell -File tools/build_flora.ps1                 # все семейства
+powershell -File tools/build_flora.ps1 -Pattern conifer
+```
+
+`-Pattern` — это regex-альтернатива префиксов, не glob.
+
+Посмотреть отдельный ассет одним ортографическим рендером в `out/sheet_<name>.png`:
+
+```powershell
+& $env:BLENDER -b --factory-startup -P tools/render_sheet.py -- $PWD broadleaf_01
+```
+
 ## Проверка собранных ассетов
+
+Что делает каждый тест — в таблице `tests/` выше.
 
 ```powershell
 python -m unittest discover -s tests -p "test_*.py" -v
 python tests/verify_outputs.py
 & $env:BLENDER -b --factory-startup --python-exit-code 1 -P tests/verify_texture_pipeline.py -- $PWD
 & $env:BLENDER -b --factory-startup --python-exit-code 1 -P tests/verify_texture_colors.py -- $PWD
-& $env:BLENDER -b out/pillar/pillar.blend --python-exit-code 1 -P tests/verify_determinism.py -- $PWD pillar
+& $env:BLENDER -b out/interiors/pillar/pillar.blend --python-exit-code 1 -P tests/verify_determinism.py -- $PWD pillar
 ```
 
 Если `BLENDER` не задана, укажи полный путь к `blender.exe`.
-
-- `test_texture_schema.py` проверяет спеки, палитры и custom layers.
-- `verify_outputs.py` разбирает GLB, отчёты, превью, коллизии, embedded textures и samplers.
-- `verify_texture_pipeline.py` проверяет рецепты, математику слоёв, contrast, цветовое пространство, quantization и filtering.
-- `verify_texture_colors.py` проверяет все текстурные спеки: quantized PNG — по палитре, soft PNG — по валидности и промежуточным цветам.
-- `verify_determinism.py` запекает ассет дважды из исходного `.blend` и сравнивает пиксели и настройки.
 
 Дополнительно смотри albedo и все превью: автоматические тесты не обнаруживают нежелательный художественный стиль, локальные UV-швы и слабый island bleed.
 
@@ -170,7 +275,7 @@ CLI запускает Blender с `--python-exit-code 1` и дополнител
 
 ```python
 import sys
-sys.argv = ["blender", "--", "C:/absolute/path/specs/models/barrel_01.json", "C:/absolute/path/out/barrel_01"]
+sys.argv = ["blender", "--", "C:/absolute/path/specs/models/barrel_01.json", "C:/absolute/path/out/interiors/barrel_01"]
 exec(open("C:/absolute/path/blender/build_model.py", encoding="utf-8").read())
 ```
 

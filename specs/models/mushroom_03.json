@@ -1,0 +1,175 @@
+{
+  "name": "mushroom_03",
+  "category": "flora/understory",
+  "seed": 63070,
+  "pivot": "bottom_center",
+  "tri_budget": 750,
+  "collision": "none",
+  "materials": {
+    "stem": "#908773",
+    "cap": "#852e1f"
+  },
+  "parts": [
+    {
+      "comment": "ножка 1",
+      "type": "cylinder",
+      "material": "stem",
+      "radius": 0.0219,
+      "height": 0.2048,
+      "segments": 8,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "location": [
+        -0.0429,
+        0.0965,
+        0.1024
+      ],
+      "radius_top": 0.0175,
+      "jitter": 0.002
+    },
+    {
+      "comment": "шляпка 1",
+      "type": "sphere",
+      "material": "cap",
+      "radius": 0.1096,
+      "segments": 9,
+      "rings": 6,
+      "location": [
+        -0.0429,
+        0.0965,
+        0.2511
+      ],
+      "jitter": 0.004,
+      "scale": [
+        1.0,
+        1.0,
+        0.7668
+      ]
+    },
+    {
+      "comment": "ножка 2",
+      "type": "cylinder",
+      "material": "stem",
+      "radius": 0.0195,
+      "height": 0.147,
+      "segments": 8,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "location": [
+        0.015,
+        -0.0121,
+        0.0735
+      ],
+      "radius_top": 0.0156,
+      "jitter": 0.002
+    },
+    {
+      "comment": "шляпка 2",
+      "type": "sphere",
+      "material": "cap",
+      "radius": 0.0975,
+      "segments": 10,
+      "rings": 6,
+      "location": [
+        0.015,
+        -0.0121,
+        0.1937
+      ],
+      "jitter": 0.004,
+      "scale": [
+        1.0,
+        1.0,
+        0.8708
+      ]
+    },
+    {
+      "comment": "ножка 3",
+      "type": "cylinder",
+      "material": "stem",
+      "radius": 0.0199,
+      "height": 0.1201,
+      "segments": 8,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "location": [
+        0.0142,
+        0.1658,
+        0.0601
+      ],
+      "radius_top": 0.0159,
+      "jitter": 0.002
+    },
+    {
+      "comment": "шляпка 3",
+      "type": "sphere",
+      "material": "cap",
+      "radius": 0.0993,
+      "segments": 10,
+      "rings": 6,
+      "location": [
+        0.0142,
+        0.1658,
+        0.1623
+      ],
+      "jitter": 0.004,
+      "scale": [
+        1.0,
+        1.0,
+        0.771
+      ]
+    },
+    {
+      "comment": "ножка 4",
+      "type": "cylinder",
+      "material": "stem",
+      "radius": 0.0131,
+      "height": 0.0951,
+      "segments": 8,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "location": [
+        0.1619,
+        0.0249,
+        0.0475
+      ],
+      "radius_top": 0.0105,
+      "jitter": 0.002
+    },
+    {
+      "comment": "шляпка 4",
+      "type": "sphere",
+      "material": "cap",
+      "radius": 0.0655,
+      "segments": 10,
+      "rings": 6,
+      "location": [
+        0.1619,
+        0.0249,
+        0.1261
+      ],
+      "jitter": 0.004,
+      "scale": [
+        1.0,
+        1.0,
+        0.8596
+      ]
+    }
+  ],
+  "expected_size": [
+    0.388,
+    0.383,
+    0.339
+  ]
+}

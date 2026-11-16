@@ -1,0 +1,97 @@
+{
+  "name": "mushroom_01",
+  "category": "flora/understory",
+  "seed": 61116,
+  "pivot": "bottom_center",
+  "tri_budget": 750,
+  "collision": "none",
+  "materials": {
+    "stem": "#908773",
+    "cap": "#852e1f"
+  },
+  "parts": [
+    {
+      "comment": "ножка 1",
+      "type": "cylinder",
+      "material": "stem",
+      "radius": 0.0204,
+      "height": 0.1489,
+      "segments": 8,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "location": [
+        0.0846,
+        -0.0395,
+        0.0745
+      ],
+      "radius_top": 0.0163,
+      "jitter": 0.002
+    },
+    {
+      "comment": "шляпка 1",
+      "type": "sphere",
+      "material": "cap",
+      "radius": 0.1022,
+      "segments": 10,
+      "rings": 6,
+      "location": [
+        0.0846,
+        -0.0395,
+        0.1857
+      ],
+      "jitter": 0.004,
+      "scale": [
+        1.0,
+        1.0,
+        0.6539
+      ]
+    },
+    {
+      "comment": "ножка 2",
+      "type": "cylinder",
+      "material": "stem",
+      "radius": 0.025,
+      "height": 0.2076,
+      "segments": 8,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "location": [
+        0.0059,
+        -0.0927,
+        0.1038
+      ],
+      "radius_top": 0.02,
+      "jitter": 0.002
+    },
+    {
+      "comment": "шляпка 2",
+      "type": "sphere",
+      "material": "cap",
+      "radius": 0.1251,
+      "segments": 10,
+      "rings": 6,
+      "location": [
+        0.0059,
+        -0.0927,
+        0.2599
+      ],
+      "jitter": 0.004,
+      "scale": [
+        1.0,
+        1.0,
+        0.7592
+      ]
+    }
+  ],
+  "expected_size": [
+    0.314,
+    0.288,
+    0.359
+  ]
+}

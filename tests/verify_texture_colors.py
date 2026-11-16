@@ -3,12 +3,15 @@
 import json
 import os
 import sys
+from pathlib import Path
 
 import bpy
 import numpy as np
 
 argv = sys.argv[sys.argv.index("--") + 1 :]
 ROOT = os.path.abspath(argv[0])
+sys.path.insert(0, ROOT)
+from assetgen_paths import output_dir
 names = argv[1:]
 if not names:
     names = sorted(
@@ -32,9 +35,13 @@ def is_non_flat(config):
 with open(os.path.join(ROOT, "presets", "palettes.json"), encoding="utf-8") as handle:
     palettes = json.load(handle)
 
+skipped = []
 for name in names:
     with open(os.path.join(ROOT, "specs", "textures", f"{name}.json"), encoding="utf-8") as handle:
         spec = json.load(handle)
+    with open(os.path.join(ROOT, "specs", "models", f"{name}.json"), encoding="utf-8") as handle:
+        category = json.load(handle).get("category")
+    output = str(output_dir(Path(ROOT) / "out", name, category))
     colors = []
     palette_stop_count = 0
     for config in spec["materials"].values():
@@ -44,7 +51,11 @@ for name in names:
         palette_stop_count += len(resolved)
     expected = np.array([hex2rgb(value) for value in set(colors)], dtype=np.float32)
 
-    path = os.path.join(ROOT, "out", name, f"{name}_albedo.png")
+    path = os.path.join(output, f"{name}_albedo.png")
+    if not os.path.isfile(path):
+        # Specs are committed; bakes are not, so an unbaked asset is skipped.
+        skipped.append(name)
+        continue
     image = bpy.data.images.load(path, check_existing=False)
     width, height = image.size
     assert width == spec.get("size", 128) and height == width, f"{name}: unexpected texture dimensions"
@@ -70,11 +81,14 @@ for name in names:
             )
         print(f"{name}: soft, {unique_colors} colors")
 
-    report_path = os.path.join(ROOT, "out", name, "report_texture.json")
+    report_path = os.path.join(output, "report_texture.json")
     with open(report_path, encoding="utf-8") as handle:
         report = json.load(handle)
     if "unique_colors" in report:
         assert report["unique_colors"] == unique_colors, f"{name}: report color count differs from PNG"
     bpy.data.images.remove(image)
 
-print(f"Verified {len(names)} texture images")
+print(f"Verified {len(names) - len(skipped)} texture images")
+if skipped:
+    print(f"Skipped {len(skipped)} unbaked: {', '.join(skipped[:8])}"
+          + (" ..." if len(skipped) > 8 else ""))

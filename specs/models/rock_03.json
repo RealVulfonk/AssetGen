@@ -1,0 +1,51 @@
+{
+  "name": "rock_03",
+  "category": "flora/understory",
+  "seed": 63070,
+  "pivot": "bottom_center",
+  "tri_budget": 400,
+  "collision": "convex",
+  "materials": {
+    "stone": "#505158"
+  },
+  "parts": [
+    {
+      "comment": "валун 1",
+      "type": "sphere",
+      "material": "stone",
+      "radius": 0.3865,
+      "segments": 5,
+      "rings": 3,
+      "location": [
+        0.0009,
+        -0.0019,
+        0.3073
+      ],
+      "jitter": 0.045,
+      "scale": [
+        1.0082,
+        1.1351,
+        0.4981
+      ]
+    },
+    {
+      "comment": "валун 2",
+      "type": "sphere",
+      "material": "stone",
+      "radius": 0.5358,
+      "segments": 7,
+      "rings": 3,
+      "location": [
+        -0.2707,
+        -0.0843,
+        0.3141
+      ],
+      "jitter": 0.045,
+      "scale": [
+        1.0866,
+        0.9316,
+        0.5024
+      ]
+    }
+  ]
+}

@@ -20,9 +20,19 @@ description: Generate low-poly dungeon models and textures for Godot through thi
 ## СТИЛЬ
 - Low-poly, плоские грани. segments: 6–8 мелочь, 8–12 крупные круглые формы.
 - Бюджет треугольников: мелочь 50–200, проп 200–600, крупное 600–1200.
+  Для флоры из `tools/gen_flora.py` бюджеты выше: дерево 1000–2400, подлесок 200–900.
 - Bevel только у box/extrude, width 0.005–0.02, segments 1.
 - jitter 0.002–0.008 у дерева и камня; 0 у металла.
 - Детали (обручи, полосы) выступают из основы на 0.005–0.02 м.
+
+## ФЛОРА
+Деревья, сухостой, кусты и подлесок генерируются скриптом, а не пишутся руками:
+`python tools/gen_flora.py --family conifer --count 8 --seed 42`. Скрипт пишет
+пару `specs/models/<name>.json` + `specs/textures/<name>.json`, дальше обычный
+`validate` / `model` / `texture`. Семейства и счётчики — `--list`.
+
+Правь параметры формы в `tools/gen_flora.py` (диапазоны высот, ярусов, развала),
+а не числа в сгенерированных JSON: следующая генерация их перезапишет.
 
 ## РЕАЛЬНЫЕ РАЗМЕРЫ (метры, X×Y×Z)
 дверь 1.0×0.1×2.0 | бочка Ø0.6×0.9 | сундук 0.8×0.5×0.55 | гроб 0.65×1.95×0.5
@@ -43,7 +53,9 @@ description: Generate low-poly dungeon models and textures for Godot through thi
 3. Заполни `expected_size`, `tri_budget`, `pivot` и при необходимости `collision`.
 4. `python assetgen.py validate <name>` → исправляй, пока не будет OK.
 5. `python assetgen.py model <name>`.
-6. Прочитай `out/<name>/report.json`: status, warnings, tris, dimensions.
+6. Прочитай `out/<group>/<name>/report.json`: status, warnings, tris, dimensions.
+   Группа (`interiors` / `exteriors` / `environment`) выводится из `category`
+   спеки; точный путь даёт `python tools/outdir.py <name>`.
    Посмотри `preview_front/side/iso/top.png`.
 7. Если WARN или силуэт неверный → поправь ЧИСЛА в JSON → шаг 5.
 8. Ответ пользователю: путь к .glb, превью, tris, размеры, список материалов.
@@ -70,4 +82,4 @@ description: Generate low-poly dungeon models and textures for Godot through thi
 - Повёрнутый cylinder: `rotation: [0,90,0]` кладёт его вдоль X.
 - Профиль lathe начинай и заканчивай `r=0`, если не нужен открытый сосуд с явно описанной внутренней стенкой.
 - Точки extrude — простой многоугольник без самопересечений.
-- Сначала собери модель, потом запускай текстуру: bake загружает `out/<name>/<name>.blend`.
+- Сначала собери модель, потом запускай текстуру: bake загружает `out/<group>/<name>/<name>.blend`.

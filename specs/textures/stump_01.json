@@ -1,0 +1,53 @@
+{
+  "asset": "stump_01",
+  "size": 128,
+  "seed": 1116,
+  "pixel": true,
+  "quantize": true,
+  "samples": 32,
+  "margin": 3,
+  "materials": {
+    "bark": {
+      "preset": "wood",
+      "palette": "wood_dark_soft",
+      "scale": 5,
+      "direction": "Z",
+      "distortion": 2.0,
+      "contrast": 0.95,
+      "brightness": 0.05,
+      "ao": 0.35,
+      "ao_distance": 0.06,
+      "edge": 0.16,
+      "roughness": 0.95
+    },
+    "bark_dry": {
+      "preset": "wood",
+      "palette": "dry_wood_soft",
+      "scale": 6,
+      "direction": "Z",
+      "distortion": 2.4,
+      "contrast": 0.85,
+      "brightness": 0.04,
+      "ao": 0.35,
+      "ao_distance": 0.05,
+      "edge": 0.18,
+      "roughness": 0.97
+    },
+    "moss": {
+      "preset": "noise",
+      "palette": "moss_green_soft",
+      "scale": 22,
+      "detail": 5,
+      "contrast": 1.0,
+      "brightness": 0.05,
+      "ao": 0.4,
+      "ao_distance": 0.03,
+      "edge": 0.12,
+      "roughness": 0.98
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "wood_dark_soft"
+    }
+  }
+}

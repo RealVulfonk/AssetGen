@@ -1,0 +1,40 @@
+{
+  "asset": "broadleaf_09",
+  "size": 256,
+  "seed": 8932,
+  "pixel": true,
+  "quantize": true,
+  "samples": 32,
+  "margin": 3,
+  "materials": {
+    "bark": {
+      "preset": "wood",
+      "palette": "wood_dark_soft",
+      "scale": 5,
+      "direction": "Z",
+      "distortion": 2.0,
+      "contrast": 0.95,
+      "brightness": 0.05,
+      "ao": 0.35,
+      "ao_distance": 0.06,
+      "edge": 0.16,
+      "roughness": 0.95
+    },
+    "leaves": {
+      "preset": "noise",
+      "palette": "moss_green_soft",
+      "scale": 11,
+      "detail": 4,
+      "contrast": 1.1,
+      "brightness": 0.05,
+      "ao": 0.32,
+      "ao_distance": 0.05,
+      "edge": 0.15,
+      "roughness": 0.92
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "wood_dark_soft"
+    }
+  }
+}

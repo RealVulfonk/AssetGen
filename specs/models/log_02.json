@@ -1,0 +1,376 @@
+{
+  "name": "log_02",
+  "category": "flora/understory",
+  "seed": 62093,
+  "pivot": "bottom_center",
+  "tri_budget": 700,
+  "collision": "mesh",
+  "materials": {
+    "bark": "#463525",
+    "bark_dry": "#514537",
+    "moss": "#374f29"
+  },
+  "parts": [
+    {
+      "comment": "бревно",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.2501,
+      "height": 2.2714,
+      "segments": 7,
+      "rotation": [
+        0.0,
+        90.059,
+        -4.978
+      ],
+      "location": [
+        0.0,
+        -0.3439,
+        0.3499
+      ],
+      "radius_top": 0.1968,
+      "jitter": 0.006
+    },
+    {
+      "comment": "задир торца 1.1",
+      "type": "cylinder",
+      "material": "bark_dry",
+      "radius": 0.07,
+      "height": 0.1112,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        33.097,
+        -146.537
+      ],
+      "location": [
+        -1.1567,
+        -0.2621,
+        0.3977
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "задир торца 1.2",
+      "type": "cylinder",
+      "material": "bark_dry",
+      "radius": 0.07,
+      "height": 0.0741,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        82.768,
+        -156.129
+      ],
+      "location": [
+        -1.165,
+        -0.2603,
+        0.3557
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "задир торца 1.3",
+      "type": "cylinder",
+      "material": "bark_dry",
+      "radius": 0.07,
+      "height": 0.1108,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        123.284,
+        139.942
+      ],
+      "location": [
+        -1.1668,
+        -0.2156,
+        0.3207
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "задир торца 2.1",
+      "type": "cylinder",
+      "material": "bark_dry",
+      "radius": 0.07,
+      "height": 0.1171,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        145.912,
+        -43.132
+      ],
+      "location": [
+        1.1553,
+        -0.4649,
+        0.3003
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "задир торца 2.2",
+      "type": "cylinder",
+      "material": "bark_dry",
+      "radius": 0.07,
+      "height": 0.038,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        53.715,
+        41.64
+      ],
+      "location": [
+        1.1428,
+        -0.4323,
+        0.36
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "задир торца 2.3",
+      "type": "cylinder",
+      "material": "bark_dry",
+      "radius": 0.07,
+      "height": 0.1016,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        144.45,
+        -13.716
+      ],
+      "location": [
+        1.1601,
+        -0.4495,
+        0.3074
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "задир торца 2.4",
+      "type": "cylinder",
+      "material": "bark_dry",
+      "radius": 0.07,
+      "height": 0.0799,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        125.094,
+        -22.296
+      ],
+      "location": [
+        1.1616,
+        -0.4549,
+        0.3258
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "задир торца 2.5",
+      "type": "cylinder",
+      "material": "bark_dry",
+      "radius": 0.07,
+      "height": 0.0824,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        127.658,
+        4.8
+      ],
+      "location": [
+        1.1639,
+        -0.4398,
+        0.3236
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "сук бревна 1",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.055,
+      "height": 0.2822,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        116.058,
+        -178.928
+      ],
+      "location": [
+        -0.4893,
+        -0.3147,
+        0.2668
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.004
+    },
+    {
+      "comment": "сук бревна 2",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.055,
+      "height": 0.5414,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        127.382,
+        124.07
+      ],
+      "location": [
+        -0.3391,
+        -0.1467,
+        0.1644
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.004
+    },
+    {
+      "comment": "сук бревна 3",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.055,
+      "height": 0.4407,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        128.211,
+        -43.302
+      ],
+      "location": [
+        0.8308,
+        -0.5241,
+        0.1925
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.004
+    },
+    {
+      "comment": "сук бревна 4",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.055,
+      "height": 0.4787,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        101.349,
+        -45.012
+      ],
+      "location": [
+        0.5537,
+        -0.5437,
+        0.2817
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.004
+    },
+    {
+      "comment": "сук бревна 5",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.055,
+      "height": 0.2668,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        128.787,
+        -175.411
+      ],
+      "location": [
+        -0.8042,
+        -0.2912,
+        0.2452
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.004
+    },
+    {
+      "comment": "мох на бревне 1",
+      "type": "sphere",
+      "material": "moss",
+      "radius": 0.1007,
+      "segments": 7,
+      "rings": 4,
+      "location": [
+        0.2509,
+        -0.3322,
+        0.3343
+      ],
+      "jitter": 0.008,
+      "scale": [
+        1.5,
+        1.0,
+        0.45
+      ]
+    },
+    {
+      "comment": "мох на бревне 2",
+      "type": "sphere",
+      "material": "moss",
+      "radius": 0.1203,
+      "segments": 7,
+      "rings": 4,
+      "location": [
+        0.16,
+        -0.408,
+        0.3749
+      ],
+      "jitter": 0.008,
+      "scale": [
+        1.5,
+        1.0,
+        0.45
+      ]
+    },
+    {
+      "comment": "мох на бревне 3",
+      "type": "sphere",
+      "material": "moss",
+      "radius": 0.0949,
+      "segments": 7,
+      "rings": 4,
+      "location": [
+        -0.0604,
+        -0.3074,
+        0.3427
+      ],
+      "jitter": 0.008,
+      "scale": [
+        1.5,
+        1.0,
+        0.45
+      ]
+    },
+    {
+      "comment": "мох на бревне 4",
+      "type": "sphere",
+      "material": "moss",
+      "radius": 0.0935,
+      "segments": 7,
+      "rings": 4,
+      "location": [
+        -0.4323,
+        -0.3019,
+        0.3376
+      ],
+      "jitter": 0.008,
+      "scale": [
+        1.5,
+        1.0,
+        0.45
+      ]
+    }
+  ],
+  "expected_size": [
+    2.399,
+    0.741,
+    0.601
+  ]
+}

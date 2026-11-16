@@ -1,0 +1,25 @@
+{
+  "asset": "rock_04",
+  "size": 128,
+  "seed": 4047,
+  "pixel": true,
+  "quantize": true,
+  "samples": 32,
+  "margin": 3,
+  "materials": {
+    "stone": {
+      "preset": "stone",
+      "palette": "stone_grey_soft",
+      "scale": 7,
+      "contrast": 0.9,
+      "ao": 0.4,
+      "ao_distance": 0.08,
+      "edge": 0.18,
+      "roughness": 0.96
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "wood_dark_soft"
+    }
+  }
+}

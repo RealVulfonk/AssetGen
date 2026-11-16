@@ -1,0 +1,738 @@
+{
+  "name": "snag_03",
+  "category": "flora/trees",
+  "seed": 63070,
+  "pivot": "bottom_center",
+  "tri_budget": 2000,
+  "collision": "mesh",
+  "materials": {
+    "bark": "#463525"
+  },
+  "parts": [
+    {
+      "comment": "ствол сегмент 1",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0996,
+      "height": 0.3194,
+      "segments": 7,
+      "rotation": [
+        0.0,
+        0.418,
+        82.028
+      ],
+      "location": [
+        0.0002,
+        0.0012,
+        0.1722
+      ],
+      "radius_top": 0.0927,
+      "jitter": 0.006
+    },
+    {
+      "comment": "ствол сегмент 2",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0927,
+      "height": 0.3194,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        0.64,
+        82.028
+      ],
+      "location": [
+        0.0006,
+        0.0041,
+        0.4916
+      ],
+      "radius_top": 0.0858,
+      "jitter": 0.006
+    },
+    {
+      "comment": "ствол сегмент 3",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0858,
+      "height": 0.3194,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        0.835,
+        82.028
+      ],
+      "location": [
+        0.0011,
+        0.0081,
+        0.8109
+      ],
+      "radius_top": 0.0789,
+      "jitter": 0.006
+    },
+    {
+      "comment": "ствол сегмент 4",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0789,
+      "height": 0.3194,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        1.01,
+        82.028
+      ],
+      "location": [
+        0.0019,
+        0.0132,
+        1.1303
+      ],
+      "radius_top": 0.072,
+      "jitter": 0.006
+    },
+    {
+      "comment": "ствол сегмент 5",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.072,
+      "height": 0.3194,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        1.172,
+        82.028
+      ],
+      "location": [
+        0.0027,
+        0.0193,
+        1.4497
+      ],
+      "radius_top": 0.0651,
+      "jitter": 0.006
+    },
+    {
+      "comment": "ствол сегмент 6",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0651,
+      "height": 0.3195,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        1.329,
+        82.028
+      ],
+      "location": [
+        0.0037,
+        0.0262,
+        1.7691
+      ],
+      "radius_top": 0.0582,
+      "jitter": 0.006
+    },
+    {
+      "comment": "ствол сегмент 7",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0582,
+      "height": 0.3195,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        1.491,
+        82.028
+      ],
+      "location": [
+        0.0048,
+        0.034,
+        2.0884
+      ],
+      "radius_top": 0.0513,
+      "jitter": 0.006
+    },
+    {
+      "comment": "ствол сегмент 8",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0513,
+      "height": 0.3195,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        1.666,
+        82.028
+      ],
+      "location": [
+        0.006,
+        0.0427,
+        2.4078
+      ],
+      "radius_top": 0.0444,
+      "jitter": 0.006
+    },
+    {
+      "comment": "ствол сегмент 9",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0444,
+      "height": 0.3195,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        1.861,
+        82.028
+      ],
+      "location": [
+        0.0073,
+        0.0524,
+        2.7272
+      ],
+      "radius_top": 0.0375,
+      "jitter": 0.006
+    },
+    {
+      "comment": "ствол сегмент 10",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0375,
+      "height": 0.3196,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        2.083,
+        82.028
+      ],
+      "location": [
+        0.0089,
+        0.0633,
+        3.0466
+      ],
+      "radius_top": 0.0306,
+      "jitter": 0.006
+    },
+    {
+      "comment": "обломок верхушки 1",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0276,
+      "height": 0.4356,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        154.717,
+        55.545
+      ],
+      "location": [
+        0.0623,
+        0.1457,
+        3.0093
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "обломок верхушки 2",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0276,
+      "height": 0.2415,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        146.639,
+        14.179
+      ],
+      "location": [
+        0.074,
+        0.0853,
+        3.1054
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "обломок верхушки 3",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0276,
+      "height": 0.1454,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        155.658,
+        -64.226
+      ],
+      "location": [
+        0.0227,
+        0.0421,
+        3.14
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "обломок верхушки 4",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0276,
+      "height": 0.2745,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        152.317,
+        44.677
+      ],
+      "location": [
+        0.055,
+        0.1139,
+        3.0847
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.002
+    },
+    {
+      "comment": "сук 1",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0307,
+      "height": 0.2226,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        80.505,
+        34.289
+      ],
+      "location": [
+        0.0925,
+        0.075,
+        1.1537
+      ],
+      "radius_top": 0.0055,
+      "jitter": 0.005
+    },
+    {
+      "comment": "сук 2",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0325,
+      "height": 0.4639,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        82.045,
+        179.92
+      ],
+      "location": [
+        -0.2244,
+        0.0378,
+        2.2598
+      ],
+      "radius_top": 0.0058,
+      "jitter": 0.005
+    },
+    {
+      "comment": "сук 3",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0264,
+      "height": 1.2662,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        121.346,
+        130.204
+      ],
+      "location": [
+        -0.3459,
+        0.4349,
+        1.2574
+      ],
+      "radius_top": 0.0047,
+      "jitter": 0.005
+    },
+    {
+      "comment": "отросток сука 3",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0145,
+      "height": 0.5599,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        117.225,
+        172.517
+      ],
+      "location": [
+        -0.5753,
+        0.5274,
+        1.1019
+      ],
+      "radius_top": 0.0032,
+      "jitter": 0.004
+    },
+    {
+      "comment": "сук 4",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.016,
+      "height": 0.4329,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        91.097,
+        -25.776
+      ],
+      "location": [
+        0.2035,
+        -0.0324,
+        3.0017
+      ],
+      "radius_top": 0.0029,
+      "jitter": 0.005
+    },
+    {
+      "comment": "сук 5",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0249,
+      "height": 1.0829,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        82.311,
+        175.436
+      ],
+      "location": [
+        -0.5296,
+        0.0804,
+        2.306
+      ],
+      "radius_top": 0.0045,
+      "jitter": 0.005
+    },
+    {
+      "comment": "отросток сука 5",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0137,
+      "height": 0.5515,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        110.441,
+        -148.194
+      ],
+      "location": [
+        -0.7503,
+        -0.0369,
+        2.2342
+      ],
+      "radius_top": 0.003,
+      "jitter": 0.004
+    },
+    {
+      "comment": "сук 6",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0241,
+      "height": 0.2216,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        92.957,
+        161.943
+      ],
+      "location": [
+        -0.1022,
+        0.0562,
+        1.5736
+      ],
+      "radius_top": 0.0043,
+      "jitter": 0.005
+    },
+    {
+      "comment": "сук 7",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0372,
+      "height": 0.461,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        117.06,
+        95.307
+      ],
+      "location": [
+        -0.0168,
+        0.2198,
+        1.1541
+      ],
+      "radius_top": 0.0067,
+      "jitter": 0.005
+    },
+    {
+      "comment": "сук 8",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0432,
+      "height": 0.8837,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        117.453,
+        20.484
+      ],
+      "location": [
+        0.3684,
+        0.1451,
+        0.5992
+      ],
+      "radius_top": 0.0078,
+      "jitter": 0.005
+    },
+    {
+      "comment": "сук 9",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0256,
+      "height": 1.0528,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        117.4,
+        -63.558
+      ],
+      "location": [
+        0.2165,
+        -0.3586,
+        2.7107
+      ],
+      "radius_top": 0.0046,
+      "jitter": 0.005
+    },
+    {
+      "comment": "отросток сука 9",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0141,
+      "height": 0.4701,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        81.444,
+        -15.145
+      ],
+      "location": [
+        0.4646,
+        -0.5348,
+        2.74
+      ],
+      "radius_top": 0.0031,
+      "jitter": 0.004
+    },
+    {
+      "comment": "сук 10",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0413,
+      "height": 1.0179,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        91.599,
+        70.888
+      ],
+      "location": [
+        0.1687,
+        0.4958,
+        1.2276
+      ],
+      "radius_top": 0.0074,
+      "jitter": 0.005
+    },
+    {
+      "comment": "сук 11",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0352,
+      "height": 0.5309,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        91.377,
+        -170.404
+      ],
+      "location": [
+        -0.2568,
+        -0.0096,
+        2.1129
+      ],
+      "radius_top": 0.0063,
+      "jitter": 0.005
+    },
+    {
+      "comment": "сук 12",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0364,
+      "height": 0.3612,
+      "segments": 5,
+      "rotation": [
+        0.0,
+        101.883,
+        106.379
+      ],
+      "location": [
+        -0.0459,
+        0.198,
+        1.8322
+      ],
+      "radius_top": 0.0066,
+      "jitter": 0.005
+    },
+    {
+      "comment": "упавшая коряга",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0548,
+      "height": 1.0146,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        141.712,
+        -133.679
+      ],
+      "location": [
+        -0.2154,
+        -0.2154,
+        0.6637
+      ],
+      "radius_top": 0.0,
+      "jitter": 0.006
+    },
+    {
+      "comment": "корень 1",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0548,
+      "height": 0.1148,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        133.976,
+        18.453
+      ],
+      "location": [
+        0.0392,
+        0.0131,
+        0.0523
+      ],
+      "radius_top": 0.0149,
+      "jitter": 0.006
+    },
+    {
+      "comment": "корень 2",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0548,
+      "height": 0.1262,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        129.144,
+        60.757
+      ],
+      "location": [
+        0.0239,
+        0.0427,
+        0.0523
+      ],
+      "radius_top": 0.0149,
+      "jitter": 0.006
+    },
+    {
+      "comment": "корень 3",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0548,
+      "height": 0.1454,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        123.225,
+        139.235
+      ],
+      "location": [
+        -0.0461,
+        0.0397,
+        0.0523
+      ],
+      "radius_top": 0.0149,
+      "jitter": 0.006
+    },
+    {
+      "comment": "корень 4",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0548,
+      "height": 0.1271,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        128.813,
+        -129.732
+      ],
+      "location": [
+        -0.0317,
+        -0.0381,
+        0.0523
+      ],
+      "radius_top": 0.0149,
+      "jitter": 0.006
+    },
+    {
+      "comment": "корень 5",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0548,
+      "height": 0.1325,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        126.968,
+        -76.875
+      ],
+      "location": [
+        0.012,
+        -0.0516,
+        0.0523
+      ],
+      "radius_top": 0.0149,
+      "jitter": 0.006
+    },
+    {
+      "comment": "корень 6",
+      "type": "cylinder",
+      "material": "bark",
+      "radius": 0.0548,
+      "height": 0.1259,
+      "segments": 6,
+      "rotation": [
+        0.0,
+        129.266,
+        -9.162
+      ],
+      "location": [
+        0.0481,
+        -0.0078,
+        0.0523
+      ],
+      "radius_top": 0.0149,
+      "jitter": 0.006
+    }
+  ],
+  "expected_size": [
+    1.805,
+    1.759,
+    3.221
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "name": "mushroom_04",
+  "category": "flora/understory",
+  "seed": 64047,
+  "pivot": "bottom_center",
+  "tri_budget": 750,
+  "collision": "none",
+  "materials": {
+    "stem": "#908773",
+    "cap": "#852e1f"
+  },
+  "parts": [
+    {
+      "comment": "ножка 1",
+      "type": "cylinder",
+      "material": "stem",
+      "radius": 0.0116,
+      "height": 0.0897,
+      "segments": 8,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "location": [
+        -0.0351,
+        0.0267,
+        0.0449
+      ],
+      "radius_top": 0.0093,
+      "jitter": 0.002
+    },
+    {
+      "comment": "шляпка 1",
+      "type": "sphere",
+      "material": "cap",
+      "radius": 0.0581,
+      "segments": 9,
+      "rings": 6,
+      "location": [
+        -0.0351,
+        0.0267,
+        0.1173
+      ],
+      "jitter": 0.004,
+      "scale": [
+        1.0,
+        1.0,
+        0.8619
+      ]
+    },
+    {
+      "comment": "ножка 2",
+      "type": "cylinder",
+      "material": "stem",
+      "radius": 0.011,
+      "height": 0.1066,
+      "segments": 8,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "location": [
+        -0.0009,
+        -0.0006,
+        0.0533
+      ],
+      "radius_top": 0.0088,
+      "jitter": 0.002
+    },
+    {
+      "comment": "шляпка 2",
+      "type": "sphere",
+      "material": "cap",
+      "radius": 0.0551,
+      "segments": 9,
+      "rings": 6,
+      "location": [
+        -0.0009,
+        -0.0006,
+        0.1352
+      ],
+      "jitter": 0.004,
+      "scale": [
+        1.0,
+        1.0,
+        0.9431
+      ]
+    },
+    {
+      "comment": "ножка 3",
+      "type": "cylinder",
+      "material": "stem",
+      "radius": 0.0226,
+      "height": 0.17,
+      "segments": 8,
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "location": [
+        0.0817,
+        0.0704,
+        0.085
+      ],
+      "radius_top": 0.0181,
+      "jitter": 0.002
+    },
+    {
+      "comment": "шляпка 3",
+      "type": "sphere",
+      "material": "cap",
+      "radius": 0.1128,
+      "segments": 12,
+      "rings": 6,
+      "location": [
+        0.0817,
+        0.0704,
+        0.2216
+      ],
+      "jitter": 0.004,
+      "scale": [
+        1.0,
+        1.0,
+        0.8309
+      ]
+    }
+  ],
+  "expected_size": [
+    0.296,
+    0.247,
+    0.319
+  ]
+}

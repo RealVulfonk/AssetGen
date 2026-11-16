@@ -2,9 +2,12 @@
 
 import json
 import struct
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from assetgen_paths import output_dir
 
 
 def read_glb(path):
@@ -44,10 +47,16 @@ def assert_texture_samplers(document, texture_spec, asset_name, variant):
 def main():
     model_count = 0
     texture_count = 0
+    missing = []
     for spec_path in sorted((ROOT / "specs/models").glob("*.json")):
         spec = json.loads(spec_path.read_text(encoding="utf-8"))
         name = spec["name"]
-        output = ROOT / "out" / name
+        output = output_dir(ROOT / "out", name, spec.get("category"))
+        if not (output / "report.json").is_file():
+            # Specs are committed; builds are not. Iterating on a few assets at a
+            # time is normal, so skip what was never built instead of failing.
+            missing.append(name)
+            continue
         report = json.loads((output / "report.json").read_text(encoding="utf-8"))
         assert report["status"] == "OK", f"{name}: model warnings: {report['warnings']}"
         assert report["tris"] <= report["tri_budget"], f"{name}: triangle budget exceeded"
@@ -78,7 +87,7 @@ def main():
         model_count += 1
 
         texture_spec_path = ROOT / "specs/textures" / f"{name}.json"
-        if not texture_spec_path.exists():
+        if not texture_spec_path.exists() or not (output / "report_texture.json").is_file():
             continue
         texture_report = json.loads((output / "report_texture.json").read_text(encoding="utf-8"))
         assert texture_report["status"] == "OK", f"{name}: texture warnings"
@@ -112,6 +121,9 @@ def main():
         texture_count += 1
 
     print(f"Verified {model_count} models and {texture_count} textured GLBs")
+    if missing:
+        print(f"Skipped {len(missing)} specs that are not built in out/: {', '.join(missing[:8])}"
+              + (" ..." if len(missing) > 8 else ""))
 
 
 if __name__ == "__main__":

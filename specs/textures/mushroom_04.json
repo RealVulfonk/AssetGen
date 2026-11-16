@@ -1,0 +1,37 @@
+{
+  "asset": "mushroom_04",
+  "size": 64,
+  "seed": 4047,
+  "pixel": true,
+  "quantize": true,
+  "samples": 32,
+  "margin": 3,
+  "materials": {
+    "cap": {
+      "preset": "noise",
+      "palette": "leaf_yellow_soft",
+      "scale": 18,
+      "detail": 3,
+      "contrast": 1.0,
+      "brightness": 0.05,
+      "ao": 0.3,
+      "ao_distance": 0.02,
+      "edge": 0.14,
+      "roughness": 0.85
+    },
+    "stem": {
+      "preset": "flat",
+      "palette": "stem_cream_soft",
+      "value": 0.62,
+      "contrast": 0.5,
+      "brightness": 0.05,
+      "ao": 0.3,
+      "ao_distance": 0.02,
+      "roughness": 0.9
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "wood_dark_soft"
+    }
+  }
+}

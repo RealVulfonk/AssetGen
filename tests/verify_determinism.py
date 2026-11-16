@@ -5,14 +5,19 @@ import importlib.util
 import json
 import os
 import sys
+from pathlib import Path
 
 import bpy
 import numpy as np
 
 argv = sys.argv[sys.argv.index("--") + 1 :]
 ROOT = os.path.abspath(argv[0])
+sys.path.insert(0, ROOT)
+from assetgen_paths import output_dir
 NAME = argv[1] if len(argv) > 1 else "pillar"
-BASE_BLEND = os.path.join(ROOT, "out", NAME, f"{NAME}.blend")
+with open(os.path.join(ROOT, "specs", "models", f"{NAME}.json"), encoding="utf-8") as handle:
+    CATEGORY = json.load(handle).get("category")
+BASE_BLEND = os.path.join(str(output_dir(Path(ROOT) / "out", NAME, CATEGORY)), f"{NAME}.blend")
 SPEC_PATH = os.path.join(ROOT, "specs", "textures", f"{NAME}.json")
 MODULE_PATH = os.path.join(ROOT, "blender", "bake_texture.py")
 
