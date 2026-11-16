@@ -1,0 +1,16 @@
+{
+  "asset": "bookcase_01",
+  "size": 256,
+  "seed": 11,
+  "pixel": true,
+  "quantize": true,
+  "samples": 32,
+  "margin": 3,
+  "materials": {
+    "wood": {"preset": "wood", "palette": "wood_oak", "scale": 3, "direction": "X", "distortion": 1.4, "contrast": 1.05, "brightness": 0.18, "ao": 0.16, "ao_distance": 0.08, "edge": 0.12, "roughness": 0.9},
+    "wood_horizontal": {"preset": "wood", "palette": "wood_oak", "scale": 2.5, "direction": "Z", "distortion": 1.1, "contrast": 1.05, "brightness": 0.18, "ao": 0.15, "ao_distance": 0.08, "edge": 0.14, "roughness": 0.88},
+    "wood_dark": {"preset": "wood", "palette": "wood_oak", "scale": 4, "direction": "X", "distortion": 1.2, "contrast": 0.8, "brightness": 0.06, "ao": 0.18, "edge": 0.1, "roughness": 0.94},
+    "wood_light": {"preset": "wood", "palette": "wood_oak", "scale": 3, "direction": "Z", "distortion": 1, "contrast": 1.05, "brightness": 0.25, "ao": 0.12, "edge": 0.15, "roughness": 0.86},
+    "default": {"preset": "flat", "palette": "wood_oak"}
+  }
+}
