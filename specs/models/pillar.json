@@ -8,7 +8,7 @@
     0.56,
     2.0
   ],
-  "collision": "box",
+  "collision": "mesh",
   "materials": {
     "stone": "#55575e"
   },

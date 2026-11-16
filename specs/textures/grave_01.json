@@ -1,0 +1,12 @@
+{
+  "asset": "grave_01",
+  "size": 128,
+  "seed": 7,
+  "pixel": true,
+  "quantize": true,
+  "materials": {
+    "earth": {"preset": "noise", "palette": "wood_dark", "scale": 5, "detail": 4, "contrast": 0.8, "ao": 0.55, "edge": 0.2, "roughness": 1.0},
+    "stone": {"preset": "stone", "palette": "stone_grey", "scale": 8, "ao": 0.5, "edge": 0.3, "roughness": 0.95},
+    "default": {"preset": "flat", "palette": "stone_grey"}
+  }
+}

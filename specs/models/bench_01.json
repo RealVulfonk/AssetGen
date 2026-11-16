@@ -1,0 +1,189 @@
+{
+  "name": "bench_01",
+  "category": "furniture",
+  "pivot": "bottom_center",
+  "tri_budget": 600,
+  "expected_size": [
+    1.5,
+    0.75,
+    0.9
+  ],
+  "collision": "mesh",
+  "materials": {
+    "wood": "#5a3f2a"
+  },
+  "parts": [
+    {
+      "comment": "сиденье: 4 доски вдоль X",
+      "type": "box",
+      "material": "wood",
+      "size": [
+        1.5,
+        0.13,
+        0.028
+      ],
+      "location": [
+        0,
+        -0.2115,
+        0.45
+      ],
+      "array": {
+        "count": 4,
+        "offset": [
+          0,
+          0.1408,
+          0
+        ]
+      },
+      "bevel": {
+        "width": 0.005,
+        "segments": 1
+      },
+      "jitter": 0.003
+    },
+    {
+      "comment": "спинка: 2 доски, наклон назад 10 градусов",
+      "type": "box",
+      "material": "wood",
+      "size": [
+        1.5,
+        0.028,
+        0.12
+      ],
+      "location": [
+        0,
+        -0.3,
+        0.62
+      ],
+      "rotation": [
+        10,
+        0,
+        0
+      ],
+      "array": {
+        "count": 2,
+        "offset": [
+          0,
+          0,
+          0.16
+        ]
+      },
+      "bevel": {
+        "width": 0.005,
+        "segments": 1
+      },
+      "jitter": 0.003
+    },
+    {
+      "comment": "передняя ножка, раструблена вперед",
+      "type": "box",
+      "material": "wood",
+      "size": [
+        0.07,
+        0.06,
+        0.5
+      ],
+      "location": [
+        0.63,
+        0.26,
+        0.23
+      ],
+      "rotation": [
+        10,
+        0,
+        0
+      ],
+      "mirror_x": true,
+      "bevel": {
+        "width": 0.005,
+        "segments": 1
+      },
+      "jitter": 0.002
+    },
+    {
+      "comment": "задняя ножка, раструблена назад",
+      "type": "box",
+      "material": "wood",
+      "size": [
+        0.07,
+        0.06,
+        0.5
+      ],
+      "location": [
+        0.63,
+        -0.33,
+        0.22
+      ],
+      "rotation": [
+        -17,
+        0,
+        0
+      ],
+      "mirror_x": true,
+      "bevel": {
+        "width": 0.005,
+        "segments": 1
+      },
+      "jitter": 0.002
+    },
+    {
+      "comment": "стойка спинки от сиденья вверх",
+      "type": "box",
+      "material": "wood",
+      "size": [
+        0.07,
+        0.06,
+        0.44
+      ],
+      "location": [
+        0.63,
+        -0.295,
+        0.63
+      ],
+      "rotation": [
+        9,
+        0,
+        0
+      ],
+      "mirror_x": true,
+      "bevel": {
+        "width": 0.005,
+        "segments": 1
+      },
+      "jitter": 0.002
+    },
+    {
+      "comment": "боковая рейка под сиденьем, связка ножек сверху",
+      "type": "box",
+      "material": "wood",
+      "size": [
+        0.06,
+        0.56,
+        0.06
+      ],
+      "location": [
+        0.63,
+        0,
+        0.42
+      ],
+      "mirror_x": true,
+      "jitter": 0.002
+    },
+    {
+      "comment": "поперечная связь между боковинами",
+      "type": "box",
+      "material": "wood",
+      "size": [
+        1.26,
+        0.05,
+        0.07
+      ],
+      "location": [
+        0,
+        0,
+        0.36
+      ],
+      "jitter": 0.002
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "grave_01",
+  "category": "crypt",
+  "pivot": "bottom_center",
+  "tri_budget": 300,
+  "expected_size": [0.72, 1.42, 0.7],
+  "collision": "mesh",
+  "materials": {"stone": "#55575e", "earth": "#5a3f2a"},
+  "parts": [
+    {"comment": "насыпь земли (прямоугольная с обвалом граней)", "type": "box", "material": "earth",
+     "size": [0.7, 1.3, 0.25], "location": [0, 0, 0.125],
+     "bevel": {"width": 0.05, "segments": 1}, "jitter": 0.005},
+    {"comment": "крест вертикальная стойка", "type": "box", "material": "stone",
+     "size": [0.08, 0.06, 0.75], "location": [0, 0.75, 0.32],
+     "bevel": {"width": 0.01, "segments": 1}, "jitter": 0.003},
+    {"comment": "крест перекладина", "type": "box", "material": "stone",
+     "size": [0.4, 0.06, 0.08], "location": [0, 0.75, 0.52],
+     "bevel": {"width": 0.01, "segments": 1}, "jitter": 0.003}
+  ]
+}

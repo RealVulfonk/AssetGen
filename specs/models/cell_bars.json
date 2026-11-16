@@ -8,7 +8,7 @@
     0.036,
     2.0
   ],
-  "collision": "box",
+  "collision": "mesh",
   "materials": {
     "metal": "#2c2d33"
   },

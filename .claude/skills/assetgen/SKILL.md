@@ -1,3 +1,8 @@
+---
+name: assetgen
+description: Generate low-poly dungeon models and textures for Godot through this project's JSON DSL and Blender CLI. Use when the user asks to create or change an asset, prop, GLB, texture, material, pivot, or collision in this repository.
+---
+
 # Skill: AssetGen (low-poly dungeon props)
 
 ## ЖЕЛЕЗНЫЕ ПРАВИЛА
@@ -28,6 +33,7 @@
 - Порядок: создание → scale → bevel → jitter → rotate → translate → mirror.
 - `array.offset` задаёт шаг в метрах; `mirror_x` отражает часть вместе с её положением.
 - `pivot`: `bottom_center` для предметов на полу, `hinge_left` для дверей, `center` для свободно вращающихся объектов.
+- `collision`: `mesh` повторяет видимую геометрию для статичных предметов; `convex` создаёт выпуклую оболочку; `box` — дешёвый куб; `none` — без коллизии.
 - Теги материалов связывают модель и текстуру: `wood`, `metal`, `bone`, `stone`, `cloth`, `gold`.
 
 ## ПРОЦЕСС: МОДЕЛЬ

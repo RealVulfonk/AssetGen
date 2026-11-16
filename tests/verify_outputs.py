@@ -36,12 +36,25 @@ def main():
             assert preview.stat().st_size > 100, f"{name}: missing or empty {preview.name}"
         document = read_glb(output / f"{name}.glb")
         node_names = {node.get("name") for node in document.get("nodes", [])}
-        assert f"{name}-colonly" not in node_names, f"{name}: collision leaked into visual GLB"
-        if spec.get("collision") == "box":
+        collision_names = {f"{name}-colonly", f"{name}-convcolonly"}
+        assert not collision_names.intersection(node_names), f"{name}: collision leaked into visual GLB"
+        collision_type = spec.get("collision", "none")
+        if collision_type != "none":
             godot_document = read_glb(output / f"{name}_godot.glb")
             godot_node_names = {node.get("name") for node in godot_document.get("nodes", [])}
-            assert f"{name}-colonly" in godot_node_names, f"{name}: collision node missing in Godot GLB"
+            collision_name = f"{name}-convcolonly" if collision_type == "convex" else f"{name}-colonly"
+            assert collision_name in godot_node_names, f"{name}: collision node missing in Godot GLB"
             assert name in godot_node_names, f"{name}: visual node missing in Godot GLB"
+            if collision_type == "mesh":
+                def position_count(node_name):
+                    node = next(item for item in godot_document["nodes"] if item.get("name") == node_name)
+                    mesh = godot_document["meshes"][node["mesh"]]
+                    return sum(
+                        godot_document["accessors"][primitive["attributes"]["POSITION"]]["count"]
+                        for primitive in mesh["primitives"]
+                    )
+
+                assert position_count(collision_name) == position_count(name), f"{name}: collision geometry differs"
         model_count += 1
 
         texture_spec_path = ROOT / "specs/textures" / f"{name}.json"

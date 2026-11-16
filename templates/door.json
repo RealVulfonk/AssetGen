@@ -4,7 +4,7 @@
   "pivot": "hinge_left",
   "tri_budget": 600,
   "expected_size": [1.02, 0.16, 2.0],
-  "collision": "box",
+  "collision": "mesh",
   "materials": {"wood": "#5a3f2a", "metal": "#2c2d33"},
   "parts": [
     {"comment": "доски", "type": "box", "material": "wood", "size": [0.24,0.08,2.0],

@@ -15,7 +15,7 @@
     },
     "tri_budget": {"type": "integer", "minimum": 1},
     "expected_size": {"$ref": "#/$defs/vector3"},
-    "collision": {"enum": ["none", "box"]},
+    "collision": {"enum": ["none", "box", "mesh", "convex"]},
     "materials": {
       "type": "object",
       "additionalProperties": {"$ref": "#/$defs/color"}

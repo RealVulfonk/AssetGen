@@ -8,7 +8,7 @@
     0.54,
     0.55
   ],
-  "collision": "box",
+  "collision": "mesh",
   "materials": {
     "wood": "#5a3f2a",
     "metal": "#4a4c55",

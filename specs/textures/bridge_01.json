@@ -1,0 +1,11 @@
+{
+  "asset": "bridge_01",
+  "size": 256,
+  "seed": 11,
+  "pixel": true,
+  "quantize": true,
+  "materials": {
+    "wood": {"preset": "wood", "palette": "wood_dark", "direction": "Z", "scale": 5, "detail": 5, "distortion": 0.4, "contrast": 0.85, "ao": 0.5, "edge": 0.25, "roughness": 0.95},
+    "default": {"preset": "flat", "palette": "wood_dark"}
+  }
+}

@@ -4,7 +4,7 @@
   "pivot": "bottom_center",
   "tri_budget": 500,
   "expected_size": [0.84, 0.54, 0.55],
-  "collision": "box",
+  "collision": "mesh",
   "materials": {"wood": "#5a3f2a", "metal": "#4a4c55", "gold": "#b8862a"},
   "parts": [
     {"comment": "корпус", "type": "box", "material": "wood", "size": [0.8,0.5,0.35],

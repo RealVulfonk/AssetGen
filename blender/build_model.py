@@ -197,6 +197,20 @@ def make_collision_box(obj):
     return collision
 
 
+def make_mesh_collision(obj, convex=False):
+    """Reuse the visible geometry so Godot builds a matching trimesh or convex hull."""
+    suffix = "-convcolonly" if convex else "-colonly"
+    mesh = obj.data.copy()
+    mesh.name = spec["name"] + "_collision"
+    mesh.materials.clear()
+    collision = bpy.data.objects.new(spec["name"] + suffix, mesh)
+    collision.matrix_world = obj.matrix_world.copy()
+    bpy.context.scene.collection.objects.link(collision)
+    collision.display_type = "WIRE"
+    collision.hide_render = True
+    return collision
+
+
 bpy.ops.wm.read_factory_settings(use_empty=True)
 objects = []
 for index, part in enumerate(expand(spec["parts"])):
@@ -227,8 +241,11 @@ bpy.ops.uv.smart_project(angle_limit=math.radians(66), island_margin=0.03)
 bpy.ops.object.mode_set(mode="OBJECT")
 
 export_objects = [obj]
-if spec.get("collision") == "box":
+collision_type = spec.get("collision", "none")
+if collision_type == "box":
     export_objects.append(make_collision_box(obj))
+elif collision_type in ("mesh", "convex"):
+    export_objects.append(make_mesh_collision(obj, convex=collision_type == "convex"))
 
 bpy.context.view_layer.update()
 triangles = sum(len(polygon.vertices) - 2 for polygon in obj.data.polygons)
