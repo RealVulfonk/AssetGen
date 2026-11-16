@@ -1,3 +1,5 @@
+# Legacy/retro-only: new GLBs already contain nearest or linear samplers.
+# Do not attach this script to soft assets; it overrides their filtering to nearest.
 @tool
 extends EditorScenePostImport
 

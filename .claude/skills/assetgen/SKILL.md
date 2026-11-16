@@ -6,7 +6,8 @@ description: Generate low-poly dungeon models and textures for Godot through thi
 # Skill: AssetGen (low-poly dungeon props)
 
 ## ЖЕЛЕЗНЫЕ ПРАВИЛА
-1. НИКОГДА не пиши и не меняй bpy/Python-код в `blender/`. Меняй ТОЛЬКО JSON в `specs/`.
+1. При обычном создании ассетов НЕ меняй код в `blender/`, схемы и тесты — меняй ТОЛЬКО JSON в `specs/`.
+   Исключение — явно запрошенное сопровождение генератора/DSL: тогда можно менять `assetgen.py`, `blender/*.py`, схемы, пресеты, тесты и документацию, обновляя их согласованно. Никогда не меняй bpy/Python просто ради настройки отдельного ассета.
 2. Цвета текстур — ТОЛЬКО имена палитр из `presets/palettes.json` или явный список hex, если пользователь его дал.
 3. Всегда начинай с шаблона: `python assetgen.py new <template> <name>`.
    Ближайший шаблон: бочка/ваза/кубок → `barrel` или `urn` (lathe);
@@ -54,9 +55,14 @@ description: Generate low-poly dungeon models and textures for Godot through thi
    - stone → `stone`;
    - metal/bone/cloth → `noise`/`metal`/`bone`/`cloth`;
    - маленькое однотонное → `flat`.
-3. size: мелочь 64, проп 128, крупное 256.
-4. `python assetgen.py texture <name>` → смотри превью и `report_texture.json`.
-5. Слишком пёстро → уменьши scale или contrast. Скучно → увеличь edge/ao.
+3. Для обычного мягкого стиля используй `_soft`-палитру и НЕ пиши `pixel`, `quantize`, `gradient`: defaults уже `false/false/ease`.
+   Для ретро задай явно `pixel: true`, `quantize: true` и `gradient: constant` у материалов; исходные палитры сохранены.
+4. size: мелочь 64, проп 128, крупное 256. По умолчанию samples 64, margin 4.
+5. `python assetgen.py validate-texture <name>` → исправь спеку до запуска Blender.
+6. `python assetgen.py texture <name>` → смотри превью и `report_texture.json`.
+7. Слишком пёстро → уменьши contrast или сузь палитру. Contrast работает вокруг `contrast_pivot` (0.5).
+   AO и edge применяются поверх цвета: для мягкого стиля начинай с ao 0.2–0.35, edge 0.05–0.15.
+8. Собственные `layers` используй только если пресет не даёт нужного рисунка. Не сочетай их с `preset` и preset-only полями.
 
 ## ТИПИЧНЫЕ ОШИБКИ
 - box центрирован: чтобы стоял на полу, `location.z = size.z / 2`.

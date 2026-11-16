@@ -5,12 +5,12 @@
   "additionalProperties": false,
   "properties": {
     "asset": {"type": "string", "pattern": "^[a-z0-9_]+$"},
-    "size": {"type": "integer", "enum": [64, 128, 256, 512]},
-    "seed": {"type": "integer"},
-    "pixel": {"type": "boolean"},
-    "quantize": {"type": "boolean"},
-    "samples": {"type": "integer", "minimum": 1, "maximum": 1024},
-    "margin": {"type": "integer", "minimum": 0, "maximum": 64},
+    "size": {"type": "integer", "enum": [64, 128, 256, 512], "default": 128},
+    "seed": {"type": "integer", "default": 1},
+    "pixel": {"type": "boolean", "default": false},
+    "quantize": {"type": "boolean", "default": false},
+    "samples": {"type": "integer", "minimum": 1, "maximum": 1024, "default": 64},
+    "margin": {"type": "integer", "minimum": 0, "maximum": 64, "default": 4},
     "materials": {
       "type": "object",
       "required": ["default"],
@@ -19,36 +19,116 @@
     }
   },
   "$defs": {
-    "material": {
+    "palette": {
+      "oneOf": [
+        {"type": "string"},
+        {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"}
+        }
+      ]
+    },
+    "weight": {"type": "number", "exclusiveMinimum": 0, "default": 1},
+    "scale": {"type": "number", "exclusiveMinimum": 0, "default": 5},
+    "material_common": {
       "type": "object",
       "required": ["palette"],
-      "additionalProperties": false,
       "properties": {
-        "preset": {"enum": ["noise", "wood", "stone", "flat", "metal", "bone", "cloth"]},
-        "palette": {
-          "oneOf": [
-            {"type": "string"},
-            {
+        "palette": {"$ref": "#/$defs/palette"},
+        "gradient": {"enum": ["constant", "linear", "ease"], "default": "ease"},
+        "contrast": {"type": "number", "minimum": 0, "maximum": 4, "default": 1},
+        "contrast_pivot": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.5},
+        "brightness": {"type": "number", "minimum": -1, "maximum": 1, "default": 0},
+        "ao": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.25},
+        "ao_distance": {"type": "number", "exclusiveMinimum": 0, "default": 0.15},
+        "edge": {"type": "number", "minimum": 0, "maximum": 2, "default": 0},
+        "metallic": {"type": "number", "minimum": 0, "maximum": 1, "default": 0},
+        "roughness": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.9}
+      }
+    },
+    "material": {
+      "oneOf": [
+        {
+          "type": "object",
+          "allOf": [{"$ref": "#/$defs/material_common"}],
+          "properties": {
+            "preset": {"enum": ["noise", "wood", "stone", "flat", "metal", "bone", "cloth"], "default": "noise"},
+            "scale": {"$ref": "#/$defs/scale"},
+            "direction": {"enum": ["X", "Y", "Z"], "default": "X"},
+            "distortion": {"type": "number", "minimum": 0, "default": 4},
+            "detail": {"type": "number", "minimum": 0, "maximum": 16, "default": 2},
+            "value": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.6}
+          },
+          "unevaluatedProperties": false
+        },
+        {
+          "type": "object",
+          "allOf": [{"$ref": "#/$defs/material_common"}],
+          "required": ["layers"],
+          "properties": {
+            "layers": {
               "type": "array",
               "minItems": 1,
-              "maxItems": 16,
-              "items": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"}
+              "maxItems": 4,
+              "items": {"$ref": "#/$defs/layer"}
             }
-          ]
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "layer": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["type"],
+          "additionalProperties": false,
+          "properties": {
+            "type": {"const": "noise"},
+            "weight": {"$ref": "#/$defs/weight"},
+            "invert": {"type": "boolean", "default": false},
+            "scale": {"$ref": "#/$defs/scale"},
+            "detail": {"type": "number", "minimum": 0, "maximum": 16, "default": 2}
+          }
         },
-        "scale": {"type": "number", "exclusiveMinimum": 0},
-        "direction": {"enum": ["X", "Y", "Z"]},
-        "distortion": {"type": "number", "minimum": 0},
-        "detail": {"type": "number", "minimum": 0, "maximum": 16},
-        "value": {"type": "number", "minimum": 0, "maximum": 1},
-        "contrast": {"type": "number", "minimum": 0, "maximum": 4},
-        "brightness": {"type": "number", "minimum": -1, "maximum": 1},
-        "ao": {"type": "number", "minimum": 0, "maximum": 1},
-        "ao_distance": {"type": "number", "exclusiveMinimum": 0},
-        "edge": {"type": "number", "minimum": 0, "maximum": 2},
-        "metallic": {"type": "number", "minimum": 0, "maximum": 1},
-        "roughness": {"type": "number", "minimum": 0, "maximum": 1}
-      }
+        {
+          "type": "object",
+          "required": ["type"],
+          "additionalProperties": false,
+          "properties": {
+            "type": {"const": "wave"},
+            "weight": {"$ref": "#/$defs/weight"},
+            "invert": {"type": "boolean", "default": false},
+            "scale": {"$ref": "#/$defs/scale"},
+            "direction": {"enum": ["X", "Y", "Z"], "default": "X"},
+            "distortion": {"type": "number", "minimum": 0, "default": 4}
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type"],
+          "additionalProperties": false,
+          "properties": {
+            "type": {"const": "voronoi"},
+            "weight": {"$ref": "#/$defs/weight"},
+            "invert": {"type": "boolean", "default": false},
+            "scale": {"$ref": "#/$defs/scale"}
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type"],
+          "additionalProperties": false,
+          "properties": {
+            "type": {"const": "constant"},
+            "weight": {"$ref": "#/$defs/weight"},
+            "invert": {"type": "boolean", "default": false},
+            "value": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.6}
+          }
+        }
+      ]
     }
   }
 }

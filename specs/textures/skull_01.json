@@ -1,0 +1,32 @@
+{
+  "asset": "skull_01",
+  "size": 64,
+  "seed": 1,
+  "samples": 64,
+  "margin": 4,
+  "materials": {
+    "bone": {
+      "preset": "bone",
+      "palette": "bone",
+      "scale": 6,
+      "contrast": 0.35,
+      "brightness": 0.12,
+      "ao": 0.28,
+      "edge": 0.08,
+      "roughness": 0.9
+    },
+    "dark": {
+      "preset": "flat",
+      "palette": "iron",
+      "contrast": 0,
+      "brightness": -0.15,
+      "ao": 0.15,
+      "edge": 0,
+      "roughness": 1.0
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "bone"
+    }
+  }
+}

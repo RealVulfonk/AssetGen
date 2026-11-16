@@ -21,6 +21,26 @@ def read_glb(path):
     return document
 
 
+def assert_texture_samplers(document, texture_spec, asset_name, variant):
+    expected_mag = 9728 if texture_spec.get("pixel", False) else 9729
+    expected_min = (9984, 9986) if texture_spec.get("pixel", False) else (9985, 9987)
+    checked = 0
+    for material in document.get("materials", []):
+        base_color = material.get("pbrMetallicRoughness", {}).get("baseColorTexture")
+        if base_color is None:
+            continue
+        texture = document["textures"][base_color["index"]]
+        sampler = document["samplers"][texture["sampler"]]
+        assert sampler.get("magFilter") == expected_mag, (
+            f"{asset_name}{variant}: unexpected magnification filter {sampler.get('magFilter')}"
+        )
+        assert sampler.get("minFilter") in expected_min, (
+            f"{asset_name}{variant}: unexpected mipmapped minification filter {sampler.get('minFilter')}"
+        )
+        checked += 1
+    assert checked, f"{asset_name}{variant}: no textured samplers checked"
+
+
 def main():
     model_count = 0
     texture_count = 0
@@ -70,6 +90,25 @@ def main():
             if "baseColorTexture" in material.get("pbrMetallicRoughness", {})
         ]
         assert textured_materials, f"{name}: no textured material in GLB"
+        texture_spec = json.loads(texture_spec_path.read_text(encoding="utf-8"))
+        assert_texture_samplers(document, texture_spec, name, "")
+        godot_glb = output / f"{name}_godot.glb"
+        if godot_glb.is_file():
+            assert_texture_samplers(read_glb(godot_glb), texture_spec, name, "_godot")
+        if "material_settings" in texture_report:
+            for key, default in (
+                ("seed", 1),
+                ("pixel", False),
+                ("quantize", False),
+                ("samples", 64),
+                ("margin", 4),
+            ):
+                assert texture_report[key] == texture_spec.get(key, default), f"{name}: report {key} differs from spec"
+            assert texture_report["margin_type"] == "EXTEND", f"{name}: unexpected bake margin type"
+            assert texture_report["unique_colors"] > 0, f"{name}: invalid unique color count"
+            assert set(texture_report["material_settings"]) == set(texture_report["materials"]), (
+                f"{name}: material settings do not match material slots"
+            )
         texture_count += 1
 
     print(f"Verified {model_count} models and {texture_count} textured GLBs")

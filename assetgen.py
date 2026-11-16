@@ -3,6 +3,7 @@
 
 python assetgen.py new <template> <name>
 python assetgen.py validate <name>
+python assetgen.py validate-texture <name>
 python assetgen.py model <name>
 python assetgen.py texture <name>
 """
@@ -50,6 +51,14 @@ def validate(path, schema_name):
     return data
 
 
+def load_texture_spec(name):
+    path = ROOT / "specs" / "textures" / f"{name}.json"
+    data = validate(path, "texture.schema.json")
+    if data["asset"] != name:
+        raise AssetGenError(f"Texture asset {data['asset']!r} must match file name {name!r}")
+    return data
+
+
 def run_blender(script, args, blend=None):
     blender = Path(BLENDER)
     if not blender.is_file():
@@ -89,7 +98,7 @@ def read_report(path):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("cmd", choices=["new", "validate", "model", "texture"])
+    parser.add_argument("cmd", choices=["new", "validate", "validate-texture", "model", "texture"])
     parser.add_argument("a", help="template for 'new', asset name otherwise")
     parser.add_argument("b", nargs="?", help="new asset name for 'new'")
     args = parser.parse_args()
@@ -114,6 +123,10 @@ def main():
         if args.b:
             raise AssetGenError(f"Command {args.cmd!r} accepts exactly one asset name")
         model_spec = ROOT / "specs/models" / f"{args.a}.json"
+        if args.cmd == "validate-texture":
+            load_texture_spec(args.a)
+            print(f"OK: {ROOT / 'specs/textures' / f'{args.a}.json'}")
+            return
         if args.cmd in ("validate", "model"):
             data = validate(model_spec, "model.schema.json")
             if data["name"] != args.a:
@@ -127,9 +140,7 @@ def main():
             report = read_report(output / "report.json")
         else:
             texture_spec = ROOT / "specs/textures" / f"{args.a}.json"
-            texture_data = validate(texture_spec, "texture.schema.json")
-            if texture_data["asset"] != args.a:
-                raise AssetGenError(f"Texture asset {texture_data['asset']!r} must match file name {args.a!r}")
+            load_texture_spec(args.a)
             data = validate(model_spec, "model.schema.json")
             output = OUT / args.a
             blend = output / f"{args.a}.blend"

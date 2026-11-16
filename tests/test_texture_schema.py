@@ -1,0 +1,121 @@
+"""Schema and palette contract tests for texture specs."""
+
+import json
+import unittest
+from pathlib import Path
+
+import jsonschema
+
+ROOT = Path(__file__).resolve().parents[1]
+SCHEMA = json.loads((ROOT / "schemas/texture.schema.json").read_text(encoding="utf-8"))
+PALETTES = json.loads((ROOT / "presets/palettes.json").read_text(encoding="utf-8"))
+VALIDATOR = jsonschema.Draft202012Validator(SCHEMA)
+
+
+def texture_document(material):
+    return {"asset": "test_asset", "materials": {"default": material}}
+
+
+class TextureSchemaTests(unittest.TestCase):
+    def assert_material_valid(self, material, expected=True):
+        document = texture_document(material)
+        self.assertEqual(VALIDATOR.is_valid(document), expected, VALIDATOR.iter_errors(document))
+
+    def test_production_specs_and_named_palettes(self):
+        paths = sorted((ROOT / "specs/textures").glob("*.json"))
+        self.assertTrue(paths)
+        for path in paths:
+            with self.subTest(spec=path.name):
+                spec = json.loads(path.read_text(encoding="utf-8"))
+                errors = list(VALIDATOR.iter_errors(spec))
+                self.assertFalse(errors, errors)
+                self.assertEqual(spec["asset"], path.stem)
+                for material in spec["materials"].values():
+                    palette = material["palette"]
+                    if isinstance(palette, str):
+                        self.assertIn(palette, PALETTES)
+
+    def test_soft_defaults_are_declared(self):
+        properties = SCHEMA["properties"]
+        self.assertFalse(properties["pixel"]["default"])
+        self.assertFalse(properties["quantize"]["default"])
+        self.assertEqual(properties["samples"]["default"], 64)
+        self.assertEqual(properties["margin"]["default"], 4)
+        common = SCHEMA["$defs"]["material_common"]["properties"]
+        self.assertEqual(common["gradient"]["default"], "ease")
+        self.assertEqual(common["contrast_pivot"]["default"], 0.5)
+        self.assertEqual(common["ao"]["default"], 0.25)
+
+    def test_custom_layers_accepted(self):
+        material = {
+            "palette": "stone_grey_soft",
+            "layers": [
+                {"type": "noise", "scale": 3, "detail": 4, "weight": 2},
+                {"type": "wave", "direction": "Z", "distortion": 0.5},
+                {"type": "voronoi", "invert": True},
+                {"type": "constant", "value": 0.25, "weight": 0.5},
+            ],
+        }
+        self.assert_material_valid(material)
+
+    def test_preset_and_layers_are_mutually_exclusive(self):
+        material = {
+            "palette": "stone_grey",
+            "preset": "stone",
+            "layers": [{"type": "noise"}],
+        }
+        self.assert_material_valid(material, False)
+
+    def test_preset_controls_rejected_with_layers(self):
+        for field, value in (
+            ("scale", 4),
+            ("direction", "X"),
+            ("distortion", 2),
+            ("detail", 3),
+            ("value", 0.5),
+        ):
+            with self.subTest(field=field):
+                material = {"palette": "stone_grey", "layers": [{"type": "noise"}], field: value}
+                self.assert_material_valid(material, False)
+
+    def test_irrelevant_layer_fields_rejected(self):
+        cases = (
+            ("noise", "direction", "X"),
+            ("noise", "value", 0.5),
+            ("wave", "detail", 2),
+            ("voronoi", "distortion", 2),
+            ("constant", "scale", 2),
+        )
+        for kind, field, value in cases:
+            with self.subTest(kind=kind, field=field):
+                material = {"palette": "stone_grey", "layers": [{"type": kind, field: value}]}
+                self.assert_material_valid(material, False)
+
+    def test_invalid_layer_collections_and_weights(self):
+        layers = [
+            [],
+            [{"type": "noise"}] * 5,
+            [{"type": "noise", "weight": 0}],
+            [{"type": "noise", "weight": -1}],
+            [{"type": "unknown"}],
+        ]
+        for value in layers:
+            with self.subTest(layers=value):
+                self.assert_material_valid({"palette": "stone_grey", "layers": value}, False)
+
+    def test_gradient_pivot_and_unknown_fields(self):
+        for gradient in ("constant", "linear", "ease"):
+            with self.subTest(gradient=gradient):
+                self.assert_material_valid({"palette": "stone_grey", "gradient": gradient})
+        for pivot in (-0.01, 1.01):
+            with self.subTest(pivot=pivot):
+                self.assert_material_valid({"palette": "stone_grey", "contrast_pivot": pivot}, False)
+        self.assert_material_valid({"palette": "stone_grey", "gradient": "smooth"}, False)
+        self.assert_material_valid({"palette": "stone_grey", "unknown": True}, False)
+        document = texture_document({"palette": "stone_grey"})
+        document["unknown"] = True
+        self.assertFalse(VALIDATOR.is_valid(document))
+
+
+if __name__ == "__main__":
+    unittest.main()

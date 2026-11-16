@@ -2,10 +2,8 @@
   "asset": "bench_01",
   "size": 128,
   "seed": 7,
-  "pixel": true,
-  "quantize": true,
   "materials": {
-    "wood": {"preset": "wood", "palette": "wood_dark", "scale": 5, "detail": 5, "distortion": 0.4, "contrast": 0.8, "direction": "Z", "ao": 0.5, "edge": 0.25, "roughness": 0.95},
-    "default": {"preset": "flat", "palette": "wood_dark"}
+    "wood": {"preset": "wood", "palette": "wood_dark_soft", "scale": 5, "detail": 5, "distortion": 0.4, "contrast": 0.85, "direction": "Z", "ao": 0.3, "edge": 0.12, "roughness": 0.95},
+    "default": {"preset": "flat", "palette": "wood_dark_soft"}
   }
 }
