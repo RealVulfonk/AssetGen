@@ -17,6 +17,7 @@
     {
       "comment": "корпус",
       "type": "lathe",
+      "uv_projection": "cylindrical",
       "material": "wood",
       "segments": 10,
       "profile": [

@@ -10,6 +10,7 @@
     "pixel": {"type": "boolean", "default": false},
     "quantize": {"type": "boolean", "default": false},
     "samples": {"type": "integer", "minimum": 1, "maximum": 1024, "default": 64},
+    "pack_uv": {"type": "boolean", "default": false},
     "margin": {"type": "integer", "minimum": 0, "maximum": 64, "default": 4},
     "materials": {
       "type": "object",

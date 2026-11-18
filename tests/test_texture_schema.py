@@ -39,6 +39,7 @@ class TextureSchemaTests(unittest.TestCase):
         properties = SCHEMA["properties"]
         self.assertFalse(properties["pixel"]["default"])
         self.assertFalse(properties["quantize"]["default"])
+        self.assertFalse(properties["pack_uv"]["default"])
         self.assertEqual(properties["samples"]["default"], 64)
         self.assertEqual(properties["margin"]["default"], 4)
         common = SCHEMA["$defs"]["material_common"]["properties"]

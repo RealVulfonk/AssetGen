@@ -96,9 +96,14 @@
             "offset": {"$ref": "#/$defs/vector3"}
           }
         },
-        "mirror_x": {"type": "boolean"}
+        "mirror_x": {"type": "boolean"},
+        "uv_projection": {"const": "cylindrical"}
       },
       "allOf": [
+        {
+          "if": {"required": ["uv_projection"]},
+          "then": {"properties": {"type": {"const": "lathe"}}}
+        },
         {
           "if": {"properties": {"type": {"const": "box"}}},
           "then": {"required": ["size"]}

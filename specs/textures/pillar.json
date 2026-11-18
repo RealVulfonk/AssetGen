@@ -1,6 +1,7 @@
 {
   "asset": "pillar",
   "size": 256,
+  "pack_uv": true,
   "seed": 7,
   "materials": {
     "stone": {"preset": "stone", "palette": "stone_grey_soft", "scale": 7, "contrast": 0.85, "ao": 0.3, "edge": 0.12},

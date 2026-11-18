@@ -1,6 +1,7 @@
 {
   "asset": "barrel_01",
   "size": 128,
+  "pack_uv": true,
   "seed": 3,
   "pixel": true,
   "quantize": true,

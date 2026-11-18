@@ -16,6 +16,7 @@ from mathutils import Euler, Vector
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from common import export_glb, hex2rgb, render_previews
+from uv_layout import PROJECTION_LAYER, pack_uv_islands, project_capped_lathe, restore_part_projections
 
 argv = sys.argv[sys.argv.index("--") + 1 :]
 SPEC_PATH, OUT = argv[0], os.path.abspath(argv[1])
@@ -96,8 +97,13 @@ PRIMITIVES = {
 }
 
 
-def build_part(part):
+def build_part(part, label, use_projections):
     bm = PRIMITIVES[part["type"]](part)
+    if use_projections:
+        bm.loops.layers.uv.new("UVMap")
+        bm.loops.layers.uv.new(PROJECTION_LAYER)
+        if part.get("uv_projection") == "cylindrical":
+            project_capped_lathe(bm, part["profile"], label)
     if "scale" in part:
         bmesh.ops.scale(bm, vec=Vector(part["scale"]), verts=bm.verts)
     if "bevel" in part and part["type"] in ("box", "extrude"):
@@ -213,8 +219,9 @@ def make_mesh_collision(obj, convex=False):
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
 objects = []
+use_projections = any(part.get("uv_projection") for part in spec["parts"])
 for index, part in enumerate(expand(spec["parts"])):
-    bm = build_part(part)
+    bm = build_part(part, f"parts[{index}]", use_projections)
     mesh = bpy.data.meshes.new(f"part_{index}")
     bm.to_mesh(mesh)
     bm.free()
@@ -235,10 +242,18 @@ apply_pivot(obj, spec.get("pivot", "bottom_center"))
 for polygon in obj.data.polygons:
     polygon.use_smooth = False
 
+if use_projections:
+    obj.data.uv_layers.active = obj.data.uv_layers["UVMap"]
 bpy.ops.object.mode_set(mode="EDIT")
 bpy.ops.mesh.select_all(action="SELECT")
 bpy.ops.uv.smart_project(angle_limit=math.radians(66), island_margin=0.03)
 bpy.ops.object.mode_set(mode="OBJECT")
+
+if use_projections:
+    restore_part_projections(obj.data)
+    bpy.ops.object.mode_set(mode="EDIT")
+    pack_uv_islands(0.03)
+    bpy.ops.object.mode_set(mode="OBJECT")
 
 export_objects = [obj]
 collision_type = spec.get("collision", "none")

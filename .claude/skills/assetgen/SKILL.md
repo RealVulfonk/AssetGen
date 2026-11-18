@@ -43,6 +43,7 @@ description: Generate low-poly dungeon models and textures for Godot through thi
 - `box`, `cylinder`, `sphere` центрированы; `lathe`, `extrude` начинаются от z=0.
 - Порядок: создание → scale → bevel → jitter → rotate → translate → mirror.
 - `array.offset` задаёт шаг в метрах; `mirror_x` отражает часть вместе с её положением.
+- `uv_projection: "cylindrical"` даёт детали `lathe` непрерывную боковую полосу и две плоские крышки. Подходит для восходящего профиля с плоскими торцами, как корпус `barrel_01`.
 - `pivot`: `bottom_center` для предметов на полу, `hinge_left` для дверей, `center` для свободно вращающихся объектов.
 - `collision`: `mesh` повторяет видимую геометрию для статичных предметов; `convex` создаёт выпуклую оболочку; `box` — дешёвый куб; `none` — без коллизии.
 - Теги материалов связывают модель и текстуру: `wood`, `metal`, `bone`, `stone`, `cloth`, `gold`.
@@ -69,7 +70,7 @@ description: Generate low-poly dungeon models and textures for Godot through thi
    - маленькое однотонное → `flat`.
 3. Для обычного мягкого стиля используй `_soft`-палитру и НЕ пиши `pixel`, `quantize`, `gradient`: defaults уже `false/false/ease`.
    Для ретро задай явно `pixel: true`, `quantize: true` и `gradient: constant` у материалов; исходные палитры сохранены.
-4. size: мелочь 64, проп 128, крупное 256. По умолчанию samples 64, margin 4.
+4. size: мелочь 64, проп 128, крупное 256. По умолчанию samples 64, margin 4. Для `pack_uv: true` поле по умолчанию равно 1, 2 или 4 px соответственно. Для проверки упаковки используй `tools/inspect_uv.py`.
 5. `python assetgen.py validate-texture <name>` → исправь спеку до запуска Blender.
 6. `python assetgen.py texture <name>` → смотри превью и `report_texture.json`.
 7. Слишком пёстро → уменьши contrast или сузь палитру. Contrast работает вокруг `contrast_pivot` (0.5).

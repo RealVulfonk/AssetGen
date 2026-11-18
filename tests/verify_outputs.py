@@ -105,12 +105,16 @@ def main():
         if godot_glb.is_file():
             assert_texture_samplers(read_glb(godot_glb), texture_spec, name, "_godot")
         if "material_settings" in texture_report:
+            packed = texture_report.get("pack_uv", False)
+            if "pack_uv" in texture_report:
+                assert packed == texture_spec.get("pack_uv", False), f"{name}: pack_uv differs from spec"
+            margin_default = min(4, texture_report["size"] // 64) if packed else 4
             for key, default in (
                 ("seed", 1),
                 ("pixel", False),
                 ("quantize", False),
                 ("samples", 64),
-                ("margin", 4),
+                ("margin", margin_default),
             ):
                 assert texture_report[key] == texture_spec.get(key, default), f"{name}: report {key} differs from spec"
             assert texture_report["margin_type"] == "EXTEND", f"{name}: unexpected bake margin type"

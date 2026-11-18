@@ -13,6 +13,7 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(HERE)
 from common import export_glb, hex2lin, hex2rgb, render_previews
+from uv_layout import pack_uv_islands
 
 with open(os.path.join(HERE, "..", "presets", "palettes.json"), encoding="utf-8") as handle:
     PALETTES = json.load(handle)
@@ -306,7 +307,8 @@ def main():
     size = spec.get("size", 128)
     seed = spec.get("seed", 1)
     samples = spec.get("samples", 64)
-    margin = spec.get("margin", 4)
+    pack_uv = spec.get("pack_uv", False)
+    margin = spec.get("margin", min(4, size // 64) if pack_uv else 4)
     should_quantize = spec.get("quantize", False)
     pixel = spec.get("pixel", False)
 
@@ -341,6 +343,14 @@ def main():
     bpy.ops.object.select_all(action="DESELECT")
     obj.select_set(True)
     bpy.context.view_layer.objects.active = obj
+    if pack_uv:
+        # Reserve an extra half texel per island for raster sampling at its boundary.
+        fraction = (margin + 0.5) / size
+        if fraction >= 0.5:
+            raise ValueError("margin leaves no usable atlas with pack_uv enabled")
+        bpy.ops.object.mode_set(mode="EDIT")
+        pack_uv_islands(fraction)
+        bpy.ops.object.mode_set(mode="OBJECT")
     bpy.ops.object.bake(type="EMIT")
 
     if should_quantize:
@@ -384,6 +394,7 @@ def main():
         "samples": samples,
         "margin": margin,
         "margin_type": "EXTEND",
+        "pack_uv": pack_uv,
         "unique_colors": unique_color_count(image),
         "materials": sorted(configs),
         "defaulted_materials": sorted(defaulted_materials),

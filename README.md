@@ -74,6 +74,7 @@ python tools/regroup_out.py
 | `tools/build_flora.ps1` | Пакетная сборка: прогоняет `model` + `texture` по всем ассетам, подходящим под `-Pattern` (regex-альтернатива префиксов, не glob), и печатает сводку с трисами и цветами. |
 | `tools/render_sheet.py` | Один ортографический рендер ассета в `out/sheet_<name>.png` — быстрый визуальный контроль без открытия Blender. |
 | `tools/outdir.py` | Печатает папку вывода для ассета (`python tools/outdir.py conifer_01`). Нужен shell-скриптам, чтобы не дублировать маппинг из `assetgen_paths.py`. |
+| `tools/inspect_uv.py` | Измеряет острова, швы, покрытие, перекрытия, плотность и зазоры активной UV-карты внутри Blender. |
 | `tools/regroup_out.py` | Переносит уже собранные ассеты из плоского `out/<asset>` в `out/<group>/<asset>`. Идемпотентен, есть `--dry-run`, папки без спеки не трогает. |
 
 ### Тесты `tests/`
@@ -104,6 +105,8 @@ python tools/regroup_out.py
 
 Примитивы: `box`, `cylinder`, `sphere`, `lathe`, `extrude`. Общие операции: `scale`, `rotation`, `location`, `bevel`, `jitter`, `array`, `mirror_x`. Полная строгая схема — `schemas/model.schema.json`.
 
+`uv_projection: "cylindrical"` применяет к детали `lathe` боковую полосу и две плоские крышки. Профиль идёт снизу вверх, начинается и заканчивается на оси и имеет плоские торцы, как у корпуса `barrel_01`. Smart UV разворачивает остальные детали, затем сборщик пакует все острова в общий атлас.
+
 Шаблоны: `barrel`, `door`, `coffin`, `bone`, `chest`, `skull`, `candle`, `torch`, `pillar`, `urn`, `table`, `cell_bars`.
 
 Правила для агента и рекомендации по размерам находятся в `.claude/skills/assetgen/SKILL.md`. Обычный authoring меняет только JSON; сопровождение генератора выполняется как отдельная явно запрошенная задача с обновлением схемы, тестов и документации.
@@ -130,6 +133,9 @@ python assetgen.py validate-texture pillar
 | `ao` | `0.25` | Мягкое умножение цвета на AO |
 | `edge` | `0` | Дополнительная Pointiness-коррекция |
 | `samples` / `margin` | `64` / `4` | Качество bake и EXTEND gutters |
+| `pack_uv` | `false` | Повторная упаковка островов под разрешение albedo и поле bake |
+
+С `pack_uv: true` значение `margin` по умолчанию составляет 1, 2 и 4 px для карт 64, 128 и 256 px соответственно. При 512 px применяется 4 px. Явный `margin` переопределяет это значение. Упаковка выделяет с каждой стороны острова запас `margin + 0.5` px. Поле заполняется методом `EXTEND`, обновлённые UV сохраняются в текстурированных `.blend` и GLB.
 
 Пример обычной спеки:
 
@@ -264,6 +270,15 @@ python tests/verify_outputs.py
 ```
 
 Если `BLENDER` не задана, укажи полный путь к `blender.exe`.
+
+Для отдельного замера UV передай проверяемый `.blend`, имя ассета, путь JSON-отчёта и поле в пикселях из `report_texture.json`:
+
+```powershell
+$assetDir = python tools/outdir.py barrel_01
+& $env:BLENDER -b "$assetDir/barrel_01_tex.blend" --python-exit-code 1 -P tools/inspect_uv.py -- barrel_01 "$assetDir/uv.json" 4
+```
+
+Зазор и плотность пересчитываются в пиксели для каждой указанной в отчёте шкалы на загруженной развёртке. Чтобы проверить фактическую упаковку для другого разрешения, сначала запеки карту в этом разрешении. Перекрытие и покрытие оцениваются по сетке 1024×1024.
 
 Дополнительно смотри albedo и все превью: автоматические тесты не обнаруживают нежелательный художественный стиль, локальные UV-швы и слабый island bleed.
 
