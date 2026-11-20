@@ -1,0 +1,18 @@
+{
+  "asset": "guard",
+  "size": 256,
+  "seed": 3,
+  "pixel": true,
+  "quantize": true,
+  "samples": 32,
+  "margin": 3,
+  "materials": {
+    "steel": {"preset": "metal", "palette": "steel_soft", "scale": 7, "detail": 3, "contrast": 0.7, "brightness": 0.06, "ao": 0.42, "ao_distance": 0.06, "edge": 0.22, "metallic": 0.35, "roughness": 0.45},
+    "steel_dark": {"preset": "metal", "palette": "iron", "scale": 14, "detail": 3, "contrast": 0.8, "brightness": -0.04, "ao": 0.45, "ao_distance": 0.04, "edge": 0.1, "metallic": 0.4, "roughness": 0.6},
+    "wood": {"preset": "wood", "palette": "wood_dark_soft", "scale": 9, "direction": "Z", "distortion": 1.2, "contrast": 0.9, "ao": 0.35, "ao_distance": 0.05, "edge": 0.12, "roughness": 0.95},
+    "leather": {"preset": "noise", "palette": "wood_dark_soft", "scale": 18, "detail": 4, "contrast": 0.85, "brightness": -0.06, "ao": 0.4, "ao_distance": 0.04, "edge": 0.1, "roughness": 1.0},
+    "cloth": {"preset": "noise", "palette": "cloth_red", "scale": 22, "detail": 4, "contrast": 0.75, "brightness": 0.08, "ao": 0.38, "ao_distance": 0.04, "edge": 0.12, "roughness": 0.98},
+    "gold": {"preset": "metal", "palette": "gold", "scale": 20, "detail": 2, "contrast": 0.9, "ao": 0.3, "edge": 0.3, "metallic": 0.7, "roughness": 0.4},
+    "default": {"preset": "flat", "palette": "stone_grey_soft"}
+  }
+}

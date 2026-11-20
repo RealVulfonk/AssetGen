@@ -1,0 +1,874 @@
+{
+  "name": "door_arch_heavy_leaf_01",
+  "category": "doors",
+  "seed": 65,
+  "pivot": [
+    -0.43,
+    -0.065,
+    0
+  ],
+  "tri_budget": 1400,
+  "expected_size": [
+    0.878,
+    0.231,
+    1.887
+  ],
+  "collision": "convex",
+  "materials": {
+    "wood": "#5a3f2a",
+    "metal": "#3b2a22"
+  },
+  "parts": [
+    {
+      "comment": "Continuous solid timber core between close-fitted front and rear boards",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          -0.42,
+          0.008
+        ],
+        [
+          0.42,
+          0.008
+        ],
+        [
+          0.42,
+          1.422143
+        ],
+        [
+          0.36,
+          1.585
+        ],
+        [
+          0.22,
+          1.755
+        ],
+        [
+          0,
+          1.895
+        ],
+        [
+          -0.22,
+          1.755
+        ],
+        [
+          -0.36,
+          1.585
+        ],
+        [
+          -0.42,
+          1.422143
+        ]
+      ],
+      "depth": 0.03,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        0.015,
+        0
+      ]
+    },
+    {
+      "comment": "Close-fitted face board 1; shallow bevel seam over solid core",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          -0.42,
+          0.008
+        ],
+        [
+          -0.28,
+          0.008
+        ],
+        [
+          -0.28,
+          1.682143
+        ],
+        [
+          -0.36,
+          1.585
+        ],
+        [
+          -0.42,
+          1.422143
+        ]
+      ],
+      "depth": 0.025,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        -0.015,
+        0
+      ],
+      "bevel": {
+        "width": 0.002,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Close-fitted face board 2; shallow bevel seam over solid core",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          -0.28,
+          0.008
+        ],
+        [
+          -0.14,
+          0.008
+        ],
+        [
+          -0.14,
+          1.805909
+        ],
+        [
+          -0.22,
+          1.755
+        ],
+        [
+          -0.28,
+          1.682143
+        ]
+      ],
+      "depth": 0.025,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        -0.015,
+        0
+      ],
+      "bevel": {
+        "width": 0.002,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Close-fitted face board 3; shallow bevel seam over solid core",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          -0.14,
+          0.008
+        ],
+        [
+          0.0,
+          0.008
+        ],
+        [
+          0.0,
+          1.895
+        ],
+        [
+          -0.14,
+          1.805909
+        ]
+      ],
+      "depth": 0.025,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        -0.015,
+        0
+      ],
+      "bevel": {
+        "width": 0.002,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Close-fitted face board 4; shallow bevel seam over solid core",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          0.0,
+          0.008
+        ],
+        [
+          0.14,
+          0.008
+        ],
+        [
+          0.14,
+          1.805909
+        ],
+        [
+          0.0,
+          1.895
+        ]
+      ],
+      "depth": 0.025,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        -0.015,
+        0
+      ],
+      "bevel": {
+        "width": 0.002,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Close-fitted face board 5; shallow bevel seam over solid core",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          0.14,
+          0.008
+        ],
+        [
+          0.28,
+          0.008
+        ],
+        [
+          0.28,
+          1.682143
+        ],
+        [
+          0.22,
+          1.755
+        ],
+        [
+          0.14,
+          1.805909
+        ]
+      ],
+      "depth": 0.025,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        -0.015,
+        0
+      ],
+      "bevel": {
+        "width": 0.002,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Close-fitted face board 6; shallow bevel seam over solid core",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          0.28,
+          0.008
+        ],
+        [
+          0.42,
+          0.008
+        ],
+        [
+          0.42,
+          1.422143
+        ],
+        [
+          0.36,
+          1.585
+        ],
+        [
+          0.28,
+          1.682143
+        ]
+      ],
+      "depth": 0.025,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        -0.015,
+        0
+      ],
+      "bevel": {
+        "width": 0.002,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Front forged straps",
+      "type": "box",
+      "material": "metal",
+      "size": [
+        0.84,
+        0.035,
+        0.07
+      ],
+      "location": [
+        0,
+        -0.06,
+        0.42
+      ],
+      "array": {
+        "count": 2,
+        "offset": [
+          0,
+          0,
+          0.9
+        ]
+      },
+      "bevel": {
+        "width": 0.005,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Shared left hinge barrels",
+      "type": "box",
+      "material": "metal",
+      "size": [
+        0.055,
+        0.05,
+        0.14
+      ],
+      "location": [
+        -0.43,
+        -0.065,
+        0.42
+      ],
+      "array": {
+        "count": 2,
+        "offset": [
+          0,
+          0,
+          0.9
+        ]
+      },
+      "bevel": {
+        "width": 0.004,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Front lower strap studs",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.018,
+      "radius_top": 0,
+      "height": 0.015,
+      "segments": 4,
+      "rotation": [
+        90,
+        0,
+        45
+      ],
+      "location": [
+        -0.33,
+        -0.085,
+        0.42
+      ],
+      "array": {
+        "count": 4,
+        "offset": [
+          0.22,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "comment": "Front upper strap studs",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.018,
+      "radius_top": 0,
+      "height": 0.015,
+      "segments": 4,
+      "rotation": [
+        90,
+        0,
+        45
+      ],
+      "location": [
+        -0.33,
+        -0.085,
+        1.32
+      ],
+      "array": {
+        "count": 4,
+        "offset": [
+          0.22,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "comment": "Front ring backplate",
+      "type": "box",
+      "material": "metal",
+      "size": [
+        0.1,
+        0.025,
+        0.13
+      ],
+      "location": [
+        0.29,
+        -0.065,
+        0.96
+      ],
+      "bevel": {
+        "width": 0.004,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Front ring bracket",
+      "type": "box",
+      "material": "metal",
+      "size": [
+        0.035,
+        0.04,
+        0.05
+      ],
+      "location": [
+        0.29,
+        -0.09,
+        0.94
+      ]
+    },
+    {
+      "comment": "Front octagonal handle ring",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.055,
+      "height": 0.016,
+      "segments": 8,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0.29,
+        -0.115,
+        0.88
+      ],
+      "cutouts": [
+        {
+          "type": "cylinder",
+          "radius": 0.038,
+          "height": 0.035,
+          "segments": 8
+        }
+      ]
+    },
+    {
+      "comment": "Close-fitted rear board 1; shallow bevel seam over solid core",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          -0.42,
+          0.008
+        ],
+        [
+          -0.28,
+          0.008
+        ],
+        [
+          -0.28,
+          1.682143
+        ],
+        [
+          -0.36,
+          1.585
+        ],
+        [
+          -0.42,
+          1.422143
+        ]
+      ],
+      "depth": 0.025,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        0.04,
+        0
+      ],
+      "bevel": {
+        "width": 0.002,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Close-fitted rear board 2; shallow bevel seam over solid core",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          -0.28,
+          0.008
+        ],
+        [
+          -0.14,
+          0.008
+        ],
+        [
+          -0.14,
+          1.805909
+        ],
+        [
+          -0.22,
+          1.755
+        ],
+        [
+          -0.28,
+          1.682143
+        ]
+      ],
+      "depth": 0.025,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        0.04,
+        0
+      ],
+      "bevel": {
+        "width": 0.002,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Close-fitted rear board 3; shallow bevel seam over solid core",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          -0.14,
+          0.008
+        ],
+        [
+          0.0,
+          0.008
+        ],
+        [
+          0.0,
+          1.895
+        ],
+        [
+          -0.14,
+          1.805909
+        ]
+      ],
+      "depth": 0.025,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        0.04,
+        0
+      ],
+      "bevel": {
+        "width": 0.002,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Close-fitted rear board 4; shallow bevel seam over solid core",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          0.0,
+          0.008
+        ],
+        [
+          0.14,
+          0.008
+        ],
+        [
+          0.14,
+          1.805909
+        ],
+        [
+          0.0,
+          1.895
+        ]
+      ],
+      "depth": 0.025,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        0.04,
+        0
+      ],
+      "bevel": {
+        "width": 0.002,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Close-fitted rear board 5; shallow bevel seam over solid core",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          0.14,
+          0.008
+        ],
+        [
+          0.28,
+          0.008
+        ],
+        [
+          0.28,
+          1.682143
+        ],
+        [
+          0.22,
+          1.755
+        ],
+        [
+          0.14,
+          1.805909
+        ]
+      ],
+      "depth": 0.025,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        0.04,
+        0
+      ],
+      "bevel": {
+        "width": 0.002,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Close-fitted rear board 6; shallow bevel seam over solid core",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          0.28,
+          0.008
+        ],
+        [
+          0.42,
+          0.008
+        ],
+        [
+          0.42,
+          1.422143
+        ],
+        [
+          0.36,
+          1.585
+        ],
+        [
+          0.28,
+          1.682143
+        ]
+      ],
+      "depth": 0.025,
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "location": [
+        0,
+        0.04,
+        0
+      ],
+      "bevel": {
+        "width": 0.002,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Rear forged straps",
+      "type": "box",
+      "material": "metal",
+      "size": [
+        0.79,
+        0.035,
+        0.07
+      ],
+      "location": [
+        0,
+        0.06,
+        0.42
+      ],
+      "array": {
+        "count": 2,
+        "offset": [
+          0,
+          0,
+          0.9
+        ]
+      },
+      "bevel": {
+        "width": 0.005,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Rear lower strap studs",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.018,
+      "radius_top": 0,
+      "height": 0.015,
+      "segments": 4,
+      "rotation": [
+        -90,
+        0,
+        45
+      ],
+      "location": [
+        -0.33,
+        0.085,
+        0.42
+      ],
+      "array": {
+        "count": 4,
+        "offset": [
+          0.22,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "comment": "Rear upper strap studs",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.018,
+      "radius_top": 0,
+      "height": 0.015,
+      "segments": 4,
+      "rotation": [
+        -90,
+        0,
+        45
+      ],
+      "location": [
+        -0.33,
+        0.085,
+        1.32
+      ],
+      "array": {
+        "count": 4,
+        "offset": [
+          0.22,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "comment": "Rear ring backplate",
+      "type": "box",
+      "material": "metal",
+      "size": [
+        0.1,
+        0.025,
+        0.13
+      ],
+      "location": [
+        0.29,
+        0.05,
+        0.96
+      ],
+      "bevel": {
+        "width": 0.004,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Rear ring bracket",
+      "type": "box",
+      "material": "metal",
+      "size": [
+        0.035,
+        0.04,
+        0.05
+      ],
+      "location": [
+        0.29,
+        0.075,
+        0.94
+      ]
+    },
+    {
+      "comment": "Rear octagonal handle ring",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.055,
+      "height": 0.016,
+      "segments": 8,
+      "rotation": [
+        -90,
+        0,
+        0
+      ],
+      "location": [
+        0.29,
+        0.1,
+        0.88
+      ],
+      "cutouts": [
+        {
+          "type": "cylinder",
+          "radius": 0.038,
+          "height": 0.035,
+          "segments": 8
+        }
+      ]
+    }
+  ]
+}

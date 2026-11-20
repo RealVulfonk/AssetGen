@@ -1,13 +1,30 @@
 {
   "asset": "barrel_01",
-  "size": 128,
+  "size": 256,
   "pack_uv": true,
   "seed": 3,
-  "pixel": true,
-  "quantize": true,
   "materials": {
-    "wood": {"preset": "wood", "palette": "wood_dark", "scale": 8, "direction": "X", "distortion": 3, "ao": 0.6, "edge": 0.3},
-    "metal": {"preset": "metal", "palette": "rust_iron", "scale": 20, "ao": 0.4, "edge": 0.5, "metallic": 0.6, "roughness": 0.6},
+    "wood": {
+      "preset": "coopered_wood",
+      "palette": "bark_brown_soft",
+      "staves": 10,
+      "seam_width": 0.095,
+      "lid_board_width": 0.105,
+      "grain_strength": 0.55,
+      "ao": 0.23,
+      "contrast": 1.12,
+      "brightness": 0.08,
+      "source_detail": {"image": "fine_grained_wood.jpg", "tile_size": 1.1, "strength": 0.78}
+    },
+    "metal": {
+      "preset": "metal",
+      "palette": "iron",
+      "scale": 18,
+      "ao": 0.22,
+      "metallic": 0.6,
+      "roughness": 0.75,
+      "source_detail": {"image": "metal_plate_02.jpg", "tile_size": 0.4, "strength": 0.55}
+    },
     "default": {"preset": "flat", "palette": "stone_grey"}
   }
 }

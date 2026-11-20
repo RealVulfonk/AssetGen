@@ -1,0 +1,29 @@
+{
+  "asset": "wall_stone_01",
+  "size": 256,
+  "pack_uv": true,
+  "seed": 37,
+  "materials": {
+    "stone": {
+      "preset": "stone",
+      "palette": "stone_grey",
+      "scale": 6,
+      "detail": 3,
+      "contrast": 0.65,
+      "brightness": 0.12,
+      "ao": 0.3,
+      "ao_distance": 0.08,
+      "edge": 0.12,
+      "roughness": 0.92,
+      "source_detail": {
+        "image": "stone_bricks_albedo.png",
+        "tile_size": 0.9,
+        "strength": 0.4
+      }
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "stone_grey"
+    }
+  }
+}

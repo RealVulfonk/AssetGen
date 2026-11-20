@@ -1,0 +1,225 @@
+{
+  "name": "barrel_02",
+  "category": "props",
+  "pivot": "bottom_center",
+  "tri_budget": 600,
+  "expected_size": [0.7, 0.7, 0.9],
+  "collision": "mesh",
+  "materials": {
+    "wood": "#5a402c",
+    "metal": "#39414d"
+  },
+  "parts": [
+    {
+      "comment": "Двенадцать клепок, открытый верх, толстый обод и внутреннее дно",
+      "type": "lathe",
+      "material": "wood",
+      "segments": 12,
+      "jitter": 0.002,
+      "profile": [
+        [0, 0],
+        [0.26, 0],
+        [0.31, 0.18],
+        [0.35, 0.45],
+        [0.3, 0.9],
+        [0.262, 0.9],
+        [0.312, 0.45],
+        [0.275, 0.18],
+        [0.23, 0.1],
+        [0, 0.1]
+      ]
+    },
+    {
+      "comment": "Нижний стальной обруч, повторяет наклон стенок",
+      "type": "lathe",
+      "material": "metal",
+      "segments": 12,
+      "profile": [[0.293, 0], [0.316, 0], [0.329, 0.075], [0.306, 0.075], [0.293, 0]],
+      "location": [0, 0, 0.145]
+    },
+    {
+      "comment": "Верхний стальной обруч, повторяет наклон стенок",
+      "type": "lathe",
+      "material": "metal",
+      "segments": 12,
+      "profile": [[0.321, 0], [0.339, 0], [0.33, 0.07], [0.312, 0.07], [0.321, 0]],
+      "location": [0, 0, 0.655]
+    },
+    {
+      "comment": "Нижняя заклепка 01",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 0],
+      "location": [0.3255, 0, 0.1825]
+    },
+    {
+      "comment": "Нижняя заклепка 02",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 45],
+      "location": [0.222393, 0.222393, 0.1825]
+    },
+    {
+      "comment": "Нижняя заклепка 03",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 90],
+      "location": [0, 0.3255, 0.1825]
+    },
+    {
+      "comment": "Нижняя заклепка 04",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 135],
+      "location": [-0.222393, 0.222393, 0.1825]
+    },
+    {
+      "comment": "Нижняя заклепка 05",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 180],
+      "location": [-0.3255, 0, 0.1825]
+    },
+    {
+      "comment": "Нижняя заклепка 06",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 225],
+      "location": [-0.222393, -0.222393, 0.1825]
+    },
+    {
+      "comment": "Нижняя заклепка 07",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 270],
+      "location": [0, -0.3255, 0.1825]
+    },
+    {
+      "comment": "Нижняя заклепка 08",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 315],
+      "location": [0.222393, -0.222393, 0.1825]
+    },
+    {
+      "comment": "Верхняя заклепка 01",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 0],
+      "location": [0.3375, 0, 0.69]
+    },
+    {
+      "comment": "Верхняя заклепка 02",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 45],
+      "location": [0.230589, 0.230589, 0.69]
+    },
+    {
+      "comment": "Верхняя заклепка 03",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 90],
+      "location": [0, 0.3375, 0.69]
+    },
+    {
+      "comment": "Верхняя заклепка 04",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 135],
+      "location": [-0.230589, 0.230589, 0.69]
+    },
+    {
+      "comment": "Верхняя заклепка 05",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 180],
+      "location": [-0.3375, 0, 0.69]
+    },
+    {
+      "comment": "Верхняя заклепка 06",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 225],
+      "location": [-0.230589, -0.230589, 0.69]
+    },
+    {
+      "comment": "Верхняя заклепка 07",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 270],
+      "location": [0, -0.3375, 0.69]
+    },
+    {
+      "comment": "Верхняя заклепка 08",
+      "type": "cylinder",
+      "material": "metal",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.018,
+      "segments": 4,
+      "rotation": [0, 90, 315],
+      "location": [0.230589, -0.230589, 0.69]
+    }
+  ]
+}

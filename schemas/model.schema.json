@@ -40,12 +40,40 @@
       "minItems": 2,
       "maxItems": 2
     },
+    "cutout": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "location": {"$ref": "#/$defs/vector3"},
+        "rotation": {"$ref": "#/$defs/vector3"}
+      },
+      "oneOf": [
+        {
+          "required": ["size"],
+          "properties": {
+            "type": {"const": "box"},
+            "size": {"$ref": "#/$defs/part/properties/size"}
+          }
+        },
+        {
+          "required": ["radius", "height"],
+          "properties": {
+            "type": {"const": "cylinder"},
+            "radius": {"$ref": "#/$defs/part/properties/radius"},
+            "radius_top": {"$ref": "#/$defs/part/properties/radius"},
+            "height": {"$ref": "#/$defs/part/properties/height"},
+            "segments": {"$ref": "#/$defs/part/properties/segments"}
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
     "part": {
       "type": "object",
       "required": ["type", "material"],
       "additionalProperties": false,
       "properties": {
-        "type": {"enum": ["box", "cylinder", "sphere", "lathe", "extrude"]},
+        "type": {"enum": ["box", "cylinder", "sphere", "lathe", "extrude", "plane"]},
         "material": {"type": "string", "pattern": "^[a-z0-9_]+$"},
         "comment": {"type": "string"},
         "size": {
@@ -97,12 +125,18 @@
           }
         },
         "mirror_x": {"type": "boolean"},
-        "uv_projection": {"const": "cylindrical"}
+        "uv_projection": {"const": "cylindrical"},
+        "cutouts": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {"$ref": "#/$defs/cutout"}
+        }
       },
       "allOf": [
         {
           "if": {"required": ["uv_projection"]},
-          "then": {"properties": {"type": {"const": "lathe"}}}
+          "then": {"properties": {"type": {"const": "lathe"}}, "not": {"required": ["cutouts"]}}
         },
         {
           "if": {"properties": {"type": {"const": "box"}}},
@@ -123,6 +157,13 @@
         {
           "if": {"properties": {"type": {"const": "extrude"}}},
           "then": {"required": ["points", "depth"]}
+        },
+        {
+          "if": {"properties": {"type": {"const": "plane"}}},
+          "then": {
+            "required": ["points"],
+            "not": {"anyOf": [{"required": ["depth"]}, {"required": ["cutouts"]}, {"required": ["bevel"]}]}
+          }
         }
       ]
     }

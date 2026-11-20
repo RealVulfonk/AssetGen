@@ -1,7 +1,10 @@
 # Build and bake every flora asset listed in specs/models, in place.
-# Usage: powershell -File tools/build_flora.ps1 [-Pattern "conifer|snag"]
+# Usage: powershell -File tools/build_flora.ps1 [-Pattern "conifer|snag"] [-LightingPreview]
 # -Pattern is a regex alternation of family prefixes, not a glob.
-param([string]$Pattern = "conifer|snag|broadleaf|shrub|stump|log|fern|grass|reed|mushroom|flower|berry|rock")
+param(
+    [string]$Pattern = "conifer|snag|broadleaf|shrub|stump|log|fern|grass|reed|mushroom|flower|berry|rock",
+    [switch]$LightingPreview
+)
 
 $ErrorActionPreference = "Continue"
 $names = Get-ChildItem specs/models/*.json |
@@ -9,10 +12,12 @@ $names = Get-ChildItem specs/models/*.json |
     ForEach-Object { $_.BaseName } | Sort-Object
 
 $failed = @()
+$textureOptions = @()
+if ($LightingPreview) { $textureOptions += "--lighting-preview" }
 foreach ($name in $names) {
     $out = python assetgen.py model $name 2>&1
     if ($LASTEXITCODE -ne 0) { $failed += $name; Write-Host "$name MODEL-FAIL"; continue }
-    $out = python assetgen.py texture $name 2>&1
+    $out = python assetgen.py texture $name @textureOptions 2>&1
     if ($LASTEXITCODE -ne 0) { $failed += $name; Write-Host "$name TEX-FAIL"; continue }
     $dir = python tools/outdir.py $name
     $report = Get-Content "$dir/report.json" -Raw | ConvertFrom-Json

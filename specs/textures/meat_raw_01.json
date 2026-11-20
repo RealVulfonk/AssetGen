@@ -1,0 +1,10 @@
+{
+  "asset": "meat_raw_01",
+  "size": 64,
+  "seed": 7,
+  "materials": {
+    "meat": {"preset": "noise", "palette": "cap_red_soft", "scale": 5, "detail": 4, "contrast": 0.95, "ao": 0.4, "edge": 0.15, "roughness": 0.7},
+    "bone": {"preset": "bone", "palette": "bone", "scale": 10, "detail": 3, "contrast": 0.85, "ao": 0.35, "edge": 0.15, "roughness": 0.8},
+    "default": {"preset": "flat", "palette": "cap_red_soft"}
+  }
+}

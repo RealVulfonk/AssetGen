@@ -1,0 +1,32 @@
+{
+  "name": "window_glass_01",
+  "category": "architecture",
+  "seed": 37,
+  "pivot": "bottom_center",
+  "tri_budget": 200,
+  "expected_size": [0.84, 0.21, 1.02],
+  "collision": "box",
+  "materials": {
+    "frame": "#5a3f2a",
+    "glass": "#2b3f7a"
+  },
+  "parts": [
+    {"comment": "подоконник, шире рамы", "type": "box", "material": "frame", "size": [0.84, 0.18, 0.11],
+     "location": [0, 0, 0.055],
+     "bevel": {"width": 0.005, "segments": 1}, "jitter": 0.002},
+    {"comment": "боковые стойки рамы", "type": "box", "material": "frame", "size": [0.06, 0.12, 0.85],
+     "location": [0.36, 0.06, 0.56], "mirror_x": true,
+     "bevel": {"width": 0.005, "segments": 1}, "jitter": 0.002},
+    {"comment": "нижняя перекладина рамы", "type": "box", "material": "frame", "size": [0.72, 0.12, 0.07],
+     "location": [0, 0.06, 0.135], "jitter": 0.002},
+    {"comment": "верхняя перекладина рамы", "type": "box", "material": "frame", "size": [0.72, 0.12, 0.07],
+     "location": [0, 0.06, 0.985], "jitter": 0.002},
+    {"comment": "перекрестие: вертикальная штанга", "type": "box", "material": "frame", "size": [0.04, 0.06, 0.78],
+     "location": [0, 0.06, 0.56]},
+    {"comment": "перекрестие: горизонтальная штанга", "type": "box", "material": "frame", "size": [0.66, 0.06, 0.04],
+     "location": [0, 0.06, 0.56]},
+    {"comment": "одна двусторонняя плоскость остекления внутри рамы", "type": "plane", "material": "glass",
+     "points": [[-0.34, -0.4], [0.34, -0.4], [0.34, 0.4], [-0.34, 0.4]],
+     "rotation": [90, 0, 0], "location": [0, 0.06, 0.56]}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "asset": "wall_lantern_01",
+  "size": 256,
+  "seed": 60,
+  "pack_uv": true,
+  "materials": {
+    "metal": {"preset": "metal", "palette": "rust_iron", "scale": 12, "detail": 4, "contrast": 0.75, "ao": 0.28, "edge": 0.12, "metallic": 0.65, "roughness": 0.62},
+    "glass": {"preset": "flat", "palette": "glass_amber", "value": 0.68, "ao": 0.05, "opacity": 0.32, "roughness": 0.24},
+    "flame": {"preset": "flat", "palette": "glass_amber", "value": 1.0, "ao": 0, "roughness": 0.5},
+    "default": {"preset": "flat", "palette": "rust_iron"}
+  }
+}

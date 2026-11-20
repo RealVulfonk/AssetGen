@@ -1,0 +1,21 @@
+{
+  "name": "apple_01",
+  "category": "props",
+  "seed": 33,
+  "pivot": "bottom_center",
+  "tri_budget": 200,
+  "expected_size": [0.1, 0.1, 0.12],
+  "collision": "convex",
+  "materials": {
+    "fruit": "#a32c1f",
+    "stem": "#6d5636"
+  },
+  "parts": [
+    {"comment": "плод, слегка приплюснутый сверху", "type": "sphere", "material": "fruit", "radius": 0.05,
+     "segments": 8, "rings": 6, "scale": [1, 1, 0.88], "location": [0, 0, 0.044], "jitter": 0.0015},
+    {"comment": "черешок", "type": "cylinder", "material": "stem", "radius": 0.004, "height": 0.028,
+     "segments": 6, "location": [0, 0, 0.098], "rotation": [8, 0, 12]},
+    {"comment": "листок", "type": "sphere", "material": "stem", "radius": 0.018,
+     "segments": 6, "rings": 4, "scale": [1.5, 0.55, 0.22], "location": [0.024, 0.008, 0.1], "rotation": [0, -20, 30]}
+  ]
+}

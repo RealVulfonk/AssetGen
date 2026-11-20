@@ -1,0 +1,12 @@
+{
+  "asset": "chair_01",
+  "size": 128,
+  "seed": 7,
+  "materials": {
+    "wood": {"preset": "wood", "palette": "wood_dark_soft", "scale": 5, "detail": 5, "distortion": 0.4, "contrast": 0.85, "direction": "X", "ao": 0.3, "edge": 0.12, "roughness": 0.95},
+    "wood_horizontal": {"preset": "wood", "palette": "wood_dark_soft", "scale": 5, "detail": 5, "distortion": 0.4, "contrast": 0.85, "direction": "Z", "ao": 0.3, "edge": 0.12, "roughness": 0.95},
+    "wood_dark": {"preset": "wood", "palette": "wood_dark_soft", "scale": 6, "detail": 4, "distortion": 0.5, "contrast": 0.7, "brightness": -0.08, "direction": "X", "ao": 0.35, "edge": 0.1, "roughness": 0.95},
+    "metal": {"preset": "metal", "palette": "steel_soft", "scale": 7, "detail": 3, "contrast": 0.75, "brightness": -0.1, "ao": 0.4, "edge": 0.15, "metallic": 0.35, "roughness": 0.6},
+    "default": {"preset": "flat", "palette": "wood_dark_soft"}
+  }
+}

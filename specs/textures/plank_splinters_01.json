@@ -1,0 +1,9 @@
+{
+  "asset": "plank_splinters_01",
+  "size": 64,
+  "seed": 7,
+  "materials": {
+    "wood": {"preset": "wood", "palette": "dry_wood_soft", "scale": 6, "detail": 4, "distortion": 0.5, "contrast": 0.85, "direction": "Z", "ao": 0.3, "edge": 0.12, "roughness": 0.95},
+    "default": {"preset": "flat", "palette": "dry_wood_soft"}
+  }
+}

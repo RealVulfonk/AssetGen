@@ -1,0 +1,15 @@
+{
+  "asset": "cheese_wheel_01",
+  "size": 128,
+  "seed": 7,
+  "materials": {
+    "cheese": {"palette": "flower_yellow_soft",
+      "layers": [
+        {"type": "noise", "scale": 3, "detail": 2, "weight": 0.6},
+        {"type": "voronoi", "scale": 11, "weight": 0.25},
+        {"type": "noise", "scale": 35, "weight": 0.15}
+      ],
+      "contrast": 0.9, "ao": 0.35, "edge": 0.12, "roughness": 0.85},
+    "default": {"preset": "flat", "palette": "flower_yellow_soft"}
+  }
+}

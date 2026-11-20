@@ -1,0 +1,11 @@
+{
+  "asset": "vase_clay_01",
+  "size": 256,
+  "seed": 63,
+  "pack_uv": true,
+  "materials": {
+    "clay": {"preset": "stone", "palette": "bark_red_soft", "scale": 5, "detail": 4, "contrast": 0.6, "brightness": 0.03, "ao": 0.25, "edge": 0.08, "roughness": 0.92},
+    "ornament": {"preset": "noise", "palette": "stem_cream_soft", "scale": 18, "contrast": 0.4, "ao": 0.15, "roughness": 0.9},
+    "default": {"preset": "flat", "palette": "bark_red_soft"}
+  }
+}

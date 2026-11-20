@@ -59,6 +59,15 @@ class TextureSchemaTests(unittest.TestCase):
         }
         self.assert_material_valid(material)
 
+    def test_opacity_on_presets_and_custom_layers(self):
+        for recipe in ({"preset": "flat"}, {"layers": [{"type": "constant", "value": 0.5}]}):
+            material = {"palette": "stone_grey", **recipe}
+            self.assert_material_valid(material)
+            for opacity in (0, 0.35, 1, -0.01, 1.01, "0.35", True, False):
+                with self.subTest(recipe=recipe, opacity=opacity):
+                    valid = type(opacity) in (int, float) and 0 <= opacity <= 1
+                    self.assert_material_valid({**material, "opacity": opacity}, valid)
+
     def test_preset_and_layers_are_mutually_exclusive(self):
         material = {
             "palette": "stone_grey",
@@ -78,6 +87,29 @@ class TextureSchemaTests(unittest.TestCase):
             with self.subTest(field=field):
                 material = {"palette": "stone_grey", "layers": [{"type": "noise"}], field: value}
                 self.assert_material_valid(material, False)
+
+    def test_coopered_wood_controls(self):
+        material = {
+            "palette": "wood_dark_soft",
+            "preset": "coopered_wood",
+            "staves": 10,
+            "seam_width": 0.05,
+            "lid_board_width": 0.11,
+            "grain_strength": 0.45,
+        }
+        self.assert_material_valid(material)
+        self.assert_material_valid({**material, "preset": "wood"}, False)
+        self.assert_material_valid({**material, "staves": 0}, False)
+        self.assert_material_valid({**material, "seam_width": 0}, False)
+        self.assert_material_valid({**material, "direction": "X"}, False)
+
+    def test_source_detail_requires_a_local_image_and_valid_scale(self):
+        detail = {"image": "fine_grained_wood.jpg", "tile_size": 0.6, "strength": 0.5}
+        material = {"palette": "wood_dark", "source_detail": detail}
+        self.assert_material_valid(material)
+        for field, value in (("image", "../wood.png"), ("tile_size", 0), ("strength", 1.1)):
+            with self.subTest(field=field):
+                self.assert_material_valid({**material, "source_detail": {**detail, field: value}}, False)
 
     def test_irrelevant_layer_fields_rejected(self):
         cases = (

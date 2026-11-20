@@ -4,6 +4,7 @@ blender -b out/x/x.blend --python-exit-code 1 -P blender/bake_texture.py -- tex_
 """
 
 import json
+import math
 import os
 import sys
 
@@ -13,6 +14,8 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(HERE)
 from common import export_glb, hex2lin, hex2rgb, render_previews
+
+SOURCE_TEXTURES = os.path.join(HERE, "..", "presets", "textures")
 from uv_layout import pack_uv_islands
 
 with open(os.path.join(HERE, "..", "presets", "palettes.json"), encoding="utf-8") as handle:
@@ -49,9 +52,12 @@ def resolve_material(config):
         "ao_distance": 0.15,
         "edge": 0.0,
         "metallic": 0.0,
+        "opacity": 1.0,
         "roughness": 0.9,
     }
-    if "layers" not in config:
+    if config.get("preset") == "coopered_wood":
+        resolved.update(staves=10, seam_width=0.06, lid_board_width=0.12, grain_strength=0.55)
+    elif "layers" not in config:
         resolved.update(
             preset="noise",
             scale=5.0,
@@ -129,6 +135,27 @@ def multiply_color(nodes, links, color, gain):
     return node.outputs[0]
 
 
+def apply_source_detail(nodes, links, color, vector, config):
+    texture = nodes.new("ShaderNodeTexImage")
+    texture.image = bpy.data.images.load(os.path.join(SOURCE_TEXTURES, config["image"]), check_existing=True)
+    texture.image.colorspace_settings.name = "Non-Color"
+    texture.projection = "BOX"
+    texture.projection_blend = 0.25
+    texture.interpolation = "Linear"
+    mapping = nodes.new("ShaderNodeVectorMath")
+    mapping.operation = "SCALE"
+    mapping.inputs["Scale"].default_value = 1 / config["tile_size"]
+    links.new(vector, mapping.inputs[0])
+    links.new(mapping.outputs["Vector"], texture.inputs["Vector"])
+    grey = nodes.new("ShaderNodeRGBToBW")
+    links.new(texture.outputs["Color"], grey.inputs["Color"])
+    # Treat the photograph as a tonal detail map, leaving the palette in charge of hue.
+    strength = config["strength"]
+    gain = math_node(nodes, links, "MULTIPLY", grey.outputs["Val"], 2 * strength)
+    gain = math_node(nodes, links, "ADD", gain, 1 - strength)
+    return multiply_color(nodes, links, color, gain)
+
+
 def layer_socket(nodes, links, layer, vector, layer_index, seed):
     layer = resolve_layer(layer)
     mapping = nodes.new("ShaderNodeMapping")
@@ -174,7 +201,6 @@ def layer_socket(nodes, links, layer, vector, layer_index, seed):
 
 
 def pattern(nodes, links, config, vector, seed):
-    config = resolve_material(config)
     layers = config.get("layers") or preset_layers(config)
     total_weight = sum(layer["weight"] for layer in layers)
     combined = None
@@ -183,6 +209,53 @@ def pattern(nodes, links, config, vector, seed):
         weighted = math_node(nodes, links, "MULTIPLY", value, layer["weight"])
         combined = weighted if combined is None else math_node(nodes, links, "ADD", combined, weighted)
     return math_node(nodes, links, "DIVIDE", combined, total_weight, clamp=True)
+
+
+def wood_board_factor(nodes, links, phase, vector, stretch, config, seed):
+    def calc(operation, a, b):
+        return math_node(nodes, links, operation, a, b)
+
+    board_id = calc("FLOOR", phase, 0)
+    variation = nodes.new("ShaderNodeTexWhiteNoise")
+    variation.noise_dimensions = "1D"
+    links.new(calc("ADD", board_id, seed), variation.inputs["W"])
+
+    mapping = nodes.new("ShaderNodeMapping")
+    mapping.inputs["Scale"].default_value = stretch
+    mapping.inputs["Location"].default_value = (0, seed * 0.17, seed * 0.31)
+    links.new(vector, mapping.inputs["Vector"])
+    noise = nodes.new("ShaderNodeTexNoise")
+    noise.inputs["Scale"].default_value = 1
+    noise.inputs["Detail"].default_value = 2
+    links.new(mapping.outputs["Vector"], noise.inputs["Vector"])
+
+    fraction = calc("FRACT", phase, 0)
+    distance = calc("MINIMUM", fraction, calc("SUBTRACT", 1, fraction))
+    seam = math_node(nodes, links, "DIVIDE", distance, config["seam_width"] / 2, clamp=True)
+    grain = calc("MULTIPLY", calc("SUBTRACT", noise.outputs["Fac"], 0.5), config["grain_strength"])
+    tone = calc("ADD", 0.55, calc("MULTIPLY", variation.outputs["Value"], 0.28))
+    return calc("MULTIPLY", calc("ADD", tone, grain), seam)
+
+
+def coopered_wood_pattern(nodes, links, config, vector, seed):
+    coordinates = nodes.new("ShaderNodeSeparateXYZ")
+    links.new(vector, coordinates.inputs["Vector"])
+    angle = math_node(nodes, links, "ARCTAN2", coordinates.outputs["Y"], coordinates.outputs["X"])
+    phase = math_node(nodes, links, "MULTIPLY", angle, config["staves"] / math.tau)
+    phase = math_node(nodes, links, "MODULO", phase, config["staves"])
+    positive = math_node(nodes, links, "ADD", phase, config["staves"])
+    phase = math_node(nodes, links, "MODULO", positive, config["staves"])
+    side = wood_board_factor(nodes, links, phase, vector, (48, 48, 6), config, seed)
+
+    lid_phase = math_node(nodes, links, "DIVIDE", coordinates.outputs["X"], config["lid_board_width"])
+    lid = wood_board_factor(nodes, links, lid_phase, vector, (48, 6, 1), config, seed)
+    geometry = nodes.new("ShaderNodeNewGeometry")
+    normal = nodes.new("ShaderNodeSeparateXYZ")
+    links.new(geometry.outputs["True Normal"], normal.inputs["Vector"])
+    abs_z = math_node(nodes, links, "ABSOLUTE", normal.outputs["Z"], 0)
+    top_or_bottom = math_node(nodes, links, "GREATER_THAN", abs_z, 0.95)
+    difference = math_node(nodes, links, "SUBTRACT", lid, side)
+    return math_node(nodes, links, "ADD", side, math_node(nodes, links, "MULTIPLY", difference, top_or_bottom))
 
 
 def build_factor(nodes, links, pattern_socket, config):
@@ -203,7 +276,11 @@ def build_bake_material(material, config, image, seed):
     emission = nodes.new("ShaderNodeEmission")
     links.new(emission.outputs["Emission"], output.inputs["Surface"])
     coordinates = nodes.new("ShaderNodeTexCoord")
-    factor = pattern(nodes, links, config, coordinates.outputs["Object"], seed)
+    vector = coordinates.outputs["Object"]
+    if config.get("preset") == "coopered_wood":
+        factor = coopered_wood_pattern(nodes, links, config, vector, seed)
+    else:
+        factor = pattern(nodes, links, config, vector, seed)
     factor = build_factor(nodes, links, factor, config)
 
     colors = palette(config)
@@ -224,6 +301,8 @@ def build_bake_material(material, config, image, seed):
             element.color = (*hex2lin(color), 1.0)
     links.new(factor, ramp.inputs["Fac"])
     color = ramp.outputs["Color"]
+    if config.get("source_detail", {}).get("strength", 0) > 0:
+        color = apply_source_detail(nodes, links, color, vector, config["source_detail"])
 
     if config["ao"] > 0:
         ao = nodes.new("ShaderNodeAmbientOcclusion")
@@ -268,6 +347,10 @@ def finalize_material(material, config, image, pixel):
     links.new(texture.outputs["Color"], principled.inputs["Base Color"])
     principled.inputs["Roughness"].default_value = config.get("roughness", 0.9)
     principled.inputs["Metallic"].default_value = config.get("metallic", 0.0)
+    opacity = config.get("opacity", 1.0)
+    principled.inputs["Alpha"].default_value = opacity
+    if opacity < 1.0:
+        material.use_backface_culling = False
     links.new(principled.outputs["BSDF"], output.inputs["Surface"])
     nodes.active = texture
     texture.select = True
@@ -360,6 +443,7 @@ def main():
     image.file_format = "PNG"
     image.save()
     image.pack()
+    image.filepath_raw = "//" + os.path.basename(png_path)
 
     for slot in obj.material_slots:
         finalize_material(slot.material, configs[slot.material.name], image, pixel)
@@ -367,7 +451,7 @@ def main():
     blend_path = os.path.join(out, spec["asset"] + "_tex.blend")
     glb_path = os.path.join(out, spec["asset"] + ".glb")
     godot_path = None
-    bpy.ops.wm.save_as_mainfile(filepath=blend_path, check_existing=False)
+    bpy.ops.wm.save_as_mainfile(filepath=blend_path, check_existing=False, relative_remap=False)
     mesh_objects = [scene_obj for scene_obj in bpy.data.objects if scene_obj.type == "MESH"]
     export_glb(glb_path, [obj], obj)
     if len(mesh_objects) > 1:
@@ -381,7 +465,8 @@ def main():
         settings["palette"] = palette(config)
         if "layers" in config:
             settings["layers"] = config["layers"]
-        settings["resolved_layers"] = config.get("layers") or preset_layers(config)
+        if config.get("preset") != "coopered_wood":
+            settings["resolved_layers"] = config.get("layers") or preset_layers(config)
         material_settings[name] = settings
 
     report = {

@@ -46,7 +46,18 @@
         "ao_distance": {"type": "number", "exclusiveMinimum": 0, "default": 0.15},
         "edge": {"type": "number", "minimum": 0, "maximum": 2, "default": 0},
         "metallic": {"type": "number", "minimum": 0, "maximum": 1, "default": 0},
-        "roughness": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.9}
+        "opacity": {"type": "number", "minimum": 0, "maximum": 1, "default": 1},
+        "roughness": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.9},
+        "source_detail": {
+          "type": "object",
+          "required": ["image", "tile_size", "strength"],
+          "additionalProperties": false,
+          "properties": {
+            "image": {"type": "string", "pattern": "^[a-z0-9_]+\\.(png|jpe?g)$"},
+            "tile_size": {"type": "number", "exclusiveMinimum": 0},
+            "strength": {"type": "number", "minimum": 0, "maximum": 1}
+          }
+        }
       }
     },
     "material": {
@@ -61,6 +72,19 @@
             "distortion": {"type": "number", "minimum": 0, "default": 4},
             "detail": {"type": "number", "minimum": 0, "maximum": 16, "default": 2},
             "value": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.6}
+          },
+          "unevaluatedProperties": false
+        },
+        {
+          "type": "object",
+          "allOf": [{"$ref": "#/$defs/material_common"}],
+          "required": ["preset"],
+          "properties": {
+            "preset": {"const": "coopered_wood"},
+            "staves": {"type": "integer", "minimum": 3, "maximum": 32, "default": 10},
+            "seam_width": {"type": "number", "minimum": 0.01, "maximum": 0.2, "default": 0.06},
+            "lid_board_width": {"type": "number", "minimum": 0.01, "maximum": 1, "default": 0.12},
+            "grain_strength": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.55}
           },
           "unevaluatedProperties": false
         },

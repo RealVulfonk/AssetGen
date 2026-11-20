@@ -1,0 +1,18 @@
+{
+  "name": "plank_broken_01",
+  "category": "props",
+  "seed": 21,
+  "pivot": "bottom_center",
+  "tri_budget": 150,
+  "expected_size": [0.84, 0.14, 0.027],
+  "collision": "mesh",
+  "materials": {
+    "wood": "#5a3f2a"
+  },
+  "parts": [
+    {"comment": "длинная доска с рваным обломом на конце", "type": "extrude", "material": "wood",
+     "points": [[0, -0.07], [0.66, -0.07], [0.78, -0.058], [0.70, -0.032], [0.83, -0.014], [0.72, 0.008], [0.84, 0.030], [0.71, 0.052], [0.79, 0.07], [0, 0.07]],
+     "depth": 0.026,
+     "bevel": {"width": 0.004, "segments": 1}, "jitter": 0.002}
+  ]
+}

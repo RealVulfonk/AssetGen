@@ -1,0 +1,724 @@
+{
+  "name": "ironbound_chest_01",
+  "category": "props",
+  "seed": 42,
+  "pivot": "bottom_center",
+  "tri_budget": 1150,
+  "expected_size": [
+    0.82,
+    0.55,
+    0.6
+  ],
+  "collision": "box",
+  "materials": {
+    "wood": "#4a3f35",
+    "brass": "#7a5614",
+    "iron": "#3b2a22"
+  },
+  "parts": [
+    {
+      "comment": "Solid oak chest body",
+      "type": "box",
+      "material": "wood",
+      "size": [
+        0.78,
+        0.48,
+        0.306
+      ],
+      "location": [
+        0,
+        0,
+        0.199
+      ],
+      "bevel": {
+        "width": 0.009,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Plinth around the foot of the chest",
+      "type": "box",
+      "material": "brass",
+      "size": [
+        0.802,
+        0.5,
+        0.047
+      ],
+      "location": [
+        0,
+        0,
+        0.068
+      ]
+    },
+    {
+      "comment": "Metal rim at the lid seam",
+      "type": "box",
+      "material": "brass",
+      "size": [
+        0.823,
+        0.521,
+        0.035
+      ],
+      "location": [
+        0,
+        0,
+        0.343
+      ]
+    },
+    {
+      "comment": "Corner feet brace the plinth",
+      "type": "box",
+      "material": "brass",
+      "size": [
+        0.097,
+        0.093,
+        0.083
+      ],
+      "location": [
+        0.348,
+        -0.204,
+        0.0415
+      ],
+      "bevel": {
+        "width": 0.012,
+        "segments": 1
+      },
+      "mirror_x": true,
+      "array": {
+        "count": 2,
+        "offset": [
+          0,
+          0.408,
+          0
+        ]
+      }
+    },
+    {
+      "comment": "Upright corner reinforcements",
+      "type": "box",
+      "material": "iron",
+      "size": [
+        0.073,
+        0.493,
+        0.241
+      ],
+      "location": [
+        0.368,
+        0,
+        0.205
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "Faceted barrel lid in horizontal oak",
+      "type": "extrude",
+      "material": "wood",
+      "points": [
+        [
+          -0.248,
+          0
+        ],
+        [
+          0.248,
+          0
+        ],
+        [
+          0.248,
+          0.035
+        ],
+        [
+          0.213,
+          0.105
+        ],
+        [
+          0.152,
+          0.161
+        ],
+        [
+          0.076,
+          0.202
+        ],
+        [
+          0,
+          0.22
+        ],
+        [
+          -0.076,
+          0.202
+        ],
+        [
+          -0.152,
+          0.161
+        ],
+        [
+          -0.213,
+          0.105
+        ],
+        [
+          -0.248,
+          0.035
+        ]
+      ],
+      "depth": 0.808,
+      "location": [
+        -0.404,
+        0,
+        0.344
+      ],
+      "rotation": [
+        90,
+        0,
+        90
+      ]
+    },
+    {
+      "comment": "Outer straps brace the curved lid",
+      "type": "extrude",
+      "material": "brass",
+      "points": [
+        [
+          -0.2597,
+          0
+        ],
+        [
+          -0.2597,
+          0.043
+        ],
+        [
+          -0.223,
+          0.113
+        ],
+        [
+          -0.1591,
+          0.169
+        ],
+        [
+          -0.0796,
+          0.21
+        ],
+        [
+          0,
+          0.228
+        ],
+        [
+          0.0796,
+          0.21
+        ],
+        [
+          0.1591,
+          0.169
+        ],
+        [
+          0.223,
+          0.113
+        ],
+        [
+          0.2597,
+          0.043
+        ],
+        [
+          0.2597,
+          0
+        ],
+        [
+          0.233,
+          0
+        ],
+        [
+          0.2331,
+          0.022
+        ],
+        [
+          0.2002,
+          0.092
+        ],
+        [
+          0.1429,
+          0.148
+        ],
+        [
+          0.0714,
+          0.189
+        ],
+        [
+          0,
+          0.207
+        ],
+        [
+          -0.0714,
+          0.189
+        ],
+        [
+          -0.1429,
+          0.148
+        ],
+        [
+          -0.2002,
+          0.092
+        ],
+        [
+          -0.2331,
+          0.022
+        ],
+        [
+          -0.233,
+          0
+        ]
+      ],
+      "depth": 0.055,
+      "location": [
+        0.354,
+        0,
+        0.344
+      ],
+      "rotation": [
+        90,
+        0,
+        90
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "Two narrower straps cross the curved lid",
+      "type": "extrude",
+      "material": "brass",
+      "points": [
+        [
+          -0.2597,
+          0
+        ],
+        [
+          0.2597,
+          0
+        ],
+        [
+          0.2597,
+          0.043
+        ],
+        [
+          0.223,
+          0.113
+        ],
+        [
+          0.1591,
+          0.169
+        ],
+        [
+          0.0796,
+          0.21
+        ],
+        [
+          0,
+          0.228
+        ],
+        [
+          -0.0796,
+          0.21
+        ],
+        [
+          -0.1591,
+          0.169
+        ],
+        [
+          -0.223,
+          0.113
+        ],
+        [
+          -0.2597,
+          0.043
+        ]
+      ],
+      "depth": 0.024,
+      "location": [
+        0.135,
+        0,
+        0.344
+      ],
+      "rotation": [
+        90,
+        0,
+        90
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "Low crown studs seated into the outer straps",
+      "type": "cylinder",
+      "material": "brass",
+      "radius": 0.022,
+      "radius_top": 0,
+      "height": 0.057,
+      "segments": 4,
+      "location": [
+        0.381,
+        -0.1,
+        0.562
+      ],
+      "mirror_x": true,
+      "array": {
+        "count": 2,
+        "offset": [
+          0,
+          0.2,
+          0
+        ]
+      }
+    },
+    {
+      "comment": "Face strap behind the lock plate",
+      "type": "box",
+      "material": "iron",
+      "size": [
+        0.75,
+        0.025,
+        0.043
+      ],
+      "location": [
+        0,
+        -0.243,
+        0.286
+      ]
+    },
+    {
+      "comment": "Recessed backing plate for the skull crest",
+      "type": "extrude",
+      "material": "iron",
+      "points": [
+        [
+          -0.067,
+          -0.065
+        ],
+        [
+          0.067,
+          -0.065
+        ],
+        [
+          0.084,
+          -0.02
+        ],
+        [
+          0.079,
+          0.043
+        ],
+        [
+          0.043,
+          0.075
+        ],
+        [
+          -0.043,
+          0.075
+        ],
+        [
+          -0.079,
+          0.043
+        ],
+        [
+          -0.084,
+          -0.02
+        ]
+      ],
+      "depth": 0.036,
+      "location": [
+        0,
+        -0.239,
+        0.351
+      ],
+      "rotation": [
+        90,
+        0,
+        0
+      ]
+    },
+    {
+      "comment": "Skull crest brow and forehead",
+      "type": "extrude",
+      "material": "brass",
+      "points": [
+        [
+          -0.05,
+          -0.016
+        ],
+        [
+          0.05,
+          -0.016
+        ],
+        [
+          0.059,
+          0.003
+        ],
+        [
+          0.047,
+          0.046
+        ],
+        [
+          0.022,
+          0.056
+        ],
+        [
+          -0.022,
+          0.056
+        ],
+        [
+          -0.047,
+          0.046
+        ],
+        [
+          -0.059,
+          0.003
+        ]
+      ],
+      "depth": 0.023,
+      "location": [
+        0,
+        -0.269,
+        0.381
+      ],
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "bevel": {
+        "width": 0.004,
+        "segments": 1
+      }
+    },
+    {
+      "comment": "Side bones touch brow and jaw and leave eye recesses",
+      "type": "extrude",
+      "material": "brass",
+      "points": [
+        [
+          0.035,
+          -0.036
+        ],
+        [
+          0.055,
+          -0.027
+        ],
+        [
+          0.058,
+          0.011
+        ],
+        [
+          0.043,
+          0.016
+        ],
+        [
+          0.038,
+          -0.006
+        ],
+        [
+          0.025,
+          -0.016
+        ]
+      ],
+      "depth": 0.023,
+      "location": [
+        0,
+        -0.269,
+        0.356
+      ],
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "Zygomatic arches and tapered jaw",
+      "type": "extrude",
+      "material": "brass",
+      "points": [
+        [
+          -0.05,
+          0.005
+        ],
+        [
+          -0.027,
+          0.016
+        ],
+        [
+          0,
+          0.016
+        ],
+        [
+          0.027,
+          0.016
+        ],
+        [
+          0.05,
+          0.005
+        ],
+        [
+          0.03,
+          -0.026
+        ],
+        [
+          0.02,
+          -0.041
+        ],
+        [
+          -0.02,
+          -0.041
+        ],
+        [
+          -0.03,
+          -0.026
+        ]
+      ],
+      "depth": 0.026,
+      "location": [
+        0,
+        -0.269,
+        0.33
+      ],
+      "rotation": [
+        90,
+        0,
+        0
+      ]
+    },
+    {
+      "comment": "Nose ridge joins the brow to the jaw",
+      "type": "box",
+      "material": "brass",
+      "size": [
+        0.017,
+        0.024,
+        0.043
+      ],
+      "location": [
+        0,
+        -0.281,
+        0.356
+      ]
+    },
+    {
+      "comment": "Lower strike plate",
+      "type": "box",
+      "material": "brass",
+      "size": [
+        0.056,
+        0.036,
+        0.055
+      ],
+      "location": [
+        0,
+        -0.249,
+        0.275
+      ]
+    },
+    {
+      "comment": "Small rivets on the seam band",
+      "type": "cylinder",
+      "material": "iron",
+      "radius": 0.008,
+      "height": 0.01,
+      "segments": 6,
+      "location": [
+        0.102,
+        -0.263,
+        0.343
+      ],
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "mirror_x": true,
+      "array": {
+        "count": 4,
+        "offset": [
+          0.088,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "comment": "Handle mounts sit on the front oak panel",
+      "type": "box",
+      "material": "brass",
+      "size": [
+        0.095,
+        0.023,
+        0.027
+      ],
+      "location": [
+        0.225,
+        -0.241,
+        0.207
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "Closed D-shaped pull seated against its handle mount",
+      "type": "extrude",
+      "material": "iron",
+      "points": [
+        [
+          -0.05,
+          0
+        ],
+        [
+          -0.041,
+          -0.043
+        ],
+        [
+          -0.025,
+          -0.054
+        ],
+        [
+          0.025,
+          -0.054
+        ],
+        [
+          0.041,
+          -0.043
+        ],
+        [
+          0.05,
+          0
+        ],
+        [
+          0.036,
+          0
+        ],
+        [
+          0.028,
+          -0.031
+        ],
+        [
+          0.019,
+          -0.038
+        ],
+        [
+          -0.019,
+          -0.038
+        ],
+        [
+          -0.028,
+          -0.031
+        ],
+        [
+          -0.036,
+          0
+        ]
+      ],
+      "depth": 0.014,
+      "location": [
+        0.225,
+        -0.247,
+        0.214
+      ],
+      "rotation": [
+        90,
+        0,
+        0
+      ],
+      "mirror_x": true
+    }
+  ]
+}

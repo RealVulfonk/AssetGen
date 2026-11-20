@@ -1,0 +1,10 @@
+{
+  "asset": "vase_stone_01",
+  "size": 256,
+  "seed": 64,
+  "pack_uv": true,
+  "materials": {
+    "stone": {"preset": "stone", "palette": "flower_white_soft", "scale": 4, "detail": 5, "contrast": 0.55, "brightness": -0.02, "ao": 0.25, "edge": 0.08, "roughness": 0.86},
+    "default": {"preset": "flat", "palette": "flower_white_soft"}
+  }
+}

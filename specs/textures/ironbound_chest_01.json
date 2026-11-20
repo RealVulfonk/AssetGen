@@ -1,0 +1,44 @@
+{
+  "asset": "ironbound_chest_01",
+  "size": 256,
+  "seed": 42,
+  "samples": 32,
+  "materials": {
+    "wood": {
+      "preset": "wood",
+      "palette": "wood_old",
+      "scale": 8,
+      "direction": "Z",
+      "distortion": 1.7,
+      "contrast": 0.74,
+      "ao": 0.24,
+      "edge": 0.07,
+      "roughness": 0.88
+    },
+    "brass": {
+      "preset": "metal",
+      "palette": "gold",
+      "scale": 15,
+      "contrast": 0.48,
+      "brightness": -0.065,
+      "ao": 0.28,
+      "edge": 0.11,
+      "metallic": 0.7,
+      "roughness": 0.63
+    },
+    "iron": {
+      "preset": "metal",
+      "palette": "rust_iron",
+      "scale": 15,
+      "contrast": 0.55,
+      "ao": 0.26,
+      "edge": 0.08,
+      "metallic": 0.52,
+      "roughness": 0.78
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "wood_dark_soft"
+    }
+  }
+}

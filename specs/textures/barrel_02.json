@@ -1,0 +1,44 @@
+{
+  "asset": "barrel_02",
+  "size": 256,
+  "pack_uv": true,
+  "seed": 7,
+  "materials": {
+    "wood": {
+      "preset": "coopered_wood",
+      "palette": "bark_red_soft",
+      "staves": 12,
+      "seam_width": 0.075,
+      "lid_board_width": 0.105,
+      "grain_strength": 0.6,
+      "ao": 0.22,
+      "edge": 0.1,
+      "contrast": 1.05,
+      "brightness": 0.12,
+      "source_detail": {
+        "image": "night_courtyard_wood_v1.png",
+        "tile_size": 1.1,
+        "strength": 0.45
+      }
+    },
+    "metal": {
+      "preset": "metal",
+      "palette": "iron",
+      "scale": 18,
+      "ao": 0.18,
+      "edge": 0.1,
+      "brightness": 0.1,
+      "metallic": 0.65,
+      "roughness": 0.72,
+      "source_detail": {
+        "image": "night_courtyard_iron_v1.png",
+        "tile_size": 0.4,
+        "strength": 0.4
+      }
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "stone_grey_soft"
+    }
+  }
+}

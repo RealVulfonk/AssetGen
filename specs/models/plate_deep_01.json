@@ -1,0 +1,17 @@
+{
+  "name": "plate_deep_01",
+  "category": "props",
+  "seed": 31,
+  "pivot": "bottom_center",
+  "tri_budget": 350,
+  "expected_size": [0.28, 0.28, 0.065],
+  "collision": "mesh",
+  "materials": {
+    "ceramic": "#8a8578"
+  },
+  "parts": [
+    {"comment": "глубокая тарелка: поддон, пологие стенки, закругленный борт", "type": "lathe", "material": "ceramic", "segments": 12,
+     "profile": [[0, 0], [0.05, 0], [0.075, 0.004], [0.105, 0.016], [0.125, 0.038], [0.133, 0.056], [0.136, 0.062], [0.126, 0.062], [0.117, 0.044], [0.098, 0.024], [0.07, 0.012], [0, 0.01]],
+     "jitter": 0.001}
+  ]
+}

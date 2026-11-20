@@ -1,0 +1,32 @@
+{
+  "name": "window_02",
+  "category": "architecture",
+  "seed": 38,
+  "pivot": "bottom_center",
+  "tri_budget": 400,
+  "expected_size": [0.84, 0.21, 1.02],
+  "collision": "box",
+  "materials": {
+    "wood": "#5a3f2a",
+    "wood_dark": "#3a281b"
+  },
+  "parts": [
+    {"comment": "подоконник, шире рамы", "type": "box", "material": "wood", "size": [0.84, 0.18, 0.07],
+     "location": [0, 0, 0.035],
+     "bevel": {"width": 0.005, "segments": 1}, "jitter": 0.002},
+    {"comment": "боковые стойки рамы", "type": "box", "material": "wood", "size": [0.06, 0.12, 0.85],
+     "location": [0.36, 0.06, 0.56], "mirror_x": true,
+     "bevel": {"width": 0.005, "segments": 1}, "jitter": 0.002},
+    {"comment": "нижняя перекладина рамы", "type": "box", "material": "wood", "size": [0.72, 0.12, 0.07],
+     "location": [0, 0.06, 0.135], "jitter": 0.002},
+    {"comment": "верхняя перекладина рамы", "type": "box", "material": "wood", "size": [0.72, 0.12, 0.07],
+     "location": [0, 0.06, 0.985], "jitter": 0.002},
+    {"comment": "закрытые ставни", "type": "box", "material": "wood", "size": [0.325, 0.04, 0.78],
+     "location": [0.1625, 0.05, 0.56], "mirror_x": true,
+     "bevel": {"width": 0.004, "segments": 1}, "jitter": 0.002},
+    {"comment": "горизонтальные планки на лицевой стороне ставен", "type": "box", "material": "wood_dark", "size": [0.30, 0.014, 0.055],
+     "location": [0.1625, 0.02, 0.35], "array": {"count": 3, "offset": [0, 0, 0.21]}, "mirror_x": true},
+    {"comment": "планки на обратной стороне ставен", "type": "box", "material": "wood_dark", "size": [0.30, 0.014, 0.055],
+     "location": [0.1625, 0.08, 0.35], "array": {"count": 3, "offset": [0, 0, 0.21]}, "mirror_x": true}
+  ]
+}

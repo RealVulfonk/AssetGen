@@ -1,5 +1,6 @@
 """Integration checks for generated reports, previews and GLB files (system Python)."""
 
+import argparse
 import json
 import struct
 import sys
@@ -24,6 +25,14 @@ def read_glb(path):
     return document
 
 
+def assert_lighting_preview(output):
+    path = output / "preview_lighting.png"
+    with path.open("rb") as handle:
+        header = handle.read(24)
+    assert header[:8] == b"\x89PNG\r\n\x1a\n", f"{path}: invalid PNG"
+    assert struct.unpack_from(">II", header, 16) == (1024, 512), f"{path}: expected two 512 px frames"
+
+
 def assert_texture_samplers(document, texture_spec, asset_name, variant):
     expected_mag = 9728 if texture_spec.get("pixel", False) else 9729
     expected_min = (9984, 9986) if texture_spec.get("pixel", False) else (9985, 9987)
@@ -44,15 +53,42 @@ def assert_texture_samplers(document, texture_spec, asset_name, variant):
     assert checked, f"{asset_name}{variant}: no textured samplers checked"
 
 
-def main():
+def assert_material_opacity(document, texture_spec, expected_tags, label):
+    materials = {
+        material["name"]: material
+        for material in document.get("materials", [])
+        if "baseColorTexture" in material.get("pbrMetallicRoughness", {})
+    }
+    assert set(materials) == set(expected_tags), f"{label}: exported material tags differ from the model"
+    configs = texture_spec["materials"]
+    for tag, material in materials.items():
+        opacity = configs.get(tag, configs.get("default", {})).get("opacity", 1)
+        alpha = material["pbrMetallicRoughness"].get("baseColorFactor", [1, 1, 1, 1])[3]
+        assert abs(alpha - opacity) < 1e-6, f"{label}/{tag}: alpha {alpha} differs from opacity {opacity}"
+        mode = material.get("alphaMode", "OPAQUE")
+        if opacity == 1:
+            assert mode == "OPAQUE", f"{label}/{tag}: expected an opaque material"
+        else:
+            # Blender may export exactly zero as a mask that discards every fragment.
+            invisible_mask = opacity == 0 and mode == "MASK" and material.get("alphaCutoff", 0.5) > 0
+            assert mode == "BLEND" or invisible_mask, f"{label}/{tag}: unexpected alpha mode {mode}"
+            assert material.get("doubleSided") is True, f"{label}/{tag}: transparent material is one-sided"
+
+
+def verify(out_root, assets=()):
     model_count = 0
     texture_count = 0
     missing = []
+    found = set()
     for spec_path in sorted((ROOT / "specs/models").glob("*.json")):
         spec = json.loads(spec_path.read_text(encoding="utf-8"))
         name = spec["name"]
-        output = output_dir(ROOT / "out", name, spec.get("category"))
+        if assets and name not in assets:
+            continue
+        found.add(name)
+        output = output_dir(out_root, name, spec.get("category"))
         if not (output / "report.json").is_file():
+            assert not assets, f"{name}: model report missing in {output}"
             # Specs are committed; builds are not. Iterating on a few assets at a
             # time is normal, so skip what was never built instead of failing.
             missing.append(name)
@@ -87,9 +123,18 @@ def main():
         model_count += 1
 
         texture_spec_path = ROOT / "specs/textures" / f"{name}.json"
-        if not texture_spec_path.exists() or not (output / "report_texture.json").is_file():
+        if not texture_spec_path.exists():
+            if report.get("lighting_preview"):
+                assert_lighting_preview(output)
+            continue
+        if not (output / "report_texture.json").is_file():
+            assert not assets, f"{name}: texture report missing in {output}"
+            if report.get("lighting_preview"):
+                assert_lighting_preview(output)
             continue
         texture_report = json.loads((output / "report_texture.json").read_text(encoding="utf-8"))
+        if texture_report.get("lighting_preview"):
+            assert_lighting_preview(output)
         assert texture_report["status"] == "OK", f"{name}: texture warnings"
         assert (output / f"{name}_albedo.png").is_file(), f"{name}: albedo missing"
         assert document.get("images"), f"{name}: no embedded GLB image"
@@ -101,9 +146,12 @@ def main():
         assert textured_materials, f"{name}: no textured material in GLB"
         texture_spec = json.loads(texture_spec_path.read_text(encoding="utf-8"))
         assert_texture_samplers(document, texture_spec, name, "")
+        assert_material_opacity(document, texture_spec, report["materials"], name)
         godot_glb = output / f"{name}_godot.glb"
         if godot_glb.is_file():
-            assert_texture_samplers(read_glb(godot_glb), texture_spec, name, "_godot")
+            godot_document = read_glb(godot_glb)
+            assert_texture_samplers(godot_document, texture_spec, name, "_godot")
+            assert_material_opacity(godot_document, texture_spec, report["materials"], f"{name}_godot")
         if "material_settings" in texture_report:
             packed = texture_report.get("pack_uv", False)
             if "pack_uv" in texture_report:
@@ -122,8 +170,13 @@ def main():
             assert set(texture_report["material_settings"]) == set(texture_report["materials"]), (
                 f"{name}: material settings do not match material slots"
             )
+            configs = texture_spec["materials"]
+            for tag, settings in texture_report["material_settings"].items():
+                opacity = configs.get(tag, configs.get("default", {})).get("opacity", 1)
+                assert settings.get("opacity", 1) == opacity, f"{name}/{tag}: report opacity differs from spec"
         texture_count += 1
 
+    assert not (set(assets) - found), f"Unknown assets: {sorted(set(assets) - found)}"
     print(f"Verified {model_count} models and {texture_count} textured GLBs")
     if missing:
         print(f"Skipped {len(missing)} specs that are not built in out/: {', '.join(missing[:8])}"
@@ -131,4 +184,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("assets", nargs="*", help="asset names to require; omit to scan built assets")
+    parser.add_argument("--out", type=Path, default=ROOT / "out")
+    args = parser.parse_args()
+    verify(args.out, args.assets)

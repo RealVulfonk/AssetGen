@@ -1,0 +1,26 @@
+{
+  "name": "plank_splinters_01",
+  "category": "props",
+  "seed": 24,
+  "pivot": "bottom_center",
+  "tri_budget": 200,
+  "expected_size": [0.49, 0.3, 0.025],
+  "collision": "mesh",
+  "materials": {
+    "wood": "#8a6136"
+  },
+  "parts": [
+    {"comment": "длинная щепка", "type": "extrude", "material": "wood",
+     "points": [[0, -0.009], [0.32, -0.006], [0.42, 0.0], [0.32, 0.006], [0, 0.009]],
+     "depth": 0.008, "rotation": [0, 0, 28], "location": [-0.15, -0.06, 0], "jitter": 0.0015},
+    {"comment": "средняя щепка", "type": "extrude", "material": "wood",
+     "points": [[0, -0.008], [0.24, -0.005], [0.31, 0.001], [0.23, 0.006], [0, 0.008]],
+     "depth": 0.007, "rotation": [0, 0, -42], "location": [0.11, 0.03, 0], "jitter": 0.0015},
+    {"comment": "короткая щепка", "type": "extrude", "material": "wood",
+     "points": [[0, -0.011], [0.13, -0.008], [0.19, 0.003], [0.11, 0.009], [0, 0.011]],
+     "depth": 0.011, "rotation": [0, 0, 75], "location": [0.05, -0.09, 0], "jitter": 0.0015},
+    {"comment": "осколок-кубик", "type": "box", "material": "wood", "size": [0.05, 0.035, 0.02],
+     "location": [0.0, 0.08, 0], "rotation": [0, 0, 15],
+     "bevel": {"width": 0.003, "segments": 1}, "jitter": 0.002}
+  ]
+}

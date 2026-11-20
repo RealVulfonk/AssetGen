@@ -7,6 +7,7 @@ import json
 import math
 import os
 import sys
+from pathlib import Path
 
 import bpy
 
@@ -43,8 +44,8 @@ scene.camera = camera
 for name in NAMES:
     with open(os.path.join(ROOT, "specs", "models", f"{name}.json"), encoding="utf-8") as handle:
         category = json.load(handle).get("category")
-    folder = output_dir(ROOT, name, category)
-    blend = os.path.join(folder, f"{name}.blend")
+    folder = output_dir(Path(ROOT) / "out", name, category)
+    blend = os.path.join(str(folder), f"{name}.blend")
     with bpy.data.libraries.load(blend) as (source, target):
         # A collision mesh is stored as "<name>-colonly" and would match the
         # prefix, so exclude the suffixes Godot uses for collision-only nodes.

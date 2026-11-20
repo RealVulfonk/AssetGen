@@ -1,0 +1,47 @@
+{
+  "asset": "door_arch_heavy_01",
+  "size": 512,
+  "seed": 65,
+  "pack_uv": true,
+  "materials": {
+    "wood": {
+      "preset": "wood",
+      "palette": "wood_oak",
+      "scale": 3.5,
+      "direction": "X",
+      "detail": 3,
+      "distortion": 4,
+      "contrast": 0.15,
+      "brightness": 0.12,
+      "ao": 0.24,
+      "edge": 0.12,
+      "roughness": 0.94,
+      "source_detail": {
+        "image": "door_worn_wood_v1.png",
+        "tile_size": 1.4,
+        "strength": 1.0
+      }
+    },
+    "metal": {
+      "preset": "metal",
+      "palette": "rust_iron",
+      "scale": 14,
+      "detail": 3,
+      "contrast": 0.65,
+      "brightness": 0.06,
+      "ao": 0.2,
+      "edge": 0.2,
+      "metallic": 0.5,
+      "roughness": 0.72,
+      "source_detail": {
+        "image": "metal_plate_02.jpg",
+        "tile_size": 0.3,
+        "strength": 0.25
+      }
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "wood_dark"
+    }
+  }
+}

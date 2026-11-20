@@ -1,0 +1,10 @@
+{
+  "asset": "window_glass_01",
+  "size": 128,
+  "seed": 7,
+  "materials": {
+    "frame": {"preset": "wood", "palette": "wood_dark_soft", "scale": 6, "detail": 5, "distortion": 0.4, "contrast": 0.85, "direction": "X", "ao": 0.3, "edge": 0.12, "roughness": 0.95},
+    "glass": {"preset": "flat", "palette": "glass_blue", "value": 0.6, "opacity": 0.35, "roughness": 0.24},
+    "default": {"preset": "flat", "palette": "wood_dark_soft"}
+  }
+}

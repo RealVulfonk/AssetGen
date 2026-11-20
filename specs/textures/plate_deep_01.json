@@ -1,0 +1,9 @@
+{
+  "asset": "plate_deep_01",
+  "size": 64,
+  "seed": 7,
+  "materials": {
+    "ceramic": {"preset": "noise", "palette": "stone_grey_soft", "scale": 25, "detail": 2, "contrast": 0.8, "ao": 0.3, "edge": 0.1, "roughness": 0.6},
+    "default": {"preset": "flat", "palette": "stone_grey_soft"}
+  }
+}

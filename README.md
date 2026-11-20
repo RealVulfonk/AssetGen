@@ -2,17 +2,26 @@
 
 JSON-driven генератор low-poly ассетов в стиле Neverlooted Dungeon. Агент описывает модель и текстуру в JSON; Blender-скрипты строят геометрию, UV и коллизию, запекают процедурный albedo и экспортируют GLB.
 
+Перед началом задачи открой [правила работы агентов](AGENTS.md). В [карточках задач](docs/tasks/) хранятся запросы, сообщения о багах, основания решений и результаты проверок.
+
+Для ночной партии достаточно написать агенту: «Сгенерируй модели по референсам из `D:\Refs\Props`». Агент осмотрит изображения, подготовит спеки и соберёт ассеты через CLI. В одной карточке останутся результаты по всей папке, ссылки на GLB и превью и вопросы к утреннему просмотру. [Порядок пакетной работы](AGENTS.md#папка-референсов-на-ночь)
+
+[Аудит и план развития AssetGen](docs/assetgen-improvement-plan.md) содержит исходные замеры и результаты последующих итераций по текстурам, углублениям и сборке.
+Визуальный ориентир для материалов и освещения — [ночной двор](docs/assetgen-improvement-plan.md#визуальный-ориентир).
+
+[Список ассетов для MoonProject](docs/moonproject-asset-list.md) связывает каталог AssetGen с потребностями первой миссии.
+
 ## Быстрый старт
 
-Требования: Python 3.10+, Blender 4.x/5.x, пакет `jsonschema`. NumPy уже входит в Blender.
+Требования: Python 3.10+, Blender 4.x/5.x, пакет `jsonschema`. NumPy уже входит в Blender. Для первой сборки используй готовую пару спек `barrel_01` из репозитория.
 
 ```powershell
 python -m pip install -r requirements.txt
-python assetgen.py new barrel barrel_01
 python assetgen.py validate barrel_01
-python assetgen.py model barrel_01
 python assetgen.py validate-texture barrel_01
-python assetgen.py texture barrel_01
+python assetgen.py model barrel_01 --no-copy
+python assetgen.py texture barrel_01 --no-copy
+python tests/verify_outputs.py barrel_01
 ```
 
 Путь к Blender задаётся в `assetgen.config.json`; переменная окружения `BLENDER` имеет приоритет. Результаты появляются в `out/<group>/<asset>/`, где группа выводится из `category` спеки:
@@ -45,7 +54,10 @@ python tools/regroup_out.py
 - `<asset>_godot.glb` — вариант с `-colonly` для Godot, если включена коллизия;
 - `<asset>_tex.blend` и `<asset>_albedo.png` — после запекания;
 - `preview_front.png`, `preview_side.png`, `preview_iso.png`, `preview_top.png`;
+- `preview_lighting.png` при сборке с `--lighting-preview`;
 - `report.json` и `report_texture.json`.
+
+Для изолированной сборки можно переопределить папку через `ASSETGEN_OUT` и добавить `--no-copy` к команде сборки. CLI публикует файлы после завершения Blender. Повторный `model` сбрасывает результаты старого запекания. Если базовая сборка сделана до появления `model_digest` или JSON модели изменился, перед `texture` один раз запусти `model`.
 
 ## Скрипты
 
@@ -89,6 +101,8 @@ python tools/regroup_out.py
 
 ## Godot
 
+Для проверки материала в двух вариантах освещения используй `python assetgen.py texture barrel_01 --lighting-preview`. Флаг работает и с `model` для моделей без запекания. Godot берётся из `GODOT_BIN` или `PATH`, рендеру нужна графическая сессия. В PNG слева холодный общий свет, справа к нему добавлен тёплый фонарь. Оба кадра используют один GLB, камеру и фон. Для пакетной сборки флоры флаг доступен как `-LightingPreview`.
+
 Чтобы автоматически копировать GLB и albedo (без превью), укажи в `assetgen.config.json` относительный или абсолютный путь:
 
 ```json
@@ -103,13 +117,15 @@ python tools/regroup_out.py
 
 ## DSL модели
 
-Примитивы: `box`, `cylinder`, `sphere`, `lathe`, `extrude`. Общие операции: `scale`, `rotation`, `location`, `bevel`, `jitter`, `array`, `mirror_x`. Полная строгая схема — `schemas/model.schema.json`.
+Примитивы: `box`, `cylinder`, `sphere`, `lathe`, `extrude`, `plane`. Общие операции: `scale`, `rotation`, `location`, `bevel`, `jitter`, `array`, `mirror_x`. Полная строгая схема — `schemas/model.schema.json`.
+
+Опциональный массив `cutouts` вычитает закрытые `box` и `cylinder` из одной замкнутой детали. Применяется после `scale`, `bevel` и `jitter`, в метрах относительно детали до её поворота, смещения и отражения. Резец должен пересечь поверхность. Если один конец остаётся внутри детали, получается глухая полость. Если резец пересекает всю её толщину, получается сквозное отверстие. Внутренние грани получают материал своей детали. Пример — [глазницы skull_01](specs/models/skull_01.json). `mesh` повторяет вырез в коллизии, `convex` охватывает его выпуклой оболочкой.
 
 `uv_projection: "cylindrical"` применяет к детали `lathe` боковую полосу и две плоские крышки. Профиль идёт снизу вверх, начинается и заканчивается на оси и имеет плоские торцы, как у корпуса `barrel_01`. Smart UV разворачивает остальные детали, затем сборщик пакует все острова в общий атлас.
 
 Шаблоны: `barrel`, `door`, `coffin`, `bone`, `chest`, `skull`, `candle`, `torch`, `pillar`, `urn`, `table`, `cell_bars`.
 
-Правила для агента и рекомендации по размерам находятся в `.claude/skills/assetgen/SKILL.md`. Обычный authoring меняет только JSON; сопровождение генератора выполняется как отдельная явно запрошенная задача с обновлением схемы, тестов и документации.
+Новый проп начни командой `python assetgen.py new <template> <свободное_имя>`. Она создаёт спеку модели. Для запекания добавь одноимённую спеку текстуры. Существующий проп правь в его JSON. Рекомендации по размерам и материалам собраны в [навыке AssetGen](.claude/skills/assetgen/SKILL.md).
 
 ## Текстуры
 
@@ -118,6 +134,29 @@ python tools/regroup_out.py
 ```powershell
 python assetgen.py validate-texture pillar
 ```
+
+### Стекло
+
+В текстурной спеке `opacity` задаёт непрозрачность всего материала от `0` до `1` (по умолчанию `1`). Поле работает и с пресетами, и с `layers`. `roughness` управляет шероховатостью от `0` до `1` (по умолчанию `0.9`). Цвет обоих материалов запекается в общий RGB-атлас, а коэффициент альфы записывается отдельно в GLB на этапе `texture`.
+
+Назначь раме и стеклу разные теги. Для остекления используй одну деталь `plane` с простым контуром `points` в локальной плоскости XY и поверни её в плоскость рамы. При `opacity < 1` материал экспортируется двусторонним, поэтому одной поверхности достаточно для обзора с обеих сторон.
+
+```json
+"materials": {
+  "frame": {"preset": "wood", "palette": "wood_dark_soft"},
+  "glass": {"preset": "flat", "palette": "glass_blue", "value": 0.6, "opacity": 0.35, "roughness": 0.24}
+}
+```
+
+```powershell
+python assetgen.py model window_glass_01 --no-copy
+python assetgen.py texture window_glass_01 --no-copy --lighting-preview
+python tests/verify_outputs.py window_glass_01
+$window = Join-Path (Get-Location) "out/interiors/window_glass_01"
+& $env:GODOT_BIN --path godot/lighting_preview --script (Resolve-Path tests/verify_glass_import.gd).Path -- "$window/window_glass_01.glb" "$window/preview_through_glass.png"
+```
+
+Конвейер пропов MoonProject сохраняет первые два слота, поэтому с дополнительными тегами проверь, что стекло сохранило свой материал после обработки. Перекрывающиеся прозрачные поверхности, например внутренняя и внешняя стенки бутылки, требуют отдельной визуальной проверки сортировки в Godot. [Ограничения прозрачности Godot](https://docs.godotengine.org/en/stable/tutorials/3d/3d_rendering_limitations.html#transparency-sorting)
 
 ### Мягкий стиль по умолчанию
 
@@ -171,6 +210,10 @@ factor = clamp((pattern - contrast_pivot) * contrast + contrast_pivot + brightne
 ### Пресеты и слои
 
 `wood` смешивает направленные Wave-волокна с широким и мелким Noise. `stone` использует широкий Noise как основу, Voronoi как вторичные включения и мелкий Noise как зерно. `metal`, `bone`, `cloth` пока используют Noise; `flat` — Constant.
+
+`coopered_wood` — рецепт для формы с осью Z в центре объекта, например [barrel_01](specs/textures/barrel_01.json). Клёпки идут вокруг оси, доски горизонтальных крышек — вдоль Y. `staves` задаёт количество клёпок, `seam_width` — ширину стыка как долю ширины доски, `lid_board_width` — ширину доски крышки в метрах, `grain_strength` — выраженность волокон.
+
+В любой материал можно добавить `source_detail`, как в [спеке бочки](specs/textures/barrel_01.json). `image` выбирает JPG или PNG из [presets/textures](presets/textures/), `tile_size` задаёт размер повтора в метрах, `strength` управляет влиянием фактуры от 0 до 1. Используется проекция по трём осям объекта. Фактура меняет яркость цвета из палитры, а итог по-прежнему запекается в общий albedo заданного размера.
 
 Для расширенной настройки вместо `preset` можно задать от 1 до 4 слоёв:
 
@@ -263,6 +306,7 @@ powershell -File tools/build_flora.ps1 -Pattern conifer
 
 ```powershell
 python -m unittest discover -s tests -p "test_*.py" -v
+python tests/verify_reference_builds.py
 python tests/verify_outputs.py
 & $env:BLENDER -b --factory-startup --python-exit-code 1 -P tests/verify_texture_pipeline.py -- $PWD
 & $env:BLENDER -b --factory-startup --python-exit-code 1 -P tests/verify_texture_colors.py -- $PWD
@@ -270,6 +314,8 @@ python tests/verify_outputs.py
 ```
 
 Если `BLENDER` не задана, укажи полный путь к `blender.exe`.
+
+`verify_reference_builds.py` запускает обычный CLI в пустой временной папке, требует все ожидаемые артефакты и проверяет геометрию глухого и сквозного вырезов и глубину глазниц.
 
 Для отдельного замера UV передай проверяемый `.blend`, имя ассета, путь JSON-отчёта и поле в пикселях из `report_texture.json`:
 

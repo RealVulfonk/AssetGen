@@ -3,6 +3,7 @@
 import importlib.util
 import os
 import sys
+from tempfile import TemporaryDirectory
 
 import bpy
 
@@ -102,6 +103,23 @@ weighted = {
 }
 assert_baked_factor(weighted, 0.75, "weighted constant layers")
 
+with TemporaryDirectory() as source_dir:
+    source = bpy.data.images.new("source_black", 1, 1)
+    source.pixels[:] = (0.0, 0.0, 0.0, 1.0)
+    source.filepath_raw = os.path.join(source_dir, "black.png")
+    source.file_format = "PNG"
+    source.save()
+    bpy.data.images.remove(source)
+    original_source_dir = texture.SOURCE_TEXTURES
+    texture.SOURCE_TEXTURES = source_dir
+    with_image = {
+        **base,
+        "contrast": 0,
+        "source_detail": {"image": "black.png", "tile_size": 0.6, "strength": 0.5},
+    }
+    assert_baked_factor(with_image, 0.25, "source detail modulates linear albedo")
+    texture.SOURCE_TEXTURES = original_source_dir
+
 zero_contrast = {**base, "layers": [{"type": "constant", "value": 0.25}], "contrast": 0}
 assert_baked_factor(zero_contrast, 0.5, "zero contrast pivot")
 
@@ -124,6 +142,18 @@ for pixel, expected_interpolation in ((True, "Closest"), (False, "Linear")):
     texture.finalize_material(material, {"roughness": 0.9, "metallic": 0}, filter_image, pixel)
     image_node = next(node for node in material.node_tree.nodes if node.type == "TEX_IMAGE")
     assert image_node.interpolation == expected_interpolation
+for opacity in (None, 0, 0.35, 1):
+    raw_config = {"palette": "stone_grey"}
+    if opacity is not None:
+        raw_config["opacity"] = opacity
+    expected_alpha = 1.0 if opacity is None else opacity
+    config = texture.resolve_material(raw_config)
+    material.use_backface_culling = True
+    texture.finalize_material(material, config, filter_image, False)
+    principled = next(node for node in material.node_tree.nodes if node.type == "BSDF_PRINCIPLED")
+    assert_close(principled.inputs["Alpha"].default_value, expected_alpha, 1e-6, "material alpha")
+    assert config["opacity"] == expected_alpha
+    assert material.use_backface_culling == (expected_alpha == 1)
 bpy.data.images.remove(filter_image)
 
 quantized_image = bpy.data.images.new("quantize_test", 2, 2, alpha=False)

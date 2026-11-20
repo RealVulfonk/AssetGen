@@ -1,0 +1,10 @@
+{
+  "asset": "window_02",
+  "size": 128,
+  "seed": 7,
+  "materials": {
+    "wood": {"preset": "wood", "palette": "wood_dark_soft", "scale": 6, "detail": 5, "distortion": 0.4, "contrast": 0.85, "direction": "X", "ao": 0.3, "edge": 0.12, "roughness": 0.95},
+    "wood_dark": {"preset": "wood", "palette": "wood_dark_soft", "scale": 7, "detail": 4, "distortion": 0.5, "contrast": 0.75, "brightness": -0.06, "direction": "X", "ao": 0.32, "edge": 0.12, "roughness": 0.95},
+    "default": {"preset": "flat", "palette": "wood_dark_soft"}
+  }
+}

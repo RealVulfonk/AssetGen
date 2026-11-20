@@ -1,0 +1,10 @@
+{
+  "asset": "apple_01",
+  "size": 64,
+  "seed": 7,
+  "materials": {
+    "fruit": {"preset": "noise", "palette": "berry_red_soft", "scale": 6, "detail": 3, "contrast": 0.85, "ao": 0.35, "edge": 0.15, "roughness": 0.55},
+    "stem": {"preset": "noise", "palette": "stem_cream_soft", "scale": 12, "detail": 2, "contrast": 0.8, "ao": 0.3, "edge": 0.1, "roughness": 0.9},
+    "default": {"preset": "flat", "palette": "berry_red_soft"}
+  }
+}

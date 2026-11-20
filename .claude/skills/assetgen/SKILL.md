@@ -5,15 +5,17 @@ description: Generate low-poly dungeon models and textures for Godot through thi
 
 # Skill: AssetGen (low-poly dungeon props)
 
-## ЖЕЛЕЗНЫЕ ПРАВИЛА
-1. При обычном создании ассетов НЕ меняй код в `blender/`, схемы и тесты — меняй ТОЛЬКО JSON в `specs/`.
-   Исключение — явно запрошенное сопровождение генератора/DSL: тогда можно менять `assetgen.py`, `blender/*.py`, схемы, пресеты, тесты и документацию, обновляя их согласованно. Никогда не меняй bpy/Python просто ради настройки отдельного ассета.
+До работы со спекой создай или открой карточку задачи по [правилам репозитория](../../../AGENTS.md). Здесь описаны операции над ассетом.
+
+## Работа со спекой
+
+1. Для отдельного пропа описывай геометрию и текстуру в JSON в `specs/`. Изменения генератора и DSL выполняй в рамках задачи на их сопровождение.
 2. Цвета текстур — ТОЛЬКО имена палитр из `presets/palettes.json` или явный список hex, если пользователь его дал.
-3. Всегда начинай с шаблона: `python assetgen.py new <template> <name>`.
+3. Для нового пропа выбери свободное имя и выполни `python assetgen.py new <template> <name>`. Для правки существующего открой его спеку. Для флоры используй генератор семейств ниже.
    Ближайший шаблон: бочка/ваза/кубок → `barrel` или `urn` (lathe);
    дверь/ящик/стол/полка → `door`, `chest`, `table` (box);
    гроб/надгробие/щит → `coffin` (extrude); кость/факел/палка → `bone` или `torch`.
-4. Максимум 3 итерации сборки. Потом покажи результат пользователю и спроси.
+4. Между сборками сверь отчёт и превью с критерием карточки. Повторяй сборку после конкретной правки. Если выбор между художественными вариантами требует решения автора, сохрани ракурсы для сравнения и сформулируй вопрос.
 5. Имена: snake_case + номер для вариантов: `barrel_01`, `coffin_stone_02`.
 6. Не добавляй поля, которых нет в схеме. Назначение части записывай в `comment`.
 
@@ -43,17 +45,19 @@ description: Generate low-poly dungeon models and textures for Godot through thi
 - `box`, `cylinder`, `sphere` центрированы; `lathe`, `extrude` начинаются от z=0.
 - Порядок: создание → scale → bevel → jitter → rotate → translate → mirror.
 - `array.offset` задаёт шаг в метрах; `mirror_x` отражает часть вместе с её положением.
+- `cutouts` вычитает резцы `box` и `cylinder` из замкнутой части после scale/bevel/jitter, до поворота и смещения. Резец пересекает наружную поверхность, материал стенок наследуется от части. Пример — `skull_01`.
 - `uv_projection: "cylindrical"` даёт детали `lathe` непрерывную боковую полосу и две плоские крышки. Подходит для восходящего профиля с плоскими торцами, как корпус `barrel_01`.
 - `pivot`: `bottom_center` для предметов на полу, `hinge_left` для дверей, `center` для свободно вращающихся объектов.
 - `collision`: `mesh` повторяет видимую геометрию для статичных предметов; `convex` создаёт выпуклую оболочку; `box` — дешёвый куб; `none` — без коллизии.
 - Теги материалов связывают модель и текстуру: `wood`, `metal`, `bone`, `stone`, `cloth`, `gold`.
+- Для стекла используй одну `plane` с простым контуром `points` в локальной XY. Поверни её в плоскость проёма. Назначь отдельные теги `frame` и `glass`, чтобы при обработке MoonProject они поместились в два слота.
 
 ## ПРОЦЕСС: МОДЕЛЬ
-1. Выбери шаблон, создай спеку командой `new`.
+1. Открой спеку модели или создай её по правилам выше.
 2. Продумай части. Каждой части дай `comment` и `material`.
 3. Заполни `expected_size`, `tri_budget`, `pivot` и при необходимости `collision`.
 4. `python assetgen.py validate <name>` → исправляй, пока не будет OK.
-5. `python assetgen.py model <name>`.
+5. Для локальной сборки выполни `python assetgen.py model <name> --no-copy`.
 6. Прочитай `out/<group>/<name>/report.json`: status, warnings, tris, dimensions.
    Группа (`interiors` / `exteriors` / `environment`) выводится из `category`
    спеки; точный путь даёт `python tools/outdir.py <name>`.
@@ -65,6 +69,7 @@ description: Generate low-poly dungeon models and textures for Godot through thi
 1. Возьми список materials из `report.json` модели.
 2. Создай `specs/textures/<name>.json`. Каждому тегу назначь preset + palette; добавь `default`.
    - wood → `wood` (direction X — вертикальные волокна, Z — горизонтальные);
+   - клёпаный корпус вокруг Z → `coopered_wood` (число клёпок, ширина стыка, ширина досок крышки и выраженность волокон);
    - stone → `stone`;
    - metal/bone/cloth → `noise`/`metal`/`bone`/`cloth`;
    - маленькое однотонное → `flat`.
@@ -72,10 +77,21 @@ description: Generate low-poly dungeon models and textures for Godot through thi
    Для ретро задай явно `pixel: true`, `quantize: true` и `gradient: constant` у материалов; исходные палитры сохранены.
 4. size: мелочь 64, проп 128, крупное 256. По умолчанию samples 64, margin 4. Для `pack_uv: true` поле по умолчанию равно 1, 2 или 4 px соответственно. Для проверки упаковки используй `tools/inspect_uv.py`.
 5. `python assetgen.py validate-texture <name>` → исправь спеку до запуска Blender.
-6. `python assetgen.py texture <name>` → смотри превью и `report_texture.json`.
+6. `python assetgen.py texture <name> --no-copy` → смотри превью и `report_texture.json`.
 7. Слишком пёстро → уменьши contrast или сузь палитру. Contrast работает вокруг `contrast_pivot` (0.5).
    AO и edge применяются поверх цвета: для мягкого стиля начинай с ao 0.2–0.35, edge 0.05–0.15.
 8. Собственные `layers` используй только если пресет не даёт нужного рисунка. Не сочетай их с `preset` и preset-only полями.
+
+В примере рама использует непрозрачный материал, а стекло получает собственную альфу.
+
+```json
+"materials": {
+  "frame": {"preset": "wood", "palette": "wood_dark_soft"},
+  "glass": {"preset": "flat", "palette": "glass_blue", "value": 0.6, "opacity": 0.35, "roughness": 0.24}
+}
+```
+
+`opacity` от `0` до `1` задаёт альфу всего материала, по умолчанию `1`. Значение меньше `1` делает материал двусторонним. `roughness` от `0` до `1` задаёт шероховатость, по умолчанию `0.9`. Собери модель через `python assetgen.py model window_glass_01 --no-copy`, затем запеки текстуру через `python assetgen.py texture window_glass_01 --no-copy --lighting-preview`. Для проверки импорта и съёмки через стекло используй `tests/verify_glass_import.gd` по команде из README.
 
 ## ТИПИЧНЫЕ ОШИБКИ
 - box центрирован: чтобы стоял на полу, `location.z = size.z / 2`.

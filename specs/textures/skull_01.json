@@ -1,6 +1,6 @@
 {
   "asset": "skull_01",
-  "size": 64,
+  "size": 128,
   "seed": 1,
   "samples": 64,
   "margin": 4,
@@ -11,18 +11,10 @@
       "scale": 6,
       "contrast": 0.35,
       "brightness": 0.12,
-      "ao": 0.28,
+      "ao": 0.62,
+      "ao_distance": 0.08,
       "edge": 0.08,
       "roughness": 0.9
-    },
-    "dark": {
-      "preset": "flat",
-      "palette": "iron",
-      "contrast": 0,
-      "brightness": -0.15,
-      "ao": 0.15,
-      "edge": 0,
-      "roughness": 1.0
     },
     "default": {
       "preset": "flat",

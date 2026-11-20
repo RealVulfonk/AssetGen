@@ -1,0 +1,21 @@
+{
+  "name": "meat_raw_01",
+  "category": "props",
+  "seed": 36,
+  "pivot": "bottom_center",
+  "tri_budget": 200,
+  "expected_size": [0.33, 0.16, 0.14],
+  "collision": "convex",
+  "materials": {
+    "meat": "#8f2f28",
+    "bone": "#bdb39a"
+  },
+  "parts": [
+    {"comment": "кусок мяса неровной формы", "type": "sphere", "material": "meat", "radius": 0.09,
+     "segments": 8, "rings": 5, "scale": [1.25, 0.85, 0.75], "location": [-0.02, 0, 0.068], "jitter": 0.012},
+    {"comment": "кость из торца", "type": "cylinder", "material": "bone", "radius": 0.011, "height": 0.09,
+     "segments": 6, "rotation": [0, 90, 0], "location": [0.135, 0, 0.055]},
+    {"comment": "навершие кости", "type": "sphere", "material": "bone", "radius": 0.016,
+     "segments": 6, "rings": 4, "location": [0.185, 0, 0.055]}
+  ]
+}

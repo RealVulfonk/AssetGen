@@ -2,12 +2,11 @@
   "name": "skull_01",
   "category": "remains",
   "pivot": "bottom_center",
-  "tri_budget": 300,
+  "tri_budget": 400,
   "expected_size": [0.15, 0.2, 0.18],
   "collision": "convex",
   "materials": {
-    "bone": "#c9c2b2",
-    "dark": "#28262a"
+    "bone": "#c9c2b2"
   },
   "parts": [
     {
@@ -18,7 +17,15 @@
       "segments": 10,
       "rings": 6,
       "scale": [0.88, 1.12, 0.88],
-      "location": [0, 0.005, 0.105]
+      "location": [0, 0.005, 0.105],
+      "cutouts": [
+        {"type": "cylinder", "radius": 0.022, "radius_top": 0.032, "height": 0.064, "segments": 8,
+         "location": [0.035, -0.085, 0.014], "rotation": [90, 0, 0]},
+        {"type": "cylinder", "radius": 0.022, "radius_top": 0.032, "height": 0.064, "segments": 8,
+         "location": [-0.035, -0.085, 0.014], "rotation": [90, 0, 0]},
+        {"type": "cylinder", "radius": 0.006, "radius_top": 0.017, "height": 0.052, "segments": 3,
+         "location": [0, -0.090, -0.025], "rotation": [90, 0, 0]}
+      ]
     },
     {
       "comment": "небольшие гранёные скуловые бугры",
@@ -47,35 +54,6 @@
       "rotation": [90, 0, 0],
       "location": [0, 0.025, 0],
       "bevel": {"width": 0.006, "segments": 1}
-    },
-    {
-      "comment": "углублённая пятигранная глазница",
-      "type": "extrude",
-      "material": "dark",
-      "points": [
-        [0.012, 0.1],
-        [0.05, 0.102],
-        [0.058, 0.122],
-        [0.043, 0.137],
-        [0.016, 0.13]
-      ],
-      "depth": 0.012,
-      "rotation": [90, 0, 0],
-      "location": [0, -0.073, 0],
-      "mirror_x": true
-    },
-    {
-      "comment": "треугольная носовая полость",
-      "type": "extrude",
-      "material": "dark",
-      "points": [
-        [0, 0.1],
-        [-0.013, 0.075],
-        [0.013, 0.075]
-      ],
-      "depth": 0.008,
-      "rotation": [90, 0, 0],
-      "location": [0, -0.083, 0]
     }
   ]
 }

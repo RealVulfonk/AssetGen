@@ -1,0 +1,902 @@
+{
+  "name": "guard",
+  "category": "props",
+  "pivot": "bottom_center",
+  "tri_budget": 2700,
+  "expected_size": [
+    0.59,
+    0.38,
+    2.14
+  ],
+  "collision": "mesh",
+  "materials": {
+    "steel": "#8892a0",
+    "wood": "#5a3f2a",
+    "steel_dark": "#3d434c",
+    "cloth": "#6a2028",
+    "leather": "#5a3f2a",
+    "gold": "#b8862a"
+  },
+  "parts": [
+    {
+      "comment": "латный башмак (сабатон)",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.098,
+        0.205,
+        0.072
+      ],
+      "location": [
+        0.118,
+        -0.046,
+        0.036
+      ],
+      "bevel": {
+        "width": 0.012,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "носок сабатона, срезанный клин",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.086,
+        0.078,
+        0.052
+      ],
+      "location": [
+        0.118,
+        -0.142,
+        0.026
+      ],
+      "bevel": {
+        "width": 0.01,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "пятка",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.082,
+        0.058,
+        0.058
+      ],
+      "location": [
+        0.118,
+        0.026,
+        0.029
+      ],
+      "bevel": {
+        "width": 0.008,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "поперечный ремешок через подъём",
+      "type": "box",
+      "material": "steel_dark",
+      "size": [
+        0.104,
+        0.032,
+        0.024
+      ],
+      "location": [
+        0.118,
+        -0.03,
+        0.076
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "наножник (голень)",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.124,
+        0.152,
+        0.42
+      ],
+      "location": [
+        0.118,
+        -0.004,
+        0.335
+      ],
+      "bevel": {
+        "width": 0.014,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "икра: утолщение сзади",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.104,
+        0.052,
+        0.2
+      ],
+      "location": [
+        0.118,
+        0.066,
+        0.43
+      ],
+      "bevel": {
+        "width": 0.012,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "гребень на голени",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.09,
+        0.024,
+        0.355
+      ],
+      "location": [
+        0.118,
+        -0.082,
+        0.345
+      ],
+      "bevel": {
+        "width": 0.006,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "ремень под коленом",
+      "type": "box",
+      "material": "steel_dark",
+      "size": [
+        0.134,
+        0.166,
+        0.03
+      ],
+      "location": [
+        0.118,
+        -0.004,
+        0.5
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "наколенник (понож)",
+      "type": "sphere",
+      "material": "steel",
+      "radius": 0.082,
+      "segments": 6,
+      "rings": 4,
+      "scale": [
+        0.84,
+        0.9,
+        0.92
+      ],
+      "location": [
+        0.118,
+        -0.022,
+        0.585
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "боковое крыло наколенника",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.03,
+        0.075,
+        0.065
+      ],
+      "location": [
+        0.184,
+        -0.012,
+        0.582
+      ],
+      "rotation": [
+        0,
+        14,
+        0
+      ],
+      "bevel": {
+        "width": 0.006,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "бедро (набедренник), верх уходит под юбку",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.146,
+        0.172,
+        0.32
+      ],
+      "location": [
+        0.118,
+        -0.008,
+        0.76
+      ],
+      "bevel": {
+        "width": 0.012,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "юбка (фаульды): раструб от пояса вниз",
+      "type": "lathe",
+      "material": "steel",
+      "profile": [
+        [
+          0.0,
+          0.26
+        ],
+        [
+          0.15,
+          0.26
+        ],
+        [
+          0.158,
+          0.222
+        ],
+        [
+          0.186,
+          0.148
+        ],
+        [
+          0.208,
+          0.052
+        ],
+        [
+          0.215,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "segments": 10,
+      "location": [
+        0.0,
+        0.0,
+        0.72
+      ],
+      "scale": [
+        1.0,
+        0.88,
+        1.0
+      ]
+    },
+    {
+      "comment": "тёмная кромка по низу юбки",
+      "type": "cylinder",
+      "material": "steel_dark",
+      "radius": 0.212,
+      "radius_top": 0.22,
+      "height": 0.042,
+      "segments": 10,
+      "location": [
+        0.0,
+        0.0,
+        0.74
+      ],
+      "mirror_x": false,
+      "scale": [
+        1.0,
+        0.88,
+        1.0
+      ]
+    },
+    {
+      "comment": "ташка на бедре, наклонена по раструбу",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.1,
+        0.026,
+        0.15
+      ],
+      "location": [
+        0.105,
+        -0.172,
+        0.855
+      ],
+      "rotation": [
+        -14,
+        0,
+        0
+      ],
+      "bevel": {
+        "width": 0.008,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "пояс",
+      "type": "box",
+      "material": "leather",
+      "size": [
+        0.31,
+        0.25,
+        0.068
+      ],
+      "location": [
+        0.0,
+        0.0,
+        1.052
+      ],
+      "bevel": {
+        "width": 0.012,
+        "segments": 1
+      },
+      "mirror_x": false
+    },
+    {
+      "comment": "пряжка пояса",
+      "type": "box",
+      "material": "gold",
+      "size": [
+        0.072,
+        0.03,
+        0.08
+      ],
+      "location": [
+        0.0,
+        -0.122,
+        1.052
+      ],
+      "bevel": {
+        "width": 0.008,
+        "segments": 1
+      },
+      "mirror_x": false
+    },
+    {
+      "comment": "кираса: грудная клетка",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.31,
+        0.245,
+        0.235
+      ],
+      "location": [
+        0.0,
+        0.0,
+        1.255
+      ],
+      "bevel": {
+        "width": 0.02,
+        "segments": 1
+      },
+      "mirror_x": false
+    },
+    {
+      "comment": "кираса: талия, сужается к поясу",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.268,
+        0.222,
+        0.15
+      ],
+      "location": [
+        0.0,
+        -0.004,
+        1.085
+      ],
+      "bevel": {
+        "width": 0.016,
+        "segments": 1
+      },
+      "mirror_x": false
+    },
+    {
+      "comment": "сюрко: полотнище на груди",
+      "type": "box",
+      "material": "cloth",
+      "size": [
+        0.18,
+        0.032,
+        0.235
+      ],
+      "location": [
+        0.0,
+        -0.108,
+        1.262
+      ],
+      "mirror_x": false
+    },
+    {
+      "comment": "наплечник: чашка",
+      "type": "sphere",
+      "material": "steel",
+      "radius": 0.098,
+      "segments": 8,
+      "rings": 4,
+      "scale": [
+        1.0,
+        0.95,
+        0.85
+      ],
+      "location": [
+        0.18,
+        0.0,
+        1.325
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "верхняя ламель наплечника",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.175,
+        0.208,
+        0.04
+      ],
+      "location": [
+        0.205,
+        0.0,
+        1.372
+      ],
+      "rotation": [
+        0,
+        26,
+        0
+      ],
+      "bevel": {
+        "width": 0.01,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "нижняя ламель наплечника",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.155,
+        0.194,
+        0.038
+      ],
+      "location": [
+        0.238,
+        0.0,
+        1.286
+      ],
+      "rotation": [
+        0,
+        46,
+        0
+      ],
+      "bevel": {
+        "width": 0.01,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "ремень через плечо",
+      "type": "box",
+      "material": "leather",
+      "size": [
+        0.09,
+        0.19,
+        0.032
+      ],
+      "location": [
+        0.112,
+        0.0,
+        1.342
+      ],
+      "rotation": [
+        0,
+        20,
+        0
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "верхняя часть руки (наруч)",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.102,
+        0.118,
+        0.25
+      ],
+      "location": [
+        0.21239663762000818,
+        0.0,
+        1.1762164914073037
+      ],
+      "rotation": [
+        0,
+        -8.0,
+        0
+      ],
+      "bevel": {
+        "width": 0.014,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "налокотник",
+      "type": "sphere",
+      "material": "steel",
+      "radius": 0.066,
+      "segments": 6,
+      "rings": 4,
+      "scale": [
+        0.9,
+        0.95,
+        0.88
+      ],
+      "location": [
+        0.23979327524001637,
+        -0.004,
+        1.0364329828146075
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "шип на налокотнике",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.028,
+        0.044,
+        0.044
+      ],
+      "location": [
+        0.28479327524001635,
+        -0.018,
+        1.0404329828146075
+      ],
+      "rotation": [
+        0,
+        30,
+        0
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "предплечье",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.09,
+        0.106,
+        0.23
+      ],
+      "location": [
+        0.24381618565599705,
+        0.0,
+        0.9078705925340568
+      ],
+      "rotation": [
+        0,
+        -5.0,
+        0
+      ],
+      "bevel": {
+        "width": 0.012,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "латная рукавица",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.09,
+        0.098,
+        0.115
+      ],
+      "location": [
+        0.25583909607197775,
+        -0.01,
+        0.7373082022535059
+      ],
+      "bevel": {
+        "width": 0.012,
+        "segments": 1
+      },
+      "mirror_x": true
+    },
+    {
+      "comment": "большой палец рукавицы",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.03,
+        0.058,
+        0.046
+      ],
+      "location": [
+        0.21183909607197773,
+        -0.05,
+        0.7493082022535059
+      ],
+      "rotation": [
+        0,
+        0,
+        -18
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "древко копья",
+      "type": "cylinder",
+      "material": "wood",
+      "radius": 0.016,
+      "height": 2.0,
+      "segments": 6,
+      "location": [
+        0.25,
+        -0.02,
+        1.0
+      ],
+      "mirror_x": false
+    },
+    {
+      "comment": "пятка древка (подток)",
+      "type": "cylinder",
+      "material": "steel_dark",
+      "radius": 0.023,
+      "height": 0.07,
+      "segments": 6,
+      "location": [
+        0.25,
+        -0.02,
+        0.035
+      ],
+      "mirror_x": false
+    },
+    {
+      "comment": "втулка наконечника",
+      "type": "cylinder",
+      "material": "steel",
+      "radius": 0.025,
+      "height": 0.075,
+      "segments": 6,
+      "location": [
+        0.25,
+        -0.02,
+        1.968
+      ],
+      "mirror_x": false
+    },
+    {
+      "comment": "наконечник копья: плоский лист",
+      "type": "extrude",
+      "material": "steel",
+      "depth": 0.022,
+      "points": [
+        [
+          -0.03,
+          0.0
+        ],
+        [
+          -0.044,
+          0.058
+        ],
+        [
+          -0.014,
+          0.15
+        ],
+        [
+          0.0,
+          0.195
+        ],
+        [
+          0.014,
+          0.15
+        ],
+        [
+          0.044,
+          0.058
+        ],
+        [
+          0.03,
+          0.0
+        ]
+      ],
+      "location": [
+        0.25,
+        -0.009,
+        1.95
+      ],
+      "rotation": [
+        90,
+        0,
+        0
+      ]
+    },
+    {
+      "comment": "шея",
+      "type": "cylinder",
+      "material": "cloth",
+      "radius": 0.055,
+      "height": 0.09,
+      "segments": 8,
+      "location": [
+        0.0,
+        0.0,
+        1.365
+      ],
+      "mirror_x": false
+    },
+    {
+      "comment": "горжет: воротник, раструб вверх",
+      "type": "cylinder",
+      "material": "steel",
+      "radius": 0.115,
+      "radius_top": 0.128,
+      "height": 0.07,
+      "segments": 10,
+      "location": [
+        0.0,
+        0.0,
+        1.4
+      ],
+      "mirror_x": false
+    },
+    {
+      "comment": "шлем (топфхельм)",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.245,
+        0.255,
+        0.275
+      ],
+      "location": [
+        0.0,
+        0.004,
+        1.5725
+      ],
+      "bevel": {
+        "width": 0.026,
+        "segments": 1
+      },
+      "mirror_x": false
+    },
+    {
+      "comment": "купол шлема",
+      "type": "sphere",
+      "material": "steel",
+      "radius": 0.09,
+      "segments": 8,
+      "rings": 4,
+      "scale": [
+        0.95,
+        1.0,
+        0.5
+      ],
+      "location": [
+        0.0,
+        0.004,
+        1.755
+      ],
+      "mirror_x": false
+    },
+    {
+      "comment": "нижний обод шлема",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.256,
+        0.266,
+        0.03
+      ],
+      "location": [
+        0.0,
+        0.004,
+        1.45
+      ],
+      "bevel": {
+        "width": 0.008,
+        "segments": 1
+      },
+      "mirror_x": false
+    },
+    {
+      "comment": "смотровая щель",
+      "type": "box",
+      "material": "steel_dark",
+      "size": [
+        0.19,
+        0.05,
+        0.024
+      ],
+      "location": [
+        0.0,
+        -0.116,
+        1.625
+      ],
+      "bevel": {
+        "width": 0.006,
+        "segments": 1
+      },
+      "mirror_x": false
+    },
+    {
+      "comment": "вертикальное ребро крестовины",
+      "type": "box",
+      "material": "steel",
+      "size": [
+        0.03,
+        0.036,
+        0.175
+      ],
+      "location": [
+        0.0,
+        -0.131,
+        1.585
+      ],
+      "bevel": {
+        "width": 0.006,
+        "segments": 1
+      },
+      "mirror_x": false
+    },
+    {
+      "comment": "отверстия для дыхания",
+      "type": "box",
+      "material": "steel_dark",
+      "size": [
+        0.046,
+        0.022,
+        0.022
+      ],
+      "location": [
+        0.055,
+        -0.126,
+        1.505
+      ],
+      "mirror_x": true
+    },
+    {
+      "comment": "заклёпки на затылке",
+      "type": "box",
+      "material": "steel_dark",
+      "size": [
+        0.022,
+        0.026,
+        0.022
+      ],
+      "location": [
+        0.088,
+        0.118,
+        1.6
+      ],
+      "mirror_x": true,
+      "array": {
+        "count": 3,
+        "offset": [
+          0,
+          0,
+          0.055
+        ]
+      }
+    }
+  ]
+}

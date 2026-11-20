@@ -1,0 +1,9 @@
+{
+  "asset": "plank_broken_02",
+  "size": 64,
+  "seed": 7,
+  "materials": {
+    "wood": {"preset": "wood", "palette": "wood_dark_soft", "scale": 5, "detail": 5, "distortion": 0.4, "contrast": 0.85, "direction": "Z", "ao": 0.3, "edge": 0.12, "roughness": 0.95},
+    "default": {"preset": "flat", "palette": "wood_dark_soft"}
+  }
+}
