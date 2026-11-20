@@ -67,6 +67,7 @@ h1,.editor h2{font-size:1.125rem;font-weight:600}
 .hint{font-size:.8125rem;line-height:1.5;margin-top:9px}
 .editor-section{border-top:1px solid var(--line);margin-top:20px;padding-top:18px}
 .editor-section h3{font-size:.875rem;margin-bottom:12px;font-weight:600}
+.material-settings>summary{cursor:pointer;font-size:.875rem;font-weight:600;padding:4px 0}
 .field{margin-top:14px}
 .field-top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.875rem;margin-bottom:7px}
 .changed{color:var(--accent)}

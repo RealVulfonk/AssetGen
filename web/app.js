@@ -1,5 +1,5 @@
 const $ = id => document.getElementById(id);
-const state = { data: null, active: null, selected: new Set(), patch: {}, tag: '', jobSignature: '' };
+const state = { data: null, active: null, selected: new Set(), patch: {}, tag: '', jobSignature: '', materialSettingsOpen: false };
 let viewer;
 
 function el(tag, text, className) {
@@ -168,7 +168,10 @@ function renderEditor() {
       field.append(text, input); imagesSection.append(field);
     }
   }
-  const settings = el('div', undefined, 'editor-section'); settings.append(el('h3', 'Параметры материала')); container.append(settings);
+  const settings = el('details', undefined, 'editor-section material-settings');
+  settings.open = state.materialSettingsOpen;
+  settings.addEventListener('toggle', () => { state.materialSettingsOpen = settings.open; });
+  settings.append(el('summary', 'Параметры материала')); container.append(settings);
   const defs = state.data.schema.$defs;
   const recipe = defs.material.oneOf.find(x => x.properties?.preset?.const === presetValue) || defs.material.oneOf[0];
   const properties = { ...defs.material_common.properties, ...(config.layers ? {} : recipe.properties) };
