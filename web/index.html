@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AssetGen · Мастерская</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+</head>
+<body>
+  <header><div class="brand"><span class="mark">A</span><strong>AssetGen</strong><span class="muted">/ Мастерская</span></div><div class="header-right"><span class="local">Локально</span><button id="refresh">Обновить каталог</button></div></header>
+  <main>
+    <aside class="library">
+      <div class="section-head"><h1>Модели</h1><span id="count" class="count">…</span></div>
+      <input id="search" type="search" placeholder="Найти модель…" aria-label="Поиск моделей">
+      <select id="category" aria-label="Категория"><option value="">Все категории</option></select>
+      <div class="selection-bar"><label><input id="select-visible" type="checkbox"> Выбрать найденные</label><button id="clear-selection" class="text-button">Снять</button></div>
+      <div id="assets" class="asset-list"><p class="muted">Загрузка каталога…</p></div>
+      <div class="library-foot"><span id="selected-count">Выбрано: 0</span><span class="muted">GLB · AssetGen</span></div>
+    </aside>
+    <section class="workspace">
+      <div class="asset-heading"><div><div class="eyebrow">ПРОСМОТР МОДЕЛИ</div><h2 id="asset-title">Выберите модель</h2><p id="asset-meta" class="muted">Геометрия и материал в одном ракурсе</p></div><button id="fit">Вписать в кадр</button></div>
+      <div id="viewers" class="viewers">
+        <div class="viewport" id="textured"><span class="view-label">С текстурой</span><div class="view-message"></div></div>
+        <div class="viewport" id="solid"><span class="view-label">Геометрия</span><div class="view-message"></div></div>
+      </div>
+      <div class="view-foot"><span>ЛКМ — вращение · колесо — масштаб · ПКМ — сдвиг</span><span>Камеры связаны</span></div>
+      <section class="jobs"><div class="section-head"><h3>Очередь запекания</h3><span id="queue-count" class="muted">Нет заданий</span></div><div id="jobs"><p class="empty">Выберите модели и настройте материал справа.</p></div></section>
+    </section>
+    <aside class="editor">
+      <div class="section-head"><h2>Материал</h2><span class="count">MVP</span></div>
+      <label class="field-label" for="tag">Тег в модели</label><select id="tag" disabled></select>
+      <p id="scope" class="hint">Выберите модель для настройки.</p>
+      <div id="editor-fields"></div>
+      <div class="editor-actions"><p id="changes" class="hint">Настройки ещё не менялись</p><button id="reset" class="secondary">Сбросить изменения</button><button id="generate" class="primary" disabled>Перегенерировать текстуры</button><p class="hint">Применяются только изменённые поля. Предыдущие файлы сохраняются в резервной копии. Копирования в игру нет.</p></div>
+    </aside>
+  </main>
+  <div id="notification" role="status" hidden></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

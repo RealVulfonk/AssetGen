@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 .blender_logs/
 *.blend1
+.workbench/
+web/node_modules/
