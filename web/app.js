@@ -208,9 +208,18 @@ function renderEditor() {
   const defs = state.data.schema.$defs;
   const recipe = defs.material.oneOf.find(x => x.properties?.preset?.const === presetValue) || defs.material.oneOf[0];
   const properties = { ...defs.material_common.properties, ...(config.layers || mode === 'image' ? {} : recipe.properties) };
+  const defaults = {};
+  const resetDefaults = el('button', 'Вернуть параметры по умолчанию', 'secondary');
+  resetDefaults.id = 'reset-material-defaults';
+  resetDefaults.onclick = () => {
+    Object.assign(state.patch, defaults);
+    renderEditor();
+  };
+  settings.append(resetDefaults, el('p', 'Значения для текущего рецепта. Применятся после перегенерации текстур.', 'hint'));
   for (const [key, raw] of Object.entries(properties)) {
     if (['palette', 'source_detail', 'source_mode', 'preset', 'layers'].includes(key) || (mode === 'image' && key === 'gradient')) continue;
     const schema = raw.$ref ? defs[raw.$ref.split('/').pop()] : raw;
+    if (Object.hasOwn(schema, 'default')) defaults[key] = schema.default;
     if (['number', 'integer'].includes(schema.type)) numberField(settings, key, schema, config[key]);
     else if (schema.enum) selectField(settings, labels[key] || key, schema.enum.map(v => [v, v]), config[key] ?? schema.default, value => { state.patch[key] = value; });
   }
