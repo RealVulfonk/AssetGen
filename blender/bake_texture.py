@@ -67,6 +67,7 @@ def resolve_material(config):
             value=0.6,
         )
     resolved.update(config)
+    resolved.setdefault("source_mode", "mixed" if resolved.get("source_detail") else "procedural")
     if "layers" in resolved:
         resolved["layers"] = [resolve_layer(layer) for layer in resolved["layers"]]
     return resolved
@@ -135,10 +136,13 @@ def multiply_color(nodes, links, color, gain):
     return node.outputs[0]
 
 
-def apply_source_detail(nodes, links, color, vector, config):
+def source_image(nodes, links, vector, config, *, rgb=False):
     texture = nodes.new("ShaderNodeTexImage")
     texture.image = bpy.data.images.load(os.path.join(SOURCE_TEXTURES, config["image"]), check_existing=True)
-    texture.image.colorspace_settings.name = "Non-Color"
+    # Separate datablocks: the same file can be used as RGB and tonal detail
+    # in different slots of the same bake without changing each other's space.
+    texture.image = texture.image.copy()
+    texture.image.colorspace_settings.name = "sRGB" if rgb else "Non-Color"
     texture.projection = "BOX"
     texture.projection_blend = 0.25
     texture.interpolation = "Linear"
@@ -147,8 +151,39 @@ def apply_source_detail(nodes, links, color, vector, config):
     mapping.inputs["Scale"].default_value = 1 / config["tile_size"]
     links.new(vector, mapping.inputs[0])
     links.new(mapping.outputs["Vector"], texture.inputs["Vector"])
+    return texture.outputs["Color"]
+
+
+def image_color(nodes, links, vector, config):
+    color = source_image(nodes, links, vector, config["source_detail"], rgb=True)
+    pivot = config["contrast_pivot"]
+    subtract = nodes.new("ShaderNodeVectorMath")
+    subtract.operation = "SUBTRACT"
+    links.new(color, subtract.inputs[0])
+    subtract.inputs[1].default_value = (pivot,) * 3
+    scale = nodes.new("ShaderNodeVectorMath")
+    scale.operation = "SCALE"
+    links.new(subtract.outputs["Vector"], scale.inputs[0])
+    scale.inputs["Scale"].default_value = config["contrast"]
+    add = nodes.new("ShaderNodeVectorMath")
+    add.operation = "ADD"
+    links.new(scale.outputs["Vector"], add.inputs[0])
+    add.inputs[1].default_value = (pivot + config["brightness"],) * 3
+    lower = nodes.new("ShaderNodeVectorMath")
+    lower.operation = "MAXIMUM"
+    links.new(add.outputs["Vector"], lower.inputs[0])
+    lower.inputs[1].default_value = (0, 0, 0)
+    upper = nodes.new("ShaderNodeVectorMath")
+    upper.operation = "MINIMUM"
+    links.new(lower.outputs["Vector"], upper.inputs[0])
+    upper.inputs[1].default_value = (1, 1, 1)
+    return upper.outputs["Vector"]
+
+
+def apply_source_detail(nodes, links, color, vector, config):
+    source = source_image(nodes, links, vector, config)
     grey = nodes.new("ShaderNodeRGBToBW")
-    links.new(texture.outputs["Color"], grey.inputs["Color"])
+    links.new(source, grey.inputs["Color"])
     # Treat the photograph as a tonal detail map, leaving the palette in charge of hue.
     strength = config["strength"]
     gain = math_node(nodes, links, "MULTIPLY", grey.outputs["Val"], 2 * strength)
@@ -267,16 +302,7 @@ def build_factor(nodes, links, pattern_socket, config):
     return math_node(nodes, links, "ADD", factor, 0.0, clamp=True)
 
 
-def build_bake_material(material, config, image, seed):
-    config = resolve_material(config)
-    material.use_nodes = True
-    nodes, links = material.node_tree.nodes, material.node_tree.links
-    nodes.clear()
-    output = nodes.new("ShaderNodeOutputMaterial")
-    emission = nodes.new("ShaderNodeEmission")
-    links.new(emission.outputs["Emission"], output.inputs["Surface"])
-    coordinates = nodes.new("ShaderNodeTexCoord")
-    vector = coordinates.outputs["Object"]
+def procedural_color(nodes, links, config, vector, seed):
     if config.get("preset") == "coopered_wood":
         factor = coopered_wood_pattern(nodes, links, config, vector, seed)
     else:
@@ -300,8 +326,24 @@ def build_bake_material(material, config, image, seed):
             element = color_ramp.elements.new(position)
             element.color = (*hex2lin(color), 1.0)
     links.new(factor, ramp.inputs["Fac"])
-    color = ramp.outputs["Color"]
-    if config.get("source_detail", {}).get("strength", 0) > 0:
+    return ramp.outputs["Color"]
+
+
+def build_bake_material(material, config, image, seed):
+    config = resolve_material(config)
+    material.use_nodes = True
+    nodes, links = material.node_tree.nodes, material.node_tree.links
+    nodes.clear()
+    output = nodes.new("ShaderNodeOutputMaterial")
+    emission = nodes.new("ShaderNodeEmission")
+    links.new(emission.outputs["Emission"], output.inputs["Surface"])
+    coordinates = nodes.new("ShaderNodeTexCoord")
+    vector = coordinates.outputs["Object"]
+    if config["source_mode"] == "image":
+        color = image_color(nodes, links, vector, config)
+    else:
+        color = procedural_color(nodes, links, config, vector, seed)
+    if config["source_mode"] == "mixed" and config.get("source_detail", {}).get("strength", 0) > 0:
         color = apply_source_detail(nodes, links, color, vector, config["source_detail"])
 
     if config["ao"] > 0:
@@ -465,7 +507,7 @@ def main():
         settings["palette"] = palette(config)
         if "layers" in config:
             settings["layers"] = config["layers"]
-        if config.get("preset") != "coopered_wood":
+        if config["source_mode"] != "image" and config.get("preset") != "coopered_wood":
             settings["resolved_layers"] = config.get("layers") or preset_layers(config)
         material_settings[name] = settings
 

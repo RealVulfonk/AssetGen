@@ -19,6 +19,12 @@
       "additionalProperties": {"$ref": "#/$defs/material"}
     }
   },
+  "allOf": [{
+    "if": {"properties": {"quantize": {"const": true}}, "required": ["quantize"]},
+    "then": {"properties": {"materials": {"additionalProperties": {
+      "properties": {"source_mode": {"not": {"const": "image"}}}
+    }}}}
+  }],
   "$defs": {
     "palette": {
       "oneOf": [
@@ -36,7 +42,12 @@
     "material_common": {
       "type": "object",
       "required": ["palette"],
+      "allOf": [{
+        "if": {"properties": {"source_mode": {"enum": ["image", "mixed"]}}, "required": ["source_mode"]},
+        "then": {"required": ["source_detail"]}
+      }],
       "properties": {
+        "source_mode": {"enum": ["procedural", "image", "mixed"]},
         "palette": {"$ref": "#/$defs/palette"},
         "gradient": {"enum": ["constant", "linear", "ease"], "default": "ease"},
         "contrast": {"type": "number", "minimum": 0, "maximum": 4, "default": 1},

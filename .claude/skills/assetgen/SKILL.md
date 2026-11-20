@@ -10,7 +10,7 @@ description: Generate low-poly dungeon models and textures for Godot through thi
 ## Работа со спекой
 
 1. Для отдельного пропа описывай геометрию и текстуру в JSON в `specs/`. Изменения генератора и DSL выполняй в рамках задачи на их сопровождение.
-2. Цвета текстур — ТОЛЬКО имена палитр из `presets/palettes.json` или явный список hex, если пользователь его дал.
+2. Для процедурного и смешанного режимов цвета — имена палитр из `presets/palettes.json` или явный список hex, если пользователь его дал. Для `source_mode: "image"` цвет берётся из RGB локальной карты, палитра сохраняется только для обратного переключения.
 3. Для нового пропа выбери свободное имя и выполни `python assetgen.py new <template> <name>`. Для правки существующего открой его спеку. Для флоры используй генератор семейств ниже.
    Ближайший шаблон: бочка/ваза/кубок → `barrel` или `urn` (lathe);
    дверь/ящик/стол/полка → `door`, `chest`, `table` (box);
@@ -66,6 +66,8 @@ description: Generate low-poly dungeon models and textures for Godot through thi
 8. Ответ пользователю: путь к .glb, превью, tris, размеры, список материалов.
 
 ## ПРОЦЕСС: ТЕКСТУРА
+Режим материала задаёт `source_mode`: `procedural` — рецепт/палитра, `image` — RGB изображения, `mixed` — рецепт/палитра с фактурой через яркость. Без поля сохраняется старое поведение: с `source_detail` mixed, без неё procedural. В image/mixed обязательна `source_detail`; в image `strength` игнорируется, `tile_size` задаёт масштаб. Для image выставляй `quantize: false`, иначе схема отклонит спеку. Перед сравнением исходного RGB начинай с `brightness: 0`, `contrast: 1`; AO и edge всё ещё влияют на bake.
+
 1. Возьми список materials из `report.json` модели.
 2. Создай `specs/textures/<name>.json`. Каждому тегу назначь preset + palette; добавь `default`.
    - wood → `wood` (direction X — вертикальные волокна, Z — горизонтальные);

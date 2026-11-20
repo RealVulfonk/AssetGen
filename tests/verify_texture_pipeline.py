@@ -118,6 +118,28 @@ with TemporaryDirectory() as source_dir:
         "source_detail": {"image": "black.png", "tile_size": 0.6, "strength": 0.5},
     }
     assert_baked_factor(with_image, 0.25, "source detail modulates linear albedo")
+    assert_baked_factor({**with_image, "source_mode": "procedural"}, 0.5, "procedural ignores image")
+    source = bpy.data.images.new("source_rgb", 1, 1)
+    source.colorspace_settings.name = "sRGB"
+    source.pixels[:] = (0.8, 0.4, 0.2, 1.0)
+    source.filepath_raw = os.path.join(source_dir, "rgb.png")
+    source.file_format = "PNG"
+    source.save()
+    bpy.data.images.remove(source)
+    image_config = {**base, "source_mode": "image", "palette": ["#00ff00"],
+                    "source_detail": {"image": "rgb.png", "tile_size": 1, "strength": 0}}
+    # The saved image is reloaded as sRGB and converted to linear by Blender.
+    rgb = bake_color(image_config)
+    for channel, expected in zip(rgb[:3], (0.8, 0.4, 0.2)):
+        assert_close(channel, expected, 0.025, "image preserves RGB, ignores palette and detail strength")
+    grey = bake_color({**image_config, "contrast": 0, "brightness": 0.1})
+    for channel in grey[:3]:
+        assert_close(channel, linear_to_srgb(0.6), 0.025, "image brightness and contrast")
+    # Loading this same file as detail must not change the RGB datablock's space.
+    bake_color({**image_config, "source_mode": "mixed"})
+    again = bake_color(image_config)
+    for channel, expected in zip(again[:3], rgb[:3]):
+        assert_close(channel, expected, 0.025, "shared file colorspace isolation")
     texture.SOURCE_TEXTURES = original_source_dir
 
 zero_contrast = {**base, "layers": [{"type": "constant", "value": 0.25}], "contrast": 0}

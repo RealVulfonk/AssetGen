@@ -21,6 +21,11 @@ async function api(path, options) {
   return data;
 }
 function active() { return state.data?.assets.find(a => a.name === state.active); }
+function sourceMode(config) { return config.source_mode || (config.source_detail ? 'mixed' : 'procedural'); }
+function currentSource() {
+  const original = active()?.texture?.materials[state.tag] || {};
+  return state.patch.source_detail === null ? null : { ...original.source_detail, ...state.patch.source_detail };
+}
 function filtered() {
   const query = $('search').value.toLowerCase();
   return state.data.assets.filter(a => a.name.includes(query) && (!$('category').value || a.category === $('category').value));
@@ -33,7 +38,8 @@ function updateSelection() {
   $('select-visible').indeterminate = count > 0 && count < visible.length;
   const applicable = state.data.assets.filter(a => state.selected.has(a.name) && a.texture?.materials[state.tag]);
   $('scope').textContent = state.tag ? `Материал «${state.tag}» найден у ${applicable.length} из ${state.selected.size} выбранных моделей. Показаны параметры активной модели. Неизменённые поля у остальных сохранятся.` : 'Для модели нет рецепта текстуры.';
-  $('generate').disabled = !applicable.length;
+  const mode = state.patch.source_mode || sourceMode(active()?.texture?.materials[state.tag] || {});
+  $('generate').disabled = !applicable.length || (mode !== 'procedural' && !currentSource()?.image);
   $('generate').textContent = `Перегенерировать текстуры · ${applicable.length}`;
 }
 function renderList() {
@@ -121,51 +127,78 @@ function renderEditor() {
     const common = state.data.schema.$defs.material_common.properties;
     config = Object.fromEntries(Object.entries(config).filter(([key]) => key in common || key === 'preset' || key in state.patch));
   }
-  const section = el('div', undefined, 'editor-section'); section.append(el('h3', 'Рецепт поверхности')); container.append(section);
-  const presets = ['noise', 'wood', 'coopered_wood', 'stone', 'flat', 'metal', 'bone', 'cloth'];
+  const mode = state.patch.source_mode || sourceMode(original);
+  const sourceSection = el('div', undefined, 'editor-section'); container.append(sourceSection);
+  const modes = [['image', 'Из изображения'], ['procedural', 'Процедурный']];
+  if (mode === 'mixed') modes.push(['mixed', 'Смешанный · дополнительно']);
+  const changeMode = value => {
+    state.patch.source_mode = value;
+    if (value === 'image') Object.assign(state.patch, { brightness: 0, contrast: 1, contrast_pivot: 0.5 });
+    renderEditor();
+  };
+  selectField(sourceSection, 'Источник поверхности', modes, mode, changeMode);
+  const modeDescriptions = {
+    image: 'Цвет и рисунок берутся из изображения. Процедурный рецепт и палитра не используются.',
+    procedural: 'Рисунок создаётся процедурным рецептом, цвет задаётся палитрой. Изображения не используются.',
+    mixed: 'Процедурный рисунок и палитра дополняются фактурой изображения через его яркость. Это прежний способ AssetGen.',
+  };
+  sourceSection.append(el('p', modeDescriptions[mode], 'hint'));
+  const extra = el('details', undefined, 'field');
+  extra.append(el('summary', 'Дополнительный способ'));
+  const mixButton = el('button', mode === 'mixed' ? 'Смешанный режим выбран' : 'Использовать смешанный режим');
+  mixButton.disabled = mode === 'mixed'; mixButton.onclick = () => changeMode('mixed');
+  extra.append(mixButton); sourceSection.append(extra);
+  if (mode === 'image') sourceSection.append(el('p', 'Для сохранения цвета изображения привязка к палитре (quantize) отключается для всего атласа при запекании.', 'hint'));
   const presetValue = config.layers ? 'layers' : config.preset || 'noise';
-  const choices = presets.map(p => [p, p]);
-  if (config.layers) choices.unshift(['layers', 'Собственные слои JSON']);
-  selectField(section, 'Процедурный рисунок', choices, presetValue, value => {
-    state.patch = { ...Object.fromEntries(Object.entries(state.patch).filter(([k]) => k in state.data.schema.$defs.material_common.properties)), preset: value };
-    renderEditor();
-  });
-  section.append(el('p', 'Смена рецепта заменяет его специальные параметры. Выбор фактуры ниже сохраняет рисунок и стыки.', 'hint'));
-  const palettes = Object.keys(state.data.palettes);
-  const paletteChoices = palettes.map(p => [p, p]);
-  if (Array.isArray(config.palette)) paletteChoices.unshift(['custom', 'Своя палитра JSON']);
-  const paletteSelect = selectField(section, 'Палитра', paletteChoices, Array.isArray(config.palette) ? 'custom' : config.palette, value => {
-    if (value !== 'custom') state.patch.palette = value;
-    else delete state.patch.palette;
+  if (mode !== 'image') {
+    const section = el('div', undefined, 'editor-section'); section.append(el('h3', 'Рецепт поверхности')); container.append(section);
+    const presets = ['noise', 'wood', 'coopered_wood', 'stone', 'flat', 'metal', 'bone', 'cloth'];
+    const choices = presets.map(p => [p, p]);
+    if (config.layers) choices.unshift(['layers', 'Собственные слои JSON']);
+    selectField(section, 'Процедурный рисунок', choices, presetValue, value => {
+      state.patch = { ...Object.fromEntries(Object.entries(state.patch).filter(([k]) => k in state.data.schema.$defs.material_common.properties)), preset: value };
+      renderEditor();
+    });
+    section.append(el('p', 'Смена рецепта заменяет его специальные параметры. Выбор фактуры ниже сохраняет рисунок и стыки.', 'hint'));
+    const palettes = Object.keys(state.data.palettes);
+    const paletteChoices = palettes.map(p => [p, p]);
+    if (Array.isArray(config.palette)) paletteChoices.unshift(['custom', 'Своя палитра JSON']);
+    const paletteSelect = selectField(section, 'Палитра', paletteChoices, Array.isArray(config.palette) ? 'custom' : config.palette, value => {
+      if (value !== 'custom') state.patch.palette = value;
+      else delete state.patch.palette;
+      swatches();
+    });
+    const colors = el('div', undefined, 'palette-preview'); section.append(colors);
+    function swatches() { colors.replaceChildren(...(state.data.palettes[paletteSelect.value] || config.palette || []).map(color => { const swatch = el('span'); swatch.style.background = color; return swatch; })); }
     swatches();
-  });
-  const colors = el('div', undefined, 'palette-preview'); section.append(colors);
-  function swatches() { colors.replaceChildren(...(state.data.palettes[paletteSelect.value] || config.palette || []).map(color => { const swatch = el('span'); swatch.style.background = color; return swatch; })); }
-  swatches();
-  const imagesSection = el('div', undefined, 'editor-section'); imagesSection.append(el('h3', 'Фактура из изображения')); container.append(imagesSection);
-  const source = state.patch.source_detail === null ? null : { ...original.source_detail, ...state.patch.source_detail };
-  const imageChoices = [['', 'Только процедурный рисунок'], ...state.data.images.map(i => [i, i])];
-  selectField(imagesSection, 'Исходник', imageChoices, source?.image || '', value => {
-    state.patch.source_detail = value ? { ...state.patch.source_detail, image: value } : null;
-    renderEditor();
-  });
-  const grid = el('div', undefined, 'image-grid');
-  for (const image of state.data.images) {
-    const button = el('button', undefined, `image-choice${source?.image === image ? ' active' : ''}`);
-    const img = el('img'); img.src = `/textures/${image}`; img.alt = ''; img.loading = 'lazy';
-    button.title = image; button.setAttribute('aria-label', `Фактура ${image}`);
-    button.append(img, el('span', image.replace(/\.(png|jpe?g)$/, '')));
-    button.onclick = () => { state.patch.source_detail = { ...state.patch.source_detail, image }; renderEditor(); };
-    grid.append(button);
   }
-  imagesSection.append(grid, el('p', 'Карта добавляет фактуру через яркость. Цвет задаётся палитрой. Результат обновится после запекания.', 'hint'));
-  if (source?.image) {
-    for (const [key, label, min, max, step, fallback] of [['tile_size', 'Размер повтора, м', 0.01, 100, 0.01, 1], ['strength', 'Влияние фактуры', 0, 1, 0.01, 0.6]]) {
-      const field = el('div', undefined, 'field'); const text = el('label', label, 'field-label');
-      const input = el('input'); input.type = 'number'; input.id = `source-${key}`; text.htmlFor = input.id;
-      input.min = min; input.max = max; input.step = step; input.value = source[key] ?? fallback;
-      input.oninput = () => { if (input.value !== '' && input.validity.valid) { state.patch.source_detail = { ...state.patch.source_detail, [key]: Number(input.value) }; text.classList.add('changed'); changed(); } };
-      field.append(text, input); imagesSection.append(field);
+  if (mode !== 'procedural') {
+    const imagesSection = el('div', undefined, 'editor-section'); imagesSection.append(el('h3', mode === 'image' ? 'Изображение поверхности' : 'Дополнительная фактура')); container.append(imagesSection);
+    const source = currentSource();
+    const imageChoices = [['', 'Выберите изображение…'], ...state.data.images.map(i => [i, i])];
+    selectField(imagesSection, 'Исходник', imageChoices, source?.image || '', value => {
+      state.patch.source_detail = value ? { ...state.patch.source_detail, image: value } : null;
+      renderEditor();
+    });
+    const grid = el('div', undefined, 'image-grid');
+    for (const image of state.data.images) {
+      const button = el('button', undefined, `image-choice${source?.image === image ? ' active' : ''}`);
+      const img = el('img'); img.src = `/textures/${image}`; img.alt = ''; img.loading = 'lazy';
+      button.title = image; button.setAttribute('aria-label', `Фактура ${image}`);
+      button.append(img, el('span', image.replace(/\.(png|jpe?g)$/, '')));
+      button.onclick = () => { state.patch.source_detail = { ...state.patch.source_detail, image }; renderEditor(); };
+      grid.append(button);
+    }
+    imagesSection.append(grid, el('p', 'Результат обновится после запекания Blender.', 'hint'));
+    if (source?.image) {
+      for (const [key, label, min, max, step, fallback] of [['tile_size', 'Размер повтора, м', 0.01, 100, 0.01, 1], ['strength', 'Влияние фактуры', 0, 1, 0.01, 0.6]]) {
+        if (mode === 'image' && key === 'strength') continue;
+        const field = el('div', undefined, 'field'); const text = el('label', label, 'field-label');
+        const input = el('input'); input.type = 'number'; input.id = `source-${key}`; text.htmlFor = input.id;
+        input.min = min; input.max = max; input.step = step; input.value = source[key] ?? fallback;
+        input.oninput = () => { if (input.value !== '' && input.validity.valid) { state.patch.source_detail = { ...state.patch.source_detail, [key]: Number(input.value) }; text.classList.add('changed'); changed(); } };
+        field.append(text, input); imagesSection.append(field);
+      }
     }
   }
   const settings = el('details', undefined, 'editor-section material-settings');
@@ -174,14 +207,13 @@ function renderEditor() {
   settings.append(el('summary', 'Параметры материала')); container.append(settings);
   const defs = state.data.schema.$defs;
   const recipe = defs.material.oneOf.find(x => x.properties?.preset?.const === presetValue) || defs.material.oneOf[0];
-  const properties = { ...defs.material_common.properties, ...(config.layers ? {} : recipe.properties) };
+  const properties = { ...defs.material_common.properties, ...(config.layers || mode === 'image' ? {} : recipe.properties) };
   for (const [key, raw] of Object.entries(properties)) {
-    if (['palette', 'source_detail', 'preset', 'layers'].includes(key)) continue;
+    if (['palette', 'source_detail', 'source_mode', 'preset', 'layers'].includes(key) || (mode === 'image' && key === 'gradient')) continue;
     const schema = raw.$ref ? defs[raw.$ref.split('/').pop()] : raw;
     if (['number', 'integer'].includes(schema.type)) numberField(settings, key, schema, config[key]);
     else if (schema.enum) selectField(settings, labels[key] || key, schema.enum.map(v => [v, v]), config[key] ?? schema.default, value => { state.patch[key] = value; });
   }
-  const advanced = el('details', undefined, 'editor-section'); advanced.append(el('summary', 'Текущий JSON материала'), el('pre', JSON.stringify(original, null, 2), 'job-error')); container.append(advanced);
   changed(); updateSelection();
 }
 async function loadCatalog(initial = false) {

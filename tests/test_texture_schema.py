@@ -17,6 +17,19 @@ def texture_document(material):
 
 
 class TextureSchemaTests(unittest.TestCase):
+    def test_explicit_surface_sources_and_legacy_compatibility(self):
+        detail = {"image": "fine_grained_wood.jpg", "tile_size": 1, "strength": 0.6}
+        base = {"palette": "wood_dark", "preset": "wood"}
+        self.assert_material_valid(base)
+        self.assert_material_valid({**base, "source_detail": detail})
+        for mode in ("procedural", "image", "mixed"):
+            self.assert_material_valid({**base, "source_mode": mode, "source_detail": detail})
+            self.assert_material_valid({**base, "source_mode": mode}, mode == "procedural")
+        self.assert_material_valid({**base, "source_mode": "unknown"}, False)
+        document = texture_document({**base, "source_mode": "image", "source_detail": detail})
+        document["quantize"] = True
+        self.assertFalse(VALIDATOR.is_valid(document))
+
     def assert_material_valid(self, material, expected=True):
         document = texture_document(material)
         self.assertEqual(VALIDATOR.is_valid(document), expected, VALIDATOR.iter_errors(document))

@@ -90,6 +90,8 @@ def patched_spec(original, tag, patch):
                     "staves", "seam_width", "lid_board_width", "grain_strength"):
             material.pop(key, None)
     material.update({key: value for key, value in patch.items() if key != "source_detail"})
+    if material.get("source_mode") == "image":
+        result["quantize"] = False
     return result
 
 

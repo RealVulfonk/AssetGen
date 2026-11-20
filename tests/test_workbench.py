@@ -14,6 +14,22 @@ import workbench as wb
 
 
 class WorkbenchTests(unittest.TestCase):
+    def test_source_switch_preserves_recipe_and_individual_image_scale(self):
+        original = wb.read_json(wb.ROOT / "specs/textures/barrel_01.json")
+        original["quantize"] = True
+        image = wb.patched_spec(original, "wood", {"source_mode": "image", "source_detail": {"image": "door_worn_wood_v1.png"}})
+        self.assertFalse(image["quantize"])
+        for field in ("staves", "preset", "palette"):
+            self.assertEqual(image["materials"]["wood"][field], original["materials"]["wood"][field])
+        self.assertEqual(image["materials"]["wood"]["source_detail"]["tile_size"], 1.1)
+        procedural = wb.patched_spec(image, "wood", {"source_mode": "procedural"})
+        self.assertEqual(procedural["materials"]["wood"]["source_detail"], image["materials"]["wood"]["source_detail"])
+        with tempfile.TemporaryDirectory() as directory:
+            for candidate in (image, procedural):
+                path = Path(directory) / "candidate.json"
+                wb.write_json(path, candidate)
+                wb.validate_candidate(path, "barrel_01")
+
     def test_local_http_boundary_and_static_entrypoint(self):
         server = wb.ThreadingHTTPServer(("127.0.0.1", 0), wb.Handler)
         thread = threading.Thread(target=server.serve_forever, daemon=True)
