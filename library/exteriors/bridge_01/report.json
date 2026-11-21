@@ -1,0 +1,26 @@
+{
+  "name": "bridge_01",
+  "stage": "model",
+  "tris": 464,
+  "tri_budget": 800,
+  "dimensions": [
+    2.004,
+    0.866,
+    0.924
+  ],
+  "materials": [
+    "wood"
+  ],
+  "blend": "bridge_01.blend",
+  "glb": "bridge_01.glb",
+  "godot_glb": "bridge_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK",
+  "model_digest": "b3ce76a83deaeb3051207681635426bcfa960104207313c9bbd1e94dd77be66f"
+}

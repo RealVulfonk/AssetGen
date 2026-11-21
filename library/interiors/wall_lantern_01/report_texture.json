@@ -1,0 +1,133 @@
+{
+  "name": "wall_lantern_01",
+  "stage": "texture",
+  "size": 256,
+  "seed": 60,
+  "pixel": false,
+  "quantize": false,
+  "samples": 64,
+  "margin": 4,
+  "margin_type": "EXTEND",
+  "pack_uv": true,
+  "unique_colors": 318,
+  "materials": [
+    "flame",
+    "glass",
+    "metal"
+  ],
+  "defaulted_materials": [],
+  "material_settings": {
+    "metal": {
+      "gradient": "ease",
+      "contrast": 0.75,
+      "contrast_pivot": 0.5,
+      "brightness": 0.0,
+      "ao": 0.28,
+      "ao_distance": 0.15,
+      "edge": 0.12,
+      "metallic": 0.65,
+      "opacity": 1.0,
+      "roughness": 0.62,
+      "preset": "metal",
+      "scale": 12,
+      "direction": "X",
+      "distortion": 4.0,
+      "detail": 4,
+      "value": 0.6,
+      "palette": [
+        "#1a1210",
+        "#3b2a22",
+        "#5e4636",
+        "#7d5f4a"
+      ],
+      "resolved_layers": [
+        {
+          "type": "noise",
+          "weight": 1.0,
+          "invert": false,
+          "scale": 12,
+          "detail": 4
+        }
+      ]
+    },
+    "glass": {
+      "gradient": "ease",
+      "contrast": 1.0,
+      "contrast_pivot": 0.5,
+      "brightness": 0.0,
+      "ao": 0.05,
+      "ao_distance": 0.15,
+      "edge": 0.0,
+      "metallic": 0.0,
+      "opacity": 0.32,
+      "roughness": 0.24,
+      "preset": "flat",
+      "scale": 5.0,
+      "direction": "X",
+      "distortion": 4.0,
+      "detail": 2.0,
+      "value": 0.68,
+      "palette": [
+        "#7a4d0a",
+        "#a86d12",
+        "#d99b1f",
+        "#e8b93c",
+        "#f5d877"
+      ],
+      "resolved_layers": [
+        {
+          "type": "constant",
+          "weight": 1.0,
+          "invert": false,
+          "value": 0.68
+        }
+      ]
+    },
+    "flame": {
+      "gradient": "ease",
+      "contrast": 1.0,
+      "contrast_pivot": 0.5,
+      "brightness": 0.0,
+      "ao": 0,
+      "ao_distance": 0.15,
+      "edge": 0.0,
+      "metallic": 0.0,
+      "opacity": 1.0,
+      "roughness": 0.5,
+      "preset": "flat",
+      "scale": 5.0,
+      "direction": "X",
+      "distortion": 4.0,
+      "detail": 2.0,
+      "value": 1.0,
+      "palette": [
+        "#7a4d0a",
+        "#a86d12",
+        "#d99b1f",
+        "#e8b93c",
+        "#f5d877"
+      ],
+      "resolved_layers": [
+        {
+          "type": "constant",
+          "weight": 1.0,
+          "invert": false,
+          "value": 1.0
+        }
+      ]
+    }
+  },
+  "texture": "wall_lantern_01_albedo.png",
+  "blend": "wall_lantern_01_tex.blend",
+  "glb": "wall_lantern_01.glb",
+  "godot_glb": "wall_lantern_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "status": "OK",
+  "warnings": [],
+  "model_digest": "d1c3fc4288e7fc806950f893a868558eeff179106a2b9f68d92da01ebe60bf17"
+}

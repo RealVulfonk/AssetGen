@@ -1,0 +1,27 @@
+{
+  "name": "window_glass_01",
+  "stage": "model",
+  "tris": 182,
+  "tri_budget": 200,
+  "dimensions": [
+    0.841,
+    0.212,
+    1.023
+  ],
+  "materials": [
+    "frame",
+    "glass"
+  ],
+  "blend": "window_glass_01.blend",
+  "glb": "window_glass_01.glb",
+  "godot_glb": "window_glass_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK",
+  "model_digest": "2bfe89561401d4c5fe52ffb9465b859fd352bfe314bfbd7a539375a5ca5c1c76"
+}

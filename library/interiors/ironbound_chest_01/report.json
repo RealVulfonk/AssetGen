@@ -1,0 +1,27 @@
+{
+  "name": "ironbound_chest_01",
+  "stage": "model",
+  "tris": 1080,
+  "tri_budget": 1150,
+  "dimensions": [
+    0.823,
+    0.556,
+    0.59
+  ],
+  "materials": [
+    "wood",
+    "brass",
+    "iron"
+  ],
+  "blend": "ironbound_chest_01.blend",
+  "glb": "ironbound_chest_01.glb",
+  "godot_glb": "ironbound_chest_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK"
+}

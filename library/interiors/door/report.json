@@ -1,0 +1,26 @@
+{
+  "name": "door",
+  "stage": "model",
+  "tris": 236,
+  "tri_budget": 600,
+  "dimensions": [
+    1.02,
+    0.16,
+    2.007
+  ],
+  "materials": [
+    "wood",
+    "metal"
+  ],
+  "blend": "door.blend",
+  "glb": "door.glb",
+  "godot_glb": "door_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK"
+}

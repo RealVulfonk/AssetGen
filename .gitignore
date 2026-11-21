@@ -5,3 +5,10 @@ __pycache__/
 *.blend1
 .workbench/
 web/node_modules/
+assetgen.local.json
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.workbench-tmp

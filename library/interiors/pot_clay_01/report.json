@@ -1,0 +1,26 @@
+{
+  "name": "pot_clay_01",
+  "stage": "model",
+  "tris": 552,
+  "tri_budget": 700,
+  "dimensions": [
+    0.461,
+    0.459,
+    0.588
+  ],
+  "materials": [
+    "clay"
+  ],
+  "blend": "pot_clay_01.blend",
+  "glb": "pot_clay_01.glb",
+  "godot_glb": "pot_clay_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK",
+  "model_digest": "a96a58d4cec254724399b94bd6748236ba853b314466c51c744324165ff638d6"
+}

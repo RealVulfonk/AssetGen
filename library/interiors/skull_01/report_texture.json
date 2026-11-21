@@ -1,0 +1,63 @@
+{
+  "name": "skull_01",
+  "stage": "texture",
+  "size": 128,
+  "seed": 1,
+  "pixel": false,
+  "quantize": false,
+  "samples": 64,
+  "margin": 4,
+  "margin_type": "EXTEND",
+  "unique_colors": 335,
+  "materials": [
+    "bone"
+  ],
+  "defaulted_materials": [],
+  "material_settings": {
+    "bone": {
+      "gradient": "ease",
+      "contrast": 0.35,
+      "contrast_pivot": 0.5,
+      "brightness": 0.12,
+      "ao": 0.62,
+      "ao_distance": 0.08,
+      "edge": 0.08,
+      "metallic": 0.0,
+      "roughness": 0.9,
+      "preset": "bone",
+      "scale": 6,
+      "direction": "X",
+      "distortion": 4.0,
+      "detail": 2.0,
+      "value": 0.6,
+      "palette": [
+        "#5e574a",
+        "#8f8670",
+        "#bdb39a",
+        "#e0d8c0"
+      ],
+      "resolved_layers": [
+        {
+          "type": "noise",
+          "weight": 1.0,
+          "invert": false,
+          "scale": 6,
+          "detail": 2.0
+        }
+      ]
+    }
+  },
+  "texture": "skull_01_albedo.png",
+  "blend": "skull_01_tex.blend",
+  "glb": "skull_01.glb",
+  "godot_glb": "skull_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "status": "OK",
+  "warnings": [],
+  "model_digest": "97c37333c687eccfdd1141811f257c02be318472b586352fe2f26ab97c958bdd"
+}

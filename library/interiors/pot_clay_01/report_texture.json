@@ -1,0 +1,80 @@
+{
+  "name": "pot_clay_01",
+  "stage": "texture",
+  "size": 128,
+  "seed": 61,
+  "pixel": false,
+  "quantize": false,
+  "samples": 64,
+  "margin": 2,
+  "margin_type": "EXTEND",
+  "pack_uv": true,
+  "unique_colors": 74,
+  "materials": [
+    "clay"
+  ],
+  "defaulted_materials": [],
+  "material_settings": {
+    "clay": {
+      "gradient": "ease",
+      "contrast": 0.6,
+      "contrast_pivot": 0.5,
+      "brightness": 0.03,
+      "ao": 0.25,
+      "ao_distance": 0.15,
+      "edge": 0.08,
+      "metallic": 0.0,
+      "opacity": 1.0,
+      "roughness": 0.92,
+      "preset": "stone",
+      "scale": 5,
+      "direction": "X",
+      "distortion": 4.0,
+      "detail": 4,
+      "value": 0.6,
+      "palette": [
+        "#3a251a",
+        "#4a2f21",
+        "#5a3928",
+        "#6b4530",
+        "#7c5238",
+        "#8d5f41"
+      ],
+      "resolved_layers": [
+        {
+          "type": "noise",
+          "weight": 0.55,
+          "invert": false,
+          "scale": 1.75,
+          "detail": 4
+        },
+        {
+          "type": "voronoi",
+          "weight": 0.25,
+          "invert": false,
+          "scale": 5
+        },
+        {
+          "type": "noise",
+          "weight": 0.2,
+          "invert": false,
+          "scale": 15.0,
+          "detail": 2.0
+        }
+      ]
+    }
+  },
+  "texture": "pot_clay_01_albedo.png",
+  "blend": "pot_clay_01_tex.blend",
+  "glb": "pot_clay_01.glb",
+  "godot_glb": "pot_clay_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "status": "OK",
+  "warnings": [],
+  "model_digest": "a96a58d4cec254724399b94bd6748236ba853b314466c51c744324165ff638d6"
+}

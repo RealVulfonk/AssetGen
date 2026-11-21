@@ -3,7 +3,33 @@
   "size": 128,
   "seed": 7,
   "materials": {
-    "wood": {"preset": "wood", "palette": "wood_dark_soft", "scale": 5, "detail": 5, "distortion": 0.4, "contrast": 0.85, "direction": "Z", "ao": 0.3, "edge": 0.12, "roughness": 0.95},
-    "default": {"preset": "flat", "palette": "wood_dark_soft"}
-  }
+    "wood": {
+      "preset": "wood",
+      "palette": "wood_dark_soft",
+      "scale": 5,
+      "detail": 5,
+      "distortion": 0.4,
+      "contrast": 1,
+      "direction": "Z",
+      "ao": 0.25,
+      "edge": 0,
+      "roughness": 0.9,
+      "source_detail": {
+        "tile_size": 1,
+        "strength": 0.6,
+        "image": "night_courtyard_wood_v1.png"
+      },
+      "source_mode": "image",
+      "brightness": 0,
+      "contrast_pivot": 0.5,
+      "ao_distance": 0.15,
+      "metallic": 0,
+      "opacity": 1
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "wood_dark_soft"
+    }
+  },
+  "quantize": false
 }

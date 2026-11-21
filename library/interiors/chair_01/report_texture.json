@@ -1,0 +1,214 @@
+{
+  "name": "chair_01",
+  "stage": "texture",
+  "size": 128,
+  "seed": 7,
+  "pixel": false,
+  "quantize": false,
+  "samples": 64,
+  "margin": 4,
+  "margin_type": "EXTEND",
+  "unique_colors": 346,
+  "materials": [
+    "metal",
+    "wood",
+    "wood_dark",
+    "wood_horizontal"
+  ],
+  "defaulted_materials": [],
+  "material_settings": {
+    "wood": {
+      "gradient": "ease",
+      "contrast": 0.85,
+      "contrast_pivot": 0.5,
+      "brightness": 0.0,
+      "ao": 0.3,
+      "ao_distance": 0.15,
+      "edge": 0.12,
+      "metallic": 0.0,
+      "roughness": 0.95,
+      "preset": "wood",
+      "scale": 5,
+      "direction": "X",
+      "distortion": 0.4,
+      "detail": 5,
+      "value": 0.6,
+      "palette": [
+        "#3b2a1e",
+        "#443125",
+        "#4d3829",
+        "#56402e",
+        "#5f4834",
+        "#68503b"
+      ],
+      "resolved_layers": [
+        {
+          "type": "wave",
+          "weight": 0.6,
+          "invert": false,
+          "scale": 5,
+          "direction": "X",
+          "distortion": 0.4
+        },
+        {
+          "type": "noise",
+          "weight": 0.25,
+          "invert": false,
+          "scale": 2.0,
+          "detail": 5
+        },
+        {
+          "type": "noise",
+          "weight": 0.15,
+          "invert": false,
+          "scale": 20.0,
+          "detail": 2.0
+        }
+      ]
+    },
+    "wood_horizontal": {
+      "gradient": "ease",
+      "contrast": 0.85,
+      "contrast_pivot": 0.5,
+      "brightness": 0.0,
+      "ao": 0.3,
+      "ao_distance": 0.15,
+      "edge": 0.12,
+      "metallic": 0.0,
+      "roughness": 0.95,
+      "preset": "wood",
+      "scale": 5,
+      "direction": "Z",
+      "distortion": 0.4,
+      "detail": 5,
+      "value": 0.6,
+      "palette": [
+        "#3b2a1e",
+        "#443125",
+        "#4d3829",
+        "#56402e",
+        "#5f4834",
+        "#68503b"
+      ],
+      "resolved_layers": [
+        {
+          "type": "wave",
+          "weight": 0.6,
+          "invert": false,
+          "scale": 5,
+          "direction": "Z",
+          "distortion": 0.4
+        },
+        {
+          "type": "noise",
+          "weight": 0.25,
+          "invert": false,
+          "scale": 2.0,
+          "detail": 5
+        },
+        {
+          "type": "noise",
+          "weight": 0.15,
+          "invert": false,
+          "scale": 20.0,
+          "detail": 2.0
+        }
+      ]
+    },
+    "wood_dark": {
+      "gradient": "ease",
+      "contrast": 0.7,
+      "contrast_pivot": 0.5,
+      "brightness": -0.08,
+      "ao": 0.35,
+      "ao_distance": 0.15,
+      "edge": 0.1,
+      "metallic": 0.0,
+      "roughness": 0.95,
+      "preset": "wood",
+      "scale": 6,
+      "direction": "X",
+      "distortion": 0.5,
+      "detail": 4,
+      "value": 0.6,
+      "palette": [
+        "#3b2a1e",
+        "#443125",
+        "#4d3829",
+        "#56402e",
+        "#5f4834",
+        "#68503b"
+      ],
+      "resolved_layers": [
+        {
+          "type": "wave",
+          "weight": 0.6,
+          "invert": false,
+          "scale": 6,
+          "direction": "X",
+          "distortion": 0.5
+        },
+        {
+          "type": "noise",
+          "weight": 0.25,
+          "invert": false,
+          "scale": 2.4000000000000004,
+          "detail": 4
+        },
+        {
+          "type": "noise",
+          "weight": 0.15,
+          "invert": false,
+          "scale": 24.0,
+          "detail": 2.0
+        }
+      ]
+    },
+    "metal": {
+      "gradient": "ease",
+      "contrast": 0.75,
+      "contrast_pivot": 0.5,
+      "brightness": -0.1,
+      "ao": 0.4,
+      "ao_distance": 0.15,
+      "edge": 0.15,
+      "metallic": 0.35,
+      "roughness": 0.6,
+      "preset": "metal",
+      "scale": 7,
+      "direction": "X",
+      "distortion": 4.0,
+      "detail": 3,
+      "value": 0.6,
+      "palette": [
+        "#596373",
+        "#626d7d",
+        "#6b7687",
+        "#747f91",
+        "#7d889b",
+        "#8691a5"
+      ],
+      "resolved_layers": [
+        {
+          "type": "noise",
+          "weight": 1.0,
+          "invert": false,
+          "scale": 7,
+          "detail": 3
+        }
+      ]
+    }
+  },
+  "texture": "chair_01_albedo.png",
+  "blend": "chair_01_tex.blend",
+  "glb": "chair_01.glb",
+  "godot_glb": "chair_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "status": "OK",
+  "warnings": []
+}

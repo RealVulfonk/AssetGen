@@ -1,0 +1,28 @@
+{
+  "name": "wall_lantern_01",
+  "stage": "model",
+  "tris": 848,
+  "tri_budget": 1100,
+  "dimensions": [
+    0.32,
+    0.63,
+    1.02
+  ],
+  "materials": [
+    "metal",
+    "glass",
+    "flame"
+  ],
+  "blend": "wall_lantern_01.blend",
+  "glb": "wall_lantern_01.glb",
+  "godot_glb": "wall_lantern_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK",
+  "model_digest": "d1c3fc4288e7fc806950f893a868558eeff179106a2b9f68d92da01ebe60bf17"
+}

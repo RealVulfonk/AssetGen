@@ -1,0 +1,29 @@
+{
+  "name": "window_arch_01",
+  "stage": "model",
+  "tris": 788,
+  "tri_budget": 900,
+  "dimensions": [
+    0.86,
+    0.16,
+    1.741
+  ],
+  "materials": [
+    "wood",
+    "lead",
+    "glass_blue",
+    "glass_purple",
+    "glass_amber"
+  ],
+  "blend": "window_arch_01.blend",
+  "glb": "window_arch_01.glb",
+  "godot_glb": "window_arch_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK"
+}

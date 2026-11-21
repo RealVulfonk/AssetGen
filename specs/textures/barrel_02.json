@@ -13,13 +13,15 @@
       "grain_strength": 0.6,
       "ao": 0.22,
       "edge": 0.1,
-      "contrast": 1.05,
-      "brightness": 0.12,
+      "contrast": 1,
+      "brightness": 0,
       "source_detail": {
-        "image": "night_courtyard_wood_v1.png",
         "tile_size": 1.1,
-        "strength": 0.45
-      }
+        "strength": 0.45,
+        "image": "night_courtyard_wood_v1.png"
+      },
+      "source_mode": "image",
+      "contrast_pivot": 0.5
     },
     "metal": {
       "preset": "metal",
@@ -40,5 +42,6 @@
       "preset": "flat",
       "palette": "stone_grey_soft"
     }
-  }
+  },
+  "quantize": false
 }

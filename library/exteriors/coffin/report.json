@@ -1,0 +1,26 @@
+{
+  "name": "coffin",
+  "stage": "model",
+  "tris": 112,
+  "tri_budget": 300,
+  "dimensions": [
+    0.672,
+    1.957,
+    0.48
+  ],
+  "materials": [
+    "wood",
+    "metal"
+  ],
+  "blend": "coffin.blend",
+  "glb": "coffin.glb",
+  "godot_glb": "coffin_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK"
+}

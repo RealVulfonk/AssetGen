@@ -20,10 +20,11 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from assetgen_paths import asset_group, output_dir
+from assetgen_config import load_config, find_blender
 
 ROOT = Path(__file__).resolve().parent
-CFG = json.loads((ROOT / "assetgen.config.json").read_text(encoding="utf-8"))
-BLENDER = os.environ.get("BLENDER", CFG["blender"])
+CFG = load_config(ROOT)
+BLENDER = find_blender(CFG)
 OUT = ROOT / os.environ.get("ASSETGEN_OUT", CFG.get("out", "out"))
 
 
@@ -76,7 +77,7 @@ def run_blender(script, args, blend=None):
     blender = Path(BLENDER)
     if not blender.is_file():
         raise AssetGenError(
-            f"Blender executable not found: {blender}. Set assetgen.config.json or the BLENDER environment variable."
+            f"Blender executable not found: {blender}. Set assetgen.local.json or the BLENDER environment variable."
         )
     command = [str(blender), "-b"]
     command += [str(blend)] if blend else ["--factory-startup"]

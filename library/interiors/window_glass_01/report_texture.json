@@ -1,0 +1,117 @@
+{
+  "name": "window_glass_01",
+  "stage": "texture",
+  "size": 128,
+  "seed": 7,
+  "pixel": false,
+  "quantize": false,
+  "samples": 64,
+  "margin": 4,
+  "margin_type": "EXTEND",
+  "pack_uv": false,
+  "unique_colors": 277,
+  "materials": [
+    "frame",
+    "glass"
+  ],
+  "defaulted_materials": [],
+  "material_settings": {
+    "frame": {
+      "gradient": "ease",
+      "contrast": 0.85,
+      "contrast_pivot": 0.5,
+      "brightness": 0.0,
+      "ao": 0.3,
+      "ao_distance": 0.15,
+      "edge": 0.12,
+      "metallic": 0.0,
+      "opacity": 1.0,
+      "roughness": 0.95,
+      "preset": "wood",
+      "scale": 6,
+      "direction": "X",
+      "distortion": 0.4,
+      "detail": 5,
+      "value": 0.6,
+      "palette": [
+        "#3b2a1e",
+        "#443125",
+        "#4d3829",
+        "#56402e",
+        "#5f4834",
+        "#68503b"
+      ],
+      "resolved_layers": [
+        {
+          "type": "wave",
+          "weight": 0.6,
+          "invert": false,
+          "scale": 6,
+          "direction": "X",
+          "distortion": 0.4
+        },
+        {
+          "type": "noise",
+          "weight": 0.25,
+          "invert": false,
+          "scale": 2.4000000000000004,
+          "detail": 5
+        },
+        {
+          "type": "noise",
+          "weight": 0.15,
+          "invert": false,
+          "scale": 24.0,
+          "detail": 2.0
+        }
+      ]
+    },
+    "glass": {
+      "gradient": "ease",
+      "contrast": 1.0,
+      "contrast_pivot": 0.5,
+      "brightness": 0.0,
+      "ao": 0.25,
+      "ao_distance": 0.15,
+      "edge": 0.0,
+      "metallic": 0.0,
+      "opacity": 0.35,
+      "roughness": 0.24,
+      "preset": "flat",
+      "scale": 5.0,
+      "direction": "X",
+      "distortion": 4.0,
+      "detail": 2.0,
+      "value": 0.6,
+      "palette": [
+        "#16224f",
+        "#1f3070",
+        "#2b3f7a",
+        "#3b56a8",
+        "#5573c4"
+      ],
+      "resolved_layers": [
+        {
+          "type": "constant",
+          "weight": 1.0,
+          "invert": false,
+          "value": 0.6
+        }
+      ]
+    }
+  },
+  "texture": "window_glass_01_albedo.png",
+  "blend": "window_glass_01_tex.blend",
+  "glb": "window_glass_01.glb",
+  "godot_glb": "window_glass_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "status": "OK",
+  "warnings": [],
+  "lighting_preview": "preview_lighting.png",
+  "model_digest": "2bfe89561401d4c5fe52ffb9465b859fd352bfe314bfbd7a539375a5ca5c1c76"
+}

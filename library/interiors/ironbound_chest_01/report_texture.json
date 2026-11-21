@@ -1,0 +1,143 @@
+{
+  "name": "ironbound_chest_01",
+  "stage": "texture",
+  "size": 256,
+  "seed": 42,
+  "pixel": false,
+  "quantize": false,
+  "samples": 32,
+  "margin": 4,
+  "margin_type": "EXTEND",
+  "unique_colors": 1077,
+  "materials": [
+    "brass",
+    "iron",
+    "wood"
+  ],
+  "defaulted_materials": [],
+  "material_settings": {
+    "wood": {
+      "gradient": "ease",
+      "contrast": 0.74,
+      "contrast_pivot": 0.5,
+      "brightness": 0.0,
+      "ao": 0.24,
+      "ao_distance": 0.15,
+      "edge": 0.07,
+      "metallic": 0.0,
+      "roughness": 0.88,
+      "preset": "wood",
+      "scale": 8,
+      "direction": "Z",
+      "distortion": 1.7,
+      "detail": 2.0,
+      "value": 0.6,
+      "palette": [
+        "#2a2420",
+        "#4a3f35",
+        "#6b5d4d",
+        "#8f7f6a"
+      ],
+      "resolved_layers": [
+        {
+          "type": "wave",
+          "weight": 0.6,
+          "invert": false,
+          "scale": 8,
+          "direction": "Z",
+          "distortion": 1.7
+        },
+        {
+          "type": "noise",
+          "weight": 0.25,
+          "invert": false,
+          "scale": 3.2,
+          "detail": 2.0
+        },
+        {
+          "type": "noise",
+          "weight": 0.15,
+          "invert": false,
+          "scale": 32.0,
+          "detail": 2.0
+        }
+      ]
+    },
+    "brass": {
+      "gradient": "ease",
+      "contrast": 0.48,
+      "contrast_pivot": 0.5,
+      "brightness": -0.065,
+      "ao": 0.28,
+      "ao_distance": 0.15,
+      "edge": 0.11,
+      "metallic": 0.7,
+      "roughness": 0.63,
+      "preset": "metal",
+      "scale": 15,
+      "direction": "X",
+      "distortion": 4.0,
+      "detail": 2.0,
+      "value": 0.6,
+      "palette": [
+        "#3d2a0a",
+        "#7a5614",
+        "#b8862a",
+        "#e8c25a"
+      ],
+      "resolved_layers": [
+        {
+          "type": "noise",
+          "weight": 1.0,
+          "invert": false,
+          "scale": 15,
+          "detail": 2.0
+        }
+      ]
+    },
+    "iron": {
+      "gradient": "ease",
+      "contrast": 0.55,
+      "contrast_pivot": 0.5,
+      "brightness": 0.0,
+      "ao": 0.26,
+      "ao_distance": 0.15,
+      "edge": 0.08,
+      "metallic": 0.52,
+      "roughness": 0.78,
+      "preset": "metal",
+      "scale": 15,
+      "direction": "X",
+      "distortion": 4.0,
+      "detail": 2.0,
+      "value": 0.6,
+      "palette": [
+        "#1a1210",
+        "#3b2a22",
+        "#5e4636",
+        "#7d5f4a"
+      ],
+      "resolved_layers": [
+        {
+          "type": "noise",
+          "weight": 1.0,
+          "invert": false,
+          "scale": 15,
+          "detail": 2.0
+        }
+      ]
+    }
+  },
+  "texture": "ironbound_chest_01_albedo.png",
+  "blend": "ironbound_chest_01_tex.blend",
+  "glb": "ironbound_chest_01.glb",
+  "godot_glb": "ironbound_chest_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "status": "OK",
+  "warnings": []
+}

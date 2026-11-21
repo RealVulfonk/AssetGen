@@ -44,11 +44,21 @@ def asset_paths(name):
     return model, ROOT / "specs/textures" / f"{name}.json", ag.output_dir(ag.OUT, name, data.get("category"))
 
 
+def display_dir(name):
+    """Local builds take precedence; a fresh clone can view the shared library."""
+    model, _, output = asset_paths(name)
+    if (output / f"{name}.glb").is_file():
+        return output
+    category = read_json(model).get("category")
+    return ag.output_dir(ROOT / "library", name, category)
+
+
 def catalog():
     assets = []
     for path in sorted((ROOT / "specs/models").glob("*.json")):
         try:
             model, texture, output = asset_paths(path.stem)
+            output = display_dir(path.stem)
             spec = read_json(model)
             report = read_json(output / "report.json") if (output / "report.json").is_file() else {}
             tex = read_json(texture) if texture.is_file() else None
@@ -305,7 +315,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self.json(self.server.jobs.snapshot())
             if path.startswith("/asset/"):
                 _, _, name, filename = path.split("/")
-                _, _, folder = asset_paths(name)
+                folder = display_dir(name)
                 if filename not in (f"{name}.glb", "preview_iso.png"):
                     raise ValueError("Unsupported asset file")
             elif path.startswith("/textures/"):

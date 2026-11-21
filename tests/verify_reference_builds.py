@@ -8,7 +8,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from verify_outputs import ROOT, output_dir, verify
-from assetgen import asset_lock
+from assetgen import asset_lock, BLENDER
 
 ASSETS = ("barrel_01", "pillar", "skull_01", "urn", "window_01", "window_02", "window_glass_01")
 PACKED_ASSETS = ("barrel_01", "pillar")
@@ -71,8 +71,7 @@ def check_uv(out, blender):
 
 
 def main():
-    config = json.loads((ROOT / "assetgen.config.json").read_text("utf-8"))
-    blender = os.environ.get("BLENDER", config["blender"])
+    blender = BLENDER
     with TemporaryDirectory(prefix="assetgen-reference-") as directory:
         out = Path(directory)
         env = {**os.environ, "ASSETGEN_OUT": str(out)}

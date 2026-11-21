@@ -1,0 +1,25 @@
+{
+  "name": "table",
+  "stage": "model",
+  "tris": 232,
+  "tri_budget": 500,
+  "dimensions": [
+    1.601,
+    0.803,
+    0.792
+  ],
+  "materials": [
+    "wood"
+  ],
+  "blend": "table.blend",
+  "glb": "table.glb",
+  "godot_glb": "table_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK"
+}

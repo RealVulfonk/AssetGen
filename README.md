@@ -2,6 +2,24 @@
 
 JSON-driven генератор low-poly ассетов в стиле Neverlooted Dungeon. Агент описывает модель и текстуру в JSON; Blender-скрипты строят геометрию, UV и коллизию, запекают процедурный albedo и экспортируют GLB.
 
+## Запуск после клонирования
+
+Для просмотра готовых моделей нужны Python 3.10+, Node.js 22+ / npm и браузер с WebGL 2. Blender нужен только для сборки и изменения текстур.
+
+```powershell
+python -m venv .venv
+# Windows PowerShell:
+.venv/Scripts/python -m pip install -r requirements.txt
+npm --prefix web ci
+.venv/Scripts/python workbench.py --open
+```
+
+На Linux/macOS используй `.venv/bin/python` вместо `.venv/Scripts/python`. В мастерской сразу доступны модели из [library](library/README.md), даже если `out/` пуст. Если порт занят: `python workbench.py --port 5174 --open` (или соответствующий Python виртуального окружения).
+
+Для генерации установи Blender; текущие сборки проверены на 5.2.3 LTS. Он находится через `BLENDER`, затем конфигурацию/`PATH`; на Windows дополнительно проверяется стандартная папка Blender Foundation. Можно скопировать `assetgen.local.example.json` в `assetgen.local.json` и указать свой путь к Blender и папку Godot. Локальный файл не входит в Git. Параметры по умолчанию находятся в `assetgen.config.json`.
+
+[Подготовка к GitHub, резервное копирование и восстановление](docs/sharing.md). [Происхождение внешних файлов и зависимостей](THIRD_PARTY.md).
+
 Перед началом задачи открой [правила работы агентов](AGENTS.md). В [карточках задач](docs/tasks/) хранятся запросы, сообщения о багах, основания решений и результаты проверок.
 
 Для ночной партии достаточно написать агенту: «Сгенерируй модели по референсам из `D:\Refs\Props`». Агент осмотрит изображения, подготовит спеки и соберёт ассеты через CLI. В одной карточке останутся результаты по всей папке, ссылки на GLB и превью и вопросы к утреннему просмотру. [Порядок пакетной работы](AGENTS.md#папка-референсов-на-ночь)
@@ -24,7 +42,7 @@ python assetgen.py texture barrel_01 --no-copy
 python tests/verify_outputs.py barrel_01
 ```
 
-Путь к Blender задаётся в `assetgen.config.json`; переменная окружения `BLENDER` имеет приоритет. Результаты появляются в `out/<group>/<asset>/`, где группа выводится из `category` спеки:
+Путь к Blender можно задать в `assetgen.local.json`; переменная окружения `BLENDER` имеет приоритет. Результаты появляются в `out/<group>/<asset>/`, где группа выводится из `category` спеки:
 
 | Группа | Категории | Что внутри |
 |---|---|---|

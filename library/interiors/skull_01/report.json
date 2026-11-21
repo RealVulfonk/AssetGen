@@ -1,0 +1,26 @@
+{
+  "name": "skull_01",
+  "stage": "model",
+  "tris": 332,
+  "tri_budget": 400,
+  "dimensions": [
+    0.142,
+    0.19,
+    0.18
+  ],
+  "materials": [
+    "bone"
+  ],
+  "blend": "skull_01.blend",
+  "glb": "skull_01.glb",
+  "godot_glb": "skull_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK",
+  "model_digest": "97c37333c687eccfdd1141811f257c02be318472b586352fe2f26ab97c958bdd"
+}

@@ -1,0 +1,62 @@
+{
+  "name": "bridge_01",
+  "stage": "texture",
+  "size": 256,
+  "seed": 11,
+  "pixel": true,
+  "quantize": false,
+  "samples": 64,
+  "margin": 4,
+  "margin_type": "EXTEND",
+  "pack_uv": false,
+  "unique_colors": 840,
+  "materials": [
+    "wood"
+  ],
+  "defaulted_materials": [],
+  "material_settings": {
+    "wood": {
+      "gradient": "ease",
+      "contrast": 1,
+      "contrast_pivot": 0.5,
+      "brightness": 0,
+      "ao": 0.5,
+      "ao_distance": 0.15,
+      "edge": 0.25,
+      "metallic": 0.0,
+      "opacity": 1.0,
+      "roughness": 0.95,
+      "preset": "wood",
+      "scale": 5,
+      "direction": "Z",
+      "distortion": 0.4,
+      "detail": 5,
+      "value": 0.6,
+      "source_detail": {
+        "tile_size": 1,
+        "strength": 0.6,
+        "image": "fine_grained_wood.jpg"
+      },
+      "source_mode": "image",
+      "palette": [
+        "#1f150f",
+        "#3a281b",
+        "#5a3f2a",
+        "#7a5a3c"
+      ]
+    }
+  },
+  "texture": "bridge_01_albedo.png",
+  "blend": "bridge_01_tex.blend",
+  "glb": "bridge_01.glb",
+  "godot_glb": "bridge_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "status": "OK",
+  "warnings": [],
+  "model_digest": "b3ce76a83deaeb3051207681635426bcfa960104207313c9bbd1e94dd77be66f"
+}

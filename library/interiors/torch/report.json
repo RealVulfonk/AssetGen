@@ -1,0 +1,27 @@
+{
+  "name": "torch",
+  "stage": "model",
+  "tris": 84,
+  "tri_budget": 250,
+  "dimensions": [
+    0.07,
+    0.072,
+    0.588
+  ],
+  "materials": [
+    "wood",
+    "cloth",
+    "flame"
+  ],
+  "blend": "torch.blend",
+  "glb": "torch.glb",
+  "godot_glb": null,
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK"
+}

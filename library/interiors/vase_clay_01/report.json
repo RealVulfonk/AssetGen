@@ -1,0 +1,27 @@
+{
+  "name": "vase_clay_01",
+  "stage": "model",
+  "tris": 840,
+  "tri_budget": 1100,
+  "dimensions": [
+    0.406,
+    0.406,
+    0.922
+  ],
+  "materials": [
+    "clay",
+    "ornament"
+  ],
+  "blend": "vase_clay_01.blend",
+  "glb": "vase_clay_01.glb",
+  "godot_glb": "vase_clay_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK",
+  "model_digest": "2b28b3a95798b2f9dba14b9340f6fcfb9ee1b9a954175a1d6eb6fa5a5f9d129d"
+}

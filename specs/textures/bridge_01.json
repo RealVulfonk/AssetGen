@@ -3,9 +3,40 @@
   "size": 256,
   "seed": 11,
   "pixel": true,
-  "quantize": true,
+  "quantize": false,
   "materials": {
-    "wood": {"preset": "wood", "palette": "wood_dark", "direction": "Z", "scale": 5, "detail": 5, "distortion": 0.4, "contrast": 0.85, "ao": 0.5, "edge": 0.25, "roughness": 0.95},
-    "default": {"preset": "flat", "palette": "wood_dark"}
+    "wood": {
+      "preset": "wood",
+      "palette": "wood_dark",
+      "direction": "Z",
+      "scale": 5,
+      "detail": 5,
+      "distortion": 0.4,
+      "contrast": 1,
+      "ao": 0.5,
+      "edge": 0.25,
+      "roughness": 0.95,
+      "source_detail": {
+        "tile_size": 1,
+        "strength": 0.6,
+        "image": "fine_grained_wood.jpg"
+      },
+      "source_mode": "image",
+      "brightness": 0,
+      "contrast_pivot": 0.5
+    },
+    "default": {
+      "preset": "flat",
+      "palette": "wood_dark",
+      "source_detail": {
+        "tile_size": 1,
+        "strength": 0.6,
+        "image": "fine_grained_wood.jpg"
+      },
+      "source_mode": "image",
+      "brightness": 0,
+      "contrast": 1,
+      "contrast_pivot": 0.5
+    }
   }
 }

@@ -1,0 +1,26 @@
+{
+  "name": "vase_stone_01",
+  "stage": "model",
+  "tris": 744,
+  "tri_budget": 900,
+  "dimensions": [
+    0.38,
+    0.381,
+    1.061
+  ],
+  "materials": [
+    "stone"
+  ],
+  "blend": "vase_stone_01.blend",
+  "glb": "vase_stone_01.glb",
+  "godot_glb": "vase_stone_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK",
+  "model_digest": "f7f9347fe3099a56edb6bec8fb1d705c1bd758cb6ca6d82c515f154837b6dc1d"
+}

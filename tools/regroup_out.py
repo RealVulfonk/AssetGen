@@ -17,9 +17,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from assetgen_paths import GROUPS, asset_group
+from assetgen_config import load_config
+import os
 
-CFG = json.loads((ROOT / "assetgen.config.json").read_text(encoding="utf-8"))
-OUT = ROOT / CFG.get("out", "out")
+CFG = load_config(ROOT)
+OUT = ROOT / os.environ.get("ASSETGEN_OUT", CFG.get("out", "out"))
 MODELS = ROOT / "specs" / "models"
 
 

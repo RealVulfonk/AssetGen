@@ -1,0 +1,29 @@
+{
+  "name": "window_rose_01",
+  "stage": "model",
+  "tris": 1656,
+  "tri_budget": 1700,
+  "dimensions": [
+    1.374,
+    0.14,
+    1.374
+  ],
+  "materials": [
+    "wood",
+    "lead",
+    "glass_amber",
+    "glass_blue",
+    "glass_purple"
+  ],
+  "blend": "window_rose_01.blend",
+  "glb": "window_rose_01.glb",
+  "godot_glb": "window_rose_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK"
+}

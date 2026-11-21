@@ -1,0 +1,28 @@
+{
+  "name": "chair_01",
+  "stage": "model",
+  "tris": 572,
+  "tri_budget": 600,
+  "dimensions": [
+    0.694,
+    0.521,
+    1.531
+  ],
+  "materials": [
+    "wood",
+    "wood_horizontal",
+    "wood_dark",
+    "metal"
+  ],
+  "blend": "chair_01.blend",
+  "glb": "chair_01.glb",
+  "godot_glb": "chair_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK"
+}

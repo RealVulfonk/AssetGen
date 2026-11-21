@@ -1,0 +1,25 @@
+{
+  "name": "grave_02",
+  "stage": "model",
+  "tris": 496,
+  "tri_budget": 600,
+  "dimensions": [
+    0.901,
+    0.704,
+    1.456
+  ],
+  "materials": [
+    "stone"
+  ],
+  "blend": "grave_02.blend",
+  "glb": "grave_02.glb",
+  "godot_glb": "grave_02_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK"
+}

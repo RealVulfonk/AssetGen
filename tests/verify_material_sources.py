@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     with tempfile.TemporaryDirectory(prefix="assetgen-sources-") as directory:
         root = Path(directory)
-        for name in ("assetgen.py", "assetgen_paths.py", "assetgen.config.json"):
+        for name in ("assetgen.py", "assetgen_paths.py", "assetgen_config.py", "assetgen.config.json"):
             shutil.copy2(ROOT / name, root / name)
         for name in ("blender", "schemas", "presets"):
             shutil.copytree(ROOT / name, root / name, ignore=shutil.ignore_patterns("__pycache__"))

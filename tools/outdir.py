@@ -14,9 +14,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from assetgen_paths import output_dir
+from assetgen_config import load_config
+import os
 
-CFG = json.loads((ROOT / "assetgen.config.json").read_text(encoding="utf-8"))
-OUT = ROOT / CFG.get("out", "out")
+CFG = load_config(ROOT)
+OUT = ROOT / os.environ.get("ASSETGEN_OUT", CFG.get("out", "out"))
 
 for name in sys.argv[1:]:
     spec = json.loads((ROOT / "specs" / "models" / f"{name}.json").read_text(encoding="utf-8"))

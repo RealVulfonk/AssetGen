@@ -1,0 +1,25 @@
+{
+  "name": "cell_bars",
+  "stage": "model",
+  "tris": 180,
+  "tri_budget": 400,
+  "dimensions": [
+    0.936,
+    0.036,
+    2.0
+  ],
+  "materials": [
+    "metal"
+  ],
+  "blend": "cell_bars.blend",
+  "glb": "cell_bars.glb",
+  "godot_glb": "cell_bars_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK"
+}

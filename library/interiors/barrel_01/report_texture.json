@@ -1,0 +1,101 @@
+{
+  "name": "barrel_01",
+  "stage": "texture",
+  "size": 256,
+  "seed": 3,
+  "pixel": false,
+  "quantize": false,
+  "samples": 64,
+  "margin": 4,
+  "margin_type": "EXTEND",
+  "pack_uv": true,
+  "unique_colors": 407,
+  "materials": [
+    "metal",
+    "wood"
+  ],
+  "defaulted_materials": [],
+  "material_settings": {
+    "wood": {
+      "gradient": "ease",
+      "contrast": 1.12,
+      "contrast_pivot": 0.5,
+      "brightness": 0.08,
+      "ao": 0.23,
+      "ao_distance": 0.15,
+      "edge": 0.0,
+      "metallic": 0.0,
+      "opacity": 1.0,
+      "roughness": 0.9,
+      "staves": 10,
+      "seam_width": 0.095,
+      "lid_board_width": 0.105,
+      "grain_strength": 0.55,
+      "preset": "coopered_wood",
+      "source_detail": {
+        "image": "fine_grained_wood.jpg",
+        "tile_size": 1.1,
+        "strength": 0.78
+      },
+      "palette": [
+        "#2e2318",
+        "#3a2c1e",
+        "#463525",
+        "#53402c",
+        "#604b34",
+        "#6d573d"
+      ]
+    },
+    "metal": {
+      "gradient": "ease",
+      "contrast": 1.0,
+      "contrast_pivot": 0.5,
+      "brightness": 0.0,
+      "ao": 0.22,
+      "ao_distance": 0.15,
+      "edge": 0.0,
+      "metallic": 0.6,
+      "opacity": 1.0,
+      "roughness": 0.75,
+      "preset": "metal",
+      "scale": 18,
+      "direction": "X",
+      "distortion": 4.0,
+      "detail": 2.0,
+      "value": 0.6,
+      "source_detail": {
+        "image": "metal_plate_02.jpg",
+        "tile_size": 0.4,
+        "strength": 0.55
+      },
+      "palette": [
+        "#151518",
+        "#2c2d33",
+        "#4a4c55",
+        "#737782"
+      ],
+      "resolved_layers": [
+        {
+          "type": "noise",
+          "weight": 1.0,
+          "invert": false,
+          "scale": 18,
+          "detail": 2.0
+        }
+      ]
+    }
+  },
+  "texture": "barrel_01_albedo.png",
+  "blend": "barrel_01_tex.blend",
+  "glb": "barrel_01.glb",
+  "godot_glb": "barrel_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "status": "OK",
+  "warnings": [],
+  "model_digest": "cfb27d0dcd5b92220be69627b9fc86545bded2f6e22fe25d2e19b069264cd3c6"
+}

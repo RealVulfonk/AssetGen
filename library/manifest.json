@@ -1,0 +1,2393 @@
+{
+  "format": 1,
+  "assets": [
+    {
+      "name": "apple_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/apple_01/apple_01.glb",
+          "bytes": 16736,
+          "sha256": "77c82c457217985c1e010be63bf4d6040a5a8dd84d005caca94ebb1a39eaef54"
+        },
+        {
+          "path": "interiors/apple_01/apple_01_albedo.png",
+          "bytes": 4149,
+          "sha256": "cba647b7957d7bab0c3f890a1bcb75b55430519c36810ded6e5ebe8bb0ebb259"
+        },
+        {
+          "path": "interiors/apple_01/apple_01_godot.glb",
+          "bytes": 27820,
+          "sha256": "d6d54316b9d63fa797a657fb279404c8c35f12be9d1bdb5f2aaa85d742658459"
+        },
+        {
+          "path": "interiors/apple_01/preview_front.png",
+          "bytes": 115712,
+          "sha256": "c17057836a1eb6cee24bc5956423f903109dde1eb4ab782d8977daddd5d36b91"
+        },
+        {
+          "path": "interiors/apple_01/preview_iso.png",
+          "bytes": 117249,
+          "sha256": "9c1fe3d8afd793502351eefa50ae751e1816919b5dabf8788153040c99119f9d"
+        },
+        {
+          "path": "interiors/apple_01/preview_side.png",
+          "bytes": 115671,
+          "sha256": "5fe2c298cd7b54f57eeb0db9459b2c17f1238a8beb34159e908676376f74c31f"
+        },
+        {
+          "path": "interiors/apple_01/preview_top.png",
+          "bytes": 113261,
+          "sha256": "8e057b523abf6c7b9c89513cb4f47af18468857f0e5eca1fdfbf614b62d2daf7"
+        },
+        {
+          "path": "interiors/apple_01/report.json",
+          "bytes": 537,
+          "sha256": "5585f3335e3ad097072acaa5d8fe6db2ac712ba1a82e50a1fc8810d3f368aa9d"
+        },
+        {
+          "path": "interiors/apple_01/report_texture.json",
+          "bytes": 2346,
+          "sha256": "4253b3c7a4fb69e438cc886828dfa31e4de68e480b7fbdc43ceca9e69f751ca7"
+        }
+      ]
+    },
+    {
+      "name": "barrel_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/barrel_01/barrel_01.glb",
+          "bytes": 83864,
+          "sha256": "37868e93acc0d67d6c6cb9469d52d97431e740828d1cad038019b8903bd20216"
+        },
+        {
+          "path": "interiors/barrel_01/barrel_01_albedo.png",
+          "bytes": 66505,
+          "sha256": "cb068c5da611128e9e8aa446313e64ed750a6cc822031dfe2e0f85715ef9390a"
+        },
+        {
+          "path": "interiors/barrel_01/barrel_01_godot.glb",
+          "bytes": 99724,
+          "sha256": "8ddc96e54bc50256e271ad21ef2d4f545c02d7cf095bba9ab3447d838e48bbee"
+        },
+        {
+          "path": "interiors/barrel_01/preview_front.png",
+          "bytes": 143479,
+          "sha256": "618e645141cba7ab947d2c0bd3cc1dd9f10d0c7862365fd8f35ed6788d3027f6"
+        },
+        {
+          "path": "interiors/barrel_01/preview_iso.png",
+          "bytes": 147488,
+          "sha256": "6d473582b200b749c48bedfbb294c97927c39a090d309c253bf07c2cf279f63b"
+        },
+        {
+          "path": "interiors/barrel_01/preview_side.png",
+          "bytes": 144225,
+          "sha256": "24abbcd751aaf6078dc4c2fdfd59703581f072d1f80fd64788b026d3418f1d18"
+        },
+        {
+          "path": "interiors/barrel_01/preview_top.png",
+          "bytes": 118063,
+          "sha256": "1d4d9cdf69bfda1077f4e74165ac3cbc6e9190db892a22e7b8c5fa60b016c8b4"
+        },
+        {
+          "path": "interiors/barrel_01/report.json",
+          "bytes": 538,
+          "sha256": "08b01c9ffc7f579e01a6afb3e0ac0f473034e1c5aa712c6b6c5a3d631a3dd564"
+        },
+        {
+          "path": "interiors/barrel_01/report_texture.json",
+          "bytes": 2263,
+          "sha256": "040ff52c5f98a294389efe57e12ce67c4378a1d104939ff61e8a61bc00517d41"
+        }
+      ]
+    },
+    {
+      "name": "barrel_02",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/barrel_02/barrel_02.glb",
+          "bytes": 95960,
+          "sha256": "db4306d88b6d0662baf7fdefadaac4e525c4ec531b4afbc635812e6192669f6e"
+        },
+        {
+          "path": "interiors/barrel_02/barrel_02_albedo.png",
+          "bytes": 60301,
+          "sha256": "7a471311edc8023d0afd27d228f1bb5300e5d267a593b724e8754e6dd973fd5e"
+        },
+        {
+          "path": "interiors/barrel_02/barrel_02_godot.glb",
+          "bytes": 130100,
+          "sha256": "d4d785eae563273892cc125ab41c5775ad1ab98253c2a1d395a89b60458890fa"
+        },
+        {
+          "path": "interiors/barrel_02/preview_front.png",
+          "bytes": 139617,
+          "sha256": "44a7cfb2bed5daf60cdb73d652fc7d8750cd0576b911a59c9beb12767b1c8286"
+        },
+        {
+          "path": "interiors/barrel_02/preview_iso.png",
+          "bytes": 143226,
+          "sha256": "d373442c8ede825da69e36339f5c6ba0ef919c83485073094b327749512c27e0"
+        },
+        {
+          "path": "interiors/barrel_02/preview_side.png",
+          "bytes": 139900,
+          "sha256": "6866b3c2c941ab30c2bced2ccefe38de5a4ff61fe13509cd0238c3e1e4ecd3e0"
+        },
+        {
+          "path": "interiors/barrel_02/preview_top.png",
+          "bytes": 119459,
+          "sha256": "e0f02dc348d92d00222ef0d7db94a2264c41cefcc38da1d3b722f20dd73136e5"
+        },
+        {
+          "path": "interiors/barrel_02/report.json",
+          "bytes": 541,
+          "sha256": "387b6115dfa606ba1bc8b8b60d9aaaeff534c9dc1d24616b7f6c0064c99cbe66"
+        },
+        {
+          "path": "interiors/barrel_02/report_texture.json",
+          "bytes": 2333,
+          "sha256": "1f90addb5267dc1d159b6cbb21466027a70e3a421028b004d969eda1efd8b9ad"
+        }
+      ]
+    },
+    {
+      "name": "bench_01",
+      "category": "furniture",
+      "files": [
+        {
+          "path": "interiors/bench_01/bench_01.glb",
+          "bytes": 61636,
+          "sha256": "ee14720f89af7d75135e4220b815f53da6c1cfe08af559b0130a06eb3af246e4"
+        },
+        {
+          "path": "interiors/bench_01/bench_01_albedo.png",
+          "bytes": 17692,
+          "sha256": "c16b88cae08782ac4cc18ac3f788ea346d0d568cfb95edc0179710b5d769023a"
+        },
+        {
+          "path": "interiors/bench_01/bench_01_godot.glb",
+          "bytes": 101464,
+          "sha256": "40261718a7d9e00d1b420c8f152eb8b9b494be0160d27ec2bff8e8433503d514"
+        },
+        {
+          "path": "interiors/bench_01/preview_front.png",
+          "bytes": 115167,
+          "sha256": "588e794433ffad61c916d7e916db843e56ef1368b75a8a7c5437c83bfc05abad"
+        },
+        {
+          "path": "interiors/bench_01/preview_iso.png",
+          "bytes": 120801,
+          "sha256": "43b09cb4f8b3b3a79719b87e892f03661566cf159794b6d58ac8cf6ab0864d53"
+        },
+        {
+          "path": "interiors/bench_01/preview_side.png",
+          "bytes": 103356,
+          "sha256": "a1cd918c1d549c40fd104727875e884cda3cbda329f16db2b4cefb95bb7888bd"
+        },
+        {
+          "path": "interiors/bench_01/preview_top.png",
+          "bytes": 111288,
+          "sha256": "61dcfe61e11afeb852709f1bdee3caf5ab9bb8a2be6566b18f161ed034691807"
+        },
+        {
+          "path": "interiors/bench_01/report.json",
+          "bytes": 522,
+          "sha256": "c5efb3377e29ec151961cec87a2dcbd2a8be847a4ad6cb639102727ce9cd0ee3"
+        },
+        {
+          "path": "interiors/bench_01/report_texture.json",
+          "bytes": 1417,
+          "sha256": "3bf0d4dfd8c2ab40eab4b6d215ab1b51833a9a14c7e0519a07c3fa5cc0647004"
+        }
+      ]
+    },
+    {
+      "name": "bone",
+      "category": "remains",
+      "files": [
+        {
+          "path": "interiors/bone/bone.glb",
+          "bytes": 14104,
+          "sha256": "40db141bebba90c1bd78462b689ca7eaf3a91b71be23576efa67464a19365e90"
+        },
+        {
+          "path": "interiors/bone/preview_front.png",
+          "bytes": 81154,
+          "sha256": "33865127cceb36036ab54e949d27987368217ed31c908a7791154056ac9b2904"
+        },
+        {
+          "path": "interiors/bone/preview_iso.png",
+          "bytes": 95555,
+          "sha256": "295d1d117ebabefd824137c11f28f0d043dc6532c10877d077fce13d4e3eb301"
+        },
+        {
+          "path": "interiors/bone/preview_side.png",
+          "bytes": 82744,
+          "sha256": "e695a84120e1c8ed3a8f7d12b8a67143347d91b235fbb639d827311781fc1b01"
+        },
+        {
+          "path": "interiors/bone/preview_top.png",
+          "bytes": 89021,
+          "sha256": "17fbea72e4f33e8975820fdbe1a5971da008626b866037885dba22dfcce2121c"
+        },
+        {
+          "path": "interiors/bone/report.json",
+          "bytes": 406,
+          "sha256": "590a2c7bb6b0a15a214b9ceaadd7630367b07fe5ba02a61abd945dbbaf419ff2"
+        }
+      ]
+    },
+    {
+      "name": "bookcase_01",
+      "category": "furniture",
+      "files": [
+        {
+          "path": "interiors/bookcase_01/bookcase_01.glb",
+          "bytes": 103720,
+          "sha256": "8fca60ae3d55d88fc47a739bd44c1e41abab2d50c138c77812fb56092e9632be"
+        },
+        {
+          "path": "interiors/bookcase_01/bookcase_01_albedo.png",
+          "bytes": 48509,
+          "sha256": "42385ee154975c17985c0fa4f41af0db13c73a558711932e1949e2b2a5d0af60"
+        },
+        {
+          "path": "interiors/bookcase_01/bookcase_01_godot.glb",
+          "bytes": 155604,
+          "sha256": "5523acf9442ac589cd4ebc7ce840b1c49653b156d9e5a965bf6d52afe84b22fb"
+        },
+        {
+          "path": "interiors/bookcase_01/preview_front.png",
+          "bytes": 154075,
+          "sha256": "ae7e7221bad0dc28a7211fd7eb9b1aa84f606eb8c31a99afcfc65c9248603930"
+        },
+        {
+          "path": "interiors/bookcase_01/preview_iso.png",
+          "bytes": 171145,
+          "sha256": "320e77fe39dc86911e78ff87b28da52aae477e70fe6293a769ce0f551d386bcd"
+        },
+        {
+          "path": "interiors/bookcase_01/preview_side.png",
+          "bytes": 120599,
+          "sha256": "e82d3d9c96814dda4ca89f71675cb44c0c4a3ea64f58e92a137fb859a8084788"
+        },
+        {
+          "path": "interiors/bookcase_01/preview_top.png",
+          "bytes": 88122,
+          "sha256": "77d33862056dd2c5e8cb026f0085aea3dd12735b310431256a753debcc9801f2"
+        },
+        {
+          "path": "interiors/bookcase_01/report.json",
+          "bytes": 596,
+          "sha256": "3c8e15db71618dddb950600b8ba20bfc5b594301cb8bca62e3dce5b5bb738be1"
+        },
+        {
+          "path": "interiors/bookcase_01/report_texture.json",
+          "bytes": 3528,
+          "sha256": "b368bb36d1c4db015d865160eb991fe5a294bd7a73219829efecfc9269eba2a9"
+        }
+      ]
+    },
+    {
+      "name": "bookcase_books_01",
+      "category": "furniture",
+      "files": [
+        {
+          "path": "interiors/bookcase_books_01/bookcase_books_01.glb",
+          "bytes": 127568,
+          "sha256": "a3269367affaf0a12e808721c1bf39f82df656b3a9b58bbc8b0c7f70f53658db"
+        },
+        {
+          "path": "interiors/bookcase_books_01/bookcase_books_01_albedo.png",
+          "bytes": 34182,
+          "sha256": "a92aab284fd760e6a3045d837cf18facfa4807930642d8fae49a1afbda4eeb7c"
+        },
+        {
+          "path": "interiors/bookcase_books_01/bookcase_books_01_godot.glb",
+          "bytes": 212224,
+          "sha256": "2d77cab632241ca8bd4fc6fd15126adfedd9eb5a325d61559ae99b327d04f7c4"
+        },
+        {
+          "path": "interiors/bookcase_books_01/preview_front.png",
+          "bytes": 162537,
+          "sha256": "c42654c08ee161eada3f63ba15f279386c5dc34bdfbfb00023116abe0cf3a0c8"
+        },
+        {
+          "path": "interiors/bookcase_books_01/preview_iso.png",
+          "bytes": 188375,
+          "sha256": "4b9417caeca1a17c75bf2a53b00fc95e98e2c255219a4274165095c2c636bf75"
+        },
+        {
+          "path": "interiors/bookcase_books_01/preview_side.png",
+          "bytes": 121695,
+          "sha256": "312a5da08bf132faff92c7071d708138e124dbc73e7bc96128ac68c183cf3962"
+        },
+        {
+          "path": "interiors/bookcase_books_01/preview_top.png",
+          "bytes": 87510,
+          "sha256": "bc63d31f39101bb7e3d6e6865cb5e7b03e0d9a69caf890c771e724c1738c6d33"
+        },
+        {
+          "path": "interiors/bookcase_books_01/report.json",
+          "bytes": 659,
+          "sha256": "a840547ee1a06952546c3799957b949e769b629d304adf9a6cdab7789d28c87a"
+        },
+        {
+          "path": "interiors/bookcase_books_01/report_texture.json",
+          "bytes": 627,
+          "sha256": "c9a8972ffe3a5226d6f6c830842533cdda7e405da983666e2fdd2f16f2dda9c2"
+        }
+      ]
+    },
+    {
+      "name": "bridge_01",
+      "category": "structure",
+      "files": [
+        {
+          "path": "exteriors/bridge_01/bridge_01.glb",
+          "bytes": 102176,
+          "sha256": "3971a3b702523717e791dd967cb6e3bac14896168fbe9f0ccc970e7d1cb556d6"
+        },
+        {
+          "path": "exteriors/bridge_01/bridge_01_albedo.png",
+          "bytes": 68813,
+          "sha256": "fa7b19d00b18a90a5aac22b052a20cb22e7b1969919f392d6540002fafe22b3b"
+        },
+        {
+          "path": "exteriors/bridge_01/bridge_01_godot.glb",
+          "bytes": 132016,
+          "sha256": "0537b9f3200ce88f6af0b16f71ae5da9c67478ec4f61e667ecbd52cb8fe795dd"
+        },
+        {
+          "path": "exteriors/bridge_01/preview_front.png",
+          "bytes": 111626,
+          "sha256": "e760f45a9cfdeaa163b24aaf27b1acf7e58bbb7ddb58d890a2127bbf96de3f51"
+        },
+        {
+          "path": "exteriors/bridge_01/preview_iso.png",
+          "bytes": 141920,
+          "sha256": "809bad3f7ef19ea7d766d9ca59d0d4db271c897f2ed120acf1e799d0a03abfc7"
+        },
+        {
+          "path": "exteriors/bridge_01/preview_side.png",
+          "bytes": 104308,
+          "sha256": "0f130d6192835163946c38ec34c0e09bc676a9fbc23b6797e0d02ba2530f2e0b"
+        },
+        {
+          "path": "exteriors/bridge_01/preview_top.png",
+          "bytes": 124761,
+          "sha256": "14b60d8542ba09a45088f8a65620823eab4ae1d0131c92689ec02f0e6d3f8175"
+        },
+        {
+          "path": "exteriors/bridge_01/report.json",
+          "bytes": 527,
+          "sha256": "7e6c81b1adc244fc78260e8d8694c38f127a11ae24a9bbbc57260da53bd1ee1a"
+        },
+        {
+          "path": "exteriors/bridge_01/report_texture.json",
+          "bytes": 1383,
+          "sha256": "2b279b8e80cd38f6e892f8e9a1b2f2436b82c66a2aaab823b66834ddc1952958"
+        }
+      ]
+    },
+    {
+      "name": "cell_bars",
+      "category": "architecture",
+      "files": [
+        {
+          "path": "interiors/cell_bars/cell_bars.glb",
+          "bytes": 12660,
+          "sha256": "7a1f089205e592f2bf5090ff0c2e6c700ef9c8bfc7b4867f5afd053ab28f68de"
+        },
+        {
+          "path": "interiors/cell_bars/cell_bars_godot.glb",
+          "bytes": 23672,
+          "sha256": "680f2625c75c107c6a825b8216257ae0ee1674ee1d6596efd261a9c3b64e2613"
+        },
+        {
+          "path": "interiors/cell_bars/preview_front.png",
+          "bytes": 117903,
+          "sha256": "2d0a71ec65915cd7a88c65c51fa66f9e666e9fe4ed5fc90a8945f614d656d195"
+        },
+        {
+          "path": "interiors/cell_bars/preview_iso.png",
+          "bytes": 126759,
+          "sha256": "4af80f1f90d98ee5dcb75456c52af4b4966e6b653ac9fba77106ff6fdfa6b67c"
+        },
+        {
+          "path": "interiors/cell_bars/preview_side.png",
+          "bytes": 92746,
+          "sha256": "1ff05daa8361dba51b4624ee0e614f6ef80655941a72769ca3bb8bd5ba6c8960"
+        },
+        {
+          "path": "interiors/cell_bars/preview_top.png",
+          "bytes": 63671,
+          "sha256": "282ba643ed036f904c516b9900d0d159cacf404e6fb2a2165a73f508befb1f77"
+        },
+        {
+          "path": "interiors/cell_bars/report.json",
+          "bytes": 439,
+          "sha256": "16cff33f842c783c6b6bc3227f820f844284fa1eec2726c97eba648101afbbd6"
+        }
+      ]
+    },
+    {
+      "name": "chair_01",
+      "category": "furniture",
+      "files": [
+        {
+          "path": "interiors/chair_01/chair_01.glb",
+          "bytes": 63664,
+          "sha256": "d192177bd914dc5ffb5d22bc09d4f5a97d38518b31794fa572f5c5b3b6f06209"
+        },
+        {
+          "path": "interiors/chair_01/chair_01_albedo.png",
+          "bytes": 16930,
+          "sha256": "8ccc79a72a2ad7f253d747fdba902bb82494884cf2cbbfae0095358ed36409e5"
+        },
+        {
+          "path": "interiors/chair_01/chair_01_godot.glb",
+          "bytes": 107064,
+          "sha256": "f2bd3c97868e7e000075beb4ca7b68165337ef457dcc5ca3fd3903fadfdbf19b"
+        },
+        {
+          "path": "interiors/chair_01/preview_front.png",
+          "bytes": 141658,
+          "sha256": "2acb7cb61a45ba97ef314b1b21b7d0576ceb5ffbf67efeac39d203f577bf1572"
+        },
+        {
+          "path": "interiors/chair_01/preview_iso.png",
+          "bytes": 146202,
+          "sha256": "9e968487cb8dad74df836c2999b529796608b272568a889e5fd8e9878fa78246"
+        },
+        {
+          "path": "interiors/chair_01/preview_side.png",
+          "bytes": 116728,
+          "sha256": "f0566553b7e44a7a6a9029c82712147b91fff5318e4023f8fd9625a254994949"
+        },
+        {
+          "path": "interiors/chair_01/preview_top.png",
+          "bytes": 88866,
+          "sha256": "d924af191577731fbc3f958df88103a8362f22ed228362f61eba523ee57d2197"
+        },
+        {
+          "path": "interiors/chair_01/report.json",
+          "bytes": 492,
+          "sha256": "8f8ea8fa5cec66c587ae94c783a94da1e3957a18310160825faf774176f9870e"
+        },
+        {
+          "path": "interiors/chair_01/report_texture.json",
+          "bytes": 4606,
+          "sha256": "d3f25afc367aec1b0ede8b04a920d3dba12877ee011cd98616b529d216d0e165"
+        }
+      ]
+    },
+    {
+      "name": "cheese_wheel_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/cheese_wheel_01/cheese_wheel_01.glb",
+          "bytes": 36900,
+          "sha256": "a74ff2265c5525166c9784ccbbf0189dfb99445aa9855319016d7e606e1231ce"
+        },
+        {
+          "path": "interiors/cheese_wheel_01/cheese_wheel_01_albedo.png",
+          "bytes": 12016,
+          "sha256": "f146c82ab9c13967ea1bff23995afbaefccf44eabda427c5aed67badc795e995"
+        },
+        {
+          "path": "interiors/cheese_wheel_01/cheese_wheel_01_godot.glb",
+          "bytes": 59076,
+          "sha256": "e40c5b99d4925c5b4c9b6125bfeaa9340415b8f607de01edbf760652d2943826"
+        },
+        {
+          "path": "interiors/cheese_wheel_01/preview_front.png",
+          "bytes": 85911,
+          "sha256": "921d8ffae955169be364f7720012f006d5f22e8bae0e1e8a52a33439b5c66d6a"
+        },
+        {
+          "path": "interiors/cheese_wheel_01/preview_iso.png",
+          "bytes": 104925,
+          "sha256": "14ba466fc9df6be1bf8b9a7e5c20c047380f85c8c194e155e7b26888818858e4"
+        },
+        {
+          "path": "interiors/cheese_wheel_01/preview_side.png",
+          "bytes": 84640,
+          "sha256": "2a558291aa73573ccb739dbbed1ad55a83278e44e34e9fcf77fb3f668902ad02"
+        },
+        {
+          "path": "interiors/cheese_wheel_01/preview_top.png",
+          "bytes": 113930,
+          "sha256": "9392f480665a5af16414f635f3a3bfd8643938e71a77d39269fbcc54325da13b"
+        },
+        {
+          "path": "interiors/cheese_wheel_01/report.json",
+          "bytes": 465,
+          "sha256": "375e0e46d3a10308e9fc186adbf5cadee44a46acfb78354ea2b1a35ddee4b741"
+        },
+        {
+          "path": "interiors/cheese_wheel_01/report_texture.json",
+          "bytes": 1974,
+          "sha256": "23808cea18cba10cf3580afc958f2814eded2c84c38d4492b3b752cd23ff0982"
+        }
+      ]
+    },
+    {
+      "name": "coffin",
+      "category": "crypt",
+      "files": [
+        {
+          "path": "exteriors/coffin/coffin.glb",
+          "bytes": 14924,
+          "sha256": "b59359c26acd00984d4536bdb01acc8a2035539d8df5b8ba2be259523b159213"
+        },
+        {
+          "path": "exteriors/coffin/coffin_albedo.png",
+          "bytes": 4658,
+          "sha256": "8f583c4200e3bda10ad1d89935ea262b371f2b2831027200d73b7fc1be18bcfa"
+        },
+        {
+          "path": "exteriors/coffin/coffin_godot.glb",
+          "bytes": 23676,
+          "sha256": "5d44bca88d45baaf08af6a4d5276257c86870c3423aa9e7300f4ae32b40b8050"
+        },
+        {
+          "path": "exteriors/coffin/preview_front.png",
+          "bytes": 86049,
+          "sha256": "8770500a151835775dc1f67691120ff1bbcf8e413d7d93f16e53dd9c5c4cba04"
+        },
+        {
+          "path": "exteriors/coffin/preview_iso.png",
+          "bytes": 125494,
+          "sha256": "57e82d35c791b88c91458092cd34d23d6bfdc1c63c698e257fa79c07d0e874be"
+        },
+        {
+          "path": "exteriors/coffin/preview_side.png",
+          "bytes": 103457,
+          "sha256": "f60df8f92b0044b24f7c5634f1a59e5acc32fc1ec49c953fd17a81fcc12ceabc"
+        },
+        {
+          "path": "exteriors/coffin/preview_top.png",
+          "bytes": 134513,
+          "sha256": "f11590c802b602e523a97f864ef73d54c21e7ef9496a6a0121fb2407ef42a7ee"
+        },
+        {
+          "path": "exteriors/coffin/report.json",
+          "bytes": 441,
+          "sha256": "576311f6506ac01ab46b945a8616977e1ecd1e30f070b4dc20697921a5a03e40"
+        },
+        {
+          "path": "exteriors/coffin/report_texture.json",
+          "bytes": 401,
+          "sha256": "fcd551114924a4aff00e8754f9b07f822f7016553cc1af65f69e96be7878e0e2"
+        }
+      ]
+    },
+    {
+      "name": "conifer_01",
+      "category": "flora/trees",
+      "files": [
+        {
+          "path": "exteriors/conifer_01/conifer_01.glb",
+          "bytes": 139084,
+          "sha256": "d537f5e4b74313092f59241ee0eea2cabc49bcd89b74864228e7137275626400"
+        },
+        {
+          "path": "exteriors/conifer_01/conifer_01_albedo.png",
+          "bytes": 15629,
+          "sha256": "a781aade064fcd72c371669122521c1ee346cf9857504b9bea753cc00e964bf7"
+        },
+        {
+          "path": "exteriors/conifer_01/conifer_01_godot.glb",
+          "bytes": 261028,
+          "sha256": "6de0965c4d8d10d43010983f8cb21af1b9d461d04ba45849efb4a7fd8b530ef0"
+        },
+        {
+          "path": "exteriors/conifer_01/preview_front.png",
+          "bytes": 126356,
+          "sha256": "8208ec06e22e1a6808f0fdcf3dc646e62726bd8e4887a30550c6e207469bfd52"
+        },
+        {
+          "path": "exteriors/conifer_01/preview_iso.png",
+          "bytes": 129064,
+          "sha256": "62d98d50285da8e04713baaa5893ff24038f643ea313a8d60c956c14e7b39f54"
+        },
+        {
+          "path": "exteriors/conifer_01/preview_side.png",
+          "bytes": 127470,
+          "sha256": "14d3bf718512eadc498a9abb3baf748d4196e138dca77504c84c48376a49ccd2"
+        },
+        {
+          "path": "exteriors/conifer_01/preview_top.png",
+          "bytes": 91622,
+          "sha256": "cbd1b31d0833a07a98183f2dfb2aa374a33de39395dc5084b75fc488c65825d7"
+        },
+        {
+          "path": "exteriors/conifer_01/report.json",
+          "bytes": 462,
+          "sha256": "a91ca1fd6abac289b97951bd1d090744f350de5f727c78a2a6b7e48ab70d6b17"
+        },
+        {
+          "path": "exteriors/conifer_01/report_texture.json",
+          "bytes": 2423,
+          "sha256": "a88afc53920653d2073bdf3c6eaf8682e7cebfb34ccb0fd6266892c074aa9b95"
+        }
+      ]
+    },
+    {
+      "name": "door",
+      "category": "doors",
+      "files": [
+        {
+          "path": "interiors/door/door.glb",
+          "bytes": 29264,
+          "sha256": "27a7b7bf36535d27d21cfc123162fe92b5ebba4975b0e0de80b6b84d7f397227"
+        },
+        {
+          "path": "interiors/door/door_albedo.png",
+          "bytes": 9053,
+          "sha256": "00e22c44104b8a687c18faa5d1d0f62d8297fc1428cf383a96aadabb4c34fc0d"
+        },
+        {
+          "path": "interiors/door/door_godot.glb",
+          "bytes": 47956,
+          "sha256": "febeabaa8f70f7ff3006d7e33955b3bd8bf0585fa3c58c20ed3a8adf0839ebcf"
+        },
+        {
+          "path": "interiors/door/preview_front.png",
+          "bytes": 156740,
+          "sha256": "8e39747c5564d5da88ebe219be10ec2aba65f399cf228bb616ac5d53148b01da"
+        },
+        {
+          "path": "interiors/door/preview_iso.png",
+          "bytes": 157597,
+          "sha256": "45e9d266b6ae19bdb0ff869feed75f8aff2864a1f3db172dae08ba0c05bcc0b3"
+        },
+        {
+          "path": "interiors/door/preview_side.png",
+          "bytes": 101430,
+          "sha256": "1ca5fd92d24733404e1cebc1e209634556657d9a3dfa443618c60e291e3110b0"
+        },
+        {
+          "path": "interiors/door/preview_top.png",
+          "bytes": 69776,
+          "sha256": "8db17d4fe76d1fc3202af77c31edff19d1d0dc344d07469fdc005157bf174878"
+        },
+        {
+          "path": "interiors/door/report.json",
+          "bytes": 432,
+          "sha256": "4bd16ca25573abc7e90e6f01840c7cec74775f4f6848cb8958de48243642a345"
+        },
+        {
+          "path": "interiors/door/report_texture.json",
+          "bytes": 391,
+          "sha256": "10f1072980629bf46aa75939e3706971be4b9bc86d534b824c2bb8cddf8f6e42"
+        }
+      ]
+    },
+    {
+      "name": "door_arch_01",
+      "category": "doors",
+      "files": [
+        {
+          "path": "interiors/door_arch_01/door_arch_01.glb",
+          "bytes": 66756,
+          "sha256": "e9350ce85ea21b14ee79e2d7b31d026e6bc4a721a346c0ecd1f1f121e667d3f0"
+        },
+        {
+          "path": "interiors/door_arch_01/door_arch_01_albedo.png",
+          "bytes": 17988,
+          "sha256": "fd499bd08eda68069f691819239c698082e88a59225b9511cefb460cd8c663fe"
+        },
+        {
+          "path": "interiors/door_arch_01/door_arch_01_godot.glb",
+          "bytes": 114008,
+          "sha256": "04ed78e4ff90825ba7765b090d3507a17c1e84f244e3bebffda2fdb29d4911eb"
+        },
+        {
+          "path": "interiors/door_arch_01/preview_front.png",
+          "bytes": 146233,
+          "sha256": "d4fcf0e447d5fe8587781441a4a1abee85f968ddf96bfd8d7ceeefb7a576875f"
+        },
+        {
+          "path": "interiors/door_arch_01/preview_iso.png",
+          "bytes": 141064,
+          "sha256": "67793f41ed808360e6366f22d1a3ea88065b55ba4933bd7c0381d2836dac541c"
+        },
+        {
+          "path": "interiors/door_arch_01/preview_side.png",
+          "bytes": 97803,
+          "sha256": "3bc0eb2d2eb892022aa9db33a726550d43a9f2dd0b0091fd2efec692fcec009d"
+        },
+        {
+          "path": "interiors/door_arch_01/preview_top.png",
+          "bytes": 67510,
+          "sha256": "cba7188d94e53f07e79b3fdb4b73324a80b5f76f3554fd5e9dfdb34c5f0bad20"
+        },
+        {
+          "path": "interiors/door_arch_01/report.json",
+          "bytes": 465,
+          "sha256": "de3133a65f86b5f2ffd621fd4c86ff9b5c8e873be2d4c1195f24111a304ce512"
+        },
+        {
+          "path": "interiors/door_arch_01/report_texture.json",
+          "bytes": 2387,
+          "sha256": "8714724270dc02ae36b5a977e772776c329f358bea41dd2859db5eeff01c46ab"
+        }
+      ]
+    },
+    {
+      "name": "door_arch_heavy_01",
+      "category": "doors",
+      "files": [
+        {
+          "path": "interiors/door_arch_heavy_01/door_arch_heavy_01.glb",
+          "bytes": 287068,
+          "sha256": "a4f7ee690027899dbbdb44acccbbd9ec3606bc7f2245b8a60902d240086b470f"
+        },
+        {
+          "path": "interiors/door_arch_heavy_01/door_arch_heavy_01_albedo.png",
+          "bytes": 154754,
+          "sha256": "2aa5ea2e7a3ec5ebb306f35ffbd4a3cc1def558ae4151ee9d91a917ac0149257"
+        },
+        {
+          "path": "interiors/door_arch_heavy_01/door_arch_heavy_01_godot.glb",
+          "bytes": 417860,
+          "sha256": "4b77b3aefe2d4d91ba775af54db485c6ecfeacf3397b5c1b5e5b67f521934197"
+        },
+        {
+          "path": "interiors/door_arch_heavy_01/preview_front.png",
+          "bytes": 149966,
+          "sha256": "1b19bd1eaa5ab826d4afe23a85782caaa088da5263adc27d73587b7e055302a9"
+        },
+        {
+          "path": "interiors/door_arch_heavy_01/preview_iso.png",
+          "bytes": 147079,
+          "sha256": "13d679d94ccbf70d46a1cc6f456735aa50dfed96077056213761ecfbfc776a7f"
+        },
+        {
+          "path": "interiors/door_arch_heavy_01/preview_side.png",
+          "bytes": 103159,
+          "sha256": "694fcb2b1a7f0da5a65584e79db111bf6eeaf2cedb3cf095aa6aec8f815e19ad"
+        },
+        {
+          "path": "interiors/door_arch_heavy_01/preview_top.png",
+          "bytes": 69406,
+          "sha256": "1914b14b793a763d481ee3db4e61c51b57f89cf25331b587bdd066d9a647a61f"
+        },
+        {
+          "path": "interiors/door_arch_heavy_01/report.json",
+          "bytes": 578,
+          "sha256": "6ac82375069ecf59c02da38cc7e29bd22dcdb0187c50fe49a47f8434613431df"
+        },
+        {
+          "path": "interiors/door_arch_heavy_01/report_texture.json",
+          "bytes": 2804,
+          "sha256": "97ec8d1fae2c8e5de5ce2db6bf3491b6bad2d137e80a6bc07930bb086bdb77f3"
+        }
+      ]
+    },
+    {
+      "name": "door_arch_heavy_frame_01",
+      "category": "doors",
+      "files": [
+        {
+          "path": "interiors/door_arch_heavy_frame_01/door_arch_heavy_frame_01.glb",
+          "bytes": 191636,
+          "sha256": "e54615b239da109372700f8f81908a7989e25c89bbc0bfe879f41890ec0e9b40"
+        },
+        {
+          "path": "interiors/door_arch_heavy_frame_01/door_arch_heavy_frame_01_albedo.png",
+          "bytes": 152944,
+          "sha256": "d6e22dfe4464e8d1b0987f3c127dcdd1d723bb426cdba6535e31490aa85d0ec7"
+        },
+        {
+          "path": "interiors/door_arch_heavy_frame_01/door_arch_heavy_frame_01_godot.glb",
+          "bytes": 226528,
+          "sha256": "72bb3cac355de0575c9eec77d8ef19056463a851e72705497a26f9c9c956cb46"
+        },
+        {
+          "path": "interiors/door_arch_heavy_frame_01/preview_front.png",
+          "bytes": 116947,
+          "sha256": "226e4c310398070fac6f8563f4e67b7c23e3f9b5cf6d5db12608452fa8bebf53"
+        },
+        {
+          "path": "interiors/door_arch_heavy_frame_01/preview_iso.png",
+          "bytes": 119286,
+          "sha256": "f1e00e2b582b620f826d35fe15e58a62429b9038919be78af2b2fab2e32c5e57"
+        },
+        {
+          "path": "interiors/door_arch_heavy_frame_01/preview_side.png",
+          "bytes": 101333,
+          "sha256": "6b60ebe22322cab012582ae7972725b4b997ba1f1d6ef7a12047f3cba58f7509"
+        },
+        {
+          "path": "interiors/door_arch_heavy_frame_01/preview_top.png",
+          "bytes": 67985,
+          "sha256": "94f56a93bde67ba6a4417976b277c13323c3f3f0e578073feaa7a5e40d990c59"
+        },
+        {
+          "path": "interiors/door_arch_heavy_frame_01/report.json",
+          "bytes": 585,
+          "sha256": "e61516a5dbd4138e2b28206b62b884081626422b52dd7a70005155ec4fc480b8"
+        },
+        {
+          "path": "interiors/door_arch_heavy_frame_01/report_texture.json",
+          "bytes": 1984,
+          "sha256": "8f6c87e9c5707d6a7877e182e4b76e43a3748981e402accba1c2125ec614d213"
+        }
+      ]
+    },
+    {
+      "name": "door_arch_heavy_leaf_01",
+      "category": "doors",
+      "files": [
+        {
+          "path": "interiors/door_arch_heavy_leaf_01/door_arch_heavy_leaf_01.glb",
+          "bytes": 258956,
+          "sha256": "715bbfd0708375c25a2e076aba26f2d8aff1aa24aff554c274ab08f745a6ce2c"
+        },
+        {
+          "path": "interiors/door_arch_heavy_leaf_01/door_arch_heavy_leaf_01_albedo.png",
+          "bytes": 163851,
+          "sha256": "1169da99140834a713cde6ac44345a3dfdf46ed38b18c17cff8efc3d217ff63e"
+        },
+        {
+          "path": "interiors/door_arch_heavy_leaf_01/door_arch_heavy_leaf_01_godot.glb",
+          "bytes": 352532,
+          "sha256": "eb7204e98edd6a0f12c8e02f66128a5f3ec542fb3f8fe7a25cad52572cac1148"
+        },
+        {
+          "path": "interiors/door_arch_heavy_leaf_01/preview_front.png",
+          "bytes": 143054,
+          "sha256": "e260764553c21fcc590767bc66b30317de23fb78b473d33413a2d17d033be9d7"
+        },
+        {
+          "path": "interiors/door_arch_heavy_leaf_01/preview_iso.png",
+          "bytes": 142159,
+          "sha256": "1fb4c4e983116a4eb25b22e9854034bd25be60c5b82159b62f8cac135d5a5474"
+        },
+        {
+          "path": "interiors/door_arch_heavy_leaf_01/preview_side.png",
+          "bytes": 103417,
+          "sha256": "5a1d337623def806140b33fb91dbdf67c9109c05d8d63b4bf97ead657fa9a31f"
+        },
+        {
+          "path": "interiors/door_arch_heavy_leaf_01/preview_top.png",
+          "bytes": 71050,
+          "sha256": "5f72fadb817d63e05d5a3cdee4b75cfa6ccce2bd27bdb28748ab07d339de540c"
+        },
+        {
+          "path": "interiors/door_arch_heavy_leaf_01/report.json",
+          "bytes": 599,
+          "sha256": "a7d6fc2f35c5854a906326862537fa0e35be953b98e045b8f60c62d1fc7e4661"
+        },
+        {
+          "path": "interiors/door_arch_heavy_leaf_01/report_texture.json",
+          "bytes": 2829,
+          "sha256": "b40b45aa1ba812667b01e58aad680b8b5b25d64125be9464560e1f6160bda292"
+        }
+      ]
+    },
+    {
+      "name": "grave_02",
+      "category": "crypt",
+      "files": [
+        {
+          "path": "exteriors/grave_02/grave_02.glb",
+          "bytes": 51124,
+          "sha256": "cea4258e21a9db3850c3e09b4f595ff2417b14d232f7929d6d0f0e067490b7bc"
+        },
+        {
+          "path": "exteriors/grave_02/grave_02_albedo.png",
+          "bytes": 12573,
+          "sha256": "a62351761e9e874509b96e468ac9b3657296d888be84e80987de2ec6ea00b357"
+        },
+        {
+          "path": "exteriors/grave_02/grave_02_godot.glb",
+          "bytes": 85960,
+          "sha256": "f7043ce4f48eb26b62cac58d384d7b8d0cbf2fcd76213fd952050b79a85724a4"
+        },
+        {
+          "path": "exteriors/grave_02/preview_front.png",
+          "bytes": 122219,
+          "sha256": "8215c96a20ca7ff04d4e0e34be905096afc06a10637410dab99bcd1fb83f86b6"
+        },
+        {
+          "path": "exteriors/grave_02/preview_iso.png",
+          "bytes": 128809,
+          "sha256": "e65ccf4651e0afe975ce8938930ea67694b5cf4598d4e165a1be5f4d4c534de6"
+        },
+        {
+          "path": "exteriors/grave_02/preview_side.png",
+          "bytes": 114560,
+          "sha256": "e358debd418a6113a03cdff39fe1a5967422424e0290fb5ecb8535b0449b093d"
+        },
+        {
+          "path": "exteriors/grave_02/preview_top.png",
+          "bytes": 88281,
+          "sha256": "3bddf9179bc88c930d3bbcd2618c8713120861bc2e9339744482adc71de68b1f"
+        },
+        {
+          "path": "exteriors/grave_02/report.json",
+          "bytes": 437,
+          "sha256": "e75c2e77a21f66b0a45e5ff827b0914d05e8fee353d585186abecaf54bcdd526"
+        },
+        {
+          "path": "exteriors/grave_02/report_texture.json",
+          "bytes": 1615,
+          "sha256": "262df6e92f92e5ff82d94accb1886d21343e93a67bbb3a2996d8aff25ad6da35"
+        }
+      ]
+    },
+    {
+      "name": "house_01",
+      "category": "structure",
+      "files": [
+        {
+          "path": "exteriors/house_01/house_01.glb",
+          "bytes": 128656,
+          "sha256": "005b2bb1b1ffa8331e93b7ba6121f629f4ce3413678ff8fcf167f3116539d34b"
+        },
+        {
+          "path": "exteriors/house_01/house_01_godot.glb",
+          "bytes": 251284,
+          "sha256": "b20191ada4933929d90c0027a4a6f91be77c6fffbe729a7f57508c425f6d4b9b"
+        },
+        {
+          "path": "exteriors/house_01/preview_front.png",
+          "bytes": 145773,
+          "sha256": "b7650a4ca29f3708b28c6da66d58049802d9e4a34626b9ae87f97c289a6bf200"
+        },
+        {
+          "path": "exteriors/house_01/preview_iso.png",
+          "bytes": 170480,
+          "sha256": "342efeb27c26bc5798d3a21e7fd03cf669586cf06e83925542f13381c08af833"
+        },
+        {
+          "path": "exteriors/house_01/preview_side.png",
+          "bytes": 138689,
+          "sha256": "661cde2b582d10f848e1a2e0e0f76480f70aae89a125772662e5742559cb8f6f"
+        },
+        {
+          "path": "exteriors/house_01/preview_top.png",
+          "bytes": 117468,
+          "sha256": "40c23a9d7443470240e8e2a1b950eb281fc3d91bb50b8523cf6c716e74fa9907"
+        },
+        {
+          "path": "exteriors/house_01/report.json",
+          "bytes": 522,
+          "sha256": "31a7e5108300792670f99cb09427d9c4ecd48eb6895d1d57b0d9f74e1b99c5fa"
+        }
+      ]
+    },
+    {
+      "name": "ironbound_chest_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/ironbound_chest_01/ironbound_chest_01.glb",
+          "bytes": 147196,
+          "sha256": "f538d3da5d6756093c95d77f1bc48d69b481bd336faeefe2bd949d464f9d7946"
+        },
+        {
+          "path": "interiors/ironbound_chest_01/ironbound_chest_01_albedo.png",
+          "bytes": 72858,
+          "sha256": "9a85e02a9e32a18e604f0fc6ec52928dc5aac0ba640fd2f4298b353a39dd2107"
+        },
+        {
+          "path": "interiors/ironbound_chest_01/ironbound_chest_01_godot.glb",
+          "bytes": 148488,
+          "sha256": "343311d3dfcdd15bc6bc078f8f249bf7fbc00f6b3d0fab3dbf29fe9e0190392d"
+        },
+        {
+          "path": "interiors/ironbound_chest_01/preview_front.png",
+          "bytes": 149713,
+          "sha256": "42d33e95ee16e87a2b0ec8eb44cb471a4c18ea15b79130ef756e77bb9b655fb7"
+        },
+        {
+          "path": "interiors/ironbound_chest_01/preview_iso.png",
+          "bytes": 178319,
+          "sha256": "5d941530bd5b6e25d28c96a29c054623919f7e008881b567ed469137c7aa9da7"
+        },
+        {
+          "path": "interiors/ironbound_chest_01/preview_side.png",
+          "bytes": 127907,
+          "sha256": "fd8b194ae9e9c49d49aad01aa2ab584e51fddbb36a8ff9ad62ef54c9a88291b4"
+        },
+        {
+          "path": "interiors/ironbound_chest_01/preview_top.png",
+          "bytes": 141566,
+          "sha256": "a1cecf71a7d963b388d2ed9cc34ec5318abe9d968a6f19246b309ea676da8a98"
+        },
+        {
+          "path": "interiors/ironbound_chest_01/report.json",
+          "bytes": 504,
+          "sha256": "0b84fcc0834715a417572b639c293f32c869612fd0b0e629a16bff1f068e0550"
+        },
+        {
+          "path": "interiors/ironbound_chest_01/report_texture.json",
+          "bytes": 3090,
+          "sha256": "08e1e63b2217d9809085ff2027f20124be30fa716dfd9078eec6034443a97342"
+        }
+      ]
+    },
+    {
+      "name": "pillar",
+      "category": "architecture",
+      "files": [
+        {
+          "path": "interiors/pillar/pillar.glb",
+          "bytes": 39408,
+          "sha256": "f5ef1c2824381c966f51d0a67d6aeca99e90d52b574cc0d39db7186e5e86e7b1"
+        },
+        {
+          "path": "interiors/pillar/pillar_albedo.png",
+          "bytes": 26179,
+          "sha256": "4541b513aa9d6ccc045699251e88697c75abf4220a93c95f4126684fdec40bdf"
+        },
+        {
+          "path": "interiors/pillar/pillar_godot.glb",
+          "bytes": 50876,
+          "sha256": "2d6fad2b52d94441b306b25f3d74f4d7556d8642f95ef59870f237de0b0df449"
+        },
+        {
+          "path": "interiors/pillar/preview_front.png",
+          "bytes": 119113,
+          "sha256": "068b415543b35c44fecd739bbbb5781b52c44ab334acccc7e3cdb9f21db6ee67"
+        },
+        {
+          "path": "interiors/pillar/preview_iso.png",
+          "bytes": 119668,
+          "sha256": "36e828d92798783bb586077a1aba352d86998387457e72308b31490f9dbbe27c"
+        },
+        {
+          "path": "interiors/pillar/preview_lighting.png",
+          "bytes": 58876,
+          "sha256": "a031e51074ae29f403dd9dc4263591d528e26f55c07bcfd6c0a1038b52105c2f"
+        },
+        {
+          "path": "interiors/pillar/preview_side.png",
+          "bytes": 120801,
+          "sha256": "f1027721c252f739f455e991f2e7f264cdb75f31be1ba11a853ab5a60a80ed1b"
+        },
+        {
+          "path": "interiors/pillar/preview_top.png",
+          "bytes": 86953,
+          "sha256": "33003b6c465b45f4eb08b3e3bde8cf14707ffd6288c1dc983ea89d01bde3df23"
+        },
+        {
+          "path": "interiors/pillar/report.json",
+          "bytes": 514,
+          "sha256": "35fbd8abbb128d9f52d0f06d8db55b71637f8accdcb250b8a144cc0953174503"
+        },
+        {
+          "path": "interiors/pillar/report_texture.json",
+          "bytes": 1773,
+          "sha256": "b146fd36bcd78389046e8512908b94ac7aadc87f0a6c5c2a23264cbf76ba518d"
+        }
+      ]
+    },
+    {
+      "name": "plank_broken_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/plank_broken_01/plank_broken_01.glb",
+          "bytes": 12228,
+          "sha256": "8745f3cdb556b5421487a729122e0fb865866d8c1c9ada416c8e474c20eba2ac"
+        },
+        {
+          "path": "interiors/plank_broken_01/plank_broken_01_albedo.png",
+          "bytes": 2448,
+          "sha256": "850d34952122b64e16d3e1d7ce1e3d5dbdadcbf3a88bcf794c8113168c013049"
+        },
+        {
+          "path": "interiors/plank_broken_01/plank_broken_01_godot.glb",
+          "bytes": 20584,
+          "sha256": "5b05209b3d6dbddb4f801f27f8d3e57487e5fd2049df23d310f847f1ec43edd4"
+        },
+        {
+          "path": "interiors/plank_broken_01/preview_front.png",
+          "bytes": 67261,
+          "sha256": "2b1b5382daa7e8362b209fb034c84134f7ca300ea553d1c3654e3d2d95f12357"
+        },
+        {
+          "path": "interiors/plank_broken_01/preview_iso.png",
+          "bytes": 85585,
+          "sha256": "138df0ca165bec0fad83f608a3f9eaf0a346d9fa48726541744851b755fd5ae8"
+        },
+        {
+          "path": "interiors/plank_broken_01/preview_side.png",
+          "bytes": 70674,
+          "sha256": "2f127fd2fe7fd94e74dc766cc76846cb3c4391133269d1130bef5ac345a6ff36"
+        },
+        {
+          "path": "interiors/plank_broken_01/preview_top.png",
+          "bytes": 87052,
+          "sha256": "97168c2943ec620644d6cdc89dc0af54850e343cc82375be398cd14c4735b72d"
+        },
+        {
+          "path": "interiors/plank_broken_01/report.json",
+          "bytes": 464,
+          "sha256": "7cabe565aea31a457b25d74314f5817729527dfe56e11cb2906b0ae775f88c84"
+        },
+        {
+          "path": "interiors/plank_broken_01/report_texture.json",
+          "bytes": 1698,
+          "sha256": "977a21554efb8d9e3b56840362ec72ea4099bde28142ccf15f2927fca617d4ff"
+        }
+      ]
+    },
+    {
+      "name": "plank_chunk_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/plank_chunk_01/plank_chunk_01.glb",
+          "bytes": 15432,
+          "sha256": "66b562a1df48b0733e01a24dc34c0fd3a8d58fd1a563563069c44147663b82b3"
+        },
+        {
+          "path": "interiors/plank_chunk_01/plank_chunk_01_albedo.png",
+          "bytes": 3970,
+          "sha256": "1de551f57ffec6bb95008c99f76248755d409040782be937e59163569cb8c3a7"
+        },
+        {
+          "path": "interiors/plank_chunk_01/plank_chunk_01_godot.glb",
+          "bytes": 25320,
+          "sha256": "efcb1fac612a5a2327f6be87da9b2cc4ea049c96664b0b8b959cfd6678bc5acb"
+        },
+        {
+          "path": "interiors/plank_chunk_01/preview_front.png",
+          "bytes": 87419,
+          "sha256": "1b3b359bf2093b17c5ab654e70a1e2c9598fc883093030fa4d8af6d30754359a"
+        },
+        {
+          "path": "interiors/plank_chunk_01/preview_iso.png",
+          "bytes": 106086,
+          "sha256": "9dc2f59dd84beedac542e3bbe887cd0b3ac31073e136e75ce2deff2287e9ea6e"
+        },
+        {
+          "path": "interiors/plank_chunk_01/preview_side.png",
+          "bytes": 83568,
+          "sha256": "3b395d6baeafc15d6e9d21b2753bfed8df82dea23604dbf680fd08186899aef7"
+        },
+        {
+          "path": "interiors/plank_chunk_01/preview_top.png",
+          "bytes": 107423,
+          "sha256": "34f988274a240ac7eb97dc18531db1a88d15cdcb87efd5f551ce12736a7b589a"
+        },
+        {
+          "path": "interiors/plank_chunk_01/report.json",
+          "bytes": 459,
+          "sha256": "80a5409bdd8e96e9c2715fb9acda55e233ea00505da09a631a4997c62e4d076a"
+        },
+        {
+          "path": "interiors/plank_chunk_01/report_texture.json",
+          "bytes": 1709,
+          "sha256": "7a31f386c96624e64f45e3e7d389f21cc04632533862adbfdeda325a01dd7315"
+        }
+      ]
+    },
+    {
+      "name": "plate_deep_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/plate_deep_01/plate_deep_01.glb",
+          "bytes": 22788,
+          "sha256": "b83fbe4fc27bc9d06cf093a665a2095afa34360e48d63d42ce93c9add3b3524c"
+        },
+        {
+          "path": "interiors/plate_deep_01/plate_deep_01_albedo.png",
+          "bytes": 3810,
+          "sha256": "565ff81e5ad1fae8ef11efcedd43724ec4cecf0dbd5d961a4ce01cfe9ead95d9"
+        },
+        {
+          "path": "interiors/plate_deep_01/plate_deep_01_godot.glb",
+          "bytes": 39584,
+          "sha256": "83127b94689d91ae24fbf76390c29512e11b872897a4f3f62592d04948d8d150"
+        },
+        {
+          "path": "interiors/plate_deep_01/preview_front.png",
+          "bytes": 81219,
+          "sha256": "5c17560054a51bb499dabbeaad8cdf721e479061bae9d90ad528b7938819b6b1"
+        },
+        {
+          "path": "interiors/plate_deep_01/preview_iso.png",
+          "bytes": 106818,
+          "sha256": "53e1d69a3e9133b7a39c42012131cfa10336a24bc20ac3544fb777faf327296e"
+        },
+        {
+          "path": "interiors/plate_deep_01/preview_side.png",
+          "bytes": 82927,
+          "sha256": "a35d0829b8617698d4ce2c37cd15f0589fefedca2b03ca64789955c4d02c8517"
+        },
+        {
+          "path": "interiors/plate_deep_01/preview_top.png",
+          "bytes": 143122,
+          "sha256": "629067d7529439eb1f38fd156fdde5c515e9a368a0e9b63244a3ad932cee3a61"
+        },
+        {
+          "path": "interiors/plate_deep_01/report.json",
+          "bytes": 459,
+          "sha256": "0d1cad061314a2d208c14ac309013d36278eb249999bafdb97d858b2233fee25"
+        },
+        {
+          "path": "interiors/plate_deep_01/report_texture.json",
+          "bytes": 1349,
+          "sha256": "51d45f246a0b4bd99d331ee3852f658b4a7dd041be22cd92f4343f5dc60bc5a4"
+        }
+      ]
+    },
+    {
+      "name": "plate_flat_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/plate_flat_01/plate_flat_01.glb",
+          "bytes": 18416,
+          "sha256": "b734088a8ca8d5df060070ed2ec788605f4dd56c6c23d4c75d35e5aac3d259da"
+        },
+        {
+          "path": "interiors/plate_flat_01/plate_flat_01_albedo.png",
+          "bytes": 2799,
+          "sha256": "a4a1d6e60622a419ff90211db4834c7b285c7ecb72ba032be39842e0718c85de"
+        },
+        {
+          "path": "interiors/plate_flat_01/plate_flat_01_godot.glb",
+          "bytes": 32140,
+          "sha256": "57ded76fc5a52ab1db1838f413ddd7e40ae075e00e4640ebf6d30bee68a66bb0"
+        },
+        {
+          "path": "interiors/plate_flat_01/preview_front.png",
+          "bytes": 72854,
+          "sha256": "ed3af489035da9e400decb0884542c52a124af1f790d188e6a4d362cb6cb3261"
+        },
+        {
+          "path": "interiors/plate_flat_01/preview_iso.png",
+          "bytes": 100924,
+          "sha256": "1070212239084f91b50c6508e69b3202df9c4b9c586602abd594bd8c43e4f439"
+        },
+        {
+          "path": "interiors/plate_flat_01/preview_side.png",
+          "bytes": 73158,
+          "sha256": "c809f16c4c86f9adba429324e3fbe4ec248b858462125ce00aabdb8ec487c34c"
+        },
+        {
+          "path": "interiors/plate_flat_01/preview_top.png",
+          "bytes": 137239,
+          "sha256": "0ab70b436fe67b6633f522bb5cd76194dc7c0db2df490d0d1d9298c3fd9e709c"
+        },
+        {
+          "path": "interiors/plate_flat_01/report.json",
+          "bytes": 459,
+          "sha256": "dd7fc059118aa095b79aa93acd980269d34c4860d3421b94495b015b9c3974a5"
+        },
+        {
+          "path": "interiors/plate_flat_01/report_texture.json",
+          "bytes": 1349,
+          "sha256": "91d2bb8552787528e3da89313bf990a16c84c46ccc300bd19344e2666b037442"
+        }
+      ]
+    },
+    {
+      "name": "pot_clay_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/pot_clay_01/pot_clay_01.glb",
+          "bytes": 51804,
+          "sha256": "513bd6d4d72514f2f0a960698529cdafa6dec4d9c828105ca3554dafdb18974b"
+        },
+        {
+          "path": "interiors/pot_clay_01/pot_clay_01_albedo.png",
+          "bytes": 10992,
+          "sha256": "dd55304c2ffee623fd408e5854f1c97506d59d5a2ff125eff9970d812c65bcc3"
+        },
+        {
+          "path": "interiors/pot_clay_01/pot_clay_01_godot.glb",
+          "bytes": 88564,
+          "sha256": "ed402c797a5356fff468fd048d654f5982366090d44179cae33b484a5247c1e8"
+        },
+        {
+          "path": "interiors/pot_clay_01/preview_front.png",
+          "bytes": 125527,
+          "sha256": "c94bc5d804fe9882ac35e3df38d2a870be8d1c735eb9b8dcd11ed422b0e761b3"
+        },
+        {
+          "path": "interiors/pot_clay_01/preview_iso.png",
+          "bytes": 127658,
+          "sha256": "67d2c752fd6bddb075ac1c340f870ef7c4f2c6434f8905e10678610a38fb838d"
+        },
+        {
+          "path": "interiors/pot_clay_01/preview_side.png",
+          "bytes": 126892,
+          "sha256": "df8d4fda3393173c7c30fcd34aba50c7f725f6365d65404768b8e7e487fcdcb3"
+        },
+        {
+          "path": "interiors/pot_clay_01/preview_top.png",
+          "bytes": 113968,
+          "sha256": "d5d899faf1d8bb9efe611e01641aec03c0616bb35d89204b30c7c44823b1253b"
+        },
+        {
+          "path": "interiors/pot_clay_01/report.json",
+          "bytes": 535,
+          "sha256": "e36b7ad8d50974e82d9e477fc777c866ac32be0462f6cc43c37c36002b89abae"
+        },
+        {
+          "path": "interiors/pot_clay_01/report_texture.json",
+          "bytes": 1757,
+          "sha256": "b622f64549d2650f9c91c981e8e6ac69d35c3080eb32e6f42e4812f4497d2a81"
+        }
+      ]
+    },
+    {
+      "name": "scroll_closed_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/scroll_closed_01/preview_front.png",
+          "bytes": 85553,
+          "sha256": "365680bb25eb364d420dd5a2b4c34f35a47b944708e372c69e1fb24431ffa3a7"
+        },
+        {
+          "path": "interiors/scroll_closed_01/preview_iso.png",
+          "bytes": 94216,
+          "sha256": "0633569b1a89164fb2fe6ae7b869595f4a4e9dc5daa3e1a707e40a2fe26e0751"
+        },
+        {
+          "path": "interiors/scroll_closed_01/preview_side.png",
+          "bytes": 76577,
+          "sha256": "a70bbcfd9007654f160cbf0c0674f93065806987e07dd10bed404a846e6114bd"
+        },
+        {
+          "path": "interiors/scroll_closed_01/preview_top.png",
+          "bytes": 85668,
+          "sha256": "63cb1b652089a1396ea0d0bae7dee0ee2143985951536ef24c4db0f9b6cbd589"
+        },
+        {
+          "path": "interiors/scroll_closed_01/report.json",
+          "bytes": 533,
+          "sha256": "02d4f0af50304503124e93e7d55b8ae7de52a497a8b56bf90540f46dabc2ae6c"
+        },
+        {
+          "path": "interiors/scroll_closed_01/report_texture.json",
+          "bytes": 4546,
+          "sha256": "714d198f190ee6abea51f36b9190413b3e85a0f74a2fa0937d1cb301690aedc2"
+        },
+        {
+          "path": "interiors/scroll_closed_01/scroll_closed_01.glb",
+          "bytes": 37164,
+          "sha256": "846ca95703a023d3095b60df7afd5a6be97c7eb933bf27749a019ff272533dee"
+        },
+        {
+          "path": "interiors/scroll_closed_01/scroll_closed_01_albedo.png",
+          "bytes": 13468,
+          "sha256": "f248ec309c5bcccb603e89bef2a334ab6e8f124cc4d79d444b03dbb04233fd53"
+        },
+        {
+          "path": "interiors/scroll_closed_01/scroll_closed_01_godot.glb",
+          "bytes": 56612,
+          "sha256": "46cb7ad461f4e543c43a969cc26bb2fb2d4b3a78ab4274ecfd7856a1e90c8308"
+        }
+      ]
+    },
+    {
+      "name": "scroll_open_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/scroll_open_01/preview_front.png",
+          "bytes": 145260,
+          "sha256": "8b21c5dc228f757a492cc0401103dbd62014614c21b66ee37481415ec80b83b5"
+        },
+        {
+          "path": "interiors/scroll_open_01/preview_iso.png",
+          "bytes": 154335,
+          "sha256": "b07bda477b5148d334122c9c4098aa7a570f21fb8f1f4de768e92989da577a67"
+        },
+        {
+          "path": "interiors/scroll_open_01/preview_side.png",
+          "bytes": 101780,
+          "sha256": "877fed35219d74f256aba7d4d068c7dba7bd02f63a661f875b32734bf7e3555f"
+        },
+        {
+          "path": "interiors/scroll_open_01/preview_top.png",
+          "bytes": 77079,
+          "sha256": "192fe3b606a786532ef73e564b2845a3b4839ce35b61f800f6da1f769124cd0f"
+        },
+        {
+          "path": "interiors/scroll_open_01/report.json",
+          "bytes": 505,
+          "sha256": "f720713ac7805952ee451a9b4fe3bc79945a93848d6423fa64c667c4617f02d6"
+        },
+        {
+          "path": "interiors/scroll_open_01/report_texture.json",
+          "bytes": 3812,
+          "sha256": "ebce7a358dbfed5927fb1d3000f87a06bc24b6f956ae76a3ea314c9c360cd799"
+        },
+        {
+          "path": "interiors/scroll_open_01/scroll_open_01.glb",
+          "bytes": 44576,
+          "sha256": "813c793e2ad0a49cf774c2293f005774d10a6f476188a6f23edfbaac482ebab0"
+        },
+        {
+          "path": "interiors/scroll_open_01/scroll_open_01_albedo.png",
+          "bytes": 12909,
+          "sha256": "28a2bffd8c30adfea6ad502d697e32501797dda914392ee8e0b6e2775e425871"
+        },
+        {
+          "path": "interiors/scroll_open_01/scroll_open_01_godot.glb",
+          "bytes": 73008,
+          "sha256": "160292760f0f7cfea5b4854ddd1a140bc0c26bfb51731fbedb5634344bd0fae1"
+        }
+      ]
+    },
+    {
+      "name": "skull_01",
+      "category": "remains",
+      "files": [
+        {
+          "path": "interiors/skull_01/preview_front.png",
+          "bytes": 133447,
+          "sha256": "7df155915ac7a5dbfce62f83723bce1b1bf80dafbcf82a93338b4528b05b61f2"
+        },
+        {
+          "path": "interiors/skull_01/preview_iso.png",
+          "bytes": 138336,
+          "sha256": "ee86c036ffea3fea522d61296acd99100728abc1f7dbce1b4829c200045df129"
+        },
+        {
+          "path": "interiors/skull_01/preview_side.png",
+          "bytes": 131185,
+          "sha256": "c39103ccefdc090989f559b46c97a2431c08c3fddf756b1d388a8ef0925a0a22"
+        },
+        {
+          "path": "interiors/skull_01/preview_top.png",
+          "bytes": 121372,
+          "sha256": "000cf2b80ad1c1e6db0cc410d7b076a41dfb89559cd3e51f3dd2d9eb964e8111"
+        },
+        {
+          "path": "interiors/skull_01/report.json",
+          "bytes": 521,
+          "sha256": "1985f6604711e3135ccf8ae89a04cb9d073cd849a3aa4d7ed14c1919e16d19df"
+        },
+        {
+          "path": "interiors/skull_01/report_texture.json",
+          "bytes": 1372,
+          "sha256": "f5c6e4c5b32bd7856346ba53c84bc2da78780446f31a314a2e4c099cde55cc93"
+        },
+        {
+          "path": "interiors/skull_01/skull_01.glb",
+          "bytes": 40412,
+          "sha256": "3eebc24e9c8e7b2b9483fa3125dcd1659c6bd214268eb11486ff22bc7307c74f"
+        },
+        {
+          "path": "interiors/skull_01/skull_01_albedo.png",
+          "bytes": 15652,
+          "sha256": "6441ec3979297f29c09b59eb0646a744f10e4a4941bd3ac1f3d547049bf4be90"
+        },
+        {
+          "path": "interiors/skull_01/skull_01_godot.glb",
+          "bytes": 62448,
+          "sha256": "9c42abd8df194db5d26e29e994b700e8a269b04ae87ff6c68cf356e63ce692f5"
+        }
+      ]
+    },
+    {
+      "name": "snag_01",
+      "category": "flora/trees",
+      "files": [
+        {
+          "path": "exteriors/snag_01/preview_front.png",
+          "bytes": 98672,
+          "sha256": "de91852969228b68790a21c592ef4567e7ca982e27ed2bb67bc40529c0f0a86d"
+        },
+        {
+          "path": "exteriors/snag_01/preview_iso.png",
+          "bytes": 99685,
+          "sha256": "e43715c287ad9f76d779fb80379ca1af1488e1139386116e8424730252ad57d5"
+        },
+        {
+          "path": "exteriors/snag_01/preview_side.png",
+          "bytes": 101095,
+          "sha256": "ddd093edd72861b371350080a75dc899890b76e1985042554fbcd900b2ad1e2b"
+        },
+        {
+          "path": "exteriors/snag_01/preview_top.png",
+          "bytes": 80048,
+          "sha256": "7f5763cb43acdd519c7d68d0504acbefa182dbf86f1b2d02660c19e099d97055"
+        },
+        {
+          "path": "exteriors/snag_01/report.json",
+          "bytes": 445,
+          "sha256": "c0f543ee4638df4fdb7c282c3319b1d8b22458acf21d6b1087e1c95ddbcd106e"
+        },
+        {
+          "path": "exteriors/snag_01/report_texture.json",
+          "bytes": 2401,
+          "sha256": "dbb00b81f2d56673739d3c349f9f39f6a623c788aafc9ddcf1e508344db0a12f"
+        },
+        {
+          "path": "exteriors/snag_01/snag_01.glb",
+          "bytes": 55632,
+          "sha256": "41a132b09968d10f130ba18806700e855e4ae34d692d4d39b1fdcd3a1334426a"
+        },
+        {
+          "path": "exteriors/snag_01/snag_01_albedo.png",
+          "bytes": 8423,
+          "sha256": "334d4b2e9ab0f80a032831c3671c5b72314e60c1083d613058e0393a2d1261be"
+        },
+        {
+          "path": "exteriors/snag_01/snag_01_godot.glb",
+          "bytes": 101340,
+          "sha256": "6da6101742e229db1318975d73de4606707b089d35c3f07a919c5c1db4b0026b"
+        }
+      ]
+    },
+    {
+      "name": "snag_02",
+      "category": "flora/trees",
+      "files": [
+        {
+          "path": "exteriors/snag_02/preview_front.png",
+          "bytes": 102646,
+          "sha256": "499bae99d1ebfe56ca0197a64cc76aeb1911199d18b3f820d44a793ed10f26b4"
+        },
+        {
+          "path": "exteriors/snag_02/preview_iso.png",
+          "bytes": 96408,
+          "sha256": "f5943fb9a72dd3c735ea286b80efbe18b164cdb4e067c1c0613c9a0309bb301b"
+        },
+        {
+          "path": "exteriors/snag_02/preview_side.png",
+          "bytes": 101601,
+          "sha256": "4f1679ff8e0d3fb27ac125ebbe896e8b96ada740e0e726b3a7273f7ebc9bc57e"
+        },
+        {
+          "path": "exteriors/snag_02/preview_top.png",
+          "bytes": 82763,
+          "sha256": "4d16a206d9c95b9c7728fcde6c1d96555427a9ef2ba78195be6b59b5aaf49c79"
+        },
+        {
+          "path": "exteriors/snag_02/report.json",
+          "bytes": 445,
+          "sha256": "ff6f6c5fcca6e10c1a0a4f7e6ad84f0435e38d8502beac03d28a879c773430c6"
+        },
+        {
+          "path": "exteriors/snag_02/report_texture.json",
+          "bytes": 2401,
+          "sha256": "1b9f3e379a64439e9e1e163d1fb7c52c3ada46ba6be6168925cd393a411ff504"
+        },
+        {
+          "path": "exteriors/snag_02/snag_02.glb",
+          "bytes": 54688,
+          "sha256": "06625633cb7d13a4ede040e7ad5e04e5fdc67f8ce510d5ff0d6daba10659a4bb"
+        },
+        {
+          "path": "exteriors/snag_02/snag_02_albedo.png",
+          "bytes": 9010,
+          "sha256": "96394b5e1de1dd9ac708a1fa147d5d3398ddecac81c91d777d151b0e542902f5"
+        },
+        {
+          "path": "exteriors/snag_02/snag_02_godot.glb",
+          "bytes": 98864,
+          "sha256": "9a4486c91d1b614306f311e967b96b300b254fcbb7fedd3dbe4cbfe5fe3b5b0b"
+        }
+      ]
+    },
+    {
+      "name": "snag_03",
+      "category": "flora/trees",
+      "files": [
+        {
+          "path": "exteriors/snag_03/preview_front.png",
+          "bytes": 105124,
+          "sha256": "bec9725a640a485bce32496b896224eeded6cb930e2c54c24092edbaed117601"
+        },
+        {
+          "path": "exteriors/snag_03/preview_iso.png",
+          "bytes": 100277,
+          "sha256": "4fa7a51da2e8cc2e273320718ff1fc3e83ccf60102b17561fe497f853d95bf10"
+        },
+        {
+          "path": "exteriors/snag_03/preview_side.png",
+          "bytes": 103554,
+          "sha256": "7d2e3f757dcd04dbb78dc4de9fa554aaa2a791ceaacfeabf9875f56c45f412d2"
+        },
+        {
+          "path": "exteriors/snag_03/preview_top.png",
+          "bytes": 81569,
+          "sha256": "20fc72dfd3c28a65bd8b0353d977904cdcfd9190a84d94209a95a63873d3dda5"
+        },
+        {
+          "path": "exteriors/snag_03/report.json",
+          "bytes": 433,
+          "sha256": "3e6a007fe3b32becd8ca3984f1c61e081c059e67d487b02ca9bed9ec8681fe35"
+        },
+        {
+          "path": "exteriors/snag_03/report_texture.json",
+          "bytes": 1665,
+          "sha256": "5b1085d287fa4587148fc42e08f3fda0c6275fec206e5307bac07972a6422c52"
+        },
+        {
+          "path": "exteriors/snag_03/snag_03.glb",
+          "bytes": 50420,
+          "sha256": "ff3fc2635f763c51954fe9f79bfbe0694c7b6f12f480f2d341f7f62decaa704c"
+        },
+        {
+          "path": "exteriors/snag_03/snag_03_albedo.png",
+          "bytes": 9047,
+          "sha256": "cba29f4d417452f92b9daa4110e3026b8e78f6f50682afbb3d4e911b64d02d4a"
+        },
+        {
+          "path": "exteriors/snag_03/snag_03_godot.glb",
+          "bytes": 87428,
+          "sha256": "be225a55bcb2e1677d3dea56772466030ef522ce2cfa049236913738e92cee61"
+        }
+      ]
+    },
+    {
+      "name": "snag_04",
+      "category": "flora/trees",
+      "files": [
+        {
+          "path": "exteriors/snag_04/preview_front.png",
+          "bytes": 100471,
+          "sha256": "282346f382c701fe32f94d6250db92a0f45d955dadc83e71d571957fa13ebc5b"
+        },
+        {
+          "path": "exteriors/snag_04/preview_iso.png",
+          "bytes": 97268,
+          "sha256": "bbc30fcf0d81d44e3587dad5698874b42ef9a2bf4fce34405fb913d37cf1fe16"
+        },
+        {
+          "path": "exteriors/snag_04/preview_side.png",
+          "bytes": 102728,
+          "sha256": "b4c021fa3e64f27ef6ad00e3a2900300ef134d9c142b05fa92344d140ade9fc8"
+        },
+        {
+          "path": "exteriors/snag_04/preview_top.png",
+          "bytes": 89576,
+          "sha256": "11958376d03a57acf577ec9c91478af088e9cff1a2ccd1230c4acdf8e2a014a9"
+        },
+        {
+          "path": "exteriors/snag_04/report.json",
+          "bytes": 446,
+          "sha256": "50890858311ffb8c67f8af518a0fc48edcc8895efb140324183acebfb3e9f50b"
+        },
+        {
+          "path": "exteriors/snag_04/report_texture.json",
+          "bytes": 2401,
+          "sha256": "5b0b4251f65027146015977a8dfffcd50156aed57ee93c79d858cb6813f47114"
+        },
+        {
+          "path": "exteriors/snag_04/snag_04.glb",
+          "bytes": 73044,
+          "sha256": "4e111da6a3e18eec3ff2c6f17e719bfcdbd561fab68f02f820fe3822babf811b"
+        },
+        {
+          "path": "exteriors/snag_04/snag_04_albedo.png",
+          "bytes": 23345,
+          "sha256": "1c21248b8ccce3117acdcceee7d40afb676dcea629f5990e06ccc68a0c0b5ec0"
+        },
+        {
+          "path": "exteriors/snag_04/snag_04_godot.glb",
+          "bytes": 121248,
+          "sha256": "e357676be5b5e1d7fe54f53117eb1dde0da2950fdec04e932e5a45779c093cb8"
+        }
+      ]
+    },
+    {
+      "name": "snag_05",
+      "category": "flora/trees",
+      "files": [
+        {
+          "path": "exteriors/snag_05/preview_front.png",
+          "bytes": 104672,
+          "sha256": "768a4e40eea024ea6939056d82d04083cd556f7617d0ccedf5e97f88daa8acc1"
+        },
+        {
+          "path": "exteriors/snag_05/preview_iso.png",
+          "bytes": 102537,
+          "sha256": "4272fe6ef8e5ec46f03285993c6f057a088c8da5523e2ea1b12e769e55160ac0"
+        },
+        {
+          "path": "exteriors/snag_05/preview_side.png",
+          "bytes": 108163,
+          "sha256": "5f81e1e3f053c3c44258717dc9c3c32a6d30923d04534566163c69dc1b066935"
+        },
+        {
+          "path": "exteriors/snag_05/preview_top.png",
+          "bytes": 83427,
+          "sha256": "cffbadd9700a94bfe66a2bbb6abfcda0bb4cc3b655ee689a30b552b715ce2f3a"
+        },
+        {
+          "path": "exteriors/snag_05/report.json",
+          "bytes": 446,
+          "sha256": "2d47fc2475824f61742ffaa45827d85725f9d0b9bf92b723b25e0b3ca05112be"
+        },
+        {
+          "path": "exteriors/snag_05/report_texture.json",
+          "bytes": 2401,
+          "sha256": "49d589ade62393a1008a33047d80cb70b3f34fb3e6d0618af7a4d67de07d072b"
+        },
+        {
+          "path": "exteriors/snag_05/snag_05.glb",
+          "bytes": 60428,
+          "sha256": "639162310e7a38e4dda1d73bdb784056c7e26af986f4ecc64608653463789f5c"
+        },
+        {
+          "path": "exteriors/snag_05/snag_05_albedo.png",
+          "bytes": 8561,
+          "sha256": "174acbee36f634d35f113841b0b3a5b3a98bb89cdeaadd90a62948f33e196dbc"
+        },
+        {
+          "path": "exteriors/snag_05/snag_05_godot.glb",
+          "bytes": 110796,
+          "sha256": "1b63ee52cd497a3445f0fcb3d491d7ed6f975a55e9496a8fbf7a071150846849"
+        }
+      ]
+    },
+    {
+      "name": "snag_06",
+      "category": "flora/trees",
+      "files": [
+        {
+          "path": "exteriors/snag_06/preview_front.png",
+          "bytes": 102752,
+          "sha256": "b93107afc59294d005f95eef810c60f95c452e07d962d5e38da843158d17b142"
+        },
+        {
+          "path": "exteriors/snag_06/preview_iso.png",
+          "bytes": 96600,
+          "sha256": "efda0d75e56fa08c577f0e8e1662239e7a55adb81de750af5cd0eea06ddd1ea2"
+        },
+        {
+          "path": "exteriors/snag_06/preview_side.png",
+          "bytes": 98203,
+          "sha256": "215fe656898b7fffb2574bb56f9bc575a042f4490353e80c76b6b86b6b9b4e8f"
+        },
+        {
+          "path": "exteriors/snag_06/preview_top.png",
+          "bytes": 76367,
+          "sha256": "108a6fbe200dba4ceb868e0a59a3e2074f8fe4bc961f151f55291b1c598f16ba"
+        },
+        {
+          "path": "exteriors/snag_06/report.json",
+          "bytes": 442,
+          "sha256": "6902fd2b2668c8fc1f809aa24cc0be92f31ca62abffd13c203d1270cef3db538"
+        },
+        {
+          "path": "exteriors/snag_06/report_texture.json",
+          "bytes": 2401,
+          "sha256": "9c5bc7ee6f269c3a5e44fdc998265ea7a231ed45a8cb77d6228a4492e55a1cfc"
+        },
+        {
+          "path": "exteriors/snag_06/snag_06.glb",
+          "bytes": 72852,
+          "sha256": "779500cbb39342ddab4fdef79432f578032f15750c62cbb374cfed5352adfdc9"
+        },
+        {
+          "path": "exteriors/snag_06/snag_06_albedo.png",
+          "bytes": 24163,
+          "sha256": "c3b5ae053fb6db89fa4730756c3bb5d98e9816c6d2a47ba151bb386027f888ae"
+        },
+        {
+          "path": "exteriors/snag_06/snag_06_godot.glb",
+          "bytes": 120048,
+          "sha256": "7e00be71777c53725905a9cb477cd9c6af2afdd4afb05283b5bc7e9461b23c9a"
+        }
+      ]
+    },
+    {
+      "name": "snag_07",
+      "category": "flora/trees",
+      "files": [
+        {
+          "path": "exteriors/snag_07/preview_front.png",
+          "bytes": 97487,
+          "sha256": "a2dbf16804f83c90296d4a155559865b44762f79f344e40e2fd94b8a6e5ed26e"
+        },
+        {
+          "path": "exteriors/snag_07/preview_iso.png",
+          "bytes": 95839,
+          "sha256": "c8764233a243cb4d6af22b67baf011833c16ceae968c5d209202b20978d075ea"
+        },
+        {
+          "path": "exteriors/snag_07/preview_side.png",
+          "bytes": 100508,
+          "sha256": "a861979afcba9e3ca9323e7e828539059a101e836677ed416231a82e9af1ad07"
+        },
+        {
+          "path": "exteriors/snag_07/preview_top.png",
+          "bytes": 80978,
+          "sha256": "97d697352b3e03a7045ca4ccc0d453379c96750f7d5f672a7ba6a4e3a7d2b7e9"
+        },
+        {
+          "path": "exteriors/snag_07/report.json",
+          "bytes": 446,
+          "sha256": "6eeb10a626fbdf76a29ee312d4be26f9f1a96491ea6f46ec43ec000cf3bbc61b"
+        },
+        {
+          "path": "exteriors/snag_07/report_texture.json",
+          "bytes": 2401,
+          "sha256": "21fd9321bb3c7a9c70d1536ac8122ecefa2e7fb9a5cd7a1e00866b32a8cf20f3"
+        },
+        {
+          "path": "exteriors/snag_07/snag_07.glb",
+          "bytes": 67876,
+          "sha256": "5c970fe2396f975160c0828f4a73769acc30bb77da29bb77e7e636caf44d9c3a"
+        },
+        {
+          "path": "exteriors/snag_07/snag_07_albedo.png",
+          "bytes": 23948,
+          "sha256": "56b6d0e18349a668982d7dbd6f588e09998e467d347832b3049a8b57314ac5e3"
+        },
+        {
+          "path": "exteriors/snag_07/snag_07_godot.glb",
+          "bytes": 110304,
+          "sha256": "29dde8b6f6999234472bf5df522d4c27fc1e501761887573bde6607efb6ae7f7"
+        }
+      ]
+    },
+    {
+      "name": "snag_08",
+      "category": "flora/trees",
+      "files": [
+        {
+          "path": "exteriors/snag_08/preview_front.png",
+          "bytes": 104029,
+          "sha256": "6474f48078075eb51b57cb878a59333846b7b46ff3ec213b47df52feffa3621c"
+        },
+        {
+          "path": "exteriors/snag_08/preview_iso.png",
+          "bytes": 100962,
+          "sha256": "66bdf24f7faf8f2e373619dfcfbe5ed07bbef03b0823d697e42137560bcd41d6"
+        },
+        {
+          "path": "exteriors/snag_08/preview_side.png",
+          "bytes": 103942,
+          "sha256": "031ee88109f62d145fa5ba678b464ee63eac4137afe47b6fd9b3c86c191f8a44"
+        },
+        {
+          "path": "exteriors/snag_08/preview_top.png",
+          "bytes": 76743,
+          "sha256": "7f43e8f9f8c299fea2f28cbd44fe7eef35f27d566b09fae954f9f9d5d32977f8"
+        },
+        {
+          "path": "exteriors/snag_08/report.json",
+          "bytes": 433,
+          "sha256": "f8d6fcde87b3393fbc0d440143840992f0ad3da0de6482f9cb2c4bd89597a35b"
+        },
+        {
+          "path": "exteriors/snag_08/report_texture.json",
+          "bytes": 1665,
+          "sha256": "c07d197c1692a1e0bdbaf4caee4be101e6974a7f56c651b80cfb644e823e2b1e"
+        },
+        {
+          "path": "exteriors/snag_08/snag_08.glb",
+          "bytes": 59256,
+          "sha256": "43dd49e4b3397968fb62b1c8afa2bc722ba4bec644c20637e88f0883039c0c23"
+        },
+        {
+          "path": "exteriors/snag_08/snag_08_albedo.png",
+          "bytes": 25011,
+          "sha256": "7ef92547580c8b9b5d6829079b6c23b8eb11ab1d20ebd60ec0fa894b49860940"
+        },
+        {
+          "path": "exteriors/snag_08/snag_08_godot.glb",
+          "bytes": 89792,
+          "sha256": "1e8f065e5c028919a9d2df96c9a665bcb3125b5f0fbaf31e1bf4aaf272ce607a"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "category": "furniture",
+      "files": [
+        {
+          "path": "interiors/table/preview_front.png",
+          "bytes": 100096,
+          "sha256": "02db69839aa12b921be66a37262fa06bd008c0d3bacb54b7ce02618dd1976636"
+        },
+        {
+          "path": "interiors/table/preview_iso.png",
+          "bytes": 133778,
+          "sha256": "e0c50b74736f4fd0cf50bb1b78cdc3f6f8e56bb78a3443bcdc59fcf023b54149"
+        },
+        {
+          "path": "interiors/table/preview_side.png",
+          "bytes": 97015,
+          "sha256": "c6d57c3efe14c78b0da7842090f0bff4e6fd5d53f9e64ffce9fccfc6167d057f"
+        },
+        {
+          "path": "interiors/table/preview_top.png",
+          "bytes": 129411,
+          "sha256": "f710a3ace2cf036222de72e6133f95b13ece1aae171405e00c3342f3da002c56"
+        },
+        {
+          "path": "interiors/table/report.json",
+          "bytes": 424,
+          "sha256": "a68fcd2fff1f7ebd09d2370554839694d4929a5bc0cc660fc178537b6eaf566d"
+        },
+        {
+          "path": "interiors/table/table.glb",
+          "bytes": 18736,
+          "sha256": "c0c8b970a0cbf1b61751a7e4d84b66b609f3a8b0f7650ca955b080ad03b8f74a"
+        },
+        {
+          "path": "interiors/table/table_godot.glb",
+          "bytes": 35512,
+          "sha256": "b7746f27e3e6047a9bc64b2ddea69be046ce3d3a37557eb288dc708901757914"
+        }
+      ]
+    },
+    {
+      "name": "torch",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/torch/preview_front.png",
+          "bytes": 100257,
+          "sha256": "3b4cf120ddbcebeb5d38d7fe58e31a4213f721564430c0f463cb9260acf0f737"
+        },
+        {
+          "path": "interiors/torch/preview_iso.png",
+          "bytes": 99612,
+          "sha256": "c61af6a271449e86014125653451e2b2870b36dce78d6c1b32598c7426092435"
+        },
+        {
+          "path": "interiors/torch/preview_side.png",
+          "bytes": 102793,
+          "sha256": "19b990b1c0793be283bb6243541a138e1d0e724e3da071c2452574c3a1c26f97"
+        },
+        {
+          "path": "interiors/torch/preview_top.png",
+          "bytes": 65145,
+          "sha256": "9a4b15d6dbdb33eba0904a7e415eaac01a3d2cad7c75d23ef068af1de05988bf"
+        },
+        {
+          "path": "interiors/torch/report.json",
+          "bytes": 437,
+          "sha256": "0d178ddf765cad656d9083a0c2d3d93dbb63aa11e6be36ce4921484bfaec5982"
+        },
+        {
+          "path": "interiors/torch/torch.glb",
+          "bytes": 8940,
+          "sha256": "7a32adc2b956ef8dcb0c04e2cef64cfd75b327a9a0509e6bb4624a5f56fb30f5"
+        }
+      ]
+    },
+    {
+      "name": "urn",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/urn/preview_front.png",
+          "bytes": 126527,
+          "sha256": "33602eaefc63b7e752d872804cb87a80c3931166202bd09b9bbb25d41277408c"
+        },
+        {
+          "path": "interiors/urn/preview_iso.png",
+          "bytes": 128520,
+          "sha256": "53419a177ae05dd85d10d1903dbdc58b1ddab31ec233f45ae050016e598b6917"
+        },
+        {
+          "path": "interiors/urn/preview_side.png",
+          "bytes": 128584,
+          "sha256": "331bdfdfd0556b73d4c6f08793ef1b8d34c6a44c18948db17fc66dc3f6265c8b"
+        },
+        {
+          "path": "interiors/urn/preview_top.png",
+          "bytes": 113351,
+          "sha256": "99dcd4094ce9f93c9e36419c22b10a96eaacac80a4d96590fe79eea02f3a6f22"
+        },
+        {
+          "path": "interiors/urn/report.json",
+          "bytes": 417,
+          "sha256": "56eee147679ca1ee849bb8cf835a3e51e350596646d4a9ff0d309a04d3b59901"
+        },
+        {
+          "path": "interiors/urn/urn.glb",
+          "bytes": 20464,
+          "sha256": "0888b359ced2f54fbf791ab3011a2192244e582a93edd2d6e4cf32b0df4fdd7d"
+        },
+        {
+          "path": "interiors/urn/urn_godot.glb",
+          "bytes": 38776,
+          "sha256": "b051476b0a0bb21985830b14a9b16bef983ef497d8b21b374d22f22cb4f51e43"
+        }
+      ]
+    },
+    {
+      "name": "urn_stone_ornate_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/urn_stone_ornate_01/preview_front.png",
+          "bytes": 132643,
+          "sha256": "8f432bdacc1add7b0caa3410a9dd551ae15a4f8fab0050e792adb05e828ab109"
+        },
+        {
+          "path": "interiors/urn_stone_ornate_01/preview_iso.png",
+          "bytes": 136793,
+          "sha256": "b6d623e642674dd7732e514f9f083b529084cf907899e3c867ded1cbb7e7e746"
+        },
+        {
+          "path": "interiors/urn_stone_ornate_01/preview_side.png",
+          "bytes": 134010,
+          "sha256": "c376c95e90ccb19b5cbc8beaf925ce117cd489b4a00379b57f40c9e4cb324150"
+        },
+        {
+          "path": "interiors/urn_stone_ornate_01/preview_top.png",
+          "bytes": 115035,
+          "sha256": "dcf4384353f33679fea5f92eb34e9b26834ee1f0547aa98903fac7fd6ddd5750"
+        },
+        {
+          "path": "interiors/urn_stone_ornate_01/report.json",
+          "bytes": 586,
+          "sha256": "11198f4ebe8463b37b167008273a8add911da5abf1dd0244d2302fd61efd5310"
+        },
+        {
+          "path": "interiors/urn_stone_ornate_01/report_texture.json",
+          "bytes": 2550,
+          "sha256": "2a01a533075189f29a2340f0d98dd602e661c331a3578071010e679f6561a5c8"
+        },
+        {
+          "path": "interiors/urn_stone_ornate_01/urn_stone_ornate_01.glb",
+          "bytes": 95940,
+          "sha256": "a86f09d52dcf95f51e067f3cf3ff5f1fc14bf8eb7cda718f4e619a09698ec2a4"
+        },
+        {
+          "path": "interiors/urn_stone_ornate_01/urn_stone_ornate_01_albedo.png",
+          "bytes": 34799,
+          "sha256": "389e1f6fdb8452d111d16e375e0dd84eb58ee08f63b5ed1c836f7065ac7a25ea"
+        },
+        {
+          "path": "interiors/urn_stone_ornate_01/urn_stone_ornate_01_godot.glb",
+          "bytes": 155560,
+          "sha256": "7689180b08f63a144a8f445d9c6767932da10012dafc94633c99923d5ad14e63"
+        }
+      ]
+    },
+    {
+      "name": "vase_clay_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/vase_clay_01/preview_front.png",
+          "bytes": 135287,
+          "sha256": "cd212871caa58dbc3fb75689731b97b26482378c5cec779b8031e0dac0f3d641"
+        },
+        {
+          "path": "interiors/vase_clay_01/preview_iso.png",
+          "bytes": 135409,
+          "sha256": "582f0706bed0544db6021b7c434235400e8a5c0154b260a63904771c1e019c0e"
+        },
+        {
+          "path": "interiors/vase_clay_01/preview_side.png",
+          "bytes": 135657,
+          "sha256": "5b49e048b505b0844dd16ccecc45800a4b50f56fa3e49c65f961241d9fad2250"
+        },
+        {
+          "path": "interiors/vase_clay_01/preview_top.png",
+          "bytes": 98846,
+          "sha256": "1f41c16cd97d5820a541f65db72686e3dd8e258b8ede06f22a25ad6e8a4e9ed3"
+        },
+        {
+          "path": "interiors/vase_clay_01/report.json",
+          "bytes": 557,
+          "sha256": "44e884db9f553ca42cb605aab194ff97ebbffffcab2f8e2a963c59bfbe6231a4"
+        },
+        {
+          "path": "interiors/vase_clay_01/report_texture.json",
+          "bytes": 2532,
+          "sha256": "058934c68dba4a10606b8dc2bbb473ab35adccaa14cacb4394b9be8e948b034e"
+        },
+        {
+          "path": "interiors/vase_clay_01/vase_clay_01.glb",
+          "bytes": 101608,
+          "sha256": "f7320dbac9fd8f4bab84b9ee1bf9af046e85b85ede5f9f0a65a5454b72b55d2b"
+        },
+        {
+          "path": "interiors/vase_clay_01/vase_clay_01_albedo.png",
+          "bytes": 43436,
+          "sha256": "ce1e10286e41a1e8b0357b6a57a791bb6658c415d6e93397a352b8246419e62c"
+        },
+        {
+          "path": "interiors/vase_clay_01/vase_clay_01_godot.glb",
+          "bytes": 158272,
+          "sha256": "7ad6e68c0be4ced37bbb68730f37a55e74b85d7db3f445c86e8c084c47742776"
+        }
+      ]
+    },
+    {
+      "name": "vase_stone_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/vase_stone_01/preview_front.png",
+          "bytes": 129796,
+          "sha256": "c8275b1bcb5e2836c0eaeecf08a0b4c7d2146d197425df82117ddbe0e9a22881"
+        },
+        {
+          "path": "interiors/vase_stone_01/preview_iso.png",
+          "bytes": 129095,
+          "sha256": "b49f0a17524e80a2b7a7e81aab245813528822a7d8592b54ee3d3c349f74d263"
+        },
+        {
+          "path": "interiors/vase_stone_01/preview_side.png",
+          "bytes": 130046,
+          "sha256": "9ede8d2cfe1e17b81bef10e3273b42d3d8e7ca46d2b695c03d9de336c370ff32"
+        },
+        {
+          "path": "interiors/vase_stone_01/preview_top.png",
+          "bytes": 96472,
+          "sha256": "3e31ef1523c97c3ad3cbf0143ed38b825c3d0f8d9057de5fee01ce258b9240e2"
+        },
+        {
+          "path": "interiors/vase_stone_01/report.json",
+          "bytes": 543,
+          "sha256": "1f1597c808040ae0715466e0aa807b7f9dfdd76b7ac2f166bd91099c46c2e084"
+        },
+        {
+          "path": "interiors/vase_stone_01/report_texture.json",
+          "bytes": 1771,
+          "sha256": "c1f9d55de3c49ba6ce30d411407fba133a72d5edd367278952935f92e4899479"
+        },
+        {
+          "path": "interiors/vase_stone_01/vase_stone_01.glb",
+          "bytes": 84184,
+          "sha256": "3fbbac87c0bcd2c3fbc7254fdfa93bfd431938ce277fb423953d8880021f0703"
+        },
+        {
+          "path": "interiors/vase_stone_01/vase_stone_01_albedo.png",
+          "bytes": 29928,
+          "sha256": "6ff01e13732d3a1e0f31079e3d4c7b3c5a49501949a935a83fe7129c34fee7c0"
+        },
+        {
+          "path": "interiors/vase_stone_01/vase_stone_01_godot.glb",
+          "bytes": 133244,
+          "sha256": "5c01f73971625eadd08ce6af39ca367b3091809257eb7868de4c8aa71cd8a8b6"
+        }
+      ]
+    },
+    {
+      "name": "wall_lantern_01",
+      "category": "props",
+      "files": [
+        {
+          "path": "interiors/wall_lantern_01/preview_front.png",
+          "bytes": 121269,
+          "sha256": "6e884688a54b50b4ffda3b791db605aebe20b84584b64efcc731e2c448601834"
+        },
+        {
+          "path": "interiors/wall_lantern_01/preview_iso.png",
+          "bytes": 139805,
+          "sha256": "9162825a4096530b90f2c7451f8dcd9f080fcc1f63f64b80e092cede65296b05"
+        },
+        {
+          "path": "interiors/wall_lantern_01/preview_side.png",
+          "bytes": 136412,
+          "sha256": "e15470e339de60aefbe7be4141c0152bced4e4e26d1bf0d65b3d6177784f5513"
+        },
+        {
+          "path": "interiors/wall_lantern_01/preview_top.png",
+          "bytes": 96490,
+          "sha256": "40b115678468341b08e755a6c863577c5fadcc58a16a538c9518dd4dff84cc23"
+        },
+        {
+          "path": "interiors/wall_lantern_01/report.json",
+          "bytes": 578,
+          "sha256": "496d1e2dce968e1b7e8344dab09bcd1bd99a4c23400cde79c34d6a13067b8c74"
+        },
+        {
+          "path": "interiors/wall_lantern_01/report_texture.json",
+          "bytes": 2896,
+          "sha256": "55cedf73c0a9ce79214d3f88de18c6a0747a5cdf9973900039b6b7792606856a"
+        },
+        {
+          "path": "interiors/wall_lantern_01/wall_lantern_01.glb",
+          "bytes": 112948,
+          "sha256": "f3ad8bd199ceb77e02997a70ed9d514635b3f7541e3ab56782d3827ec37fef18"
+        },
+        {
+          "path": "interiors/wall_lantern_01/wall_lantern_01_albedo.png",
+          "bytes": 53418,
+          "sha256": "c44779ec6e3fe423fa5c2ff9e91ee21c6c0c4aaaae69db13480446f7b4ab262c"
+        },
+        {
+          "path": "interiors/wall_lantern_01/wall_lantern_01_godot.glb",
+          "bytes": 169992,
+          "sha256": "a559bc721926d0058745e04d9ec11a2a09672444dfb7878848ab0e7d819cf71b"
+        }
+      ]
+    },
+    {
+      "name": "window_arch_01",
+      "category": "architecture",
+      "files": [
+        {
+          "path": "interiors/window_arch_01/preview_front.png",
+          "bytes": 154084,
+          "sha256": "270c45fca79745d25b0dd782237475f6ad19b63d327244f5f2b045fa46076c35"
+        },
+        {
+          "path": "interiors/window_arch_01/preview_iso.png",
+          "bytes": 151228,
+          "sha256": "cf5b59d09a3ef6705656af37bdc54efa05bf07679323d6841624c7eea6b60a9e"
+        },
+        {
+          "path": "interiors/window_arch_01/preview_side.png",
+          "bytes": 103065,
+          "sha256": "a2ffcf6e22f4abec71889359ceef58164e17719aed2f499ca8a3d2fc43a3ec55"
+        },
+        {
+          "path": "interiors/window_arch_01/preview_top.png",
+          "bytes": 68475,
+          "sha256": "e69c61d9d5f4779b2d0e755e4906810cbb3295277557aae965c5b9aeabb96ba2"
+        },
+        {
+          "path": "interiors/window_arch_01/report.json",
+          "bytes": 531,
+          "sha256": "3f96c207af44021c7f430722ad6eb311f50b6682bc85992a9fffb8470f05f0f4"
+        },
+        {
+          "path": "interiors/window_arch_01/report_texture.json",
+          "bytes": 4547,
+          "sha256": "9367832a25bccabe90255449331e2eeab5b533c4666d54e6dd553aae8318fff4"
+        },
+        {
+          "path": "interiors/window_arch_01/window_arch_01.glb",
+          "bytes": 105164,
+          "sha256": "5eaef44d6337c8be118dc1ee79a0b76f543a39fa3459c0d9751886b56db96e4d"
+        },
+        {
+          "path": "interiors/window_arch_01/window_arch_01_albedo.png",
+          "bytes": 41804,
+          "sha256": "95ad9805f55dd93c3ffd79fb91ec3e48df577223197930de18ba59d021deed59"
+        },
+        {
+          "path": "interiors/window_arch_01/window_arch_01_godot.glb",
+          "bytes": 106456,
+          "sha256": "b97540f732ec2e970186dfb833958aed28743b90b8a02bca568727291ee90454"
+        }
+      ]
+    },
+    {
+      "name": "window_glass_01",
+      "category": "architecture",
+      "files": [
+        {
+          "path": "interiors/window_glass_01/preview_front.png",
+          "bytes": 151917,
+          "sha256": "a8cb98c1eed7952fe2c6e63e0d7030ee0e0af4408c20061522a94b60c0dd59f6"
+        },
+        {
+          "path": "interiors/window_glass_01/preview_iso.png",
+          "bytes": 161811,
+          "sha256": "5d291ebaa0ca885cc1a98fde255fc16e11bcd613e9c580a619669d7c6eceafd4"
+        },
+        {
+          "path": "interiors/window_glass_01/preview_lighting.png",
+          "bytes": 99006,
+          "sha256": "6d198ef4793e85b728b9642efcf6b09bec11f8ee1ca50b26c15ba04d60492783"
+        },
+        {
+          "path": "interiors/window_glass_01/preview_side.png",
+          "bytes": 107749,
+          "sha256": "1134211659a094a6ed4c8201e10fd86bbd9f9114ea5d140b766654704d17598c"
+        },
+        {
+          "path": "interiors/window_glass_01/preview_top.png",
+          "bytes": 81885,
+          "sha256": "421461b9561157faf0c10fbc9613e7e1c4895448058afae46e7e38cfb4d10da3"
+        },
+        {
+          "path": "interiors/window_glass_01/report.json",
+          "bytes": 566,
+          "sha256": "efb0c37435566c3fe66aade0dcc8c1505b72e3e6a50078099c08b12b937cf548"
+        },
+        {
+          "path": "interiors/window_glass_01/report_texture.json",
+          "bytes": 2618,
+          "sha256": "6e3dc0680dc0b4f057f99ca75a434680aa07a0bc03a6ff24ed1a38baf1f7d16c"
+        },
+        {
+          "path": "interiors/window_glass_01/window_glass_01.glb",
+          "bytes": 31084,
+          "sha256": "23374044b6ca23bf5c1eb70f821c5d9e6670b8a114738308da3287a345bc76b5"
+        },
+        {
+          "path": "interiors/window_glass_01/window_glass_01_albedo.png",
+          "bytes": 15211,
+          "sha256": "783330a911d4029f77e509e73236db25bec415c77ef517356caa07bc2d7fdf56"
+        },
+        {
+          "path": "interiors/window_glass_01/window_glass_01_godot.glb",
+          "bytes": 32372,
+          "sha256": "ba4f7c2ecfb11ef406ad14b5b516ba65ba9e252ec5e8c25d2992498232efc75c"
+        }
+      ]
+    },
+    {
+      "name": "window_rose_01",
+      "category": "architecture",
+      "files": [
+        {
+          "path": "interiors/window_rose_01/preview_front.png",
+          "bytes": 151861,
+          "sha256": "422c7ddfff50e1f54cd15895c5a23ddadacf4a58b6fcbd33843c32e1e91c8d98"
+        },
+        {
+          "path": "interiors/window_rose_01/preview_iso.png",
+          "bytes": 141030,
+          "sha256": "7316d8acb5554278b2cfedfea76cbdce3410748df7f5cbfa271fbd0bdebaba18"
+        },
+        {
+          "path": "interiors/window_rose_01/preview_side.png",
+          "bytes": 92009,
+          "sha256": "22ef1e0e026a705d21505df166b8173cd0c4f3df9797d1b449beaa233dadbeb4"
+        },
+        {
+          "path": "interiors/window_rose_01/preview_top.png",
+          "bytes": 71200,
+          "sha256": "7b441532bbbdef0b7a3c9d96187a8047d6fa4cbaba1ad4cbf30e9851b2d34f7a"
+        },
+        {
+          "path": "interiors/window_rose_01/report.json",
+          "bytes": 534,
+          "sha256": "5dff53c5f3e6a5bdbf5515c81f409369d26b17400025ff198eed7a1bd541e862"
+        },
+        {
+          "path": "interiors/window_rose_01/report_texture.json",
+          "bytes": 4547,
+          "sha256": "0a9b80fde45ac372287e9ca4244dec02d6a74ad8162a87c92b8a88458db4b65a"
+        },
+        {
+          "path": "interiors/window_rose_01/window_rose_01.glb",
+          "bytes": 174352,
+          "sha256": "a53d30a7500c6fbb6e4c74f150d6e875023b9eb255a614f4ce5cebfa204c711b"
+        },
+        {
+          "path": "interiors/window_rose_01/window_rose_01_albedo.png",
+          "bytes": 46424,
+          "sha256": "c4a2a2114cb72b1f4e16a99b103ea9b14f1dacdea71ad82a12c092f029ca4b42"
+        },
+        {
+          "path": "interiors/window_rose_01/window_rose_01_godot.glb",
+          "bytes": 175660,
+          "sha256": "506a8f74608eb5503bc5f8c67fdcd91fbb71f462e5d02f21826a6b69ccbed46e"
+        }
+      ]
+    }
+  ]
+}

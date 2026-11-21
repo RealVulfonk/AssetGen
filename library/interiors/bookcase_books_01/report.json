@@ -1,0 +1,35 @@
+{
+  "name": "bookcase_books_01",
+  "stage": "model",
+  "tris": 1172,
+  "tri_budget": 1200,
+  "dimensions": [
+    1.301,
+    0.488,
+    2.341
+  ],
+  "materials": [
+    "wood",
+    "wood_horizontal",
+    "wood_light",
+    "wood_dark",
+    "book_green",
+    "book_red",
+    "book_ochre",
+    "book_brown",
+    "gold",
+    "book_blue",
+    "book_pages"
+  ],
+  "blend": "bookcase_books_01.blend",
+  "glb": "bookcase_books_01.glb",
+  "godot_glb": "bookcase_books_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK"
+}

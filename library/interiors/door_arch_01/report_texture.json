@@ -1,0 +1,112 @@
+{
+  "name": "door_arch_01",
+  "stage": "texture",
+  "size": 128,
+  "seed": 5,
+  "pixel": false,
+  "quantize": false,
+  "samples": 64,
+  "margin": 4,
+  "margin_type": "EXTEND",
+  "unique_colors": 516,
+  "materials": [
+    "metal",
+    "wood"
+  ],
+  "defaulted_materials": [],
+  "material_settings": {
+    "wood": {
+      "gradient": "ease",
+      "contrast": 0.85,
+      "contrast_pivot": 0.5,
+      "brightness": 0.0,
+      "ao": 0.3,
+      "ao_distance": 0.15,
+      "edge": 0.12,
+      "metallic": 0.0,
+      "roughness": 0.95,
+      "preset": "wood",
+      "scale": 5,
+      "direction": "X",
+      "distortion": 0.4,
+      "detail": 5,
+      "value": 0.6,
+      "palette": [
+        "#3b2a1e",
+        "#443125",
+        "#4d3829",
+        "#56402e",
+        "#5f4834",
+        "#68503b"
+      ],
+      "resolved_layers": [
+        {
+          "type": "wave",
+          "weight": 0.6,
+          "invert": false,
+          "scale": 5,
+          "direction": "X",
+          "distortion": 0.4
+        },
+        {
+          "type": "noise",
+          "weight": 0.25,
+          "invert": false,
+          "scale": 2.0,
+          "detail": 5
+        },
+        {
+          "type": "noise",
+          "weight": 0.15,
+          "invert": false,
+          "scale": 20.0,
+          "detail": 2.0
+        }
+      ]
+    },
+    "metal": {
+      "gradient": "ease",
+      "contrast": 0.8,
+      "contrast_pivot": 0.5,
+      "brightness": 0.0,
+      "ao": 0.25,
+      "ao_distance": 0.15,
+      "edge": 0.15,
+      "metallic": 0.6,
+      "roughness": 0.65,
+      "preset": "metal",
+      "scale": 16,
+      "direction": "X",
+      "distortion": 4.0,
+      "detail": 2.0,
+      "value": 0.6,
+      "palette": [
+        "#151518",
+        "#2c2d33",
+        "#4a4c55",
+        "#737782"
+      ],
+      "resolved_layers": [
+        {
+          "type": "noise",
+          "weight": 1.0,
+          "invert": false,
+          "scale": 16,
+          "detail": 2.0
+        }
+      ]
+    }
+  },
+  "texture": "door_arch_01_albedo.png",
+  "blend": "door_arch_01_tex.blend",
+  "glb": "door_arch_01.glb",
+  "godot_glb": "door_arch_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "status": "OK",
+  "warnings": []
+}

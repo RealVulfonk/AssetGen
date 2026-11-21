@@ -1,0 +1,27 @@
+{
+  "name": "barrel_01",
+  "stage": "model",
+  "tris": 260,
+  "tri_budget": 400,
+  "dimensions": [
+    0.64,
+    0.609,
+    0.9
+  ],
+  "materials": [
+    "wood",
+    "metal"
+  ],
+  "blend": "barrel_01.blend",
+  "glb": "barrel_01.glb",
+  "godot_glb": "barrel_01_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "warnings": [],
+  "status": "OK",
+  "model_digest": "cfb27d0dcd5b92220be69627b9fc86545bded2f6e22fe25d2e19b069264cd3c6"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "coffin",
+  "stage": "texture",
+  "size": 128,
+  "materials": [
+    "metal",
+    "wood"
+  ],
+  "texture": "coffin_albedo.png",
+  "blend": "coffin_tex.blend",
+  "glb": "coffin.glb",
+  "godot_glb": "coffin_godot.glb",
+  "previews": [
+    "preview_front.png",
+    "preview_side.png",
+    "preview_iso.png",
+    "preview_top.png"
+  ],
+  "status": "OK",
+  "warnings": []
+}
