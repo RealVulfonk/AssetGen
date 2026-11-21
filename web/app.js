@@ -1,5 +1,5 @@
 const $ = id => document.getElementById(id);
-const state = { data: null, active: null, selected: new Set(), patch: {}, tag: '', jobSignature: '', materialSettingsOpen: false };
+const state = { data: null, active: null, selected: new Set(), targetTags: new Set(), patch: {}, tag: '', jobSignature: '', materialSettingsOpen: false };
 let viewer;
 
 function el(tag, text, className) {
@@ -28,23 +28,38 @@ function currentSource() {
 }
 function filtered() {
   const query = $('search').value.toLowerCase();
-  return state.data.assets.filter(a => a.name.includes(query) && (!$('category').value || a.category === $('category').value));
+  return state.data.assets.filter(a => a.built && a.name.includes(query) && (!$('category').value || a.category === $('category').value));
+}
+function renderTagTargets(initialize = false) {
+  const focusedTag = document.activeElement?.closest('#tag-targets') ? document.activeElement.value : null;
+  const candidates = state.data.assets.filter(a => a.name === state.active || state.selected.has(a.name));
+  const tags = [...new Set(candidates.flatMap(a => Object.keys(a.texture?.materials || {})))].sort();
+  state.targetTags = new Set([...state.targetTags].filter(tag => tags.includes(tag)));
+  if (initialize && !state.targetTags.size && state.tag) state.targetTags.add(state.tag);
+  $('tag-targets').replaceChildren(...tags.map(tag => {
+    const label = el('label'); const input = el('input'); input.type = 'checkbox'; input.value = tag;
+    input.checked = state.targetTags.has(tag); input.setAttribute('aria-label', `Изменить тег ${tag}`);
+    input.onchange = () => { input.checked ? state.targetTags.add(tag) : state.targetTags.delete(tag); updateSelection(); };
+    label.append(input, el('span', tag)); return label;
+  }));
+  if (focusedTag) [...$('tag-targets').querySelectorAll('input')].find(input => input.value === focusedTag)?.focus({ preventScroll: true });
 }
 function updateSelection() {
+  renderTagTargets();
   $('selected-count').textContent = `Выбрано: ${state.selected.size}`;
   const visible = filtered();
   const count = visible.filter(a => state.selected.has(a.name)).length;
   $('select-visible').checked = count > 0 && count === visible.length;
   $('select-visible').indeterminate = count > 0 && count < visible.length;
-  const applicable = state.data.assets.filter(a => state.selected.has(a.name) && a.texture?.materials[state.tag]);
-  $('scope').textContent = state.tag ? `Материал «${state.tag}» найден у ${applicable.length} из ${state.selected.size} выбранных моделей. Показаны параметры активной модели. Неизменённые поля у остальных сохранятся.` : 'Для модели нет рецепта текстуры.';
+  const applicable = state.data.assets.filter(a => state.selected.has(a.name) && [...state.targetTags].some(tag => a.texture?.materials[tag]));
+  $('scope').textContent = state.tag ? `Выбрано тегов: ${state.targetTags.size}. Подходящих моделей: ${applicable.length} из ${state.selected.size}. Значения показаны для «${state.tag}». Меняются только отмеченные теги и отредактированные поля.` : 'Для модели нет рецепта текстуры.';
   const mode = state.patch.source_mode || sourceMode(active()?.texture?.materials[state.tag] || {});
   $('generate').disabled = !applicable.length || (mode !== 'procedural' && !currentSource()?.image);
   $('generate').textContent = `Перегенерировать текстуры · ${applicable.length}`;
 }
 function renderList() {
   const list = $('assets'); list.replaceChildren();
-  const assets = filtered(); $('count').textContent = `${assets.length} / ${state.data.assets.length}`;
+  const assets = filtered(); $('count').textContent = `${assets.length} / ${state.data.assets.filter(a => a.built).length}`;
   for (const asset of assets) {
     const row = el('div', undefined, `asset-row${state.active === asset.name ? ' active' : ''}`);
     const checkbox = el('input'); checkbox.type = 'checkbox'; checkbox.checked = state.selected.has(asset.name);
@@ -75,6 +90,7 @@ function activate(name) {
   state.tag = tags.includes(state.tag) ? state.tag : tags.find(t => t !== 'default') || tags[0] || '';
   $('tag').replaceChildren(...tags.map(t => { const option = el('option', t); option.value = t; return option; }));
   $('tag').value = state.tag; $('tag').disabled = !tags.length;
+  renderTagTargets(true);
   renderList(); renderEditor();
   if (viewer) viewer.load(asset);
   else for (const id of ['textured', 'solid']) $(id).querySelector('.view-message').textContent = '3D-просмотр недоступен. Для него нужен WebGL 2.';
@@ -177,6 +193,7 @@ function renderEditor() {
     const source = currentSource();
     const imageChoices = [['', 'Выберите изображение…'], ...state.data.images.map(i => [i, i])];
     selectField(imagesSection, 'Исходник', imageChoices, source?.image || '', value => {
+      state.patch.source_mode = mode;
       state.patch.source_detail = value ? { ...state.patch.source_detail, image: value } : null;
       renderEditor();
     });
@@ -186,7 +203,7 @@ function renderEditor() {
       const img = el('img'); img.src = `/textures/${image}`; img.alt = ''; img.loading = 'lazy';
       button.title = image; button.setAttribute('aria-label', `Фактура ${image}`);
       button.append(img, el('span', image.replace(/\.(png|jpe?g)$/, '')));
-      button.onclick = () => { state.patch.source_detail = { ...state.patch.source_detail, image }; renderEditor(); };
+      button.onclick = () => { state.patch.source_mode = mode; state.patch.source_detail = { ...state.patch.source_detail, image }; renderEditor(); };
       grid.append(button);
     }
     imagesSection.append(grid, el('p', 'Результат обновится после запекания Blender.', 'hint'));
@@ -228,11 +245,13 @@ function renderEditor() {
 async function loadCatalog(initial = false) {
   const data = await api('/api/catalog'); state.data = data;
   const selectedCategory = $('category').value;
-  $('category').replaceChildren(new Option('Все категории', ''), ...[...new Set(data.assets.map(a => a.category))].sort().map(c => new Option(c, c)));
+  $('category').replaceChildren(new Option('Все категории', ''), ...[...new Set(data.assets.filter(a => a.built).map(a => a.category))].sort().map(c => new Option(c, c)));
+  state.selected = new Set([...state.selected].filter(name => data.assets.some(a => a.name === name && a.built)));
   $('category').value = selectedCategory;
-  if (initial || !active()) {
-    const first = data.assets.find(a => a.built && a.texture) || data.assets[0];
+  if (initial || !active()?.built) {
+    const first = data.assets.find(a => a.built && a.texture) || data.assets.find(a => a.built);
     if (first) { state.selected.add(first.name); activate(first.name); }
+    else { state.active = null; state.tag = ''; state.patch = {}; state.targetTags.clear(); $('tag').replaceChildren(); $('tag').disabled = true; $('asset-title').textContent = 'Нет собранных моделей'; viewer?.clear(); viewer?.message('Нет собранных моделей'); viewer?.render(); renderList(); renderEditor(); }
   } else { renderList(); }
 }
 const statusLabels = { queued: 'В очереди', running: 'Запекание…', done: 'Готово', error: 'Ошибка', skipped: 'Пропущено', interrupted: 'Прервано' };
@@ -281,7 +300,7 @@ $('generate').onclick = async () => {
   if ([...document.querySelectorAll('.editor input')].some(input => !input.validity.valid || input.value === '')) { notify('Проверьте числовые значения параметров.', true); return; }
   $('generate').disabled = true;
   try {
-    await api('/api/jobs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ assets: [...state.selected], tag: state.tag, patch: state.patch }) });
+    await api('/api/jobs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ assets: [...state.selected], tags: [...state.targetTags], patch: state.patch }) });
     state.patch = {}; renderEditor(); notify('Задание добавлено в очередь. Можно продолжать просмотр.');
   } catch (error) { notify(error.message, true); }
   finally { updateSelection(); }

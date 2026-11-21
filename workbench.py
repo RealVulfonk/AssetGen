@@ -186,22 +186,30 @@ class Jobs:
         write_json(STATE / "jobs" / job["id"] / "job.json", job)
 
     def submit(self, payload):
-        names, tag, patch = payload.get("assets"), payload.get("tag"), payload.get("patch", {})
+        names, patch = payload.get("assets"), payload.get("patch", {})
+        tags = payload.get("tags", [payload.get("tag")])
         if not isinstance(names, list) or not names or len(names) > 500:
             raise ValueError("Select 1–500 assets")
-        if not isinstance(tag, str) or not isinstance(patch, dict):
-            raise ValueError("Material and patch are required")
+        if (not isinstance(tags, list) or not tags or len(tags) > 128
+                or any(not isinstance(tag, str) or not tag.strip() for tag in tags)
+                or not isinstance(patch, dict)):
+            raise ValueError("Select 1–128 material tags and provide a patch")
+        tags = list(dict.fromkeys(tags))
         job = {"id": f"{time.time_ns()}-{uuid.uuid4().hex[:6]}", "status": "queued",
-               "tag": tag, "created": time.time(), "items": []}
+               "tags": tags, "tag": ", ".join(tags), "created": time.time(), "items": []}
         folder = STATE / "jobs" / job["id"]
         for name in dict.fromkeys(names):
             model, texture, _ = asset_paths(name)
             item = {"name": name, "status": "queued"}
             original = read_json(texture) if texture.is_file() else None
-            if original is None or tag not in original["materials"]:
-                item.update(status="skipped", error=f"No explicit material {tag}")
+            matching = [tag for tag in tags if original and tag in original["materials"]]
+            item["tags"] = matching
+            if not matching:
+                item.update(status="skipped", error=f"No explicit materials: {', '.join(tags)}")
             else:
-                candidate = patched_spec(original, tag, patch)
+                candidate = original
+                for tag in matching:
+                    candidate = patched_spec(candidate, tag, patch)
                 path = folder / name / "candidate.json"
                 write_json(path, candidate)
                 validate_candidate(path, name)

@@ -64,6 +64,9 @@ h1,.editor h2{font-size:1.125rem;font-weight:600}
 .job-error{width:100%;white-space:pre-wrap;font-family:Consolas,monospace;font-size:.75rem;max-height:130px;overflow:auto}
 .editor{padding:22px 18px;border-left:1px solid var(--line);overflow:auto}
 .field-label{font-size:.875rem;display:block;margin-bottom:7px}
+.tag-targets{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;max-height:180px;overflow:auto}
+.tag-targets label{display:flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid var(--line);border-radius:5px;font-size:.875rem;cursor:pointer}
+.tag-targets label:has(input:checked){border-color:#648c79;background:#293c36}
 .hint{font-size:.8125rem;line-height:1.5;margin-top:9px}
 .editor-section{border-top:1px solid var(--line);margin-top:20px;padding-top:18px}
 .editor-section h3{font-size:.875rem;margin-bottom:12px;font-weight:600}

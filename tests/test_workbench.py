@@ -14,6 +14,37 @@ import workbench as wb
 
 
 class WorkbenchTests(unittest.TestCase):
+    def test_multiple_tags_form_one_candidate_per_asset_and_preserve_other_settings(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(wb, "STATE", Path(directory)):
+            built = []
+            def inspect(job, item):
+                candidate = wb.read_json(Path(directory) / "jobs" / job["id"] / item["name"] / "candidate.json")
+                original = wb.read_json(wb.ROOT / f"specs/textures/{item['name']}.json")
+                self.assertEqual(item["tags"], ["wood", "metal"])
+                for tag in ("wood", "metal"):
+                    expected = {**original["materials"][tag], "brightness": 0.17}
+                    self.assertEqual(candidate["materials"][tag], expected)
+                self.assertEqual(candidate["materials"]["default"], original["materials"]["default"])
+                built.append(item["name"])
+            jobs = wb.Jobs()
+            with patch.object(jobs, "build", side_effect=inspect):
+                jobs.submit({"assets": ["barrel_01", "door_arch_heavy_01", "window_glass_01"],
+                             "tags": ["wood", "metal", "wood", "missing"], "patch": {"brightness": 0.17}})
+                jobs.pending.join()
+            self.assertEqual(built, ["barrel_01", "door_arch_heavy_01"])
+            result = jobs.snapshot()[0]
+            self.assertEqual(result["status"], "done")
+            self.assertEqual(result["items"][-1]["status"], "skipped")
+            self.assertEqual(result["tags"], ["wood", "metal", "missing"])
+
+    def test_invalid_tag_lists_do_not_enqueue(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(wb, "STATE", Path(directory)):
+            jobs = wb.Jobs()
+            for tags in ([], "wood", [None], [""], ["wood"] * 129):
+                with self.subTest(tags=tags), self.assertRaises(ValueError):
+                    jobs.submit({"assets": ["barrel_01"], "tags": tags})
+            self.assertEqual(jobs.snapshot(), [])
+
     def test_source_switch_preserves_recipe_and_individual_image_scale(self):
         original = wb.read_json(wb.ROOT / "specs/textures/barrel_01.json")
         original["quantize"] = True

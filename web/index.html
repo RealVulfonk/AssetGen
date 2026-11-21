@@ -28,7 +28,9 @@
     </section>
     <aside class="editor">
       <div class="section-head"><h2>Материал</h2><span class="count">MVP</span></div>
-      <label class="field-label" for="tag">Тег в модели</label><select id="tag" disabled></select>
+      <span class="field-label" id="tag-targets-label">Теги для изменения</span>
+      <div id="tag-targets" class="tag-targets" role="group" aria-labelledby="tag-targets-label"></div>
+      <label class="field-label" for="tag">Образец настроек</label><select id="tag" disabled></select>
       <p id="scope" class="hint">Выберите модель для настройки.</p>
       <div id="editor-fields"></div>
       <div class="editor-actions"><p id="changes" class="hint">Настройки ещё не менялись</p><button id="reset" class="secondary">Сбросить изменения</button><button id="generate" class="primary" disabled>Перегенерировать текстуры</button><p class="hint">Применяются только изменённые поля. Предыдущие файлы сохраняются в резервной копии. Копирования в игру нет.</p></div>
