@@ -42,7 +42,7 @@ def export():
                             if data.get(key):
                                 data[key] = Path(data[key]).name
                         data["previews"] = [Path(path).name for path in data.get("previews", [])]
-                        target.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+                        target.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
                     else:
                         shutil.copy2(source, target)
         files = [{"path": path.relative_to(library).as_posix(), "bytes": path.stat().st_size,
@@ -50,7 +50,7 @@ def export():
                  for path in sorted(destination.iterdir()) if path.is_file()]
         assets.append({"name": name, "category": spec.get("category"), "files": files})
     manifest = {"format": 1, "assets": assets}
-    (library / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (library / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(f"Exported {len(assets)} built assets; {sum(f['bytes'] for a in assets for f in a['files']) / 1048576:.1f} MiB", flush=True)
 
 

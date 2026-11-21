@@ -42,13 +42,13 @@
         },
         {
           "path": "interiors/apple_01/report.json",
-          "bytes": 537,
-          "sha256": "5585f3335e3ad097072acaa5d8fe6db2ac712ba1a82e50a1fc8810d3f368aa9d"
+          "bytes": 510,
+          "sha256": "7ddfd431aa9526c02adb7c9f6ca881d22a5de96ad112ad4f9d2d63e87c0afa7f"
         },
         {
           "path": "interiors/apple_01/report_texture.json",
-          "bytes": 2346,
-          "sha256": "4253b3c7a4fb69e438cc886828dfa31e4de68e480b7fbdc43ceca9e69f751ca7"
+          "bytes": 2238,
+          "sha256": "59cd588c780583bb3ae63ebc9c92cc331927cfd5b714050e9fcc182d557797d5"
         }
       ]
     },
@@ -93,13 +93,13 @@
         },
         {
           "path": "interiors/barrel_01/report.json",
-          "bytes": 538,
-          "sha256": "08b01c9ffc7f579e01a6afb3e0ac0f473034e1c5aa712c6b6c5a3d631a3dd564"
+          "bytes": 511,
+          "sha256": "eb776639dc04654873932db265e4f273f4d63fdcd06af23f5755ed5ed342e097"
         },
         {
           "path": "interiors/barrel_01/report_texture.json",
-          "bytes": 2263,
-          "sha256": "040ff52c5f98a294389efe57e12ce67c4378a1d104939ff61e8a61bc00517d41"
+          "bytes": 2162,
+          "sha256": "8a5601aeffa6f2a08bd5ccee2892dbcef0bb10072e3b46ae5b9efb28461ec028"
         }
       ]
     },
@@ -144,13 +144,13 @@
         },
         {
           "path": "interiors/barrel_02/report.json",
-          "bytes": 541,
-          "sha256": "387b6115dfa606ba1bc8b8b60d9aaaeff534c9dc1d24616b7f6c0064c99cbe66"
+          "bytes": 514,
+          "sha256": "86a406e05e63d383da67410b4f9084c4adecbc206901f7ad56a621b9c0a969bd"
         },
         {
           "path": "interiors/barrel_02/report_texture.json",
-          "bytes": 2333,
-          "sha256": "1f90addb5267dc1d159b6cbb21466027a70e3a421028b004d969eda1efd8b9ad"
+          "bytes": 2230,
+          "sha256": "d5dc90e316c5a955874b908abcddf7b0d6c1c838c8472005fb5918d3a9e44a20"
         }
       ]
     },
@@ -195,13 +195,13 @@
         },
         {
           "path": "interiors/bench_01/report.json",
-          "bytes": 522,
-          "sha256": "c5efb3377e29ec151961cec87a2dcbd2a8be847a4ad6cb639102727ce9cd0ee3"
+          "bytes": 496,
+          "sha256": "250ffd2fe5aa631f6f69c45be5d19af40dbde4f0330028c781a3f0123f0ecea5"
         },
         {
           "path": "interiors/bench_01/report_texture.json",
-          "bytes": 1417,
-          "sha256": "3bf0d4dfd8c2ab40eab4b6d215ab1b51833a9a14c7e0519a07c3fa5cc0647004"
+          "bytes": 1353,
+          "sha256": "75ca88edf61f78def8e0f96915a1357d7ac5bd74a20662909cff91ae68924349"
         }
       ]
     },
@@ -236,8 +236,8 @@
         },
         {
           "path": "interiors/bone/report.json",
-          "bytes": 406,
-          "sha256": "590a2c7bb6b0a15a214b9ceaadd7630367b07fe5ba02a61abd945dbbaf419ff2"
+          "bytes": 381,
+          "sha256": "08e6445d55cd2a90b2ab285b69acccd8d960a1bfc91598d6bd276a7e8d7f90f0"
         }
       ]
     },
@@ -282,13 +282,13 @@
         },
         {
           "path": "interiors/bookcase_01/report.json",
-          "bytes": 596,
-          "sha256": "3c8e15db71618dddb950600b8ba20bfc5b594301cb8bca62e3dce5b5bb738be1"
+          "bytes": 567,
+          "sha256": "ebc3d9ff7cac947aa128a4f90b0f969a6d945df7f4d6513c4f3d4c5eef00dbdb"
         },
         {
           "path": "interiors/bookcase_01/report_texture.json",
-          "bytes": 3528,
-          "sha256": "b368bb36d1c4db015d865160eb991fe5a294bd7a73219829efecfc9269eba2a9"
+          "bytes": 3373,
+          "sha256": "6669b195d2dcee846e50c989934261097af89e4831d66c3be7b2eaf45068df48"
         }
       ]
     },
@@ -333,13 +333,13 @@
         },
         {
           "path": "interiors/bookcase_books_01/report.json",
-          "bytes": 659,
-          "sha256": "a840547ee1a06952546c3799957b949e769b629d304adf9a6cdab7789d28c87a"
+          "bytes": 624,
+          "sha256": "044ca76ce5459db4c38f1ba42fb154dde2ed431f41b81c788d404c3380f8b1b5"
         },
         {
           "path": "interiors/bookcase_books_01/report_texture.json",
-          "bytes": 627,
-          "sha256": "c9a8972ffe3a5226d6f6c830842533cdda7e405da983666e2fdd2f16f2dda9c2"
+          "bytes": 597,
+          "sha256": "855cf679d677facf120376cc345eddf65d49389db94fb36878de956d13b7eab0"
         }
       ]
     },
@@ -384,13 +384,13 @@
         },
         {
           "path": "exteriors/bridge_01/report.json",
-          "bytes": 527,
-          "sha256": "7e6c81b1adc244fc78260e8d8694c38f127a11ae24a9bbbc57260da53bd1ee1a"
+          "bytes": 501,
+          "sha256": "3eab5f35e56f223197d6c1ceac8928612bc3b16f60639c3f4054ae5b74290634"
         },
         {
           "path": "exteriors/bridge_01/report_texture.json",
-          "bytes": 1383,
-          "sha256": "2b279b8e80cd38f6e892f8e9a1b2f2436b82c66a2aaab823b66834ddc1952958"
+          "bytes": 1321,
+          "sha256": "7ef27f1f83a5f1313fa4c6f693b11b3da7368f80ae8fef3c120a58751027ef39"
         }
       ]
     },
@@ -430,8 +430,8 @@
         },
         {
           "path": "interiors/cell_bars/report.json",
-          "bytes": 439,
-          "sha256": "16cff33f842c783c6b6bc3227f820f844284fa1eec2726c97eba648101afbbd6"
+          "bytes": 414,
+          "sha256": "5b3bd4f86e6e6f8150a795980cdaff56f3f28681fa3f50b05e4e6482526e4a9a"
         }
       ]
     },
@@ -476,13 +476,13 @@
         },
         {
           "path": "interiors/chair_01/report.json",
-          "bytes": 492,
-          "sha256": "8f8ea8fa5cec66c587ae94c783a94da1e3957a18310160825faf774176f9870e"
+          "bytes": 464,
+          "sha256": "18e6400c3fef7b55d6c89dc21b8ecca58e0c26992d3df1ad0406de26a12c7bfa"
         },
         {
           "path": "interiors/chair_01/report_texture.json",
-          "bytes": 4606,
-          "sha256": "d3f25afc367aec1b0ede8b04a920d3dba12877ee011cd98616b529d216d0e165"
+          "bytes": 4392,
+          "sha256": "666e9588eb997b7d62ee572039aa08d30bfc4784d83524743dbe1065d12b242b"
         }
       ]
     },
@@ -527,13 +527,13 @@
         },
         {
           "path": "interiors/cheese_wheel_01/report.json",
-          "bytes": 465,
-          "sha256": "375e0e46d3a10308e9fc186adbf5cadee44a46acfb78354ea2b1a35ddee4b741"
+          "bytes": 440,
+          "sha256": "635be94910f4125c2898a149469ac5055fc963bb85748d87ed1db1b483539bd9"
         },
         {
           "path": "interiors/cheese_wheel_01/report_texture.json",
-          "bytes": 1974,
-          "sha256": "23808cea18cba10cf3580afc958f2814eded2c84c38d4492b3b752cd23ff0982"
+          "bytes": 1881,
+          "sha256": "624af7f687c47f70857f9a47d335032b4d647306c0dff2711025e38f12d0be62"
         }
       ]
     },
@@ -578,13 +578,13 @@
         },
         {
           "path": "exteriors/coffin/report.json",
-          "bytes": 441,
-          "sha256": "576311f6506ac01ab46b945a8616977e1ecd1e30f070b4dc20697921a5a03e40"
+          "bytes": 415,
+          "sha256": "0d3d3b2222ae0094cd4d54fc0a72bf6b693578e3360789de7d74b5ddee12ed42"
         },
         {
           "path": "exteriors/coffin/report_texture.json",
-          "bytes": 401,
-          "sha256": "fcd551114924a4aff00e8754f9b07f822f7016553cc1af65f69e96be7878e0e2"
+          "bytes": 380,
+          "sha256": "23f925a2b58051ddfca52524d75e8cb44ce21a2323b5b92e34acb399494ed97a"
         }
       ]
     },
@@ -629,13 +629,13 @@
         },
         {
           "path": "exteriors/conifer_01/report.json",
-          "bytes": 462,
-          "sha256": "a91ca1fd6abac289b97951bd1d090744f350de5f727c78a2a6b7e48ab70d6b17"
+          "bytes": 436,
+          "sha256": "c8cbaaee85839bc3de84b9806f062294a847f00420a4177da2aa0b87e3cf2371"
         },
         {
           "path": "exteriors/conifer_01/report_texture.json",
-          "bytes": 2423,
-          "sha256": "a88afc53920653d2073bdf3c6eaf8682e7cebfb34ccb0fd6266892c074aa9b95"
+          "bytes": 2309,
+          "sha256": "939d34adbdf389f8e4547d1c367033d8700f31e9bf2af7e772e01e449f8b81e3"
         }
       ]
     },
@@ -680,13 +680,13 @@
         },
         {
           "path": "interiors/door/report.json",
-          "bytes": 432,
-          "sha256": "4bd16ca25573abc7e90e6f01840c7cec74775f4f6848cb8958de48243642a345"
+          "bytes": 406,
+          "sha256": "9275701c9604b4394cc460f860fc14d355c9703a4aa6dcf9594feef652f784bd"
         },
         {
           "path": "interiors/door/report_texture.json",
-          "bytes": 391,
-          "sha256": "10f1072980629bf46aa75939e3706971be4b9bc86d534b824c2bb8cddf8f6e42"
+          "bytes": 370,
+          "sha256": "110479832c4132df68009745f46222461294585fc2aab75bcf342a3b5c363156"
         }
       ]
     },
@@ -731,13 +731,13 @@
         },
         {
           "path": "interiors/door_arch_01/report.json",
-          "bytes": 465,
-          "sha256": "de3133a65f86b5f2ffd621fd4c86ff9b5c8e873be2d4c1195f24111a304ce512"
+          "bytes": 439,
+          "sha256": "d344d0545031ed5fa1cb8a9fc3345d79a38468dc02ecf269fe43f67a436120fa"
         },
         {
           "path": "interiors/door_arch_01/report_texture.json",
-          "bytes": 2387,
-          "sha256": "8714724270dc02ae36b5a977e772776c329f358bea41dd2859db5eeff01c46ab"
+          "bytes": 2275,
+          "sha256": "9c3b0ca07cb7cfcd68b24d39d63d5681063cc411970e5562f4d396fc24a72450"
         }
       ]
     },
@@ -782,13 +782,13 @@
         },
         {
           "path": "interiors/door_arch_heavy_01/report.json",
-          "bytes": 578,
-          "sha256": "6ac82375069ecf59c02da38cc7e29bd22dcdb0187c50fe49a47f8434613431df"
+          "bytes": 551,
+          "sha256": "898d55fae051d3d9558e6cae95ca14882ad88a31d85b4ba33daf80ce368e9de3"
         },
         {
           "path": "interiors/door_arch_heavy_01/report_texture.json",
-          "bytes": 2804,
-          "sha256": "97ec8d1fae2c8e5de5ce2db6bf3491b6bad2d137e80a6bc07930bb086bdb77f3"
+          "bytes": 2680,
+          "sha256": "1899b13e4c7e28a75f99c5c3ea5d2e733267aa5de2b60f4ec073a4abbae4348b"
         }
       ]
     },
@@ -833,13 +833,13 @@
         },
         {
           "path": "interiors/door_arch_heavy_frame_01/report.json",
-          "bytes": 585,
-          "sha256": "e61516a5dbd4138e2b28206b62b884081626422b52dd7a70005155ec4fc480b8"
+          "bytes": 559,
+          "sha256": "ff558a9d3b2d49f97d43165ec24345f06f439a5c590341904b26dc2ca97999e8"
         },
         {
           "path": "interiors/door_arch_heavy_frame_01/report_texture.json",
-          "bytes": 1984,
-          "sha256": "8f6c87e9c5707d6a7877e182e4b76e43a3748981e402accba1c2125ec614d213"
+          "bytes": 1899,
+          "sha256": "c319c896ec8196a460e7326fb2c3725bf1936b1ea83b06bc0c855b45c1dbc543"
         }
       ]
     },
@@ -884,13 +884,13 @@
         },
         {
           "path": "interiors/door_arch_heavy_leaf_01/report.json",
-          "bytes": 599,
-          "sha256": "a7d6fc2f35c5854a906326862537fa0e35be953b98e045b8f60c62d1fc7e4661"
+          "bytes": 572,
+          "sha256": "5c2261d40613b588a3a196a29a59515e1949c8604bdda0adab91e44648b7d1b2"
         },
         {
           "path": "interiors/door_arch_heavy_leaf_01/report_texture.json",
-          "bytes": 2829,
-          "sha256": "b40b45aa1ba812667b01e58aad680b8b5b25d64125be9464560e1f6160bda292"
+          "bytes": 2705,
+          "sha256": "7a21918acfb3331fac26a434c672e38670b80db0a28122428c86f7412398259e"
         }
       ]
     },
@@ -935,13 +935,13 @@
         },
         {
           "path": "exteriors/grave_02/report.json",
-          "bytes": 437,
-          "sha256": "e75c2e77a21f66b0a45e5ff827b0914d05e8fee353d585186abecaf54bcdd526"
+          "bytes": 412,
+          "sha256": "7c243041342c8725514cb866906b901a7094c92311870cd8f96128088fd39d65"
         },
         {
           "path": "exteriors/grave_02/report_texture.json",
-          "bytes": 1615,
-          "sha256": "262df6e92f92e5ff82d94accb1886d21343e93a67bbb3a2996d8aff25ad6da35"
+          "bytes": 1538,
+          "sha256": "3dc477dbdf9bc1ecf3723814227ee19944ac0813607ac00cd90adc4446729888"
         }
       ]
     },
@@ -981,8 +981,8 @@
         },
         {
           "path": "exteriors/house_01/report.json",
-          "bytes": 522,
-          "sha256": "31a7e5108300792670f99cb09427d9c4ecd48eb6895d1d57b0d9f74e1b99c5fa"
+          "bytes": 491,
+          "sha256": "841c81b4fd1923b85dde5a2072b2ef07341ad15f063ca8c29734f260faf1e151"
         }
       ]
     },
@@ -1027,13 +1027,13 @@
         },
         {
           "path": "interiors/ironbound_chest_01/report.json",
-          "bytes": 504,
-          "sha256": "0b84fcc0834715a417572b639c293f32c869612fd0b0e629a16bff1f068e0550"
+          "bytes": 477,
+          "sha256": "250f24a3b283f42a364043a764557225c707daada050ff24d9ce2318df7aa455"
         },
         {
           "path": "interiors/ironbound_chest_01/report_texture.json",
-          "bytes": 3090,
-          "sha256": "08e1e63b2217d9809085ff2027f20124be30fa716dfd9078eec6034443a97342"
+          "bytes": 2947,
+          "sha256": "a86ac286879c56e769c9276bdbd4910efcad5b829290da5350bbb0b8fee9fccd"
         }
       ]
     },
@@ -1083,13 +1083,13 @@
         },
         {
           "path": "interiors/pillar/report.json",
-          "bytes": 514,
-          "sha256": "35fbd8abbb128d9f52d0f06d8db55b71637f8accdcb250b8a144cc0953174503"
+          "bytes": 488,
+          "sha256": "db39e45fc1de7517135c70e6538be48685b791ade033f854a4093e47dc47beed"
         },
         {
           "path": "interiors/pillar/report_texture.json",
-          "bytes": 1773,
-          "sha256": "b146fd36bcd78389046e8512908b94ac7aadc87f0a6c5c2a23264cbf76ba518d"
+          "bytes": 1693,
+          "sha256": "81ada47fa7c414bd7769033cf5ce93ee14e42d6c1e5ffa7df619317197bd1d7e"
         }
       ]
     },
@@ -1134,13 +1134,13 @@
         },
         {
           "path": "interiors/plank_broken_01/report.json",
-          "bytes": 464,
-          "sha256": "7cabe565aea31a457b25d74314f5817729527dfe56e11cb2906b0ae775f88c84"
+          "bytes": 439,
+          "sha256": "700944b2b58d73351ccb11e5f2dd1607bb6fa255847b35cee8bd46ef71aa074d"
         },
         {
           "path": "interiors/plank_broken_01/report_texture.json",
-          "bytes": 1698,
-          "sha256": "977a21554efb8d9e3b56840362ec72ea4099bde28142ccf15f2927fca617d4ff"
+          "bytes": 1619,
+          "sha256": "b1de6c939a95e0a8fd3016e39bc8fd570eb6ac2bf6cf86575289598fc91282a3"
         }
       ]
     },
@@ -1185,13 +1185,13 @@
         },
         {
           "path": "interiors/plank_chunk_01/report.json",
-          "bytes": 459,
-          "sha256": "80a5409bdd8e96e9c2715fb9acda55e233ea00505da09a631a4997c62e4d076a"
+          "bytes": 434,
+          "sha256": "168ba6bc583b1ba3b8d80a38e64f31042996db83ef1f270cd2e29a5ac90c4030"
         },
         {
           "path": "interiors/plank_chunk_01/report_texture.json",
-          "bytes": 1709,
-          "sha256": "7a31f386c96624e64f45e3e7d389f21cc04632533862adbfdeda325a01dd7315"
+          "bytes": 1630,
+          "sha256": "9f262fb9749697c01a80cc26a23e58024e515df36b89d092c1e15f12cde51c8f"
         }
       ]
     },
@@ -1236,13 +1236,13 @@
         },
         {
           "path": "interiors/plate_deep_01/report.json",
-          "bytes": 459,
-          "sha256": "0d1cad061314a2d208c14ac309013d36278eb249999bafdb97d858b2233fee25"
+          "bytes": 434,
+          "sha256": "6428efcceb593c63a89acebdcedcfcbaa4f8618898e7303470057c5493bee75b"
         },
         {
           "path": "interiors/plate_deep_01/report_texture.json",
-          "bytes": 1349,
-          "sha256": "51d45f246a0b4bd99d331ee3852f658b4a7dd041be22cd92f4343f5dc60bc5a4"
+          "bytes": 1285,
+          "sha256": "5d28de223000f93820ef42ab436617a26a49f84af0496294dd8803df73c43bca"
         }
       ]
     },
@@ -1287,13 +1287,13 @@
         },
         {
           "path": "interiors/plate_flat_01/report.json",
-          "bytes": 459,
-          "sha256": "dd7fc059118aa095b79aa93acd980269d34c4860d3421b94495b015b9c3974a5"
+          "bytes": 434,
+          "sha256": "8ad3e001d340c8129d3f5aa8cf8a772a7232c261a3963ffe51dd4ac6e6b64227"
         },
         {
           "path": "interiors/plate_flat_01/report_texture.json",
-          "bytes": 1349,
-          "sha256": "91d2bb8552787528e3da89313bf990a16c84c46ccc300bd19344e2666b037442"
+          "bytes": 1285,
+          "sha256": "12148f8995fa67e1111006b4badaf7fdf748d9e2fbf8d7007cd25647363b08b2"
         }
       ]
     },
@@ -1338,13 +1338,13 @@
         },
         {
           "path": "interiors/pot_clay_01/report.json",
-          "bytes": 535,
-          "sha256": "e36b7ad8d50974e82d9e477fc777c866ac32be0462f6cc43c37c36002b89abae"
+          "bytes": 509,
+          "sha256": "5bdb85e1a0d977bb4b77a7c1038bc1fc80bb4625e686e46a58b45fc583cec88f"
         },
         {
           "path": "interiors/pot_clay_01/report_texture.json",
-          "bytes": 1757,
-          "sha256": "b622f64549d2650f9c91c981e8e6ac69d35c3080eb32e6f42e4812f4497d2a81"
+          "bytes": 1677,
+          "sha256": "3b784df92144f34e59fdbe26b9894336056e61b0ea50ca7e7cbaed4d22cfb09f"
         }
       ]
     },
@@ -1374,13 +1374,13 @@
         },
         {
           "path": "interiors/scroll_closed_01/report.json",
-          "bytes": 533,
-          "sha256": "02d4f0af50304503124e93e7d55b8ae7de52a497a8b56bf90540f46dabc2ae6c"
+          "bytes": 504,
+          "sha256": "1ca9ff9d45fc19f1fbcd6f2ff491aa71ccd39bfb272c01a1552f78dedce233b0"
         },
         {
           "path": "interiors/scroll_closed_01/report_texture.json",
-          "bytes": 4546,
-          "sha256": "714d198f190ee6abea51f36b9190413b3e85a0f74a2fa0937d1cb301690aedc2"
+          "bytes": 4334,
+          "sha256": "15c81696c2fac5561cb7f3b2371626e3f929f104897ea94132d188376f891a97"
         },
         {
           "path": "interiors/scroll_closed_01/scroll_closed_01.glb",
@@ -1425,13 +1425,13 @@
         },
         {
           "path": "interiors/scroll_open_01/report.json",
-          "bytes": 505,
-          "sha256": "f720713ac7805952ee451a9b4fe3bc79945a93848d6423fa64c667c4617f02d6"
+          "bytes": 477,
+          "sha256": "249d24668dad426d3bfc1cceb6e15e76f8b7087c09fb29a715b9b6a2b877e952"
         },
         {
           "path": "interiors/scroll_open_01/report_texture.json",
-          "bytes": 3812,
-          "sha256": "ebce7a358dbfed5927fb1d3000f87a06bc24b6f956ae76a3ea314c9c360cd799"
+          "bytes": 3634,
+          "sha256": "7cc6267f5ba74ab009c1604a55e5fc15dea4ba68c9072620729b79e2da5f8665"
         },
         {
           "path": "interiors/scroll_open_01/scroll_open_01.glb",
@@ -1476,13 +1476,13 @@
         },
         {
           "path": "interiors/skull_01/report.json",
-          "bytes": 521,
-          "sha256": "1985f6604711e3135ccf8ae89a04cb9d073cd849a3aa4d7ed14c1919e16d19df"
+          "bytes": 495,
+          "sha256": "19bbe33882ee564ec4ce6722e65bbc085ee00b327533e381c794dba5b99cc397"
         },
         {
           "path": "interiors/skull_01/report_texture.json",
-          "bytes": 1372,
-          "sha256": "f5c6e4c5b32bd7856346ba53c84bc2da78780446f31a314a2e4c099cde55cc93"
+          "bytes": 1309,
+          "sha256": "dd0541c40fc3c8ca8396bcf8e0f7fd9654db1a644cf18bd0a833bd66f5956b22"
         },
         {
           "path": "interiors/skull_01/skull_01.glb",
@@ -1527,13 +1527,13 @@
         },
         {
           "path": "exteriors/snag_01/report.json",
-          "bytes": 445,
-          "sha256": "c0f543ee4638df4fdb7c282c3319b1d8b22458acf21d6b1087e1c95ddbcd106e"
+          "bytes": 419,
+          "sha256": "a950af9c6d6214762062ffc3c64576e8488f4217b621bca9a185f6bc8b4d0055"
         },
         {
           "path": "exteriors/snag_01/report_texture.json",
-          "bytes": 2401,
-          "sha256": "dbb00b81f2d56673739d3c349f9f39f6a623c788aafc9ddcf1e508344db0a12f"
+          "bytes": 2287,
+          "sha256": "f9b85bf1fb4efadca2fa027dec3cf0f405144a5305e67dd0c03bf45901778ef6"
         },
         {
           "path": "exteriors/snag_01/snag_01.glb",
@@ -1578,13 +1578,13 @@
         },
         {
           "path": "exteriors/snag_02/report.json",
-          "bytes": 445,
-          "sha256": "ff6f6c5fcca6e10c1a0a4f7e6ad84f0435e38d8502beac03d28a879c773430c6"
+          "bytes": 419,
+          "sha256": "52aa4a4b0631fe6de72b1984be04ac607b8a3e5210745a689e143f9aa0260df0"
         },
         {
           "path": "exteriors/snag_02/report_texture.json",
-          "bytes": 2401,
-          "sha256": "1b9f3e379a64439e9e1e163d1fb7c52c3ada46ba6be6168925cd393a411ff504"
+          "bytes": 2287,
+          "sha256": "feca5ef06583e9393e42d7bd6264b9a79633afb1fa30d7b15f31558931f82435"
         },
         {
           "path": "exteriors/snag_02/snag_02.glb",
@@ -1629,13 +1629,13 @@
         },
         {
           "path": "exteriors/snag_03/report.json",
-          "bytes": 433,
-          "sha256": "3e6a007fe3b32becd8ca3984f1c61e081c059e67d487b02ca9bed9ec8681fe35"
+          "bytes": 408,
+          "sha256": "c12b5c3405326812323c1c9edbeacfcdb6599a877b790b407a8d3c84d60d8dd8"
         },
         {
           "path": "exteriors/snag_03/report_texture.json",
-          "bytes": 1665,
-          "sha256": "5b1085d287fa4587148fc42e08f3fda0c6275fec206e5307bac07972a6422c52"
+          "bytes": 1586,
+          "sha256": "7ccb67b034c842e7a20427e4129128e6455fc58d25c82a91faccd248741cdc15"
         },
         {
           "path": "exteriors/snag_03/snag_03.glb",
@@ -1680,13 +1680,13 @@
         },
         {
           "path": "exteriors/snag_04/report.json",
-          "bytes": 446,
-          "sha256": "50890858311ffb8c67f8af518a0fc48edcc8895efb140324183acebfb3e9f50b"
+          "bytes": 420,
+          "sha256": "38cc2fe0cd1aaa518763cf0259733a5c04651269a08c9d9a979e7ba085feab5e"
         },
         {
           "path": "exteriors/snag_04/report_texture.json",
-          "bytes": 2401,
-          "sha256": "5b0b4251f65027146015977a8dfffcd50156aed57ee93c79d858cb6813f47114"
+          "bytes": 2287,
+          "sha256": "88ba5d2afcfeab37a03aa619a3c76b0c471729e99216d1ad379a7d92794a0bc0"
         },
         {
           "path": "exteriors/snag_04/snag_04.glb",
@@ -1731,13 +1731,13 @@
         },
         {
           "path": "exteriors/snag_05/report.json",
-          "bytes": 446,
-          "sha256": "2d47fc2475824f61742ffaa45827d85725f9d0b9bf92b723b25e0b3ca05112be"
+          "bytes": 420,
+          "sha256": "51f0e9143103e8a254f4ec7f7767efa215efedb36802b8e1191bc155a505ec7f"
         },
         {
           "path": "exteriors/snag_05/report_texture.json",
-          "bytes": 2401,
-          "sha256": "49d589ade62393a1008a33047d80cb70b3f34fb3e6d0618af7a4d67de07d072b"
+          "bytes": 2287,
+          "sha256": "47b1e1c68f90b6f8349ef963970428723245cb32463db578611aed1d71efb4c4"
         },
         {
           "path": "exteriors/snag_05/snag_05.glb",
@@ -1782,13 +1782,13 @@
         },
         {
           "path": "exteriors/snag_06/report.json",
-          "bytes": 442,
-          "sha256": "6902fd2b2668c8fc1f809aa24cc0be92f31ca62abffd13c203d1270cef3db538"
+          "bytes": 416,
+          "sha256": "445b85a219a5d93948eb951f31f1d6e9e7f5c2fc06ef111acc354859264ee83a"
         },
         {
           "path": "exteriors/snag_06/report_texture.json",
-          "bytes": 2401,
-          "sha256": "9c5bc7ee6f269c3a5e44fdc998265ea7a231ed45a8cb77d6228a4492e55a1cfc"
+          "bytes": 2287,
+          "sha256": "399547b254311e68d97c37fee32d649aaafc510aac1ce4614369e84310035681"
         },
         {
           "path": "exteriors/snag_06/snag_06.glb",
@@ -1833,13 +1833,13 @@
         },
         {
           "path": "exteriors/snag_07/report.json",
-          "bytes": 446,
-          "sha256": "6eeb10a626fbdf76a29ee312d4be26f9f1a96491ea6f46ec43ec000cf3bbc61b"
+          "bytes": 420,
+          "sha256": "7ce8276d17bdae4f2f276688728206240a068ffa60c4bfb88c613c416472025d"
         },
         {
           "path": "exteriors/snag_07/report_texture.json",
-          "bytes": 2401,
-          "sha256": "21fd9321bb3c7a9c70d1536ac8122ecefa2e7fb9a5cd7a1e00866b32a8cf20f3"
+          "bytes": 2287,
+          "sha256": "1216dd3c1402b6493d20f5046dac91802b257f4fb983f7502f11ab51e576fbe4"
         },
         {
           "path": "exteriors/snag_07/snag_07.glb",
@@ -1884,13 +1884,13 @@
         },
         {
           "path": "exteriors/snag_08/report.json",
-          "bytes": 433,
-          "sha256": "f8d6fcde87b3393fbc0d440143840992f0ad3da0de6482f9cb2c4bd89597a35b"
+          "bytes": 408,
+          "sha256": "866f7c40fd4c3761249e08dd08967daa715ecacc3bee617623576b322644d91f"
         },
         {
           "path": "exteriors/snag_08/report_texture.json",
-          "bytes": 1665,
-          "sha256": "c07d197c1692a1e0bdbaf4caee4be101e6974a7f56c651b80cfb644e823e2b1e"
+          "bytes": 1586,
+          "sha256": "e3de2fd629534e4a91e2dfc7996877ae16c9d1e24ef7b3d3f18bad7d1f7e5e3c"
         },
         {
           "path": "exteriors/snag_08/snag_08.glb",
@@ -1935,8 +1935,8 @@
         },
         {
           "path": "interiors/table/report.json",
-          "bytes": 424,
-          "sha256": "a68fcd2fff1f7ebd09d2370554839694d4929a5bc0cc660fc178537b6eaf566d"
+          "bytes": 399,
+          "sha256": "8149e22951aeeefc1a32a17e705ef1a6746b1b5f33b075486bf743eb699aef14"
         },
         {
           "path": "interiors/table/table.glb",
@@ -1976,8 +1976,8 @@
         },
         {
           "path": "interiors/torch/report.json",
-          "bytes": 437,
-          "sha256": "0d178ddf765cad656d9083a0c2d3d93dbb63aa11e6be36ce4921484bfaec5982"
+          "bytes": 410,
+          "sha256": "cf218225a17a7ddeb598fab483aacf43967937e716ede4040a1fecc17d252c5e"
         },
         {
           "path": "interiors/torch/torch.glb",
@@ -2012,8 +2012,8 @@
         },
         {
           "path": "interiors/urn/report.json",
-          "bytes": 417,
-          "sha256": "56eee147679ca1ee849bb8cf835a3e51e350596646d4a9ff0d309a04d3b59901"
+          "bytes": 392,
+          "sha256": "a35bb3fa432aa1ecbcf3f4005b87d5676da2bbb6edf27ca4265855817190e689"
         },
         {
           "path": "interiors/urn/urn.glb",
@@ -2053,13 +2053,13 @@
         },
         {
           "path": "interiors/urn_stone_ornate_01/report.json",
-          "bytes": 586,
-          "sha256": "11198f4ebe8463b37b167008273a8add911da5abf1dd0244d2302fd61efd5310"
+          "bytes": 559,
+          "sha256": "94641a36d08b41781d5bfa6a93467e7673d032e29c11a64d0f71e1c2c0c3a3de"
         },
         {
           "path": "interiors/urn_stone_ornate_01/report_texture.json",
-          "bytes": 2550,
-          "sha256": "2a01a533075189f29a2340f0d98dd602e661c331a3578071010e679f6561a5c8"
+          "bytes": 2435,
+          "sha256": "efbb8b6e62271f76229f7f37c01c301dc57c41dd18a976fa51ae09aa7a2233a2"
         },
         {
           "path": "interiors/urn_stone_ornate_01/urn_stone_ornate_01.glb",
@@ -2104,13 +2104,13 @@
         },
         {
           "path": "interiors/vase_clay_01/report.json",
-          "bytes": 557,
-          "sha256": "44e884db9f553ca42cb605aab194ff97ebbffffcab2f8e2a963c59bfbe6231a4"
+          "bytes": 530,
+          "sha256": "389c3761546a83238f2d38803b464fcf38f90de81690803cd19e6cc59942be33"
         },
         {
           "path": "interiors/vase_clay_01/report_texture.json",
-          "bytes": 2532,
-          "sha256": "058934c68dba4a10606b8dc2bbb473ab35adccaa14cacb4394b9be8e948b034e"
+          "bytes": 2416,
+          "sha256": "cc378ccd44820b538581ff45d00514d04a0f4942408de04e216b2d151bced83f"
         },
         {
           "path": "interiors/vase_clay_01/vase_clay_01.glb",
@@ -2155,13 +2155,13 @@
         },
         {
           "path": "interiors/vase_stone_01/report.json",
-          "bytes": 543,
-          "sha256": "1f1597c808040ae0715466e0aa807b7f9dfdd76b7ac2f166bd91099c46c2e084"
+          "bytes": 517,
+          "sha256": "329cff92772dce7b289a7d114eb4d98eb7d7e2dfe5d0170924c750590a0eb5bf"
         },
         {
           "path": "interiors/vase_stone_01/report_texture.json",
-          "bytes": 1771,
-          "sha256": "c1f9d55de3c49ba6ce30d411407fba133a72d5edd367278952935f92e4899479"
+          "bytes": 1691,
+          "sha256": "fea81e1076963b64f498bdb0b32bf92887c2c106ec0fdf5ab8ec01076063b11f"
         },
         {
           "path": "interiors/vase_stone_01/vase_stone_01.glb",
@@ -2206,13 +2206,13 @@
         },
         {
           "path": "interiors/wall_lantern_01/report.json",
-          "bytes": 578,
-          "sha256": "496d1e2dce968e1b7e8344dab09bcd1bd99a4c23400cde79c34d6a13067b8c74"
+          "bytes": 550,
+          "sha256": "d655460d466c329d0d56a9f3650c4ad6cbe72545805429c2bc46f9e3dc6ebe06"
         },
         {
           "path": "interiors/wall_lantern_01/report_texture.json",
-          "bytes": 2896,
-          "sha256": "55cedf73c0a9ce79214d3f88de18c6a0747a5cdf9973900039b6b7792606856a"
+          "bytes": 2763,
+          "sha256": "957cbbdcbdf316524e4c87065885bf7b3066e45c046a20e70711836dcc56ee30"
         },
         {
           "path": "interiors/wall_lantern_01/wall_lantern_01.glb",
@@ -2257,13 +2257,13 @@
         },
         {
           "path": "interiors/window_arch_01/report.json",
-          "bytes": 531,
-          "sha256": "3f96c207af44021c7f430722ad6eb311f50b6682bc85992a9fffb8470f05f0f4"
+          "bytes": 502,
+          "sha256": "10ca3915fce2f8e9be6b2d4cdc79fcf68d9900e3875c701787463a39ee8eed4e"
         },
         {
           "path": "interiors/window_arch_01/report_texture.json",
-          "bytes": 4547,
-          "sha256": "9367832a25bccabe90255449331e2eeab5b533c4666d54e6dd553aae8318fff4"
+          "bytes": 4336,
+          "sha256": "7e77d0f66527daa6d41e5aa015aa9a2ddf66136b901ec817fb183eeb1c3f8b71"
         },
         {
           "path": "interiors/window_arch_01/window_arch_01.glb",
@@ -2313,13 +2313,13 @@
         },
         {
           "path": "interiors/window_glass_01/report.json",
-          "bytes": 566,
-          "sha256": "efb0c37435566c3fe66aade0dcc8c1505b72e3e6a50078099c08b12b937cf548"
+          "bytes": 539,
+          "sha256": "2ac6c837883c9ca0d484f7184668cff5be54743b59916e741e93dcb710c3912b"
         },
         {
           "path": "interiors/window_glass_01/report_texture.json",
-          "bytes": 2618,
-          "sha256": "6e3dc0680dc0b4f057f99ca75a434680aa07a0bc03a6ff24ed1a38baf1f7d16c"
+          "bytes": 2501,
+          "sha256": "e2fedfa43c4f3b407458e0720cc8557497a25f44c220a28c8ed673039f7d6c72"
         },
         {
           "path": "interiors/window_glass_01/window_glass_01.glb",
@@ -2364,13 +2364,13 @@
         },
         {
           "path": "interiors/window_rose_01/report.json",
-          "bytes": 534,
-          "sha256": "5dff53c5f3e6a5bdbf5515c81f409369d26b17400025ff198eed7a1bd541e862"
+          "bytes": 505,
+          "sha256": "33fc5b84b6675ad52050b5664a5b30174b2041e8943ecb66ab118ca462538ea3"
         },
         {
           "path": "interiors/window_rose_01/report_texture.json",
-          "bytes": 4547,
-          "sha256": "0a9b80fde45ac372287e9ca4244dec02d6a74ad8162a87c92b8a88458db4b65a"
+          "bytes": 4336,
+          "sha256": "80581c6259eaef123f04883dd7dfd6d63f1d196893ce1e737a5f5a070b6f3509"
         },
         {
           "path": "interiors/window_rose_01/window_rose_01.glb",
