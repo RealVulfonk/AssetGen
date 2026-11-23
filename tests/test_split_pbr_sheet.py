@@ -4,7 +4,9 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from threading import Barrier
 
 from PIL import Image
 
@@ -85,6 +87,31 @@ class SplitPbrSheetTests(unittest.TestCase):
             with Image.open(path) as panel:
                 self.assertEqual(panel.size, (2, 2))
                 self.assertEqual(panel.tobytes(), bytes((17, 33, 65)) * 4)
+
+    def test_concurrent_split_without_force_has_one_complete_publisher(self):
+        colors = {"first": (17, 33, 65), "second": (101, 67, 35)}
+        sources = []
+        for label, color in colors.items():
+            source = self.root / f"{label}.png"
+            Image.new("RGB", (6, 2), color).save(source)
+            sources.append(source)
+        start = Barrier(2)
+
+        def invoke(source):
+            start.wait(timeout=10)
+            return source, self.run_split(source=source)
+
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            results = list(executor.map(invoke, sources))
+        successful = [(source, result) for source, result in results if result.returncode == 0]
+        self.assertEqual(len(successful), 1, [(result.stdout, result.stderr) for _, result in results])
+        failed = next(result for _, result in results if result.returncode != 0)
+        self.assertTrue("another split" in failed.stderr or "--force" in failed.stderr, failed.stderr)
+        winner = successful[0][0].stem
+        for path in self.outputs():
+            with Image.open(path) as panel:
+                self.assertEqual(panel.tobytes(), bytes(colors[winner]) * 4)
+        self.assertFalse((self.output / ".wall_stone.split.lock").exists())
 
     def test_rejects_unsafe_name_and_missing_output_directory(self):
         for name, output in (("../bad", self.output), ("Bad Name", self.output),

@@ -96,6 +96,15 @@ def assert_pbr_materials(document, texture_spec, model_tags, label):
         assert primitives and all("TANGENT" in primitive["attributes"] for primitive in primitives), (
             f"{label}/{tag}: exported tangent basis missing"
         )
+        uv_attributes = {
+            attribute
+            for primitive in primitives
+            for attribute in primitive["attributes"]
+            if attribute.startswith("TEXCOORD_")
+        }
+        assert uv_attributes == {"TEXCOORD_0"}, (
+            f"{label}/{tag}: temporary PBR projection leaked into exported UV sets: {uv_attributes}"
+        )
 
 
 def assert_material_opacity(document, texture_spec, expected_tags, label):

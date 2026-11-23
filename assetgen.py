@@ -105,6 +105,9 @@ def copy_to_godot(name, category, report):
             source = Path(report[key])
             shutil.copy2(source, destination / source.name)
             copied.append(source.name)
+    for key, suffix in (("normal_texture", "normal"), ("orm_texture", "orm")):
+        if not report.get(key):
+            (destination / f"{name}_{suffix}.png").unlink(missing_ok=True)
     print(f"Godot copy: {destination} ({', '.join(sorted(copied))})")
 
 

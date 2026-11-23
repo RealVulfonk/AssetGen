@@ -426,6 +426,13 @@ def prepare_pbr_projection(obj):
     target.active_render = True
 
 
+def remove_pbr_projection(obj):
+    """Keep the temporary source projection out of .blend and glTF exports."""
+    projected = obj.data.uv_layers.get(PBR_UV_LAYER)
+    if projected:
+        obj.data.uv_layers.remove(projected)
+
+
 def active_bake_target(nodes, image):
     target = nodes.new("ShaderNodeTexImage")
     target.image = image
@@ -652,6 +659,7 @@ def main():
         orm_image = pack_orm(roughness_image, spec["asset"])
         orm_path = save_packed_image(orm_image, out)
         bpy.data.images.remove(roughness_image)
+        remove_pbr_projection(obj)
 
     for slot in obj.material_slots:
         config = configs[slot.material.name]

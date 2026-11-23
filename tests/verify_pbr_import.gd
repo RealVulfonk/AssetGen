@@ -42,12 +42,16 @@ func _run() -> void:
 		root.add_child(result.asset)
 
 	var metrics := {"triangles": _triangle_count(imported[2].asset), "differences": {}}
-	if metrics.triangles != 12:
-		_fail("Expected 12 visible triangles, got %s" % metrics.triangles)
+	var wall_check := args.size() >= 5
+	if metrics.triangles <= 0:
+		_fail("Expected a visible PBR mesh")
 		return
-	if not _check_pbr_material(imported[2].materials, metrics):
+	if wall_check and metrics.triangles != 12:
+		_fail("Expected 12 visible wall triangles, got %s" % metrics.triangles)
 		return
-	if args.size() >= 5:
+	if not _check_pbr_material(imported[2].materials, metrics, wall_check):
+		return
+	if wall_check:
 		var godot_scene := ResourceLoader.load(args[4]) as PackedScene
 		if godot_scene == null:
 			_fail("Could not load imported Godot GLB: %s" % args[4])
@@ -130,17 +134,27 @@ func _run() -> void:
 		_fail("Could not write Godot metrics")
 		return
 	report.store_string(JSON.stringify(metrics, "\t") + "\n")
-	print("PBR_IMPORT_OK triangles=12; A/B sheets and metrics saved")
+	print("PBR_IMPORT_OK triangles=%s; A/B sheets and metrics saved" % metrics.triangles)
 	quit()
 
 
-func _check_pbr_material(materials: Array[Material], metrics: Dictionary) -> bool:
-	if materials.size() != 1 or not materials[0] is StandardMaterial3D:
-		_fail("Expected one imported StandardMaterial3D")
-		return false
-	var material := materials[0] as StandardMaterial3D
-	if not material.normal_enabled or material.normal_texture == null or material.roughness_texture == null:
+func _check_pbr_material(materials: Array[Material], metrics: Dictionary, wall_check: bool) -> bool:
+	var pbr_materials: Array[StandardMaterial3D] = []
+	for candidate in materials:
+		if candidate is StandardMaterial3D:
+			var material := candidate as StandardMaterial3D
+			if material.normal_enabled and material.normal_texture != null and material.roughness_texture != null:
+				pbr_materials.append(material)
+	if pbr_materials.is_empty():
 		_fail("Godot material is missing Normal or Roughness")
+		return false
+	if wall_check and (materials.size() != 1 or pbr_materials.size() != 1):
+		_fail("Expected one imported wall StandardMaterial3D")
+		return false
+	var material := pbr_materials[0]
+	if wall_check and (material.normal_texture.get_size() != Vector2(512, 512)
+			or material.roughness_texture.get_size() != Vector2(512, 512)):
+		_fail("Expected 512 x 512 wall Normal and Roughness")
 		return false
 	metrics.material = {
 		"normal_size": str(material.normal_texture.get_size()),
@@ -148,6 +162,7 @@ func _check_pbr_material(materials: Array[Material], metrics: Dictionary) -> boo
 		"normal_scale": material.normal_scale,
 		"roughness": material.roughness,
 		"metallic": material.metallic,
+		"pbr_materials": pbr_materials.size(),
 	}
 	return true
 

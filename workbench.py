@@ -102,6 +102,10 @@ def patched_spec(original, tag, patch):
     material.update({key: value for key, value in patch.items() if key != "source_detail"})
     if material.get("source_mode") == "image":
         result["quantize"] = False
+    else:
+        # PBR data maps have no meaning in procedural/mixed mode and would make
+        # the candidate fail schema validation instead of applying the switch.
+        material.pop("pbr_detail", None)
     return result
 
 

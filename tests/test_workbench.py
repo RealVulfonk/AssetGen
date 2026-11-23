@@ -61,6 +61,18 @@ class WorkbenchTests(unittest.TestCase):
                 wb.write_json(path, candidate)
                 wb.validate_candidate(path, "barrel_01")
 
+    def test_switching_pbr_material_away_from_image_drops_pbr_detail(self):
+        original = wb.read_json(wb.ROOT / "specs/textures/wall_stone_01.json")
+        self.assertIn("pbr_detail", original["materials"]["stone"])
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "candidate.json"
+            for mode in ("procedural", "mixed"):
+                with self.subTest(mode=mode):
+                    candidate = wb.patched_spec(original, "stone", {"source_mode": mode})
+                    self.assertNotIn("pbr_detail", candidate["materials"]["stone"])
+                    wb.write_json(path, candidate)
+                    wb.validate_candidate(path, "wall_stone_01")
+
     def test_local_http_boundary_and_static_entrypoint(self):
         server = wb.ThreadingHTTPServer(("127.0.0.1", 0), wb.Handler)
         thread = threading.Thread(target=server.serve_forever, daemon=True)

@@ -8,6 +8,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import assetgen
 import assetgen_config as config
 import workbench as wb
 
@@ -38,6 +39,28 @@ class PortableSetupTests(unittest.TestCase):
                 output.mkdir(parents=True)
                 (output / "example.glb").write_bytes(b"local")
                 self.assertEqual(wb.display_dir("example"), output)
+
+    def test_godot_copy_removes_stale_pbr_maps_for_legacy_material(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "out/example"
+            source.mkdir(parents=True)
+            for suffix in ("albedo", "normal", "orm"):
+                (source / f"example_{suffix}.png").write_bytes(suffix.encode())
+            report = {
+                "texture": str(source / "example_albedo.png"),
+                "normal_texture": str(source / "example_normal.png"),
+                "orm_texture": str(source / "example_orm.png"),
+            }
+            with patch.object(assetgen, "ROOT", root), patch.object(assetgen, "CFG", {"godot_assets": "godot"}):
+                assetgen.copy_to_godot("example", "props", report)
+                destination = root / "godot/props/example"
+                self.assertTrue((destination / "example_normal.png").is_file())
+                self.assertTrue((destination / "example_orm.png").is_file())
+                assetgen.copy_to_godot("example", "props", {"texture": report["texture"]})
+                self.assertFalse((destination / "example_normal.png").exists())
+                self.assertFalse((destination / "example_orm.png").exists())
+                self.assertEqual((destination / "example_albedo.png").read_bytes(), b"albedo")
 
 
 if __name__ == "__main__":

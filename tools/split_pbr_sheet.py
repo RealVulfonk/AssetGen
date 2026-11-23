@@ -7,12 +7,28 @@ import re
 import shutil
 import sys
 import tempfile
+from contextlib import contextmanager
 from pathlib import Path
 
 from PIL import Image, UnidentifiedImageError
 
 NAME = re.compile(r"^[a-z][a-z0-9]*(?:_[a-z0-9]+)*$")
 PANELS = ("base_color", "normal", "roughness")
+
+
+@contextmanager
+def publication_lock(output, name):
+    """Serialize the existence check and publication for one output prefix."""
+    path = output / f".{name}.split.lock"
+    try:
+        descriptor = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+    except FileExistsError as error:
+        raise ValueError(f"another split is publishing {name}; stale lock can be removed: {path}") from error
+    os.close(descriptor)
+    try:
+        yield
+    finally:
+        path.unlink(missing_ok=True)
 
 
 def split_sheet(source, output, name, force=False):
@@ -33,36 +49,38 @@ def split_sheet(source, output, name, force=False):
         raise ValueError(f"image width must be positive and divisible by 3, got {width}x{height}")
     panel_width = width // 3
     destinations = {kind: output / f"{name}_{kind}.png" for kind in PANELS}
-    existing = [path for path in destinations.values() if path.exists()]
-    if existing and not force:
-        raise ValueError("refusing to overwrite existing files without --force: "
-                         + ", ".join(str(path) for path in existing))
 
-    panels = {
-        kind: rgb.crop((index * panel_width, 0, (index + 1) * panel_width, height))
-        for index, kind in enumerate(PANELS)
-    }
-    with tempfile.TemporaryDirectory(prefix=".split-pbr-", dir=output) as directory:
-        staging = Path(directory)
-        for kind, panel in panels.items():
-            panel.save(staging / destinations[kind].name, format="PNG")
-        for kind, path in destinations.items():
-            if force and path.is_file():
-                shutil.copy2(path, staging / f"backup_{path.name}")
+    with publication_lock(output, name):
+        existing = [path for path in destinations.values() if path.exists()]
+        if existing and not force:
+            raise ValueError("refusing to overwrite existing files without --force: "
+                             + ", ".join(str(path) for path in existing))
 
-        published = []
-        try:
-            for path in destinations.values():
-                os.replace(staging / path.name, path)
-                published.append(path)
-        except OSError:
-            for path in reversed(published):
-                backup = staging / f"backup_{path.name}"
-                if backup.is_file():
-                    os.replace(backup, path)
-                else:
-                    path.unlink(missing_ok=True)
-            raise
+        panels = {
+            kind: rgb.crop((index * panel_width, 0, (index + 1) * panel_width, height))
+            for index, kind in enumerate(PANELS)
+        }
+        with tempfile.TemporaryDirectory(prefix=".split-pbr-", dir=output) as directory:
+            staging = Path(directory)
+            for kind, panel in panels.items():
+                panel.save(staging / destinations[kind].name, format="PNG")
+            for kind, path in destinations.items():
+                if force and path.is_file():
+                    shutil.copy2(path, staging / f"backup_{path.name}")
+
+            published = []
+            try:
+                for path in destinations.values():
+                    os.replace(staging / path.name, path)
+                    published.append(path)
+            except OSError:
+                for path in reversed(published):
+                    backup = staging / f"backup_{path.name}"
+                    if backup.is_file():
+                        os.replace(backup, path)
+                    else:
+                        path.unlink(missing_ok=True)
+                raise
 
     for path in destinations.values():
         print(f"{path} ({panel_width}x{height})")
