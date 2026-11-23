@@ -1,4 +1,4 @@
-"""Bake a procedural albedo onto a generated model.
+"""Bake procedural albedo and aligned PBR data maps onto a generated model.
 
 blender -b out/x/x.blend --python-exit-code 1 -P blender/bake_texture.py -- tex_spec.json out_dir
 """
@@ -16,6 +16,7 @@ sys.path.append(HERE)
 from common import export_glb, hex2lin, hex2rgb, render_previews
 
 SOURCE_TEXTURES = os.path.join(HERE, "..", "presets", "textures")
+PBR_UV_LAYER = "AssetGenPBRProjection"
 from uv_layout import pack_uv_islands
 
 with open(os.path.join(HERE, "..", "presets", "palettes.json"), encoding="utf-8") as handle:
@@ -68,6 +69,8 @@ def resolve_material(config):
         )
     resolved.update(config)
     resolved.setdefault("source_mode", "mixed" if resolved.get("source_detail") else "procedural")
+    if "pbr_detail" in resolved:
+        resolved["pbr_detail"] = {"normal_strength": 1.0, **resolved["pbr_detail"]}
     if "layers" in resolved:
         resolved["layers"] = [resolve_layer(layer) for layer in resolved["layers"]]
     return resolved
@@ -136,26 +139,40 @@ def multiply_color(nodes, links, color, gain):
     return node.outputs[0]
 
 
-def source_image(nodes, links, vector, config, *, rgb=False):
+def source_image(nodes, links, vector, config, *, rgb=False, uv_layer=None):
     texture = nodes.new("ShaderNodeTexImage")
     texture.image = bpy.data.images.load(os.path.join(SOURCE_TEXTURES, config["image"]), check_existing=True)
     # Separate datablocks: the same file can be used as RGB and tonal detail
     # in different slots of the same bake without changing each other's space.
     texture.image = texture.image.copy()
     texture.image.colorspace_settings.name = "sRGB" if rgb else "Non-Color"
-    texture.projection = "BOX"
-    texture.projection_blend = 0.25
     texture.interpolation = "Linear"
+    if uv_layer:
+        coordinates = nodes.new("ShaderNodeUVMap")
+        coordinates.uv_map = uv_layer
+        vector = coordinates.outputs["UV"]
+        texture.projection = "FLAT"
+    else:
+        texture.projection = "BOX"
+        texture.projection_blend = 0.25
     mapping = nodes.new("ShaderNodeVectorMath")
     mapping.operation = "SCALE"
     mapping.inputs["Scale"].default_value = 1 / config["tile_size"]
     links.new(vector, mapping.inputs[0])
-    links.new(mapping.outputs["Vector"], texture.inputs["Vector"])
+    mapped = mapping.outputs["Vector"]
+    if uv_layer:
+        # Keep the repeat boundary away from the center of flat architectural faces.
+        offset = nodes.new("ShaderNodeVectorMath")
+        offset.operation = "ADD"
+        offset.inputs[1].default_value = (0.5, 0.5, 0.0)
+        links.new(mapped, offset.inputs[0])
+        mapped = offset.outputs["Vector"]
+    links.new(mapped, texture.inputs["Vector"])
     return texture.outputs["Color"]
 
 
-def image_color(nodes, links, vector, config):
-    color = source_image(nodes, links, vector, config["source_detail"], rgb=True)
+def image_color(nodes, links, vector, config, *, uv_layer=None):
+    color = source_image(nodes, links, vector, config["source_detail"], rgb=True, uv_layer=uv_layer)
     pivot = config["contrast_pivot"]
     subtract = nodes.new("ShaderNodeVectorMath")
     subtract.operation = "SUBTRACT"
@@ -340,7 +357,10 @@ def build_bake_material(material, config, image, seed):
     coordinates = nodes.new("ShaderNodeTexCoord")
     vector = coordinates.outputs["Object"]
     if config["source_mode"] == "image":
-        color = image_color(nodes, links, vector, config)
+        color = image_color(
+            nodes, links, vector, config,
+            uv_layer=PBR_UV_LAYER if config.get("pbr_detail") else None,
+        )
     else:
         color = procedural_color(nodes, links, config, vector, seed)
     if config["source_mode"] == "mixed" and config.get("source_detail", {}).get("strength", 0) > 0:
@@ -378,7 +398,113 @@ def build_bake_material(material, config, image, seed):
     texture.select = True
 
 
-def finalize_material(material, config, image, pixel):
+def projection_uv(normal, coordinate):
+    """Dominant-axis face projection with T cross B matching the outward normal."""
+    axis = max(range(3), key=lambda index: abs(normal[index]))
+    if axis == 0:
+        return (coordinate.y if normal.x >= 0 else -coordinate.y, coordinate.z)
+    if axis == 1:
+        return (coordinate.x, -coordinate.z if normal.y >= 0 else coordinate.z)
+    return (coordinate.x if normal.z >= 0 else -coordinate.x, coordinate.y)
+
+
+def prepare_pbr_projection(obj):
+    """Give source data maps a stable tangent basis independent of the target atlas."""
+    mesh = obj.data
+    target = mesh.uv_layers.active
+    if target is None:
+        raise RuntimeError("PBR baking needs a target UV map")
+    previous = mesh.uv_layers.get(PBR_UV_LAYER)
+    if previous:
+        mesh.uv_layers.remove(previous)
+    projected = mesh.uv_layers.new(name=PBR_UV_LAYER)
+    for polygon in mesh.polygons:
+        for loop_index in polygon.loop_indices:
+            coordinate = mesh.vertices[mesh.loops[loop_index].vertex_index].co
+            projected.data[loop_index].uv = projection_uv(polygon.normal, coordinate)
+    mesh.uv_layers.active = target
+    target.active_render = True
+
+
+def active_bake_target(nodes, image):
+    target = nodes.new("ShaderNodeTexImage")
+    target.image = image
+    nodes.active = target
+    target.select = True
+
+
+def build_normal_bake_material(material, config, image):
+    material.use_nodes = True
+    nodes, links = material.node_tree.nodes, material.node_tree.links
+    nodes.clear()
+    output = nodes.new("ShaderNodeOutputMaterial")
+    principled = nodes.new("ShaderNodeBsdfPrincipled")
+    links.new(principled.outputs["BSDF"], output.inputs["Surface"])
+    pbr = config.get("pbr_detail")
+    if pbr:
+        source = source_image(
+            nodes, links, None,
+            {"image": pbr["normal"], "tile_size": config["source_detail"]["tile_size"]},
+            uv_layer=PBR_UV_LAYER,
+        )
+        normal = nodes.new("ShaderNodeNormalMap")
+        normal.space = "TANGENT"
+        normal.uv_map = PBR_UV_LAYER
+        # Bake the raw aligned normal. The exported normalTexture.scale applies
+        # normal_strength once; applying it here too would square the effect.
+        normal.inputs["Strength"].default_value = 1.0
+        links.new(source, normal.inputs["Color"])
+        links.new(normal.outputs["Normal"], principled.inputs["Normal"])
+    active_bake_target(nodes, image)
+
+
+def build_roughness_bake_material(material, config, image):
+    material.use_nodes = True
+    nodes, links = material.node_tree.nodes, material.node_tree.links
+    nodes.clear()
+    output = nodes.new("ShaderNodeOutputMaterial")
+    emission = nodes.new("ShaderNodeEmission")
+    emission.inputs["Color"].default_value = (1, 1, 1, 1)
+    links.new(emission.outputs["Emission"], output.inputs["Surface"])
+    pbr = config.get("pbr_detail")
+    if pbr:
+        source = source_image(
+            nodes, links, None,
+            {"image": pbr["roughness"], "tile_size": config["source_detail"]["tile_size"]},
+            uv_layer=PBR_UV_LAYER,
+        )
+        channels = nodes.new("ShaderNodeSeparateColor")
+        channels.mode = "RGB"
+        links.new(source, channels.inputs["Color"])
+        links.new(channels.outputs["Green"], emission.inputs["Color"])
+    active_bake_target(nodes, image)
+
+
+def pack_orm(roughness, name):
+    width, height = roughness.size
+    source = np.empty(width * height * 4, dtype=np.float32)
+    roughness.pixels.foreach_get(source)
+    source = source.reshape(-1, 4)
+    packed = np.ones_like(source)
+    packed[:, 1] = source[:, 1]
+    image = bpy.data.images.new(name + "_orm", width, height, alpha=False)
+    image.colorspace_settings.name = "Non-Color"
+    image.pixels.foreach_set(packed.ravel())
+    image.update()
+    return image
+
+
+def save_packed_image(image, out):
+    path = os.path.join(out, image.name + ".png")
+    image.filepath_raw = path
+    image.file_format = "PNG"
+    image.save()
+    image.pack()
+    image.filepath_raw = "//" + os.path.basename(path)
+    return path
+
+
+def finalize_material(material, config, image, pixel, normal_image=None, orm_image=None):
     nodes, links = material.node_tree.nodes, material.node_tree.links
     nodes.clear()
     output = nodes.new("ShaderNodeOutputMaterial")
@@ -389,6 +515,26 @@ def finalize_material(material, config, image, pixel):
     links.new(texture.outputs["Color"], principled.inputs["Base Color"])
     principled.inputs["Roughness"].default_value = config.get("roughness", 0.9)
     principled.inputs["Metallic"].default_value = config.get("metallic", 0.0)
+    if normal_image is not None:
+        normal_texture = nodes.new("ShaderNodeTexImage")
+        normal_texture.image = normal_image
+        normal_texture.interpolation = "Closest" if pixel else "Linear"
+        normal = nodes.new("ShaderNodeNormalMap")
+        normal.space = "TANGENT"
+        normal.inputs["Strength"].default_value = config["pbr_detail"]["normal_strength"]
+        links.new(normal_texture.outputs["Color"], normal.inputs["Color"])
+        links.new(normal.outputs["Normal"], principled.inputs["Normal"])
+    if orm_image is not None:
+        orm_texture = nodes.new("ShaderNodeTexImage")
+        orm_texture.image = orm_image
+        orm_texture.interpolation = "Closest" if pixel else "Linear"
+        channels = nodes.new("ShaderNodeSeparateColor")
+        channels.mode = "RGB"
+        links.new(orm_texture.outputs["Color"], channels.inputs["Color"])
+        roughness = math_node(
+            nodes, links, "MULTIPLY", channels.outputs["Green"], config.get("roughness", 0.9)
+        )
+        links.new(roughness, principled.inputs["Roughness"])
     opacity = config.get("opacity", 1.0)
     principled.inputs["Alpha"].default_value = opacity
     if opacity < 1.0:
@@ -465,6 +611,10 @@ def main():
         build_bake_material(material, config, image, seed)
         all_colors += palette(config)
 
+    has_pbr = any(config.get("pbr_detail") for config in configs.values())
+    if has_pbr:
+        prepare_pbr_projection(obj)
+
     bpy.ops.object.select_all(action="DESELECT")
     obj.select_set(True)
     bpy.context.view_layer.objects.active = obj
@@ -480,25 +630,46 @@ def main():
 
     if should_quantize:
         quantize(image, all_colors)
-    png_path = os.path.join(out, image.name + ".png")
-    image.filepath_raw = png_path
-    image.file_format = "PNG"
-    image.save()
-    image.pack()
-    image.filepath_raw = "//" + os.path.basename(png_path)
+    png_path = save_packed_image(image, out)
+    normal_image = None
+    orm_image = None
+    normal_path = None
+    orm_path = None
+    if has_pbr:
+        normal_image = bpy.data.images.new(spec["asset"] + "_normal", size, size, alpha=False)
+        normal_image.colorspace_settings.name = "Non-Color"
+        for slot in obj.material_slots:
+            build_normal_bake_material(slot.material, configs[slot.material.name], normal_image)
+        scene.render.bake.normal_space = "TANGENT"
+        bpy.ops.object.bake(type="NORMAL")
+        normal_path = save_packed_image(normal_image, out)
+
+        roughness_image = bpy.data.images.new(spec["asset"] + "_roughness", size, size, alpha=False)
+        roughness_image.colorspace_settings.name = "Non-Color"
+        for slot in obj.material_slots:
+            build_roughness_bake_material(slot.material, configs[slot.material.name], roughness_image)
+        bpy.ops.object.bake(type="EMIT")
+        orm_image = pack_orm(roughness_image, spec["asset"])
+        orm_path = save_packed_image(orm_image, out)
+        bpy.data.images.remove(roughness_image)
 
     for slot in obj.material_slots:
-        finalize_material(slot.material, configs[slot.material.name], image, pixel)
+        config = configs[slot.material.name]
+        finalize_material(
+            slot.material, config, image, pixel,
+            normal_image if config.get("pbr_detail") else None,
+            orm_image if config.get("pbr_detail") else None,
+        )
 
     blend_path = os.path.join(out, spec["asset"] + "_tex.blend")
     glb_path = os.path.join(out, spec["asset"] + ".glb")
     godot_path = None
     bpy.ops.wm.save_as_mainfile(filepath=blend_path, check_existing=False, relative_remap=False)
     mesh_objects = [scene_obj for scene_obj in bpy.data.objects if scene_obj.type == "MESH"]
-    export_glb(glb_path, [obj], obj)
+    export_glb(glb_path, [obj], obj, tangents=has_pbr)
     if len(mesh_objects) > 1:
         godot_path = os.path.join(out, spec["asset"] + "_godot.glb")
-        export_glb(godot_path, mesh_objects, obj)
+        export_glb(godot_path, mesh_objects, obj, tangents=has_pbr)
     preview_paths = render_previews(obj, out, "TEXTURE")
 
     material_settings = {}
@@ -534,6 +705,9 @@ def main():
         "status": "OK",
         "warnings": [],
     }
+    if has_pbr:
+        report["normal_texture"] = normal_path
+        report["orm_texture"] = orm_path
     with open(os.path.join(out, "report_texture.json"), "w", encoding="utf-8") as handle:
         json.dump(report, handle, indent=2, ensure_ascii=False)
 

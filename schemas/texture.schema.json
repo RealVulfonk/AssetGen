@@ -42,10 +42,19 @@
     "material_common": {
       "type": "object",
       "required": ["palette"],
-      "allOf": [{
-        "if": {"properties": {"source_mode": {"enum": ["image", "mixed"]}}, "required": ["source_mode"]},
-        "then": {"required": ["source_detail"]}
-      }],
+      "allOf": [
+        {
+          "if": {"properties": {"source_mode": {"enum": ["image", "mixed"]}}, "required": ["source_mode"]},
+          "then": {"required": ["source_detail"]}
+        },
+        {
+          "if": {"required": ["pbr_detail"]},
+          "then": {
+            "required": ["source_mode"],
+            "properties": {"source_mode": {"const": "image"}}
+          }
+        }
+      ],
       "properties": {
         "source_mode": {"enum": ["procedural", "image", "mixed"]},
         "palette": {"$ref": "#/$defs/palette"},
@@ -67,6 +76,16 @@
             "image": {"type": "string", "pattern": "^[a-z0-9_]+\\.(png|jpe?g)$"},
             "tile_size": {"type": "number", "exclusiveMinimum": 0},
             "strength": {"type": "number", "minimum": 0, "maximum": 1}
+          }
+        },
+        "pbr_detail": {
+          "type": "object",
+          "required": ["normal", "roughness"],
+          "additionalProperties": false,
+          "properties": {
+            "normal": {"type": "string", "pattern": "^[a-z0-9_]+\\.png$"},
+            "roughness": {"type": "string", "pattern": "^[a-z0-9_]+\\.png$"},
+            "normal_strength": {"type": "number", "minimum": 0, "maximum": 2, "default": 1}
           }
         }
       }

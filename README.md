@@ -1,6 +1,6 @@
 # AssetGen для Godot
 
-JSON-driven генератор low-poly ассетов в стиле Neverlooted Dungeon. Агент описывает модель и текстуру в JSON; Blender-скрипты строят геометрию, UV и коллизию, запекают процедурный albedo и экспортируют GLB.
+JSON-driven генератор low-poly ассетов в стиле Neverlooted Dungeon. Агент описывает модель и текстуру в JSON; Blender-скрипты строят геометрию, UV и коллизию, запекают albedo и согласованные PBR-карты и экспортируют GLB.
 
 ## Запуск после клонирования
 
@@ -31,7 +31,7 @@ npm --prefix web ci
 
 ## Быстрый старт
 
-Требования: Python 3.10+, Blender 4.x/5.x, пакет `jsonschema`. NumPy уже входит в Blender. Для первой сборки используй готовую пару спек `barrel_01` из репозитория.
+Требования: Python 3.10+, Blender 4.x/5.x, пакеты `jsonschema` и `Pillow`. NumPy уже входит в Blender. Для первой сборки используй готовую пару спек `barrel_01` из репозитория.
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -71,6 +71,7 @@ python tools/regroup_out.py
 - `<asset>.glb` — видимая модель без collision-меша;
 - `<asset>_godot.glb` — вариант с `-colonly` для Godot, если включена коллизия;
 - `<asset>_tex.blend` и `<asset>_albedo.png` — после запекания;
+- `<asset>_normal.png` и `<asset>_orm.png` — после запекания материала с `pbr_detail`;
 - `preview_front.png`, `preview_side.png`, `preview_iso.png`, `preview_top.png`;
 - `preview_lighting.png` при сборке с `--lighting-preview`;
 - `report.json` и `report_texture.json`.
@@ -107,7 +108,7 @@ python workbench.py --open
 
 | Скрипт | Запуск | Отвечает за |
 |---|---|---|
-| `assetgen.py` | `python assetgen.py <cmd> <name>` | Единственный CLI. Команды: `new` (создать спеку из шаблона), `validate`, `validate-texture`, `model` (собрать геометрию), `texture` (запечь albedo). Проверяет спеку по схеме, запускает Blender, печатает отчёт, копирует результат в Godot. |
+| `assetgen.py` | `python assetgen.py <cmd> <name>` | Единственный CLI. Команды: `new` (создать спеку из шаблона), `validate`, `validate-texture`, `model` (собрать геометрию), `texture` (запечь albedo и опциональные PBR-карты). Проверяет спеку по схеме, запускает Blender, печатает отчёт, копирует результат в Godot. |
 | `tools/gen_flora.py` | `python tools/gen_flora.py --all --seed N` | Процедурный генератор **спеков** флоры: пишет пары `specs/models/<name>.json` + `specs/textures/<name>.json`. Меши не строит — это делает `assetgen.py model`. |
 
 ### Общие модули
@@ -117,7 +118,7 @@ python workbench.py --open
 | `assetgen_paths.py` | Соответствие `category` спеки → папке вывода (`interiors` / `exteriors` / `environment`). Импортируется и из CLI, и из Blender-скриптов, и из тестов, поэтому раскладка `out/` задана в одном месте. |
 | `blender/common.py` | Хелперы для скриптов внутри Blender: `hex2rgb`/`hex2lin`, экспорт GLB, рендер четырёх превью. |
 | `blender/build_model.py` | Строит меш из JSON-спеки: примитивы, операции, join, pivot, flat shading, smart UV, collision-меш, экспорт `.glb` и превью. |
-| `blender/bake_texture.py` | Запекает процедурный albedo: собирает шейдерный граф из пресета или слоёв, считает контраст, AO и edge, опционально квантует по палитре, экспортирует текстурированный GLB. |
+| `blender/bake_texture.py` | Запекает albedo и опциональные Normal/Roughness: собирает шейдерный граф из пресета, слоёв или изображений, считает контраст, AO и edge, сохраняет общий касательный базис PBR, экспортирует текстурированный GLB. |
 
 ### Утилиты `tools/`
 
@@ -125,6 +126,7 @@ python workbench.py --open
 |---|---|
 | `tools/build_flora.ps1` | Пакетная сборка: прогоняет `model` + `texture` по всем ассетам, подходящим под `-Pattern` (regex-альтернатива префиксов, не glob), и печатает сводку с трисами и цветами. |
 | `tools/render_sheet.py` | Один ортографический рендер ассета в `out/sheet_<name>.png` — быстрый визуальный контроль без открытия Blender. |
+| `tools/split_pbr_sheet.py` | Разрезает горизонтальный триптих Base Color / Normal / Roughness на три PNG без ресемплирования; требует Pillow. |
 | `tools/outdir.py` | Печатает папку вывода для ассета (`python tools/outdir.py conifer_01`). Нужен shell-скриптам, чтобы не дублировать маппинг из `assetgen_paths.py`. |
 | `tools/inspect_uv.py` | Измеряет острова, швы, покрытие, перекрытия, плотность и зазоры активной UV-карты внутри Blender. |
 | `tools/regroup_out.py` | Переносит уже собранные ассеты из плоского `out/<asset>` в `out/<group>/<asset>`. Идемпотентен, есть `--dry-run`, папки без спеки не трогает. |
@@ -133,8 +135,10 @@ python workbench.py --open
 
 | Скрипт | Отвечает за |
 |---|---|
-| `test_texture_schema.py` | Юнит-тесты: схема текстур, палитры, custom layers, defaults. Системный Python. |
-| `verify_outputs.py` | Разбирает GLB, отчёты, превью, коллизии, embedded textures и samplers. Системный Python. |
+| `test_texture_schema.py` | Юнит-тесты: схема текстур, палитры, custom layers, PBR-поля и defaults. Системный Python. |
+| `test_split_pbr_sheet.py` | Пиксельная идентичность панелей, ошибки входа и `--force` у splitter. Системный Python с Pillow. |
+| `verify_outputs.py` | Разбирает GLB, отчёты, превью, коллизии, embedded textures, PBR-связи, tangents и samplers. Системный Python. |
+| `verify_pbr_import.gd` | Проверяет PBR-материал и префаб в Godot, снимает A/B Normal/Roughness при трёх световых условиях и двух дистанциях. |
 | `verify_texture_pipeline.py` | Рецепты, математика слоёв, contrast, цветовое пространство, quantization, filtering. Внутри Blender. |
 | `verify_texture_colors.py` | Сверяет albedo с палитрами: quantized — по цветам палитры, soft — по валидности и промежуточным цветам. Внутри Blender. |
 | `verify_determinism.py` | Запекает ассет дважды из одного `.blend` и сравнивает пиксели и настройки. Внутри Blender. |
@@ -143,7 +147,7 @@ python workbench.py --open
 
 Для проверки материала в двух вариантах освещения используй `python assetgen.py texture barrel_01 --lighting-preview`. Флаг работает и с `model` для моделей без запекания. Godot берётся из `GODOT_BIN` или `PATH`, рендеру нужна графическая сессия. В PNG слева холодный общий свет, справа к нему добавлен тёплый фонарь. Оба кадра используют один GLB, камеру и фон. Для пакетной сборки флоры флаг доступен как `-LightingPreview`.
 
-Чтобы автоматически копировать GLB и albedo (без превью), укажи в `assetgen.config.json` относительный или абсолютный путь:
+Чтобы автоматически копировать GLB и запечённые карты (без превью), укажи в `assetgen.config.json` относительный или абсолютный путь:
 
 ```json
 "godot_assets": "../my_game/assets/props"
@@ -277,6 +281,52 @@ factor = clamp((pattern - contrast_pivot) * contrast + contrast_pivot + brightne
   "source_detail": {"image": "fine_grained_wood.jpg", "tile_size": 1, "strength": 0.6}
 }
 ```
+
+### Base Color + Normal + Roughness
+
+Для согласованного комплекта используй один горизонтальный лист строго из трёх равных вертикальных панелей в порядке Base Color, Normal, Roughness. Разрезание работает в системном Python и не требует Blender:
+
+```powershell
+python tools/split_pbr_sheet.py wall_sheet.png --out presets/textures --name wall_stone
+```
+
+Получатся `wall_stone_base_color.png`, `wall_stone_normal.png`, `wall_stone_roughness.png`. Ширина листа должна делиться на три; выходная папка должна существовать. Панели сохраняют RGB-пиксели и размер без ресемплирования. Существующие файлы заменяются только вместе при явном `--force`; ошибка входа не создаёт неполный комплект. [Промпт для генерации листа](docs/prompts/chatgpt-pbr-texture-sheet.md) задаёт совпадение деталей, но не заменяет визуальную проверку.
+
+Подключи обе data-карты через `pbr_detail` материала в режиме `image`:
+
+```json
+"stone": {
+  "preset": "stone",
+  "palette": "stone_grey_soft",
+  "source_mode": "image",
+  "source_detail": {
+    "image": "wall_stone_base_color.png",
+    "tile_size": 2.0,
+    "strength": 1.0
+  },
+  "pbr_detail": {
+    "normal": "wall_stone_normal.png",
+    "roughness": "wall_stone_roughness.png",
+    "normal_strength": 1.0
+  },
+  "roughness": 1.0
+}
+```
+
+- `normal` и `roughness` обязательны внутри `pbr_detail`; это локальные PNG из `presets/textures/`. `normal_strength` от 0 до 2 по умолчанию равен 1. Поле недопустимо в procedural/mixed.
+- Все три карты используют общий `source_detail.tile_size`. Base Color читается как sRGB, Normal и Roughness — как Non-Color. Normal должна быть tangent-space OpenGL/Y+, а не bump из яркости. Палитра, contrast, brightness и quantize не применяются к data-картам.
+- Для PBR используется общая dominant-axis UV-проекция по локальной нормали каждой грани со сдвигом на полтайла. Она сохраняет касательный базис источника и уводит границу повтора с центра плоской грани. На сглаженных и сильно изогнутых поверхностях возможны проекционные швы; первый контракт рассчитан на плоские low-poly элементы. Старые материалы без `pbr_detail` сохраняют прежнюю BOX-проекцию с blend 0.25.
+- Bake создаёт `<asset>_normal.png` и `<asset>_orm.png` в том же атласе и с тем же размером, что albedo. В ORM канал R=1, Roughness находится в G, B=1. Скаляр `roughness` остаётся множителем glTF, поэтому для исходной карты обычно задают 1.0. `metallic` остаётся независимым скаляром.
+- Обычный и `_godot.glb` содержат embedded Base Color, `normalTexture`, `metallicRoughnessTexture`, один UV set и tangent basis. Старые спеки без `pbr_detail` экспортируются по-прежнему только с albedo и скалярными коэффициентами.
+
+```powershell
+python assetgen.py validate-texture wall_stone_01
+python assetgen.py model wall_stone_01 --no-copy
+python assetgen.py texture wall_stone_01 --no-copy --lighting-preview
+python tests/verify_outputs.py wall_stone_01
+```
+
+Повторный `model` удаляет albedo, Normal, ORM и старый текстурный отчёт. Публикация новых карт происходит вместе с успешной стадией; при отключении `pbr_detail` устаревшие файлы удаляются. Перед распространением PBR на другие материалы проведи A/B с одинаковыми Base Color, камерой и светом через `tests/verify_pbr_import.gd`; пример и измерения — в [карточке конвейера](docs/tasks/2026-11-22-pbr-texture-pipeline.md).
 
 Для расширенной настройки вместо `preset` можно задать от 1 до 4 слоёв:
 

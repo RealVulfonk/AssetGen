@@ -70,6 +70,10 @@ def load_texture_spec(name):
         detail = material.get("source_detail")
         if detail and not (ROOT / "presets" / "textures" / detail["image"]).is_file():
             raise AssetGenError(f"{path}: materials.{tag}.source_detail.image: missing {detail['image']!r}")
+        for channel in ("normal", "roughness"):
+            filename = material.get("pbr_detail", {}).get(channel)
+            if filename and not (ROOT / "presets" / "textures" / filename).is_file():
+                raise AssetGenError(f"{path}: materials.{tag}.pbr_detail.{channel}: missing {filename!r}")
     return data
 
 
@@ -96,7 +100,7 @@ def copy_to_godot(name, category, report):
     destination = (ROOT / configured / category / name).resolve()
     destination.mkdir(parents=True, exist_ok=True)
     copied = []
-    for key in ("glb", "godot_glb", "texture"):
+    for key in ("glb", "godot_glb", "texture", "normal_texture", "orm_texture"):
         if report.get(key):
             source = Path(report[key])
             shutil.copy2(source, destination / source.name)
@@ -171,7 +175,11 @@ def build_stage(stage, spec, output, *, blend=None, model_digest=None, lighting_
             model_digest = hashlib.sha256(spec_bytes).hexdigest()
         run_blender(script, [snapshot, staging], blend=blend)
         report = read_report(staging / report_name)
-        paths = {key: Path(report[key]) for key in ("blend", "glb", "godot_glb", "texture") if report.get(key)}
+        paths = {
+            key: Path(report[key])
+            for key in ("blend", "glb", "godot_glb", "texture", "normal_texture", "orm_texture")
+            if report.get(key)
+        }
         previews = [Path(path) for path in report["previews"]]
         files = [*paths.values(), *previews]
         for source in files:
@@ -193,10 +201,17 @@ def build_stage(stage, spec, output, *, blend=None, model_digest=None, lighting_
             (output / "preview_lighting.png").unlink(missing_ok=True)
         if stage == "model":
             asset = report["name"]
-            for filename in (f"{asset}_albedo.png", f"{asset}_tex.blend"):
+            for filename in (f"{asset}_albedo.png", f"{asset}_normal.png", f"{asset}_orm.png",
+                             f"{asset}_tex.blend"):
                 (output / filename).unlink(missing_ok=True)
             if not report.get("godot_glb"):
                 (output / f"{asset}_godot.glb").unlink(missing_ok=True)
+        else:
+            asset = report["name"]
+            for key, filename in (("normal_texture", f"{asset}_normal.png"),
+                                  ("orm_texture", f"{asset}_orm.png")):
+                if key not in paths:
+                    (output / filename).unlink(missing_ok=True)
         for source in files:
             source.replace(output / source.name)
         for key, source in paths.items():

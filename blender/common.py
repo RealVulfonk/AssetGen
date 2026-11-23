@@ -27,7 +27,7 @@ def bbox_world(obj):
     return minimum, maximum
 
 
-def export_glb(filepath, objects, active):
+def export_glb(filepath, objects, active, *, tangents=False):
     """Export exactly the requested objects; glTF has no standard hidden-node flag."""
     bpy.ops.object.select_all(action="DESELECT")
     for obj in objects:
@@ -38,6 +38,7 @@ def export_glb(filepath, objects, active):
         export_format="GLB",
         use_selection=True,
         export_apply=True,
+        export_tangents=tangents,
     )
 
 

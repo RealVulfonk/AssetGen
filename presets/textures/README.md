@@ -26,6 +26,10 @@ AssetGen использует яркость исходника как моду�
 
 > Use case: stylized-concept. Generate one square seamless RGB albedo texture for a low-poly dark fantasy game. The attached night courtyard is a material style reference, especially the dark charcoal forged-iron barrel bands and door hinges. Entire square is filled edge to edge with one continuous old charcoal grey hand-forged iron surface, slightly warm neutral near-black gray, subtle medium scale hammer marks and very small pits, a handful of subdued fine scratches, softly stylized granular weathering, slight tonal variation. Allow readable dark graphite midtones at a 256 px bake. No dense orange rust, no blue coloring, no baked specular highlights, light gradients, cast shadows, AO or directional lighting. Neutral flat orthographic scan-like material swatch repeating seamlessly left/right and top/bottom. No rivets, bands, seams, cracks that dominate, borders, perspective, shapes, object, scene, labels or frames.
 
+## PBR каменной стены
+
+`wall_stone_base_color.png`, `wall_stone_normal.png` и `wall_stone_roughness.png` — согласованные панели 724 × 724 px из предоставленного автором триптиха. Используются в `wall_stone_01` с общим масштабом 2 м; Normal — tangent-space OpenGL/Y+, Roughness — линейная data-карта. Панели нужно заменять одним комплектом через `tools/split_pbr_sheet.py`, не редактируя их поодиночке. Разовая визуальная проба источника описана в [отдельной карточке](../../docs/tasks/2026-11-22-wall-pbr-chat-prototype.md), production-проверки — в [карточке PBR-конвейера](../../docs/tasks/2026-11-22-pbr-texture-pipeline.md).
+
 ## Арочная дверь
 
 [door_worn_wood_v1.png](door_worn_wood_v1.png) — карта тёплой обтёртой древесины, созданная встроенным ImageGen для `door_arch_heavy_01` и её отдельных рамы и полотна. В baker используется как модуляция яркости; цвет задаёт палитра `wood_oak`. Промпт, референс и проверки — в [карточке задачи](../../docs/tasks/2026-11-21-door-reference-split.md).

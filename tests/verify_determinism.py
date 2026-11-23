@@ -46,12 +46,16 @@ def read_pixels(path):
 pixel_hashes = []
 reports = []
 for output in outputs:
-    png = os.path.join(output, f"{NAME}_albedo.png")
-    pixels = read_pixels(png)
-    pixel_hashes.append(hashlib.sha256(pixels.tobytes()).hexdigest())
+    hashes = {}
+    for suffix in ("albedo", "normal", "orm"):
+        png = os.path.join(output, f"{NAME}_{suffix}.png")
+        if os.path.isfile(png):
+            pixels = read_pixels(png)
+            hashes[suffix] = hashlib.sha256(pixels.tobytes()).hexdigest()
+    pixel_hashes.append(hashes)
     with open(os.path.join(output, "report_texture.json"), encoding="utf-8") as handle:
         report = json.load(handle)
-    for key in ("texture", "blend", "glb", "godot_glb", "previews"):
+    for key in ("texture", "normal_texture", "orm_texture", "blend", "glb", "godot_glb", "previews"):
         report.pop(key, None)
     reports.append(report)
 

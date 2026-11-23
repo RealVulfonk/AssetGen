@@ -27,6 +27,7 @@ def export():
             with ag.asset_lock(output):
                 destination.mkdir(parents=True, exist_ok=True)
                 filenames = [f"{name}.glb", f"{name}_godot.glb", f"{name}_albedo.png",
+                             f"{name}_normal.png", f"{name}_orm.png",
                              "preview_front.png", "preview_side.png", "preview_iso.png", "preview_top.png",
                              "preview_lighting.png", "report.json", "report_texture.json"]
                 for filename in filenames:
@@ -38,7 +39,8 @@ def export():
                         continue
                     if filename.startswith("report"):
                         data = json.loads(source.read_text(encoding="utf-8"))
-                        for key in ("blend", "glb", "godot_glb", "texture", "lighting_preview"):
+                        for key in ("blend", "glb", "godot_glb", "texture", "normal_texture", "orm_texture",
+                                    "lighting_preview"):
                             if data.get(key):
                                 data[key] = Path(data[key]).name
                         data["previews"] = [Path(path).name for path in data.get("previews", [])]

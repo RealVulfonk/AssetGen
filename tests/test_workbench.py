@@ -133,6 +133,8 @@ class WorkbenchTests(unittest.TestCase):
             wb.write_json(texture, {"old": True})
             (output / "a.glb").write_bytes(b"old")
             (output / "a_godot.glb").write_bytes(b"old collision")
+            (output / "a_normal.png").write_bytes(b"stale normal")
+            (output / "a_orm.png").write_bytes(b"stale orm")
             (output / "preview_lighting.png").write_bytes(b"stale")
             (staging / "a.glb").write_bytes(b"new")
             wb.write_json(staging / "report_texture.json", {"glb": str(staging / "a.glb"), "previews": []})
@@ -141,6 +143,8 @@ class WorkbenchTests(unittest.TestCase):
             self.assertEqual(wb.read_json(backup / "texture_spec.json"), {"old": True})
             self.assertEqual(wb.read_json(output / "report_texture.json")["glb"], str(output / "a.glb"))
             self.assertFalse((output / "a_godot.glb").exists())
+            self.assertFalse((output / "a_normal.png").exists())
+            self.assertFalse((output / "a_orm.png").exists())
             self.assertFalse((output / "preview_lighting.png").exists())
 
     def test_rejects_bad_batch_before_enqueuing_any_work(self):

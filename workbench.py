@@ -117,6 +117,10 @@ def validate_candidate(path, name):
         detail = material.get("source_detail")
         if detail and not (ROOT / "presets/textures" / detail["image"]).is_file():
             raise ValueError(f"Missing source image: {detail['image']}")
+        for channel in ("normal", "roughness"):
+            filename = material.get("pbr_detail", {}).get(channel)
+            if filename and not (ROOT / "presets/textures" / filename).is_file():
+                raise ValueError(f"Missing PBR {channel} image: {filename}")
 
 
 def publish(staging, output, texture_path, candidate, backup):
@@ -130,6 +134,9 @@ def publish(staging, output, texture_path, candidate, backup):
     obsolete = ["preview_lighting.png"]
     if not texture_report.get("godot_glb"):
         obsolete.append(f"{candidate['asset']}_godot.glb")
+    for key, suffix in (("normal_texture", "normal"), ("orm_texture", "orm")):
+        if not texture_report.get(key):
+            obsolete.append(f"{candidate['asset']}_{suffix}.png")
     touched = list(dict.fromkeys([p.name for p in files] + obsolete))
     previous = []
     for filename in touched:
@@ -146,7 +153,8 @@ def publish(staging, output, texture_path, candidate, backup):
             destination = output / source.name
             if source.name.startswith("report") and source.suffix == ".json":
                 report = read_json(source)
-                for key in ("blend", "glb", "godot_glb", "texture", "lighting_preview"):
+                for key in ("blend", "glb", "godot_glb", "texture", "normal_texture", "orm_texture",
+                            "lighting_preview"):
                     if report.get(key):
                         report[key] = str(output / Path(report[key]).name)
                 report["previews"] = [str(output / Path(p).name) for p in report.get("previews", [])]

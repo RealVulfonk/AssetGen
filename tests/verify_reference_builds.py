@@ -43,10 +43,14 @@ def check_rebuild(out, env):
     assert result.returncode == 1 and "Build the current model first" in result.stderr, result.stderr
     assert texture_report.read_bytes() == original_texture
 
+    (barrel / "barrel_01_normal.png").write_bytes(b"stale normal")
+    (barrel / "barrel_01_orm.png").write_bytes(b"stale orm")
     result = run_cli("model", "barrel_01", env)
     assert result.returncode == 0, result.stderr
     assert not texture_report.exists()
     assert not (barrel / "barrel_01_albedo.png").exists()
+    assert not (barrel / "barrel_01_normal.png").exists()
+    assert not (barrel / "barrel_01_orm.png").exists()
     print("Verified build lock, failure recovery, stale input guard and rebake invalidation", flush=True)
 
 

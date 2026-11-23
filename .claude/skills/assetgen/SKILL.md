@@ -84,6 +84,8 @@ description: Generate low-poly dungeon models and textures for Godot through thi
    AO и edge применяются поверх цвета: для мягкого стиля начинай с ao 0.2–0.35, edge 0.05–0.15.
 8. Собственные `layers` используй только если пресет не даёт нужного рисунка. Не сочетай их с `preset` и preset-only полями.
 
+Для согласованного Base Color + Normal + Roughness разрежь горизонтальный триптих командой `python tools/split_pbr_sheet.py <лист.png> --out presets/textures --name <имя>`; панели идут именно в этом порядке и не ресемплируются. В материале `source_mode: "image"` добавь `pbr_detail` с обязательными `normal` и `roughness`, необязательным `normal_strength` (default 1). Все карты используют один `source_detail.tile_size`; Normal — tangent-space OpenGL/Y+, обе data-карты читаются как Non-Color и не получают palette/contrast/brightness/quantize. Для неизменённой Roughness задай скаляр `roughness: 1.0`: он остаётся множителем glTF. После `texture` проверь `<asset>_normal.png`, `<asset>_orm.png` (R=1, G=Roughness, B=1), `python tests/verify_outputs.py <имя>` и A/B в Godot. PBR-проекция предназначена прежде всего для плоских low-poly граней; не распространяй карты на каталог без различимого выигрыша при одинаковой камере и свете. Полный пример — в README, раздел «Base Color + Normal + Roughness».
+
 В примере рама использует непрозрачный материал, а стекло получает собственную альфу.
 
 ```json

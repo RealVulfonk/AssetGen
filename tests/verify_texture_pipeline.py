@@ -140,6 +140,64 @@ with TemporaryDirectory() as source_dir:
     again = bake_color(image_config)
     for channel, expected in zip(again[:3], rgb[:3]):
         assert_close(channel, expected, 0.025, "shared file colorspace isolation")
+
+    def save_source(name, rgba, colorspace="Non-Color"):
+        source = bpy.data.images.new(name, 1, 1, alpha=False)
+        source.colorspace_settings.name = colorspace
+        source.pixels[:] = rgba
+        source.filepath_raw = os.path.join(source_dir, name + ".png")
+        source.file_format = "PNG"
+        source.save()
+        bpy.data.images.remove(source)
+
+    def bake_pbr_data(config, channel):
+        target = bpy.data.images.new("pbr_numeric_" + channel, 16, 16, alpha=False)
+        target.colorspace_settings.name = "Non-Color"
+        if channel == "normal":
+            texture.build_normal_bake_material(material, config, target)
+            scene.render.bake.normal_space = "TANGENT"
+        else:
+            texture.build_roughness_bake_material(material, config, target)
+        bpy.ops.object.select_all(action="DESELECT")
+        obj.select_set(True)
+        bpy.context.view_layer.objects.active = obj
+        texture.prepare_pbr_projection(obj)
+        bpy.ops.object.bake(type="NORMAL" if channel == "normal" else "EMIT")
+        pixels = list(target.pixels[0:4])
+        if channel == "roughness":
+            orm = texture.pack_orm(target, "numeric")
+            packed = list(orm.pixels[0:4])
+            bpy.data.images.remove(orm)
+            bpy.data.images.remove(target)
+            return pixels, packed
+        bpy.data.images.remove(target)
+        return pixels
+
+    save_source("normal_tilted", (0.75, 0.5, 1.0, 1.0))
+    save_source("normal_neutral", (0.5, 0.5, 1.0, 1.0))
+    save_source("roughness_known", (0.1, 0.42, 0.9, 1.0))
+    pbr_config = texture.resolve_material({
+        "palette": ["#808080"], "source_mode": "image",
+        "source_detail": {"image": "rgb.png", "tile_size": 1, "strength": 1},
+        "pbr_detail": {"normal": "normal_tilted.png", "roughness": "roughness_known.png"},
+    })
+    assert pbr_config["pbr_detail"]["normal_strength"] == 1.0
+    tilted = bake_pbr_data(pbr_config, "normal")
+    for channel, expected in zip(tilted[:3], (0.723607, 0.5, 0.947214)):
+        assert_close(channel, expected, 0.025, "normalized tangent-space normal bake")
+    strength_config = {**pbr_config, "pbr_detail": {**pbr_config["pbr_detail"], "normal_strength": 0.25}}
+    strength_bake = bake_pbr_data(strength_config, "normal")
+    for actual, expected in zip(strength_bake[:3], tilted[:3]):
+        assert_close(actual, expected, 0.025, "normal strength is reserved for glTF scale")
+    neutral_config = {**pbr_config, "pbr_detail": {**pbr_config["pbr_detail"], "normal": "normal_neutral.png"}}
+    neutral = bake_pbr_data(neutral_config, "normal")
+    for channel, expected in zip(neutral[:3], (0.5, 0.5, 1.0)):
+        assert_close(channel, expected, 0.025, "neutral normal bake")
+    roughness, packed = bake_pbr_data(pbr_config, "roughness")
+    for channel in roughness[:3]:
+        assert_close(channel, 0.42, 0.025, "known roughness bake")
+    for channel, expected in zip(packed[:3], (1.0, 0.42, 1.0)):
+        assert_close(channel, expected, 0.025, "neutral ORM channels and roughness in green")
     texture.SOURCE_TEXTURES = original_source_dir
 
 zero_contrast = {**base, "layers": [{"type": "constant", "value": 0.25}], "contrast": 0}
@@ -189,4 +247,4 @@ for index in range(0, len(quantized_pixels), 4):
     assert all(channel in (0.0, 1.0) for channel in quantized_pixels[index : index + 3])
 bpy.data.images.remove(quantized_image)
 
-print("Verified ramps, recipes, layers, contrast, sRGB, quantization and texture filtering")
+print("Verified ramps, recipes, layers, contrast, sRGB, quantization, filtering and PBR data maps")

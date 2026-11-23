@@ -3,8 +3,12 @@
 import json
 import unittest
 from pathlib import Path
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
 import jsonschema
+
+import assetgen
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = json.loads((ROOT / "schemas/texture.schema.json").read_text(encoding="utf-8"))
@@ -161,6 +165,58 @@ class TextureSchemaTests(unittest.TestCase):
         document = texture_document({"palette": "stone_grey"})
         document["unknown"] = True
         self.assertFalse(VALIDATOR.is_valid(document))
+    def test_pbr_detail_requires_complete_aligned_image_sources(self):
+        detail = {"image": "wall_base_color.png", "tile_size": 2, "strength": 1}
+        pbr = {"normal": "wall_normal.png", "roughness": "wall_roughness.png"}
+        base = {"palette": "stone_grey_soft", "source_mode": "image", "source_detail": detail}
+        self.assert_material_valid({**base, "pbr_detail": pbr})
+        self.assert_material_valid({**base, "pbr_detail": {**pbr, "normal_strength": 0.5}})
+        for mode in (None, "procedural", "mixed"):
+            with self.subTest(mode=mode):
+                material = {**base, "pbr_detail": pbr}
+                if mode is None:
+                    material.pop("source_mode")
+                else:
+                    material["source_mode"] = mode
+                self.assert_material_valid(material, False)
+        for incomplete in ({"normal": "wall_normal.png"}, {"roughness": "wall_roughness.png"}, {}):
+            with self.subTest(incomplete=incomplete):
+                self.assert_material_valid({**base, "pbr_detail": incomplete}, False)
+        for field, value in (("normal", "../wall_normal.png"), ("roughness", "wall.jpg"),
+                             ("normal_strength", -0.1), ("normal_strength", 2.1)):
+            with self.subTest(field=field, value=value):
+                self.assert_material_valid({**base, "pbr_detail": {**pbr, field: value}}, False)
+        self.assert_material_valid({"palette": "stone_grey_soft", "preset": "stone"})
+
+    def test_pbr_source_files_are_checked_by_cli_validation(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "schemas").mkdir(parents=True)
+            (root / "specs/textures").mkdir(parents=True)
+            (root / "presets/textures").mkdir(parents=True)
+            (root / "schemas/texture.schema.json").write_text(json.dumps(SCHEMA), encoding="utf-8")
+            (root / "presets/palettes.json").write_text('{"stone_grey_soft": ["#808080"]}', encoding="utf-8")
+            document = texture_document({
+                "palette": "stone_grey_soft", "source_mode": "image",
+                "source_detail": {"image": "wall_base_color.png", "tile_size": 2, "strength": 1},
+                "pbr_detail": {"normal": "wall_normal.png", "roughness": "wall_roughness.png"},
+            })
+            (root / "specs/textures/test_asset.json").write_text(json.dumps(document), encoding="utf-8")
+            with patch.object(assetgen, "ROOT", root):
+                for filename in ("wall_base_color.png", "wall_normal.png"):
+                    (root / "presets/textures" / filename).write_bytes(b"placeholder")
+                with self.assertRaisesRegex(assetgen.AssetGenError, "pbr_detail.roughness"):
+                    assetgen.load_texture_spec("test_asset")
+                (root / "presets/textures/wall_roughness.png").write_bytes(b"placeholder")
+                (root / "presets/textures/wall_normal.png").unlink()
+                with self.assertRaisesRegex(assetgen.AssetGenError, "pbr_detail.normal"):
+                    assetgen.load_texture_spec("test_asset")
+                (root / "presets/textures/wall_normal.png").write_bytes(b"placeholder")
+                self.assertEqual(assetgen.load_texture_spec("test_asset"), document)
+
+    def test_pbr_normal_strength_default_is_declared(self):
+        common = SCHEMA["$defs"]["material_common"]["properties"]
+        self.assertEqual(common["pbr_detail"]["properties"]["normal_strength"]["default"], 1)
 
 
 if __name__ == "__main__":

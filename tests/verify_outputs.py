@@ -38,19 +38,64 @@ def assert_texture_samplers(document, texture_spec, asset_name, variant):
     expected_min = (9984, 9986) if texture_spec.get("pixel", False) else (9985, 9987)
     checked = 0
     for material in document.get("materials", []):
-        base_color = material.get("pbrMetallicRoughness", {}).get("baseColorTexture")
-        if base_color is None:
-            continue
-        texture = document["textures"][base_color["index"]]
-        sampler = document["samplers"][texture["sampler"]]
-        assert sampler.get("magFilter") == expected_mag, (
-            f"{asset_name}{variant}: unexpected magnification filter {sampler.get('magFilter')}"
-        )
-        assert sampler.get("minFilter") in expected_min, (
-            f"{asset_name}{variant}: unexpected mipmapped minification filter {sampler.get('minFilter')}"
-        )
-        checked += 1
+        pbr = material.get("pbrMetallicRoughness", {})
+        for info in (pbr.get("baseColorTexture"), material.get("normalTexture"),
+                     pbr.get("metallicRoughnessTexture")):
+            if info is None:
+                continue
+            texture = document["textures"][info["index"]]
+            sampler = document["samplers"][texture["sampler"]]
+            assert sampler.get("magFilter") == expected_mag, (
+                f"{asset_name}{variant}: unexpected magnification filter {sampler.get('magFilter')}"
+            )
+            assert sampler.get("minFilter") in expected_min, (
+                f"{asset_name}{variant}: unexpected mipmapped minification filter {sampler.get('minFilter')}"
+            )
+            image = document["images"][texture["source"]]
+            assert "bufferView" in image and "uri" not in image, (
+                f"{asset_name}{variant}: texture image is not embedded"
+            )
+            assert image.get("mimeType") == "image/png", f"{asset_name}{variant}: expected an embedded PNG"
+            checked += 1
     assert checked, f"{asset_name}{variant}: no textured samplers checked"
+
+
+def assert_pbr_materials(document, texture_spec, model_tags, label):
+    configs = texture_spec["materials"]
+    materials = {material.get("name"): (index, material)
+                 for index, material in enumerate(document.get("materials", []))}
+    for tag in model_tags:
+        index, material = materials[tag]
+        config = configs.get(tag, configs["default"])
+        pbr = config.get("pbr_detail")
+        surface = material.get("pbrMetallicRoughness", {})
+        if not pbr:
+            assert "normalTexture" not in material, f"{label}/{tag}: unexpected legacy normal texture"
+            assert "metallicRoughnessTexture" not in surface, f"{label}/{tag}: unexpected legacy ORM texture"
+            continue
+        normal = material.get("normalTexture")
+        assert normal is not None, f"{label}/{tag}: normalTexture missing"
+        assert abs(normal.get("scale", 1) - pbr.get("normal_strength", 1)) < 1e-6, (
+            f"{label}/{tag}: normal scale differs from pbr_detail"
+        )
+        metallic_roughness = surface.get("metallicRoughnessTexture")
+        assert metallic_roughness is not None, f"{label}/{tag}: metallicRoughnessTexture missing"
+        assert abs(surface.get("roughnessFactor", 1) - config.get("roughness", 0.9)) < 1e-6, (
+            f"{label}/{tag}: roughness factor is not the scalar multiplier"
+        )
+        assert abs(surface.get("metallicFactor", 1) - config.get("metallic", 0)) < 1e-6, (
+            f"{label}/{tag}: metallic scalar changed during ORM packing"
+        )
+        texcoords = {
+            info.get("texCoord", 0)
+            for info in (surface.get("baseColorTexture"), normal, metallic_roughness)
+        }
+        assert len(texcoords) == 1, f"{label}/{tag}: PBR channels use different UV sets"
+        primitives = [primitive for mesh in document["meshes"] for primitive in mesh["primitives"]
+                      if primitive.get("material") == index]
+        assert primitives and all("TANGENT" in primitive["attributes"] for primitive in primitives), (
+            f"{label}/{tag}: exported tangent basis missing"
+        )
 
 
 def assert_material_opacity(document, texture_spec, expected_tags, label):
@@ -145,13 +190,27 @@ def verify(out_root, assets=()):
         ]
         assert textured_materials, f"{name}: no textured material in GLB"
         texture_spec = json.loads(texture_spec_path.read_text(encoding="utf-8"))
+        configs = texture_spec["materials"]
+        has_pbr = any(configs.get(tag, configs["default"]).get("pbr_detail")
+                      for tag in report["materials"])
+        for key, suffix in (("normal_texture", "normal"), ("orm_texture", "orm")):
+            filename = f"{name}_{suffix}.png"
+            if has_pbr:
+                assert texture_report.get(key), f"{name}: report {key} missing"
+                assert Path(texture_report[key]).name == filename, f"{name}: report {key} has wrong path"
+                assert (output / filename).is_file(), f"{name}: {filename} missing"
+            else:
+                assert key not in texture_report, f"{name}: stale report {key}"
+                assert not (output / filename).exists(), f"{name}: stale {filename}"
         assert_texture_samplers(document, texture_spec, name, "")
         assert_material_opacity(document, texture_spec, report["materials"], name)
+        assert_pbr_materials(document, texture_spec, report["materials"], name)
         godot_glb = output / f"{name}_godot.glb"
         if godot_glb.is_file():
             godot_document = read_glb(godot_glb)
             assert_texture_samplers(godot_document, texture_spec, name, "_godot")
             assert_material_opacity(godot_document, texture_spec, report["materials"], f"{name}_godot")
+            assert_pbr_materials(godot_document, texture_spec, report["materials"], f"{name}_godot")
         if "material_settings" in texture_report:
             packed = texture_report.get("pack_uv", False)
             if "pack_uv" in texture_report:
