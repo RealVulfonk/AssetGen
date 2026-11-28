@@ -1,0 +1,68 @@
+{
+  "name": "half_timber_window_frame_01",
+  "category": "structure/window",
+  "seed": 112,
+  "pivot": "bottom_center",
+  "tri_budget": 800,
+  "expected_size": [0.62, 0.1, 1.02],
+  "collision": "convex",
+  "materials": {
+    "wood": "#4a3020",
+    "glass": "#ed9319",
+    "metal": "#242229"
+  },
+  "parts": [
+    {
+      "comment": "одна двусторонняя плоскость янтарного стекла в прямоугольном проёме",
+      "type": "plane",
+      "material": "glass",
+      "points": [[-0.27, 0], [0.27, 0], [0.27, 0.94], [-0.27, 0.94]],
+      "rotation": [90, 0, 0],
+      "location": [0, 0, 0.04]
+    },
+    {
+      "comment": "боковые деревянные стойки рамы",
+      "type": "box",
+      "material": "wood",
+      "size": [0.04, 0.1, 1.02],
+      "location": [0.29, 0, 0.51],
+      "mirror_x": true,
+      "bevel": {"width": 0.004, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "нижняя деревянная перекладина",
+      "type": "box",
+      "material": "wood",
+      "size": [0.54, 0.1, 0.04],
+      "location": [0, 0, 0.02],
+      "bevel": {"width": 0.004, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "верхняя деревянная перекладина",
+      "type": "box",
+      "material": "wood",
+      "size": [0.54, 0.1, 0.04],
+      "location": [0, 0, 1.0],
+      "bevel": {"width": 0.004, "segments": 1},
+      "jitter": 0.001
+    },
+    {"comment":"continuous diamond lattice, slope +1, intercept -0.18","type":"extrude","material":"metal","points":[[0.228485,0.04],[0.27,0.081515],[0.27,0.098485],[0.211515,0.04]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous diamond lattice, slope +1, intercept 0.00","type":"extrude","material":"metal","points":[[0.048485,0.04],[0.27,0.261515],[0.27,0.278485],[0.031515,0.04]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous diamond lattice, slope +1, intercept 0.18","type":"extrude","material":"metal","points":[[-0.131515,0.04],[0.27,0.441515],[0.27,0.458485],[-0.148485,0.04]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous diamond lattice, slope +1, intercept 0.36","type":"extrude","material":"metal","points":[[-0.27,0.081515],[0.27,0.621515],[0.27,0.638485],[-0.27,0.098485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous diamond lattice, slope +1, intercept 0.54","type":"extrude","material":"metal","points":[[-0.27,0.261515],[0.27,0.801515],[0.27,0.818485],[-0.27,0.278485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous diamond lattice, slope +1, intercept 0.72","type":"extrude","material":"metal","points":[[-0.27,0.441515],[0.268485,0.98],[0.251515,0.98],[-0.27,0.458485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous diamond lattice, slope +1, intercept 0.90","type":"extrude","material":"metal","points":[[-0.27,0.621515],[0.088485,0.98],[0.071515,0.98],[-0.27,0.638485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous diamond lattice, slope +1, intercept 1.08","type":"extrude","material":"metal","points":[[-0.27,0.801515],[-0.091515,0.98],[-0.108485,0.98],[-0.27,0.818485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous diamond lattice, slope -1, intercept -0.18","type":"extrude","material":"metal","points":[[-0.27,0.081515],[-0.228485,0.04],[-0.211515,0.04],[-0.27,0.098485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous diamond lattice, slope -1, intercept 0.00","type":"extrude","material":"metal","points":[[-0.27,0.261515],[-0.048485,0.04],[-0.031515,0.04],[-0.27,0.278485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous diamond lattice, slope -1, intercept 0.18","type":"extrude","material":"metal","points":[[-0.27,0.441515],[0.131515,0.04],[0.148485,0.04],[-0.27,0.458485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous diamond lattice, slope -1, intercept 0.36","type":"extrude","material":"metal","points":[[-0.27,0.621515],[0.27,0.081515],[0.27,0.098485],[-0.27,0.638485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous diamond lattice, slope -1, intercept 0.54","type":"extrude","material":"metal","points":[[-0.27,0.801515],[0.27,0.261515],[0.27,0.278485],[-0.27,0.818485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous diamond lattice, slope -1, intercept 0.72","type":"extrude","material":"metal","points":[[-0.268485,0.98],[0.27,0.441515],[0.27,0.458485],[-0.251515,0.98]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous diamond lattice, slope -1, intercept 0.90","type":"extrude","material":"metal","points":[[-0.088485,0.98],[0.27,0.621515],[0.27,0.638485],[-0.071515,0.98]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous diamond lattice, slope -1, intercept 1.08","type":"extrude","material":"metal","points":[[0.091515,0.98],[0.27,0.801515],[0.27,0.818485],[0.108485,0.98]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]}
+  ]
+}

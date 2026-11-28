@@ -1,0 +1,17 @@
+{
+  "name": "roof_hatch_door_01",
+  "category": "structure/roof",
+  "seed": 125,
+  "pivot": "hinge_left",
+  "tri_budget": 500,
+  "expected_size": [0.75, 0.75, 0.125],
+  "collision": "mesh",
+  "materials": {"wood": "#392a24", "metal": "#27292d"},
+  "parts": [
+    {"comment": "три доски горизонтального полотна", "type": "box", "material": "wood", "size": [0.25, 0.75, 0.1], "location": [-0.25, 0, 0.05], "array": {"count": 3, "offset": [0.25, 0, 0]}, "bevel": {"width": 0.003, "segments": 1}},
+    {"comment": "передняя и задняя рамки полотна", "type": "box", "material": "wood", "size": [0.75, 0.075, 0.025], "location": [0, 0.3375, 0.1125], "array": {"count": 2, "offset": [0, -0.675, 0]}, "bevel": {"width": 0.003, "segments": 1}},
+    {"comment": "боковые рамки полотна", "type": "box", "material": "wood", "size": [0.075, 0.6, 0.025], "location": [0.3375, 0, 0.1125], "array": {"count": 2, "offset": [-0.675, 0, 0]}, "bevel": {"width": 0.003, "segments": 1}},
+    {"comment": "две железные полосы", "type": "box", "material": "metal", "size": [0.05, 0.6, 0.01], "location": [-0.22, 0, 0.105], "array": {"count": 2, "offset": [0.44, 0, 0]}},
+    {"comment": "низкое восьмигранное кольцо ручки", "type": "lathe", "material": "metal", "profile": [[0.04, 0], [0.055, 0], [0.055, 0.015], [0.04, 0.015], [0.04, 0]], "segments": 8, "location": [0.15, 0, 0.11]}
+  ]
+}

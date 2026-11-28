@@ -1,0 +1,38 @@
+{
+  "name": "wall_column_01",
+  "category": "structure/wall",
+  "seed": 42,
+  "pivot": "bottom_center",
+  "tri_budget": 300,
+  "expected_size": [0.36, 0.46, 2.5],
+  "collision": "mesh",
+  "materials": {
+    "stone": "#606168"
+  },
+  "parts": [
+    {
+      "comment": "широкое основание модульной прямоугольной колонны",
+      "type": "box",
+      "material": "stone",
+      "size": [0.36, 0.46, 0.24],
+      "location": [0, 0, 0.12],
+      "bevel": {"width": 0.01, "segments": 1}
+    },
+    {
+      "comment": "узкая шахта между основанием и капителью",
+      "type": "box",
+      "material": "stone",
+      "size": [0.26, 0.36, 2.02],
+      "location": [0, 0, 1.25],
+      "bevel": {"width": 0.008, "segments": 1}
+    },
+    {
+      "comment": "капитель завершает стену на высоте 2.5 м",
+      "type": "box",
+      "material": "stone",
+      "size": [0.36, 0.46, 0.24],
+      "location": [0, 0, 2.38],
+      "bevel": {"width": 0.01, "segments": 1}
+    }
+  ]
+}

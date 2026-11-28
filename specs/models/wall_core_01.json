@@ -1,0 +1,37 @@
+{
+  "name": "wall_core_01",
+  "category": "structure/wall",
+  "seed": 41,
+  "pivot": "bottom_center",
+  "tri_budget": 100,
+  "expected_size": [2.0, 0.3, 2.5],
+  "collision": "box",
+  "materials": {
+    "stone_outer": "#686970",
+    "stone_inner": "#48494f",
+    "stone_edge": "#585960"
+  },
+  "parts": [
+    {
+      "comment": "несущий блок 0.28 м; видимые торцы и верх, наружная сторона +Y",
+      "type": "box",
+      "material": "stone_edge",
+      "size": [2.0, 0.28, 2.5],
+      "location": [0, 0, 1.25]
+    },
+    {
+      "comment": "независимая наружная облицовка 0.01 м; лицевая поверхность y=+0.15",
+      "type": "box",
+      "material": "stone_outer",
+      "size": [2.0, 0.01, 2.5],
+      "location": [0, 0.145, 1.25]
+    },
+    {
+      "comment": "независимая внутренняя облицовка 0.01 м; лицевая поверхность y=-0.15",
+      "type": "box",
+      "material": "stone_inner",
+      "size": [2.0, 0.01, 2.5],
+      "location": [0, -0.145, 1.25]
+    }
+  ]
+}

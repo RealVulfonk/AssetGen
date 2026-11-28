@@ -1,0 +1,23 @@
+{
+  "name": "roof_parapet_crenellated_01",
+  "category": "structure/roof",
+  "seed": 122,
+  "pivot": "bottom_center",
+  "tri_budget": 1000,
+  "expected_size": [2.0, 2.0, 1.0],
+  "collision": "mesh",
+  "materials": {"stone": "#454249"},
+  "parts": [
+    {"comment": "общая плита основания", "type": "box", "material": "stone", "size": [2.0, 2.0, 0.25], "location": [0, 0, 0.125], "bevel": {"width": 0.005, "segments": 1}},
+    {"comment": "непрерывная стенка спереди и сзади", "type": "box", "material": "stone", "size": [2.0, 0.25, 0.375], "location": [0, 0.875, 0.4375], "array": {"count": 2, "offset": [0, -1.75, 0]}, "bevel": {"width": 0.005, "segments": 1}},
+    {"comment": "непрерывная стенка по бокам", "type": "box", "material": "stone", "size": [0.25, 1.5, 0.375], "location": [0.875, 0, 0.4375], "array": {"count": 2, "offset": [-1.75, 0, 0]}, "bevel": {"width": 0.005, "segments": 1}},
+    {"comment": "передние и задние зубцы с шагом 0,5 м", "type": "box", "material": "stone", "size": [0.25, 0.25, 0.375], "location": [-0.375, 0.875, 0.8125], "array": {"count": 2, "offset": [0.75, 0, 0]}, "bevel": {"width": 0.005, "segments": 1}},
+    {"comment": "задние зубцы", "type": "box", "material": "stone", "size": [0.25, 0.25, 0.375], "location": [-0.375, -0.875, 0.8125], "array": {"count": 2, "offset": [0.75, 0, 0]}, "bevel": {"width": 0.005, "segments": 1}},
+    {"comment": "правые боковые зубцы", "type": "box", "material": "stone", "size": [0.25, 0.25, 0.375], "location": [0.875, -0.375, 0.8125], "array": {"count": 2, "offset": [0, 0.75, 0]}, "bevel": {"width": 0.005, "segments": 1}},
+    {"comment": "левые боковые зубцы", "type": "box", "material": "stone", "size": [0.25, 0.25, 0.375], "location": [-0.875, -0.375, 0.8125], "array": {"count": 2, "offset": [0, 0.75, 0]}, "bevel": {"width": 0.005, "segments": 1}},
+    {"comment": "угловой зубец северо-запад", "type": "box", "material": "stone", "size": [0.25, 0.25, 0.375], "location": [-0.875, 0.875, 0.8125], "bevel": {"width": 0.005, "segments": 1}},
+    {"comment": "угловой зубец северо-восток", "type": "box", "material": "stone", "size": [0.25, 0.25, 0.375], "location": [0.875, 0.875, 0.8125], "bevel": {"width": 0.005, "segments": 1}},
+    {"comment": "угловой зубец юго-запад", "type": "box", "material": "stone", "size": [0.25, 0.25, 0.375], "location": [-0.875, -0.875, 0.8125], "bevel": {"width": 0.005, "segments": 1}},
+    {"comment": "угловой зубец юго-восток", "type": "box", "material": "stone", "size": [0.25, 0.25, 0.375], "location": [0.875, -0.875, 0.8125], "bevel": {"width": 0.005, "segments": 1}}
+  ]
+}

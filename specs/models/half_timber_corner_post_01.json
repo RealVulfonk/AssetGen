@@ -1,0 +1,21 @@
+{
+  "name": "half_timber_corner_post_01",
+  "category": "structure/wall",
+  "seed": 105,
+  "pivot": "bottom_center",
+  "tri_budget": 100,
+  "expected_size": [0.25, 0.25, 2.5],
+  "collision": "box",
+  "materials": {"wood": "#4a3020"},
+  "parts": [
+    {
+      "comment": "массивная угловая балка для стыка двух стен",
+      "type": "box",
+      "material": "wood",
+      "size": [0.25, 0.25, 2.5],
+      "location": [0, 0, 1.25],
+      "bevel": {"width": 0.01, "segments": 1},
+      "jitter": 0.002
+    }
+  ]
+}

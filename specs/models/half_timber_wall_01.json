@@ -1,0 +1,86 @@
+{
+  "name": "half_timber_wall_01",
+  "category": "structure/wall",
+  "seed": 109,
+  "pivot": "bottom_center",
+  "tri_budget": 900,
+  "expected_size": [2.0, 0.3, 2.5],
+  "collision": "mesh",
+  "materials": {
+    "plaster": "#b9a78e",
+    "wood": "#4a3020"
+  },
+  "parts": [
+    {
+      "comment": "штукатурное заполнение между балками",
+      "type": "box",
+      "material": "plaster",
+      "size": [1.64, 0.18, 2.14],
+      "location": [0, 0, 1.25],
+      "bevel": {"width": 0.004, "segments": 1},
+      "jitter": 0.002
+    },
+    {
+      "comment": "боковые стойки на наружной и внутренней гранях",
+      "type": "box",
+      "material": "wood",
+      "size": [0.18, 0.12, 2.14],
+      "location": [0.91, 0.09, 1.25],
+      "mirror_x": true,
+      "array": {"count": 2, "offset": [0, -0.18, 0]},
+      "bevel": {"width": 0.006, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "нижняя обвязка на двух гранях",
+      "type": "box",
+      "material": "wood",
+      "size": [2.0, 0.12, 0.18],
+      "location": [0, 0.09, 0.09],
+      "array": {"count": 2, "offset": [0, -0.18, 0]},
+      "bevel": {"width": 0.006, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "верхняя обвязка на двух гранях",
+      "type": "box",
+      "material": "wood",
+      "size": [2.0, 0.12, 0.18],
+      "location": [0, 0.09, 2.41],
+      "array": {"count": 2, "offset": [0, -0.18, 0]},
+      "bevel": {"width": 0.006, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "горизонтальный пояс над нижней панелью",
+      "type": "box",
+      "material": "wood",
+      "size": [1.64, 0.12, 0.14],
+      "location": [0, 0.09, 0.65],
+      "array": {"count": 2, "offset": [0, -0.18, 0]},
+      "bevel": {"width": 0.005, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "центральная стойка правой и левой панелей",
+      "type": "box",
+      "material": "wood",
+      "size": [0.14, 0.12, 1.6],
+      "location": [0, 0.09, 1.52],
+      "array": {"count": 2, "offset": [0, -0.18, 0]},
+      "bevel": {"width": 0.005, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "длинная диагональ левой панели",
+      "type": "box",
+      "material": "wood",
+      "size": [1.82, 0.12, 0.14],
+      "location": [-0.41, 0.09, 1.52],
+      "rotation": [0, -63.435, 0],
+      "array": {"count": 2, "offset": [0, -0.18, 0]},
+      "bevel": {"width": 0.005, "segments": 1},
+      "jitter": 0.001
+    }
+  ]
+}

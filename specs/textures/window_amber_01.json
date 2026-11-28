@@ -1,0 +1,11 @@
+{
+  "asset": "window_amber_01",
+  "size": 256,
+  "pack_uv": true,
+  "seed": 46,
+  "materials": {
+    "frame": {"preset": "metal", "palette": "lead", "scale": 18, "contrast": 0.8, "ao": 0.25, "edge": 0.15, "roughness": 0.6},
+    "glass": {"preset": "flat", "palette": ["#8a3f06", "#b85b08", "#e88912", "#ffb633", "#ffd66b"], "value": 0.5, "opacity": 0.35, "roughness": 0.24},
+    "default": {"preset": "flat", "palette": "lead"}
+  }
+}

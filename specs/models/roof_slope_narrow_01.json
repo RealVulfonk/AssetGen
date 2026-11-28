@@ -1,0 +1,15 @@
+{
+  "name": "roof_slope_narrow_01",
+  "category": "structure/roof",
+  "seed": 132,
+  "pivot": "bottom_center",
+  "tri_budget": 200,
+  "expected_size": [0.5, 2.0, 0.875],
+  "collision": "mesh",
+  "materials": {"slate": "#282b35", "wood": "#392a24"},
+  "parts": [
+    {"comment": "узкий скат шириной 0,5 м с общим уклоном семейства", "type": "plane", "material": "slate", "points": [[-0.25, -0.9519715], [0.25, -0.9519715], [0.25, 0.9519715], [-0.25, 0.9519715]], "rotation": [23.1985905, 0, 0], "location": [0, 0, 0.5]},
+    {"comment": "нижний деревянный карниз", "type": "box", "material": "wood", "size": [0.5, 0.125, 0.125], "location": [0, -0.9375, 0.0625], "bevel": {"width": 0.003, "segments": 1}},
+    {"comment": "верхний деревянный конёк", "type": "box", "material": "wood", "size": [0.5, 0.125, 0.125], "location": [0, 0.9375, 0.8125], "bevel": {"width": 0.003, "segments": 1}}
+  ]
+}

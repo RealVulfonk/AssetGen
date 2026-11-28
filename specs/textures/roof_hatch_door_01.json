@@ -1,0 +1,23 @@
+{
+  "asset": "roof_hatch_door_01",
+  "size": 256,
+  "pack_uv": true,
+  "quantize": false,
+  "seed": 125,
+  "materials": {
+    "wood": {
+      "preset": "wood",
+      "palette": "wood_dark_soft",
+      "source_mode": "image",
+      "source_detail": {"image": "wood_planks_brown_02_base_color.png", "tile_size": 1.4, "strength": 1.0},
+      "pbr_detail": {"normal": "wood_planks_brown_02_normal.png", "roughness": "wood_planks_brown_02_roughness.png", "normal_strength": 0.65},
+      "brightness": 0,
+      "contrast": 1,
+      "ao": 0.2,
+      "edge": 0.1,
+      "roughness": 1.0
+    },
+    "metal": {"preset": "metal", "palette": "lead", "roughness": 0.72, "ao": 0.15, "edge": 0.08},
+    "default": {"preset": "flat", "palette": "wood_dark_soft"}
+  }
+}

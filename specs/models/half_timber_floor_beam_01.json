@@ -1,0 +1,21 @@
+{
+  "name": "half_timber_floor_beam_01",
+  "category": "structure/wall",
+  "seed": 106,
+  "pivot": "center",
+  "tri_budget": 100,
+  "expected_size": [2.0, 0.25, 0.25],
+  "collision": "box",
+  "materials": {"wood": "#4a3020"},
+  "parts": [
+    {
+      "comment": "выступающая межэтажная балка",
+      "type": "box",
+      "material": "wood",
+      "size": [2.0, 0.25, 0.25],
+      "location": [0, 0, 0],
+      "bevel": {"width": 0.01, "segments": 1},
+      "jitter": 0.002
+    }
+  ]
+}

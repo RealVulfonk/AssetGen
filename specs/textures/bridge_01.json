@@ -17,9 +17,9 @@
       "edge": 0.25,
       "roughness": 0.95,
       "source_detail": {
-        "tile_size": 1,
+        "tile_size": 0.25,
         "strength": 0.6,
-        "image": "fine_grained_wood.jpg"
+        "image": "wood_planks_brown_02_base_color.png"
       },
       "source_mode": "image",
       "brightness": 0,

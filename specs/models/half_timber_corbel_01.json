@@ -1,0 +1,40 @@
+{
+  "name": "half_timber_corbel_01",
+  "category": "structure/wall",
+  "seed": 107,
+  "pivot": "bottom_center",
+  "tri_budget": 180,
+  "expected_size": [0.2, 0.5, 0.5],
+  "collision": "mesh",
+  "materials": {"wood": "#4a3020"},
+  "parts": [
+    {
+      "comment": "вертикальная полка консоли у стены",
+      "type": "box",
+      "material": "wood",
+      "size": [0.2, 0.12, 0.38],
+      "location": [0, -0.19, 0.19],
+      "bevel": {"width": 0.006, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "верхнее несущее плечо консоли",
+      "type": "box",
+      "material": "wood",
+      "size": [0.2, 0.5, 0.12],
+      "location": [0, 0, 0.44],
+      "bevel": {"width": 0.006, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "диагональный подкос консоли",
+      "type": "box",
+      "material": "wood",
+      "size": [0.2, 0.48, 0.08],
+      "location": [0, 0.052, 0.2],
+      "rotation": [45, 0, 0],
+      "bevel": {"width": 0.005, "segments": 1},
+      "jitter": 0.001
+    }
+  ]
+}

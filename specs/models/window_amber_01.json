@@ -1,0 +1,119 @@
+{
+  "name": "window_amber_01",
+  "category": "structure/window",
+  "seed": 46,
+  "pivot": "bottom_center",
+  "tri_budget": 800,
+  "expected_size": [0.44, 0.06, 1.08],
+  "collision": "convex",
+  "materials": {
+    "frame": "#1c2026",
+    "glass": "#ed9319"
+  },
+  "parts": [
+    {
+      "comment": "одна двусторонняя арочная плоскость янтарного стекла",
+      "type": "plane",
+      "material": "glass",
+      "points": [[-0.17, 0], [0.17, 0], [0.17, 0.86], [0.147224, 0.945], [0.085, 1.007224], [0, 1.03], [-0.085, 1.007224], [-0.147224, 0.945], [-0.17, 0.86]],
+      "rotation": [90, 0, 0]
+    },
+    {
+      "comment": "нижняя перекладина независимой рамы",
+      "type": "box",
+      "material": "frame",
+      "size": [0.42, 0.06, 0.04],
+      "location": [0, 0, 0.02],
+      "bevel": {"width": 0.004, "segments": 1}
+    },
+    {
+      "comment": "боковые стойки до пяты арки",
+      "type": "box",
+      "material": "frame",
+      "size": [0.04, 0.06, 0.86],
+      "location": [0.19, 0, 0.43],
+      "mirror_x": true,
+      "bevel": {"width": 0.004, "segments": 1}
+    },
+    {
+      "comment": "семь фасеточных сегментов арочной рамы",
+      "type": "box",
+      "material": "frame",
+      "size": [0.11, 0.06, 0.04],
+      "location": [0.2, 0, 0.86],
+      "rotation": [0, 90, 0],
+      "bevel": {"width": 0.003, "segments": 1}
+    },
+    {
+      "comment": "сегмент арки 30 градусов",
+      "type": "box",
+      "material": "frame",
+      "size": [0.11, 0.06, 0.04],
+      "location": [0.173205, 0, 0.96],
+      "rotation": [0, 60, 0],
+      "bevel": {"width": 0.003, "segments": 1}
+    },
+    {
+      "comment": "сегмент арки 60 градусов",
+      "type": "box",
+      "material": "frame",
+      "size": [0.11, 0.06, 0.04],
+      "location": [0.1, 0, 1.033205],
+      "rotation": [0, 30, 0],
+      "bevel": {"width": 0.003, "segments": 1}
+    },
+    {
+      "comment": "верхний сегмент арки",
+      "type": "box",
+      "material": "frame",
+      "size": [0.11, 0.06, 0.04],
+      "location": [0, 0, 1.06],
+      "bevel": {"width": 0.003, "segments": 1}
+    },
+    {
+      "comment": "сегмент арки 120 градусов",
+      "type": "box",
+      "material": "frame",
+      "size": [0.11, 0.06, 0.04],
+      "location": [-0.1, 0, 1.033205],
+      "rotation": [0, -30, 0],
+      "bevel": {"width": 0.003, "segments": 1}
+    },
+    {
+      "comment": "сегмент арки 150 градусов",
+      "type": "box",
+      "material": "frame",
+      "size": [0.11, 0.06, 0.04],
+      "location": [-0.173205, 0, 0.96],
+      "rotation": [0, -60, 0],
+      "bevel": {"width": 0.003, "segments": 1}
+    },
+    {
+      "comment": "сегмент арки 180 градусов",
+      "type": "box",
+      "material": "frame",
+      "size": [0.11, 0.06, 0.04],
+      "location": [-0.2, 0, 0.86],
+      "rotation": [0, -90, 0],
+      "bevel": {"width": 0.003, "segments": 1}
+    },
+    {"comment":"continuous arched diamond lattice, slope +1, intercept -0.15","type":"extrude","material":"frame","points":[[0.158485,0.0],[0.17,0.011515],[0.17,0.028485],[0.141515,0.0]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous arched diamond lattice, slope +1, intercept 0.00","type":"extrude","material":"frame","points":[[0.008485,0.0],[0.17,0.161515],[0.17,0.178485],[-0.008485,0.0]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous arched diamond lattice, slope +1, intercept 0.15","type":"extrude","material":"frame","points":[[-0.141515,0.0],[0.17,0.311515],[0.17,0.328485],[-0.158485,0.0]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous arched diamond lattice, slope +1, intercept 0.30","type":"extrude","material":"frame","points":[[-0.17,0.121515],[0.17,0.461515],[0.17,0.478485],[-0.17,0.138485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous arched diamond lattice, slope +1, intercept 0.45","type":"extrude","material":"frame","points":[[-0.17,0.271515],[0.17,0.611515],[0.17,0.628485],[-0.17,0.288485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous arched diamond lattice, slope +1, intercept 0.60","type":"extrude","material":"frame","points":[[-0.17,0.421515],[0.17,0.761515],[0.17,0.778485],[-0.17,0.438485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous arched diamond lattice, slope +1, intercept 0.75","type":"extrude","material":"frame","points":[[-0.17,0.571515],[0.159114,0.900628],[0.155527,0.914012],[-0.17,0.588485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous arched diamond lattice, slope +1, intercept 0.90","type":"extrude","material":"frame","points":[[-0.17,0.721515],[0.100355,0.991869],[0.091869,1.000355],[-0.17,0.738485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous arched diamond lattice, slope +1, intercept 1.05","type":"extrude","material":"frame","points":[[-0.165785,0.875729],[-0.015729,1.025785],[-0.038912,1.019573],[-0.159573,0.898912]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.01,0]},
+    {"comment":"continuous arched diamond lattice, slope -1, intercept -0.15","type":"extrude","material":"frame","points":[[-0.17,0.011515],[-0.158485,0.0],[-0.141515,0.0],[-0.17,0.028485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous arched diamond lattice, slope -1, intercept 0.00","type":"extrude","material":"frame","points":[[-0.17,0.161515],[-0.008485,0.0],[0.008485,0.0],[-0.17,0.178485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous arched diamond lattice, slope -1, intercept 0.15","type":"extrude","material":"frame","points":[[-0.17,0.311515],[0.141515,0.0],[0.158485,0.0],[-0.17,0.328485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous arched diamond lattice, slope -1, intercept 0.30","type":"extrude","material":"frame","points":[[-0.17,0.461515],[0.17,0.121515],[0.17,0.138485],[-0.17,0.478485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous arched diamond lattice, slope -1, intercept 0.45","type":"extrude","material":"frame","points":[[-0.17,0.611515],[0.17,0.271515],[0.17,0.288485],[-0.17,0.628485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous arched diamond lattice, slope -1, intercept 0.60","type":"extrude","material":"frame","points":[[-0.17,0.761515],[0.17,0.421515],[0.17,0.438485],[-0.17,0.778485]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous arched diamond lattice, slope -1, intercept 0.75","type":"extrude","material":"frame","points":[[-0.159114,0.900628],[0.17,0.571515],[0.17,0.588485],[-0.155527,0.914012]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous arched diamond lattice, slope -1, intercept 0.90","type":"extrude","material":"frame","points":[[-0.100355,0.991869],[0.17,0.721515],[0.17,0.738485],[-0.091869,1.000355]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]},
+    {"comment":"continuous arched diamond lattice, slope -1, intercept 1.05","type":"extrude","material":"frame","points":[[0.015729,1.025785],[0.165785,0.875729],[0.159573,0.898912],[0.038912,1.019573]],"depth":0.018,"rotation":[90,0,0],"location":[0,0.008,0]}
+  ]
+}

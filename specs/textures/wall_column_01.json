@@ -1,0 +1,22 @@
+{
+  "asset": "wall_column_01",
+  "size": 512,
+  "pack_uv": true,
+  "quantize": false,
+  "seed": 42,
+  "materials": {
+    "stone": {
+      "preset": "stone",
+      "palette": "stone_grey_soft",
+      "source_mode": "image",
+      "source_detail": {"image": "wall_stone_base_color.png", "tile_size": 1.6, "strength": 1.0},
+      "pbr_detail": {"normal": "wall_stone_normal.png", "roughness": "wall_stone_roughness.png", "normal_strength": 1.0},
+      "brightness": 0,
+      "contrast": 1,
+      "ao": 0,
+      "edge": 0,
+      "roughness": 1.0
+    },
+    "default": {"preset": "flat", "palette": "stone_grey_soft"}
+  }
+}

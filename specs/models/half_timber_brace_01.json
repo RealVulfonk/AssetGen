@@ -1,0 +1,21 @@
+{
+  "name": "half_timber_brace_01",
+  "category": "structure/wall",
+  "seed": 103,
+  "pivot": "center",
+  "tri_budget": 100,
+  "expected_size": [1.82, 0.18, 0.18],
+  "collision": "box",
+  "materials": {"wood": "#4a3020"},
+  "parts": [
+    {
+      "comment": "прямой брус для диагонали секции; угол задаётся при размещении",
+      "type": "box",
+      "material": "wood",
+      "size": [1.82, 0.18, 0.18],
+      "location": [0, 0, 0],
+      "bevel": {"width": 0.008, "segments": 1},
+      "jitter": 0.002
+    }
+  ]
+}

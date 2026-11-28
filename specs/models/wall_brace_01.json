@@ -1,0 +1,23 @@
+{
+  "name": "wall_brace_01",
+  "category": "structure/wall",
+  "seed": 44,
+  "pivot": "center",
+  "tri_budget": 100,
+  "expected_size": [0.86, 0.12, 0.12],
+  "collision": "box",
+  "materials": {
+    "wood": "#4d3829"
+  },
+  "parts": [
+    {
+      "comment": "отдельный короткий брус для диагональной раскосины; поворот задаёт префаб",
+      "type": "box",
+      "material": "wood",
+      "size": [0.86, 0.12, 0.12],
+      "location": [0, 0, 0],
+      "bevel": {"width": 0.008, "segments": 1},
+      "jitter": 0.002
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "roof_flat_01",
+  "category": "structure/roof",
+  "seed": 120,
+  "pivot": "bottom_center",
+  "tri_budget": 100,
+  "expected_size": [2.0, 2.0, 0.25],
+  "collision": "mesh",
+  "materials": {"stone": "#454249"},
+  "parts": [
+    {"comment": "единая ровная каменная плита 2 × 2 м; рисунок кладки даёт PBR без углублённой окантовки", "type": "box", "material": "stone", "size": [2.0, 2.0, 0.25], "location": [0, 0, 0.125], "bevel": {"width": 0.005, "segments": 1}}
+  ]
+}

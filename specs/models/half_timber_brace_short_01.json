@@ -1,0 +1,21 @@
+{
+  "name": "half_timber_brace_short_01",
+  "category": "structure/wall",
+  "seed": 104,
+  "pivot": "center",
+  "tri_budget": 100,
+  "expected_size": [0.7, 0.18, 0.18],
+  "collision": "box",
+  "materials": {"wood": "#4a3020"},
+  "parts": [
+    {
+      "comment": "короткая диагональная распорка длиной 0,7 м",
+      "type": "box",
+      "material": "wood",
+      "size": [0.7, 0.18, 0.18],
+      "location": [0, 0, 0],
+      "bevel": {"width": 0.008, "segments": 1},
+      "jitter": 0.002
+    }
+  ]
+}

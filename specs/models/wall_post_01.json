@@ -1,0 +1,23 @@
+{
+  "name": "wall_post_01",
+  "category": "structure/wall",
+  "seed": 47,
+  "pivot": "bottom_center",
+  "tri_budget": 100,
+  "expected_size": [0.14, 0.14, 2.02],
+  "collision": "box",
+  "materials": {
+    "wood": "#4d3829"
+  },
+  "parts": [
+    {
+      "comment": "отдельная вертикальная деревянная стойка между каменным основанием и капителью",
+      "type": "box",
+      "material": "wood",
+      "size": [0.14, 0.14, 2.02],
+      "location": [0, 0, 1.01],
+      "bevel": {"width": 0.008, "segments": 1},
+      "jitter": 0.002
+    }
+  ]
+}

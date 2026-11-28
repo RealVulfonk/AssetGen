@@ -1,0 +1,23 @@
+{
+  "name": "wall_brace_02",
+  "category": "structure/wall",
+  "seed": 49,
+  "pivot": "center",
+  "tri_budget": 100,
+  "expected_size": [0.56, 0.12, 0.12],
+  "collision": "box",
+  "materials": {
+    "wood": "#4d3829"
+  },
+  "parts": [
+    {
+      "comment": "короткая отдельная диагональная подпорка под верхнюю балку; поворот задаёт префаб",
+      "type": "box",
+      "material": "wood",
+      "size": [0.56, 0.12, 0.12],
+      "location": [0, 0, 0],
+      "bevel": {"width": 0.008, "segments": 1},
+      "jitter": 0.002
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "half_timber_sill_01",
+  "category": "structure/window",
+  "seed": 108,
+  "pivot": "center",
+  "tri_budget": 100,
+  "expected_size": [0.74, 0.38, 0.08],
+  "collision": "box",
+  "materials": {"wood": "#4a3020"},
+  "parts": [
+    {
+      "comment": "отдельный деревянный подоконник с небольшим боковым выпуском",
+      "type": "box",
+      "material": "wood",
+      "size": [0.74, 0.38, 0.08],
+      "location": [0, 0, 0],
+      "bevel": {"width": 0.008, "segments": 1},
+      "jitter": 0.002
+    }
+  ]
+}

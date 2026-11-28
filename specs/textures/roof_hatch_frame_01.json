@@ -1,0 +1,22 @@
+{
+  "asset": "roof_hatch_frame_01",
+  "size": 256,
+  "pack_uv": true,
+  "quantize": false,
+  "seed": 124,
+  "materials": {
+    "stone": {
+      "preset": "stone",
+      "palette": "stone_grey_soft",
+      "source_mode": "image",
+      "source_detail": {"image": "roof_stone_dark_01_seam_base_color.png", "tile_size": 2.0, "strength": 1.0},
+      "pbr_detail": {"normal": "roof_stone_dark_01_seam_normal.png", "roughness": "roof_stone_dark_01_seam_roughness.png", "normal_strength": 0.65},
+      "brightness": 0,
+      "contrast": 1,
+      "ao": 0,
+      "edge": 0,
+      "roughness": 1.0
+    },
+    "default": {"preset": "flat", "palette": "stone_grey_soft"}
+  }
+}

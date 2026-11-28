@@ -1,0 +1,96 @@
+{
+  "name": "half_timber_window_wall_01",
+  "category": "structure/wall",
+  "seed": 111,
+  "pivot": "bottom_center",
+  "tri_budget": 1000,
+  "expected_size": [2.0, 0.3, 2.5],
+  "collision": "mesh",
+  "materials": {
+    "plaster": "#b9a78e",
+    "wood": "#4a3020"
+  },
+  "parts": [
+    {
+      "comment": "штукатурка под сквозным проёмом 0,54 × 0,94 м",
+      "type": "box",
+      "material": "plaster",
+      "size": [1.64, 0.18, 0.74],
+      "location": [0, 0, 0.55],
+      "bevel": {"width": 0.004, "segments": 1},
+      "jitter": 0.002
+    },
+    {
+      "comment": "штукатурка над проёмом",
+      "type": "box",
+      "material": "plaster",
+      "size": [1.64, 0.18, 0.46],
+      "location": [0, 0, 2.09],
+      "bevel": {"width": 0.004, "segments": 1},
+      "jitter": 0.002
+    },
+    {
+      "comment": "боковые штукатурные простенки",
+      "type": "box",
+      "material": "plaster",
+      "size": [0.55, 0.18, 0.94],
+      "location": [0.545, 0, 1.39],
+      "mirror_x": true,
+      "bevel": {"width": 0.004, "segments": 1},
+      "jitter": 0.002
+    },
+    {
+      "comment": "боковые стойки на наружной и внутренней гранях",
+      "type": "box",
+      "material": "wood",
+      "size": [0.18, 0.12, 2.14],
+      "location": [0.91, 0.09, 1.25],
+      "mirror_x": true,
+      "array": {"count": 2, "offset": [0, -0.18, 0]},
+      "bevel": {"width": 0.006, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "нижняя обвязка на двух гранях",
+      "type": "box",
+      "material": "wood",
+      "size": [2.0, 0.12, 0.18],
+      "location": [0, 0.09, 0.09],
+      "array": {"count": 2, "offset": [0, -0.18, 0]},
+      "bevel": {"width": 0.006, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "верхняя обвязка на двух гранях",
+      "type": "box",
+      "material": "wood",
+      "size": [2.0, 0.12, 0.18],
+      "location": [0, 0.09, 2.41],
+      "array": {"count": 2, "offset": [0, -0.18, 0]},
+      "bevel": {"width": 0.006, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "пояс под оконным проёмом",
+      "type": "box",
+      "material": "wood",
+      "size": [1.64, 0.12, 0.14],
+      "location": [0, 0.09, 0.72],
+      "array": {"count": 2, "offset": [0, -0.18, 0]},
+      "bevel": {"width": 0.005, "segments": 1},
+      "jitter": 0.001
+    },
+    {
+      "comment": "удлинённые распорки: квадратные торцы скрыты внутри стойки и верхней обвязки, видимый стык полностью замкнут",
+      "type": "box",
+      "material": "wood",
+      "size": [0.84, 0.12, 0.14],
+      "location": [-0.61, 0.09, 2.06],
+      "rotation": [0, -45, 0],
+      "mirror_x": true,
+      "array": {"count": 2, "offset": [0, -0.18, 0]},
+      "bevel": {"width": 0.005, "segments": 1},
+      "jitter": 0.001
+    }
+  ]
+}
