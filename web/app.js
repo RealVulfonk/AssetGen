@@ -17,14 +17,17 @@ function notify(message, error = false) {
 async function api(path, options) {
   const response = await fetch(path, options);
   const data = await response.json();
-  if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
+  if (!response.ok) throw Object.assign(new Error(data.error || `HTTP ${response.status}`), { status: response.status });
   return data;
 }
 function active() { return state.data?.assets.find(a => a.name === state.active); }
 function sourceMode(config) { return config.source_mode || (config.source_detail ? 'mixed' : 'procedural'); }
 function currentSource() {
   const original = active()?.texture?.materials[state.tag] || {};
-  return state.patch.source_detail === null ? null : { ...original.source_detail, ...state.patch.source_detail };
+  if (state.patch.source_detail === null) return null;
+  const source = { ...original.source_detail, ...state.patch.source_detail };
+  if (state.patch.surface) source.image = state.data.surfaces.find(s => s.id === state.patch.surface)?.image;
+  return source;
 }
 function filtered() {
   const query = $('search').value.toLowerCase();
@@ -191,19 +194,37 @@ function renderEditor() {
   if (mode !== 'procedural') {
     const imagesSection = el('div', undefined, 'editor-section'); imagesSection.append(el('h3', mode === 'image' ? 'Изображение поверхности' : 'Дополнительная фактура')); container.append(imagesSection);
     const source = currentSource();
-    const imageChoices = [['', 'Выберите изображение…'], ...state.data.images.map(i => [i, i])];
-    selectField(imagesSection, 'Исходник', imageChoices, source?.image || '', value => {
+    const surfaces = state.data.surfaces;
+    const selected = surfaces.find(s => s.image === source?.image);
+    const surfaceLabel = s => `${s.name}${s.kind === 'pbr' ? ' · PBR' : s.missing.length ? ` · нет ${s.missing.join(', ')}` : ''}`;
+    const choices = [['', 'Выберите поверхность…'], ...surfaces.filter(s => s.image).map(s => [s.id, surfaceLabel(s)])];
+    if (source?.image && !selected) choices.unshift(['@saved', `Сохранённый источник: ${source.image}`]);
+    const choose = value => {
+      if (value === '@saved') return;
       state.patch.source_mode = mode;
-      state.patch.source_detail = value ? { ...state.patch.source_detail, image: value } : null;
+      if (value) {
+        state.patch.surface = value;
+        if (state.patch.source_detail === null) delete state.patch.source_detail;
+        // Image selection stays separate from numeric changes for batch scale.
+        if (state.patch.source_detail) delete state.patch.source_detail.image;
+      } else { delete state.patch.surface; state.patch.source_detail = null; }
       renderEditor();
-    });
+    };
+    selectField(imagesSection, 'Поверхность', choices, selected?.id || (source?.image ? '@saved' : ''), choose);
+    const pbr = state.patch.surface ? (mode === 'image' && selected?.kind === 'pbr' ? selected.maps : {}) : original.pbr_detail || {};
+    imagesSection.append(el('p', `Base Color: ${source?.image || '—'} · Normal: ${mode === 'image' ? pbr.normal || '—' : 'не используется'} · Roughness: ${mode === 'image' ? pbr.roughness || '—' : 'не используется'}`, 'hint channel-list'));
+    if (mode === 'mixed') imagesSection.append(el('p', 'При выборе PBR-комплекта смешанный режим использует только Base Color. Normal и Roughness не назначаются.', 'hint'));
+    if (selected?.missing.length) imagesSection.append(el('p', `Неполный комплект: отсутствуют ${selected.missing.join(', ')}. Будет назначен только цвет.`, 'hint'));
     const grid = el('div', undefined, 'image-grid');
-    for (const image of state.data.images) {
-      const button = el('button', undefined, `image-choice${source?.image === image ? ' active' : ''}`);
-      const img = el('img'); img.src = `/textures/${image}`; img.alt = ''; img.loading = 'lazy';
-      button.title = image; button.setAttribute('aria-label', `Фактура ${image}`);
-      button.append(img, el('span', image.replace(/\.(png|jpe?g)$/, '')));
-      button.onclick = () => { state.patch.source_mode = mode; state.patch.source_detail = { ...state.patch.source_detail, image }; renderEditor(); };
+    for (const surface of surfaces) {
+      const button = el('button', undefined, `image-choice${selected?.id === surface.id ? ' active' : ''}`);
+      if (surface.image) {
+        const img = el('img'); img.src = `/textures/${surface.image}`; img.alt = ''; img.loading = 'lazy'; button.append(img);
+      }
+      button.disabled = !surface.image;
+      button.title = surfaceLabel(surface); button.setAttribute('aria-label', `Поверхность ${surface.name}`);
+      button.append(el('span', surfaceLabel(surface)));
+      button.onclick = () => choose(surface.id);
       grid.append(button);
     }
     imagesSection.append(grid, el('p', 'Результат обновится после запекания Blender.', 'hint'));
@@ -243,7 +264,9 @@ function renderEditor() {
   changed(); updateSelection();
 }
 async function loadCatalog(initial = false) {
-  const data = await api('/api/catalog'); state.data = data;
+  const data = await api('/api/catalog');
+  if (!Array.isArray(data.surfaces)) throw new Error('Сервер мастерской устарел. Перезапустите workbench.py и обновите страницу.');
+  state.data = data;
   const selectedCategory = $('category').value;
   $('category').replaceChildren(new Option('Все категории', ''), ...[...new Set(data.assets.filter(a => a.built).map(a => a.category))].sort().map(c => new Option(c, c)));
   state.selected = new Set([...state.selected].filter(name => data.assets.some(a => a.name === name && a.built)));
@@ -269,7 +292,8 @@ async function pollJobs() {
         head.append(el('span', `${job.tag} · ${job.items.length} моделей`), el('span', statusLabels[job.status])); block.append(head);
         for (const item of job.items) {
           const row = el('div', undefined, `job-item ${item.status}`);
-          row.append(el('span', item.name), el('span', statusLabels[item.status]));
+          const modelButton = el('button', item.name, 'text-button'); modelButton.onclick = () => activate(item.name);
+          row.append(modelButton, el('span', statusLabels[item.status]));
           if (item.error) row.append(el('pre', item.error, 'job-error'));
           block.append(row);
         }
@@ -309,3 +333,14 @@ try {
   const { TwinViewer } = await import('./viewer.js'); viewer = new TwinViewer();
 } catch (error) { notify(`3D-просмотр недоступен: ${error.message}`, true); }
 try { await loadCatalog(true); pollJobs(); } catch (error) { notify(`Не удалось загрузить каталог: ${error.message}`, true); }
+const { initAdmin } = await import('./pipelines.js');
+initAdmin({ notify, api, async openEditor(surface) {
+  await loadCatalog();
+  if (active() && surface) {
+    state.patch = { ...state.patch, source_mode: 'image', surface };
+    if (state.patch.source_detail === null) delete state.patch.source_detail;
+    if (state.patch.source_detail) delete state.patch.source_detail.image;
+    renderEditor();
+    notify('Поверхность выбрана. Отметьте модели и теги и запустите запекание.');
+  }
+} });

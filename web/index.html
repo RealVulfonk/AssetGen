@@ -7,8 +7,8 @@
   <script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
 </head>
 <body>
-  <header><div class="brand"><span class="mark">A</span><strong>AssetGen</strong><span class="muted">/ Мастерская</span></div><div class="header-right"><span class="local">Локально</span><button id="refresh">Обновить каталог</button></div></header>
-  <main>
+  <header><div class="brand"><span class="mark">A</span><strong>AssetGen</strong><span class="muted">/ Мастерская</span></div><nav aria-label="Разделы админки"><button data-panel="editor">Редактор</button><button data-panel="pipelines">Пайплайны</button><button data-panel="runs">Запуски</button></nav><div class="header-right"><span class="local">Локально</span><button id="refresh">Обновить каталог</button></div></header>
+  <main id="panel-editor">
     <aside class="library">
       <div class="section-head"><h1>Модели</h1><span id="count" class="count">…</span></div>
       <input id="search" type="search" placeholder="Найти модель…" aria-label="Поиск моделей">
@@ -36,6 +36,24 @@
       <div class="editor-actions"><p id="changes" class="hint">Настройки ещё не менялись</p><button id="reset" class="secondary">Сбросить изменения</button><button id="generate" class="primary" disabled>Перегенерировать текстуры</button><p class="hint">Применяются только изменённые поля. Предыдущие файлы сохраняются в резервной копии. Копирования в игру нет.</p></div>
     </aside>
   </main>
+  <section id="panel-pipelines" class="admin-panel" hidden>
+    <h1>Пайплайны</h1><p class="hint">Именованные локальные действия. Результаты каждого запуска сохраняются отдельно.</p>
+    <div id="pipeline-definitions"></div>
+    <form id="intake-form" class="pipeline-form">
+      <h2>Подготовить PBR</h2>
+      <label for="intake-file">Горизонтальный лист: Base Color / Normal / Roughness</label>
+      <input type="file" id="intake-file" accept="image/png,image/jpeg,image/webp" required>
+      <p class="hint">PNG, JPEG или WebP до 40 МиБ. Ширина делится на 3; панель до 4096 × 4096. Загружается сам файл.</p>
+      <label for="intake-name">Имя поверхности</label><input id="intake-name" pattern="[a-z][a-z0-9]*(_[a-z0-9]+)*" maxlength="80" placeholder="wall_stone_02" required>
+      <label for="intake-band">Ширина обработки, px</label><input id="intake-band" type="number" min="1" max="4096" value="24" required>
+      <button class="primary" id="intake-submit" disabled>Загрузить и подготовить</button><p id="intake-message" class="hint" role="status"></p>
+    </form>
+    <article class="pipeline-form"><h2>Запекание моделей</h2><p class="hint">Выберите модели, теги и поверхность в редакторе. Очередь последовательно собирает и запекает модели, сохраняя резервные копии.</p><button data-panel="editor">Открыть редактор</button></article>
+  </section>
+  <section id="panel-runs" class="admin-panel" hidden>
+    <div class="section-head"><h1>Запуски подготовки PBR</h1><button data-panel="pipelines">Новый запуск</button></div>
+    <div class="runs-layout"><div id="run-list" aria-label="История запусков"></div><article id="run-detail"><p class="empty">Выберите запуск.</p></article></div>
+  </section>
   <div id="notification" role="status" hidden></div>
   <script type="module" src="/app.js"></script>
 </body>

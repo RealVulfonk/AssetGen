@@ -12,3 +12,4 @@ venv/
 .env.*
 !.env.example
 *.workbench-tmp
+presets/textures/.workbench-publish-*/

@@ -15,9 +15,11 @@ import uuid
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import unquote, urlsplit
+from urllib.parse import parse_qs, unquote, urlsplit
 
 import assetgen as ag
+from workbench_surfaces import select_surface, surface_catalog
+from workbench_pipelines import MAX_UPLOAD, PIPELINES, PipelineRuns, publication_guard
 
 ROOT = ag.ROOT
 WEB = ROOT / "web"
@@ -88,7 +90,8 @@ def patched_spec(original, tag, patch):
     if "source_detail" in patch:
         detail = patch["source_detail"]
         if detail is None:
-            material.pop("source_detail", None)
+            if "surface" not in patch:
+                material.pop("source_detail", None)
         elif isinstance(detail, dict):
             material["source_detail"] = {"tile_size": 1, "strength": 0.6,
                                          **material.get("source_detail", {}), **detail}
@@ -99,7 +102,23 @@ def patched_spec(original, tag, patch):
         for key in ("layers", "scale", "direction", "detail", "distortion", "value",
                     "staves", "seam_width", "lid_board_width", "grain_strength"):
             material.pop(key, None)
-    material.update({key: value for key, value in patch.items() if key != "source_detail"})
+    material.update({key: value for key, value in patch.items() if key not in ("source_detail", "surface")})
+    surfaces = []
+    if "surface" in patch or (isinstance(patch.get("source_detail"), dict) and "image" in patch["source_detail"]):
+        with publication_guard(STATE):
+            surfaces = surface_catalog(ROOT / "presets/textures")
+    if "surface" in patch:
+        select_surface(material, patch["surface"], surfaces)
+    elif "source_detail" in patch and (patch["source_detail"] is None or "image" in patch["source_detail"]):
+        # Old clients selecting a Base Color must not retain another set's data.
+        image = material.get("source_detail", {}).get("image")
+        selected = next((surface for surface in surfaces if image and surface["image"] == image), None)
+        if selected:
+            select_surface(material, selected["id"], surfaces)
+        else:
+            material.pop("pbr_detail", None)
+        if image and patch.get("pbr_detail") is not None:
+            material["pbr_detail"] = copy.deepcopy(patch["pbr_detail"])
     if material.get("source_mode") == "image":
         result["quantize"] = False
     else:
@@ -318,14 +337,25 @@ class Handler(BaseHTTPRequestHandler):
             self.trusted()
             path = unquote(urlsplit(self.path).path)
             if path == "/api/catalog":
+                with publication_guard(STATE):
+                    surfaces = surface_catalog(ROOT / "presets/textures")
+                    images = sorted(p.name for p in (ROOT / "presets/textures").iterdir()
+                                    if p.suffix.lower() in (".png", ".jpg", ".jpeg")
+                                    and re.fullmatch(r"[a-z0-9_]+\.(png|jpe?g)", p.name))
                 return self.json({"assets": catalog(), "palettes": read_json(ROOT / "presets/palettes.json"),
-                                  "images": sorted(p.name for p in (ROOT / "presets/textures").iterdir()
-                                                   if p.suffix.lower() in (".png", ".jpg", ".jpeg")
-                                                   and re.fullmatch(r"[a-z0-9_]+\.(png|jpe?g)", p.name)),
+                                  "surfaces": surfaces, "images": images,
                                   "schema": read_json(ROOT / "schemas/texture.schema.json")})
             if path == "/api/jobs":
                 return self.json(self.server.jobs.snapshot())
-            if path.startswith("/asset/"):
+            if path == "/api/pipelines":
+                return self.json(PIPELINES)
+            if path == "/api/runs":
+                return self.json(self.server.pipelines.snapshot())
+            if path.startswith("/run-file/"):
+                _, _, run_id, selection, filename = path.split("/")
+                target = self.server.pipelines.file(run_id, selection, filename)
+                folder, filename = target.parent, target.name
+            elif path.startswith("/asset/"):
                 _, _, name, filename = path.split("/")
                 folder = display_dir(name)
                 if filename not in (f"{name}.glb", "preview_iso.png"):
@@ -343,7 +373,7 @@ class Handler(BaseHTTPRequestHandler):
                 raise FileNotFoundError("File not found")
             body = target.read_bytes()
             self.send_response(200)
-            self.send_header("Content-Type", "text/javascript" if target.suffix == ".js" else
+            self.send_header("Content-Type", "application/octet-stream" if target.name == "source" else "text/javascript" if target.suffix == ".js" else
                              mimetypes.guess_type(target.name)[0] or "application/octet-stream")
             self.send_header("Content-Length", str(len(body)))
             self.send_header("Cache-Control", "no-store")
@@ -355,7 +385,21 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         try:
             self.trusted()
-            if self.path != "/api/jobs":
+            url = urlsplit(self.path)
+            if url.path == "/api/pipelines/pbr_intake":
+                if self.headers.get("Content-Type") != "application/octet-stream":
+                    raise ValueError("Expected an uploaded file")
+                length = int(self.headers.get("Content-Length", 0))
+                if not 0 < length <= MAX_UPLOAD:
+                    raise ValueError("Upload must be at most 40 MiB")
+                params = parse_qs(url.query)
+                data = self.rfile.read(length)
+                if len(data) != length:
+                    raise ValueError("Incomplete upload")
+                return self.json({"id": self.server.pipelines.create(params.get("name", [""])[0],
+                                  int(params.get("band", ["24"])[0]), data,
+                                  params.get("filename", [""])[0])}, 202)
+            if url.path not in ("/api/jobs", "/api/runs/variant", "/api/runs/publish"):
                 raise ValueError("Unknown endpoint")
             if self.headers.get("Content-Type") != "application/json":
                 raise ValueError("Expected application/json")
@@ -365,6 +409,10 @@ class Handler(BaseHTTPRequestHandler):
             payload = json.loads(self.rfile.read(length))
             if not isinstance(payload, dict):
                 raise ValueError("Expected JSON object")
+            if url.path == "/api/runs/variant":
+                return self.json({"id": self.server.pipelines.variant(payload.get("id"), payload.get("band"))}, 202)
+            if url.path == "/api/runs/publish":
+                return self.json(self.server.pipelines.publish(payload.get("id"), payload.get("selection"), payload.get("name")))
             return self.json({"id": self.server.jobs.submit(payload)}, 202)
         except (ValueError, OSError, KeyError, TypeError, ag.AssetGenError) as error:
             self.json({"error": str(error)}, 400)
@@ -377,18 +425,21 @@ def main():
     args = parser.parse_args()
     if not (WEB / "node_modules/three/build/three.module.js").is_file():
         parser.error("Install browser dependencies first: npm --prefix web ci")
-    server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
-    server.jobs = Jobs()
-    url = f"http://127.0.0.1:{server.server_port}"
-    print(f"AssetGen Workbench: {url}", flush=True)
-    if args.open:
-        webbrowser.open(url)
     try:
-        server.serve_forever()
+        # Recovery may mark old jobs interrupted. Only one process can own
+        # this state directory, even if a second server uses another port.
+        with ag.asset_lock(STATE), ThreadingHTTPServer(("127.0.0.1", args.port), Handler) as server:
+            server.jobs = Jobs()
+            server.pipelines = PipelineRuns(ROOT, STATE)
+            url = f"http://127.0.0.1:{server.server_port}"
+            print(f"AssetGen Workbench: {url}", flush=True)
+            if args.open:
+                webbrowser.open(url)
+            server.serve_forever()
+    except ag.AssetGenError as error:
+        parser.error(f"Workbench already running or state lock unavailable: {error}")
     except KeyboardInterrupt:
         print("Stopping workbench; queued/running jobs will be marked interrupted on restart.")
-    finally:
-        server.server_close()
 
 
 if __name__ == "__main__":
